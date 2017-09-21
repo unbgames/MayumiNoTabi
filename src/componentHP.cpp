@@ -8,27 +8,27 @@
 
 CompHP::CompHP(int tot,bool showHP,bool showDMG,float dmgCD):total{tot},current{tot},showHP{showHP},showDMG{showDMG},cooldown{dmgCD}{}
 CompHP::CompHP(int tot,int cur,bool showHP,bool showDMG,float dmgCD):total{tot},current{cur},showHP{showHP},showDMG{showDMG},cooldown{dmgCD}{}
-CompHP::~CompHP(){}
+CompHP::~CompHP() {}
 
 
-void CompHP::Damage(int dmg){
-	if(dmgCoolDown.Get()>cooldown){
+void CompHP::Damage(int dmg) {
+	if (dmgCoolDown.Get()>cooldown) {
 		dmgCoolDown.Restart();
 		current-=dmg;
-		if(showDMG){
+		if (showDMG) {
 			//TODO: renderiza dano
 		}
-		if(GO(entity)->HasComponent(Component::type::t_memory))COMPMEMORYp(GO(entity))->ints["hit"]++;
+		if (GO(entity)->HasComponent(Component::type::t_memory))COMPMEMORYp(GO(entity))->ints["hit"]++;
 	}
 }
 
 
-void CompHP::Update(float time){
-	if(current<=0)GO(entity)->dead=true;
+void CompHP::Update(float time) {
+	if (current<=0)GO(entity)->dead=true;
 	dmgCoolDown.Update(time);
 }
-void CompHP::Render(){
-	if(SETTINGS.showHP && showHP && current>0){
+void CompHP::Render() {
+	if (SETTINGS.showHP && showHP && current>0) {
 		Rect box{0,-GO(entity)->Box().w/5.0f - GO(entity)->Box().w/10.0f,GO(entity)->Box().w,GO(entity)->Box().w/5.0f};
 		box+=GO(entity)->Box().corner();
 

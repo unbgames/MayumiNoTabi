@@ -4,13 +4,13 @@
 //#include <inputManager.hpp>
 
 CompAI::CompAI(aiFunc func):foo{func}{}
-CompAI::~CompAI(){}
+CompAI::~CompAI() {}
 
-void CompAI::Update(float time){
+void CompAI::Update(float time) {
 	foo(this,time);
 }
 
-void CompAI::Render(){}
+void CompAI::Render() {}
 
 Component::type CompAI::GetType()const{
 	return Component::type::t_ai;

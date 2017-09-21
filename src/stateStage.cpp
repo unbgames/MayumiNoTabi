@@ -16,9 +16,9 @@ StateStage::StateStage(string lvl):levelName{lvl},
 	LoadAssets();
 }
 
-StateStage::~StateStage(){}
+StateStage::~StateStage() {}
 
-void StateStage::Begin(){
+void StateStage::Begin() {
 	level.Load(levelName);
 	player = GameObject::MakePlayer(Vec2{550.0f,430.0f});
 	AddObject(player);
@@ -26,24 +26,24 @@ void StateStage::Begin(){
 	level.LoadObjects();
 }
 
-void StateStage::Update(float time){
+void StateStage::Update(float time) {
 	Camera::Update(time);
-	if(INPUT.QuitRequested())quitRequested=true;
-	if(INPUT.KeyPress(KEY_ESC))popRequested=true;
+	if (INPUT.QuitRequested())quitRequested=true;
+	if (INPUT.KeyPress(KEY_ESC))popRequested=true;
 	
 	Vec2 pos = GO(PLAYER_UID)->pos;
-	if(INPUT.KeyPress(KEY(u))) AddObject(GameObject::MakePorco(pos+Vec2{2000.0f,-100.0f}));
-	if(INPUT.KeyPress(KEY(p))) AddObject(GameObject::MakeMike(pos+Vec2{850.0f,-100.0f}));
-	if(INPUT.KeyPress(KEY(o))) AddObject(GameObject::MakeBanshee(pos+Vec2{850.0f,-100.0f},pos+Vec2{230.0f,-200.0f}));
-	if(INPUT.KeyPress(KEY(i))) AddObject(GameObject::MakeMask(pos+Vec2{850.0f,-100.0f}));
-	if(INPUT.KeyPress(KEY(y))) GO(player)->dead=true;
+	if (INPUT.KeyPress(KEY(u))) AddObject(GameObject::MakePorco(pos+Vec2{2000.0f,-100.0f}));
+	if (INPUT.KeyPress(KEY(p))) AddObject(GameObject::MakeMike(pos+Vec2{850.0f,-100.0f}));
+	if (INPUT.KeyPress(KEY(o))) AddObject(GameObject::MakeBanshee(pos+Vec2{850.0f,-100.0f},pos+Vec2{230.0f,-200.0f}));
+	if (INPUT.KeyPress(KEY(i))) AddObject(GameObject::MakeMask(pos+Vec2{850.0f,-100.0f}));
+	if (INPUT.KeyPress(KEY(y))) GO(player)->dead=true;
 
-	if(INPUT.KeyPress(KEY(n))) SETTINGS.showHP = !SETTINGS.showHP;
-	if(INPUT.KeyPress(KEY(m))) SETTINGS.showCollision = !SETTINGS.showCollision;
+	if (INPUT.KeyPress(KEY(n))) SETTINGS.showHP = !SETTINGS.showHP;
+	if (INPUT.KeyPress(KEY(m))) SETTINGS.showCollision = !SETTINGS.showCollision;
 
 	UpdateArray(time);
 }
-void StateStage::Render(){
+void StateStage::Render() {
 	level.background.Render(0, 0);
 	// floresta_bg1.Render(RENDERPOS(Vec2(0,0)));
 	// floresta_bg2.Render(RENDERPOS(Vec2(4433,0)));
@@ -59,14 +59,14 @@ void StateStage::Render(){
 	RenderArray();
 }
 
-void StateStage::Pause(){
+void StateStage::Pause() {
 	Camera::Unfollow();
 }
-void StateStage::Resume(){
+void StateStage::Resume() {
 	Camera::Follow(PLAYER_UID);
 }
 
-void StateStage::LoadAssets(){
+void StateStage::LoadAssets() {
 	Resources::GetImage("img/porco/porco-chifrada.png");
 	Resources::GetImage("img/porco/porco-correndo.png");
 	Resources::GetImage("img/porco/porco-idle.png");
@@ -92,4 +92,4 @@ void StateStage::LoadAssets(){
 	Resources::GetImage("img/porco/rage/porco-stun-virado.png");
 	Resources::GetImage("img/porco/rage/porco-virando-virado.png");
 }
-void StateStage::LoadGUI(){}
+void StateStage::LoadGUI() {}

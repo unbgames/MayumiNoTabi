@@ -16,7 +16,7 @@ TileMap::TileMap(int width, int height, TileSet* ts) : tileSet{ts},mapWidth{widt
 TileMap::TileMap(TileSet* ts):tileSet{ts}{
 }
 
-void TileMap::Load(ifstream& in){
+void TileMap::Load(ifstream& in) {
 	string line;
 	
 	getline(in,line);
@@ -26,9 +26,9 @@ void TileMap::Load(ifstream& in){
 	tileMatrix.reserve(mapWidth*mapHeight*mapDepth);
 
 	int t;
-	FOR(d,mapDepth){
-		FOR(h,mapHeight){
-			FOR(w,mapWidth){
+	FOR(d,mapDepth) {
+		FOR(h,mapHeight) {
+			FOR(w,mapWidth) {
 				in >> t;
 				in.ignore(1);
 				At(w,h,d) = t-1;
@@ -39,9 +39,9 @@ void TileMap::Load(ifstream& in){
 void TileMap::Save(stringstream& out) {
 	out<<mapWidth<<","<<mapHeight<<","<<mapDepth<<endl<<endl;
 	
-	FOR(d,mapDepth){
-		FOR(h,mapHeight){
-			FOR(w,mapWidth){
+	FOR(d,mapDepth) {
+		FOR(h,mapHeight) {
+			FOR(w,mapWidth) {
 				out<<At(w,h,d)+1<<",\t";
 			}
 			out<<endl;
@@ -50,44 +50,44 @@ void TileMap::Save(stringstream& out) {
 	}
 }
 
-void TileMap::SetTileSet(TileSet* ts){
+void TileMap::SetTileSet(TileSet* ts) {
 	tileSet = ts;
 }
 
-int& TileMap::At(int x,int y,int z){
+int& TileMap::At(int x,int y,int z) {
 	return tileMatrix[x+(y*mapWidth)+(z*mapWidth*mapHeight)];
 }
 int TileMap::At(int x,int y,int z) const{
 	return tileMatrix[x+(y*mapWidth)+(z*mapWidth*mapHeight)];
 }
 
-void TileMap::RenderLayer(int layer,int posX ,int posY){
+void TileMap::RenderLayer(int layer,int posX ,int posY) {
 	int w=tileSet->GetWidth();
 	int h=tileSet->GetHeight();
 	int tile;
 	int firstX=0,firstY=0,lastX=mapWidth,lastY=mapHeight;
 	
-	if(posX<CAMERA.x)
+	if (posX<CAMERA.x)
 		firstX = (CAMERA.x-posX)/w;
-	if(posY<CAMERA.y)
+	if (posY<CAMERA.y)
 		firstY = (CAMERA.y-posY)/h;
 	Vec2 mapCorner = Vec2(posX+(mapWidth*w),posY+(mapHeight*h));
 	Vec2 cameraCorner = CAMERA+(WINSIZE/CAMERAZOOM);
-	if(mapCorner.x>cameraCorner.x)
+	if (mapCorner.x>cameraCorner.x)
 		lastX -= (mapCorner.x-cameraCorner.x)/w;
-	if(mapCorner.y>cameraCorner.y)
+	if (mapCorner.y>cameraCorner.y)
 		lastY -= (mapCorner.y-cameraCorner.y)/h;
 	
-	for(int y=firstY;y<=lastY;y++){
-		for(int x=firstX;x<=lastX;x++){
+	for (int y=firstY;y<=lastY;y++) {
+		for (int x=firstX;x<=lastX;x++) {
 			tile = At(x, y, layer);
-			if(tile != EMPTY_TILE)
+			if (tile != EMPTY_TILE)
 				tileSet->Render(tile, RENDERPOSX(posX+(x*w)), RENDERPOSY(posY+(y*h)), CAMERAZOOM);
 		}
 	}
 }
-void TileMap::Render(Vec2 pos){
-	FOR(i,mapDepth){
+void TileMap::Render(Vec2 pos) {
+	FOR(i,mapDepth) {
 		RenderLayer(i,pos.x,pos.y);
 	}
 }

@@ -22,7 +22,7 @@ pair<float,float> HotspotPos[] = {
 	{1.0,1.0}
 };
 
-SDL_Color MakeColor(int r,int g,int b,int a){
+SDL_Color MakeColor(int r,int g,int b,int a) {
 	SDL_Color color;
 	color.r=r;
 	color.g=g;
@@ -32,13 +32,13 @@ SDL_Color MakeColor(int r,int g,int b,int a){
 }
 
 
-bool equals(const float &a,const float &b){
+bool equals(const float &a,const float &b) {
 	return (std::fabs((a-b))<=PRECISION);
 }
 
-float closeDist(const float &from,const float &to,const float &change){
-	if(abs(from-to)<change)return to;
-	if(from>to)return from - change;
+float closeDist(const float &from,const float &to,const float &change) {
+	if (abs(from-to)<change)return to;
+	if (from>to)return from - change;
 	return from + change;
 }
 

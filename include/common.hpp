@@ -62,10 +62,10 @@ using std::make_pair;
 using ii=pair<int,int>;
 using uint=unsigned int;
 
-#define FOR(  cont,    max) for(int (cont)=0 	       ,_max_=(max);(cont)< _max_;(cont)++)
-#define FOR2( cont,min,max) for(int (cont)=(int)(min)  ,_max_=(max);(cont)< _max_;(cont)++)
-#define FORR( cont,    max) for(int (cont)=(int)(max-1)            ;(cont)>=0;    (cont)--)
-#define FOR2R(cont,min,max) for(int (cont)=(int)(max-1),_min_=(min);(cont)>=_min_;(cont)--)
+#define FOR(  cont,    max) for (int (cont)=0 	       ,_max_=(max);(cont)< _max_;(cont)++)
+#define FOR2( cont,min,max) for (int (cont)=(int)(min)  ,_max_=(max);(cont)< _max_;(cont)++)
+#define FORR( cont,    max) for (int (cont)=(int)(max-1)            ;(cont)>=0;    (cont)--)
+#define FOR2R(cont,min,max) for (int (cont)=(int)(max-1),_min_=(min);(cont)>=_min_;(cont)--)
 #define ABS(x) (((x)<0)?-(x):(x))
 #define BETWEEN(x,a,b) ((x>=a) && (x<b))
 #define DEBUG(x) cerr << #x << " = " << x << endl;
