@@ -6,21 +6,21 @@
 
 
 CompTimer::CompTimer(float l):limit{l}{}
-CompTimer::~CompTimer(){}
+CompTimer::~CompTimer() {}
 
 
-void CompTimer::Update(float time){
+void CompTimer::Update(float time) {
 	t.Update(time);
-	if(t.Get()>limit){
+	if (t.Get()>limit) {
 		GO(entity)->dead=true;
 	}
 }
 
 
-void CompTimer::Render(){}
+void CompTimer::Render() {}
 
 
-void CompTimer::Own(GameObject* go){
+void CompTimer::Own(GameObject* go) {
 	entity=go->uid;
 }
 

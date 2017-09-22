@@ -32,8 +32,8 @@ public:
 		t_count,
 	};
 
-	Component(){};
-	virtual ~Component(){};
+	Component() {};
+	virtual ~Component() {};
 
 	virtual void Update(float time)=0;
 	virtual void Render()=0;

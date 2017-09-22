@@ -5,13 +5,13 @@
 //#include <inputManager.hpp>
 
 
-CompMemory::CompMemory(){}
-CompMemory::~CompMemory(){}
+CompMemory::CompMemory() {}
+CompMemory::~CompMemory() {}
 
-void CompMemory::Update(float time){
-	for(auto& t:timers)t.second.Update(time);
+void CompMemory::Update(float time) {
+	for (auto& t:timers)t.second.Update(time);
 }
-void CompMemory::Render(){}
+void CompMemory::Render() {}
 Component::type CompMemory::GetType() const{
 	return Component::type::t_memory;
 }

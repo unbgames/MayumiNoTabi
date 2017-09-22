@@ -10,17 +10,17 @@ CompText::CompText(const Text &t,Hotspot h,Vec2 p):txt{t},pos{p}{
 CompText::CompText(string text,int size,SDL_Color c,Hotspot h,Vec2 p):txt{text,size,c},pos{p}{
 	txt.SetHotspot(h);
 }
-CompText::~CompText(){}
+CompText::~CompText() {}
 
 
-void CompText::Update(float time){
+void CompText::Update(float time) {
 	UNUSED(time);
 }
-void CompText::Render(){
+void CompText::Render() {
 	Vec2 p = pos + GO(entity)->Box().corner();
 	txt.SetPos(p);
 	
-	if(GO(entity)->anchored) txt.Render();
+	if (GO(entity)->anchored) txt.Render();
 	else txt.Render(CAMERA);
 }
 Component::type CompText::GetType()const{
