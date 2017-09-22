@@ -1,3 +1,12 @@
+/*!
+ *  \file File componentText.cpp
+ *  \brief Implementation of the class of text components present in the game
+ *
+ *  The class implemented here provides to the game the messeges elements
+ *
+ *  \sa componentText.hpp
+ */
+
 #include <componentText.hpp>
 #include <gameObject.hpp>
 #include <camera.hpp>
@@ -19,7 +28,7 @@ void CompText::Update(float time) {
 void CompText::Render() {
 	Vec2 p = pos + GO(entity)->Box().corner();
 	txt.SetPos(p);
-	
+
 	if (GO(entity)->anchored) txt.Render();
 	else txt.Render(CAMERA);
 }

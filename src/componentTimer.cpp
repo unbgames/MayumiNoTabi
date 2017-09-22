@@ -1,4 +1,14 @@
-#include <componentTimer.hpp>
+/*!
+ *  \file File componentTimer.cpp
+ *  \brief Implementation of the class of game time
+ *
+ *  The class implemented here provides to the game the time limit 
+ *
+ *  \sa componentTimer.hpp
+ */
+
+
+#include <>
 //#include <compLib.hpp>
 #include <gameObject.hpp>
 //#include <camera.hpp>
@@ -28,5 +38,3 @@ void CompTimer::Own(GameObject* go) {
 Component::type CompTimer::GetType() const{
 	return Component::type::t_timer;
 }
-
-

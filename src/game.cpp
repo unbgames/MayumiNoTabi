@@ -1,3 +1,13 @@
+/*!
+ *  \file File game.cpp
+ *  \brief Implementation of the class of game actions
+ *
+ *  The class implemented provides the flow of the game
+ *
+ *  \sa game.hpp
+ */
+
+
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_mixer.h>
@@ -141,7 +151,7 @@ void Game::Run() {
 		GetCurrentState().Update(dt);
 		GetCurrentState().Render();
 		SDL_RenderPresent(renderer);
-		
+
 		if (GetCurrentState().QuitRequested()) break;
 		if (GetCurrentState().PopRequested()) {
 			GetCurrentState().Pause();

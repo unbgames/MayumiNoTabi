@@ -5,24 +5,27 @@
  *  The class implemented here provides to the game the speed and type
  *  of movement that a given element can perform
  *
- *  \sa componentMovement.h
+ *  \sa componentMovement.hpp
  */
 
 #include <componentMovement.hpp>
 #include <gameObject.hpp>
 #include <game.hpp>
+
 //#include <camera.hpp>
 //#include <inputManager.hpp>
 
 //! A constructor.
     /*!
-    This is a constructor method os componentMovement class
+    This is a constructor method of componentMovement class
     */
 CompMovement::CompMovement(const Vec2& s,moveType t):mType{t},speed{s}{}
+
 //! A destructor.
     /*!
-      This is a destructor method os componentMovement class
+      This is a destructor method of componentMovement class
     */
+
 CompMovement::~CompMovement() {}
 
 
