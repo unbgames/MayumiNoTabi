@@ -1,3 +1,9 @@
+/*
+ * File: gameObject.cpp
+ *
+ * Description: Create and generate objects game features.
+ */
+
 #include <gameObject.hpp>
 #include <game.hpp>
 #include <componentMovement.hpp>
@@ -10,10 +16,27 @@
 uint GameObject::goCount=0;
 map<uint, unique_ptr<GameObject>> GameObject::entities;
 
+//! A constructor.
+    /*!
+    This is a constructor method of GameObject class
+    */
+
 GameObject::GameObject():uid{goCount++}{
 	components.fill(nullptr);
 	entities[uid]=unique_ptr<GameObject>(this);
 }
+
+//! A constructor.
+    /*!
+    This is a constructor method of GameObject class
+		/param pos It's the object position into a referential
+		/param r It's the rotation indices of object
+		/param hs It's the hostspot of object,related to the boundaries
+		of the object
+		/param a
+		/warning Method that requires review of comment
+		*/
+
 GameObject::GameObject(const Vec2 &pos_,float r,Hotspot hs,bool a):
 						uid{goCount++},
 						pos{pos_},
@@ -23,6 +46,18 @@ GameObject::GameObject(const Vec2 &pos_,float r,Hotspot hs,bool a):
 	components.fill(nullptr);
 	entities[uid]=unique_ptr<GameObject>(this);
 }
+
+//! A constructor.
+    /*!
+    This is a constructor method of GameObject class
+		/param rect It's a rectangulo, the space of the object displayed.
+		/param r It's the rotation indices of object
+		/param hs It's the hostspot of object,related to the boundaries
+		of the object
+		/param a
+		/warning Method that requires review of comment
+		*/
+
 GameObject::GameObject(const Rect &rect,float r,Hotspot hs,bool a):
 						uid{goCount++},
 						pos{rect.x,rect.y},
@@ -33,6 +68,12 @@ GameObject::GameObject(const Rect &rect,float r,Hotspot hs,bool a):
 	components.fill(nullptr);
 	entities[uid]=unique_ptr<GameObject>(this);
 }
+
+//! A destructor.
+    /*!
+      This is a destructor method of GameObject class
+    */
+
 GameObject::~GameObject() {
 	UnAttach();
 	for (GameObject* obj:attachedObjs)obj->dead=true;
@@ -43,6 +84,15 @@ GameObject::~GameObject() {
 
 	entities.erase(uid);
 }
+
+
+/*!
+	@fn void GameObject::Update(float time)
+	@brief Method that updates the view status of an object
+	@param time
+	@return The execution of this method returns no value
+	@warning Method that requires review of comment
+*/
 
 void GameObject::Update(float time) {
 	if (IsDead()) {
@@ -55,18 +105,26 @@ void GameObject::Update(float time) {
 			}
 		}
 	}
-	//reset move
+	// Reset move
 	if (HasComponent(Component::type::t_movement))COMPMOVEp(this)->move=0.0f;
-	//process input control and ai first
+	// Process input control and ai first
 	if (HasComponent(Component::type::t_input_control))COMPINPUTCONTp(this)->Update(time);
 	if (HasComponent(Component::type::t_ai))COMPAIp(this)->Update(time);
-	//then set move
+	// Then set move
 	if (HasComponent(Component::type::t_movement))COMPMOVEp(this)->move+=COMPMOVEp(this)->speed*time;
-	//and then do the rest
+	// And then do the rest
 	FOR2(i,Component::type::t__+1,Component::type::t_count) {
 		if (HasComponent(i))components[i]->Update(time);
 	}
 }
+
+/*!
+	@fn void GameObject::Render()
+	@brief Method that allows to render a component of an object
+	@return The execution of this method returns no value
+	@warning Method that requires review of comment
+*/
+
 void GameObject::Render() {
 	FOR(i,Component::type::t_count) {
 		if (HasComponent(i)) {
@@ -75,12 +133,29 @@ void GameObject::Render() {
 	}
 }
 
+/*!
+	@fn void GameObject::AddComponent(Component* component)
+	@brief Method that add component if it doesn't exist.
+	@param component
+	@return The execution of this method returns no value
+	@warning Method that requires review of comment
+*/
+
 void GameObject::AddComponent(Component* component) {
 	auto t=component->GetType();
 	if (HasComponent(t))cerr << "Error, adding component " << t << " to a GameObject that already has it" << endl;
 	components[t]=component;
 	component->Own(this);
 }
+
+/*!
+	@fn void GameObject::ReplaceComponent(Component* component)
+	@brief Method that replaces a component of an object
+	@param component
+	@return The execution of this method returns no value
+	@warning Method that requires review of comment
+*/
+
 void GameObject::ReplaceComponent(Component* component) {
 	auto t=component->GetType();
 	if (!HasComponent(t))cerr << "Error, replacing component " << t << " on a GameObject that doesnt have it" << endl;
@@ -88,6 +163,15 @@ void GameObject::ReplaceComponent(Component* component) {
 	components[t]=component;
 	component->Own(this);
 }
+
+/*!
+	@fn void GameObject::RemoveComponent(Component::type t)
+	@brief Method that removes a component of an object
+	@param t A type of a component
+	@return The execution of this method returns no value
+	@warning Method that requires review of comment
+*/
+
 void GameObject::RemoveComponent(Component::type t) {
 	if (!HasComponent(t))cerr << "Error, removing component " << t << " on a GameObject that doesnt have it" << endl;
 	else{
@@ -95,21 +179,56 @@ void GameObject::RemoveComponent(Component::type t) {
 		components[t]=nullptr;
 	}
 }
+
+/*!
+	@fn void GameObject::SetComponent(Component::type t,Component* component)
+	@brief Method that sets a component with it type of an object
+	@param t A type of a component
+	@param component
+	@return The execution of this method returns no value
+	@warning Method that requires review of comment
+*/
+
 void GameObject::SetComponent(Component::type t,Component* component) {
 	components[t]=component;
 	component->Own(this);
 }
+
+/*!
+	@fn void GameObject::SetComponent(Component::type t,Component* component)
+	@brief Method that verify the vality of a component's size of an object
+	@param t A size of a component
+	@return The execution of this method returns a bool, if a component exists.
+	@warning Method that requires review of comment
+*/
+
 bool GameObject::HasComponent(size_t t) const{
 	return (components[t] != nullptr);
 }
 
-
+/*!
+	@fn void GameObject::AttachObj(GameObject* obj)
+	@brief Method that verify the vality of a component's size of an object
+	@param obj A object GameObject
+	@return The execution of this method returns no value.
+	@warning Method that requires review of comment
+*/
 void GameObject::AttachObj(GameObject* obj) {
 	if (find(attachedObjs.begin(), attachedObjs.end(),obj)==attachedObjs.end()) {
 		attachedObjs.push_back(obj);
 		obj->AttachTo(this);
 	}
 }
+
+/*!
+	@fn void GameObject::AttachTo(GameObject* obj)
+	@brief Method that verifys the contact between objects, if an object touched
+	an other object.
+	@param obj A object GameObject
+	@return The execution of this method returns no value.
+	@warning Method that requires review of comment
+*/
+
 void GameObject::AttachTo(GameObject* obj) {
 	if (attachedTo==nullptr) {
 		attachedTo=obj;
@@ -120,6 +239,16 @@ void GameObject::AttachTo(GameObject* obj) {
 		AttachTo(obj);
 	}
 }
+
+/*!
+	@fn void GameObject::UnAttachObj(GameObject* obj)
+	@brief Method that verifys the contact between objects, if an object
+	touched other
+	@param obj A object GameObject
+	@return The execution of this method returns no value.
+	@warning Method that requires review of comment
+*/
+
 void GameObject::UnAttachObj(GameObject* obj) {
 	auto it=find(attachedObjs.begin(), attachedObjs.end(),obj);
 	if (it!=attachedObjs.end()) {
@@ -127,6 +256,15 @@ void GameObject::UnAttachObj(GameObject* obj) {
 		obj->UnAttach();
 	}
 }
+
+/*!
+	@fn void GameObject::UnAttachObj(GameObject* obj)
+	@brief Method that verifys the contact between objects, if an object
+	touched other
+	@return The execution of this method returns no value.
+	@warning Method that requires review of comment
+*/
+
 void GameObject::UnAttach() {
 	if (attachedTo!=nullptr) {
 		auto temp=attachedTo;
@@ -135,22 +273,56 @@ void GameObject::UnAttach() {
 	}
 }
 
+/*!
+	@fn bool GameObject::IsDead()
+	@brief Method that verifys the contact between objects, if an object
+	touched other
+	@param obj A object GameObject
+	@return The execution of this method returns a bool.
+	@warning Method that requires review of comment
+*/
 
 bool GameObject::IsDead() const{
 	return dead;
 }
+
+/*!
+	@fn bool GameObject::Remove()
+	@brief Method that removes an object
+	@return The execution of this method returns a bool.
+	@warning Method that requires review of comment
+*/
 bool GameObject::Remove() const{
 	return remove;
 }
 
+/*!
+	@fn Rect GameObject::Box()
+	@brief Method that wrappes the region of object with
+	cordinates x and y, in cartesian plan, weight w and high h from the
+	rotation r and position p.
+	@return The execution of this method returns a Rect with hotspot and weight
+	and high
+	@warning Method that requires review of comment
+*/
 Rect GameObject::Box() const{
-	Rect r{pos,size};
-	r.x += curPos.x * r.w;
+	Rect r{pos,size}; // Vector r(rotation) with parameters position pos and size
+	r.x += curPos.x * r.w; // x - cordinate in axis x. w - weight
 	r.y += curPos.y * r.h;
 	r.w *= curSize.x;
 	r.h *= curSize.y;
 	return Rect{r.hotspot(hotspot),Vec2{r.w,r.h}};
 }
+
+/*!
+	@fn Rect GameObject::Box()
+	@brief Method that wrappes the region of object with
+	cordinates x and y, in cartesian plan, weight w and high h from the
+	rotation r and position p.
+	@return The execution of this method returns a Rect with hotspot and weight
+	and high
+	@warning Method that requires review of comment
+*/
 Rect GameObject::Box(const Vec2& p,const Vec2 &sz) const{
 	Rect r{pos,size};
 	r.x += p.x * r.w;
@@ -916,4 +1088,3 @@ uint GameObject::MakePorco(const Vec2 &pos) {
 
 	return pumba->uid;
 }
-
