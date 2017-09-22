@@ -55,11 +55,11 @@ StateEditor::StateEditor():helpText{HELP_TEXT,16},statusText{"test",16}{
 	LoadAssets();
 }
 
-StateEditor::~StateEditor(){}
+StateEditor::~StateEditor() {}
 
-void StateEditor::LoadAssets(){}
+void StateEditor::LoadAssets() {}
 
-void StateEditor::Begin(){
+void StateEditor::Begin() {
 	LoadGUI();
 	level.Load(fileName);
 	level.LoadObjects(false);
@@ -75,34 +75,34 @@ void StateEditor::Begin(){
 	statusText.SetHotspot(Hotspot::BOTTOM_RIGHT);
 }
 
-void StateEditor::Update(float time){
+void StateEditor::Update(float time) {
 	Camera::Update(time);
 	gui.Update();
-	if(INPUT.QuitRequested() || gui.ButtonClick(EXIT_GAME)) {
+	if (INPUT.QuitRequested() || gui.ButtonClick(EXIT_GAME)) {
 		quitRequested = true;
 		Exit();
 	}	
 		
 	auto window = gui.GetSelectedWindowID();
-	if(window == MAIN_WINDOW){
+	if (window == MAIN_WINDOW) {
 		//Close Editor
-		if(INPUT.KeyPress(KEY_ESC) || gui.ButtonClick(EXIT_EDITOR)){
+		if (INPUT.KeyPress(KEY_ESC) || gui.ButtonClick(EXIT_EDITOR)) {
 			popRequested = true;
 			Exit();
 		}
 		
 		int tileCount = level.tileSet.GetTileCount();
 		//Select next tile
-		if(INPUT.KeyPress(KEY(a))) tileIndex = (tileIndex + tileCount-1)%tileCount;
+		if (INPUT.KeyPress(KEY(a))) tileIndex = (tileIndex + tileCount-1)%tileCount;
 		//Select previous tile
-		if(INPUT.KeyPress(KEY(d))) tileIndex = (tileIndex + 1)%tileCount;
+		if (INPUT.KeyPress(KEY(d))) tileIndex = (tileIndex + 1)%tileCount;
 	
 		//Place a tile
-		if(INPUT.IsMouseDown(MBUTTON_LEFT)) {
+		if (INPUT.IsMouseDown(MBUTTON_LEFT)) {
 			Vec2 cursor = GetCurrentTile();
 			Rect canvas(0, 0, level.tileMap.GetWidth()-1, level.tileMap.GetHeight()-1);
-			if(canvas.contains(cursor)) {
-				if(showCollision){
+			if (canvas.contains(cursor)) {
+				if (showCollision) {
 					level.collisionLayer[(cursor.y*level.tileMap.GetWidth())+cursor.x] = COLLISION_BLOCK;
 				}
 				else{
@@ -111,11 +111,11 @@ void StateEditor::Update(float time){
 			}
 		}
 		//Erase a tile
-		if(INPUT.IsMouseDown(MBUTTON_RIGHT)) {
+		if (INPUT.IsMouseDown(MBUTTON_RIGHT)) {
 			Vec2 cursor = GetCurrentTile();
 			Rect canvas(0, 0, level.tileMap.GetWidth()-1, level.tileMap.GetHeight()-1);
-			if(canvas.contains(cursor)) {
-				if(showCollision){
+			if (canvas.contains(cursor)) {
+				if (showCollision) {
 					level.collisionLayer[(cursor.y*level.tileMap.GetWidth())+cursor.x] = EMPTY_TILE;
 				}
 				else{
@@ -126,51 +126,51 @@ void StateEditor::Update(float time){
 	
 	
 		//Toggle grid
-		if(INPUT.KeyPress(KEY(g)) || gui.ButtonPress(SHOW_GRID)) showGrid = (!showGrid);
+		if (INPUT.KeyPress(KEY(g)) || gui.ButtonPress(SHOW_GRID)) showGrid = (!showGrid);
 		//Toggle instructions menu
-		if(INPUT.KeyPress(KEY(h))) {
+		if (INPUT.KeyPress(KEY(h))) {
 			showHelp = (!showHelp);
-			if(showHelp) helpText.SetText(HELP_TEXT);
+			if (showHelp) helpText.SetText(HELP_TEXT);
 			else helpText.SetText(HELP_TEXT_OPEN);
 		}
 		//Toggle collision boxes
-		if(INPUT.KeyPress(KEY(c)) || gui.ButtonClick(SHOW_COLLISION)) showCollision = (!showCollision);
+		if (INPUT.KeyPress(KEY(c)) || gui.ButtonClick(SHOW_COLLISION)) showCollision = (!showCollision);
 	
 		//Save level
-		if(INPUT.KeyPress(KEY(s)) || gui.ButtonClick(SAVE_LEVEL)) SaveLevel();
+		if (INPUT.KeyPress(KEY(s)) || gui.ButtonClick(SAVE_LEVEL)) SaveLevel();
 		
 		//Resize level
-		if(gui.ButtonClick(Action::RESIZE_LEVEL)){
+		if (gui.ButtonClick(Action::RESIZE_LEVEL)) {
 			CreateWindow(RESIZE_LEVEL);
 		}
 	
 		//Pan view
-		if(INPUT.MousePress(MBUTTON_MIDDLE)) {
+		if (INPUT.MousePress(MBUTTON_MIDDLE)) {
 			clickPos = INPUT.GetMouse();
 			camPos = CAMERA;
 			CAMERALOCK = true;
 		}
-		else if(INPUT.IsMouseDown(MBUTTON_MIDDLE)) {
+		else if (INPUT.IsMouseDown(MBUTTON_MIDDLE)) {
 			CAMERA = camPos - ((INPUT.GetMouse()-clickPos)/CAMERAZOOM);
 		}
-		if(INPUT.MouseRelease(MBUTTON_MIDDLE)) {
+		if (INPUT.MouseRelease(MBUTTON_MIDDLE)) {
 			CAMERALOCK = false;
 		}
 	}
-	else if(window==RESIZE_WINDOW){
-		if(gui.ButtonClick(GUI_CONFIRM))
+	else if (window==RESIZE_WINDOW) {
+		if (gui.ButtonClick(GUI_CONFIRM))
 			ResizeLevel();
 	}
-	else if(window==UNSAVED_CHANGES_WINDOW){
-		if(gui.ButtonClick(GUI_CLOSE)){
+	else if (window==UNSAVED_CHANGES_WINDOW) {
+		if (gui.ButtonClick(GUI_CLOSE)) {
 			popRequested = false;
 			quitRequested = false;
 		}
-		else if(gui.ButtonClick(GUI_CONFIRM)){
+		else if (gui.ButtonClick(GUI_CONFIRM)) {
 			SaveLevel();
 			closeFlag = true;
 		}
-		else if(gui.ButtonClick(GUI_DENY)){
+		else if (gui.ButtonClick(GUI_DENY)) {
 			closeFlag = true;
 		}
 	}
@@ -179,16 +179,16 @@ void StateEditor::Update(float time){
 	
 	statusText.SetText("Mouse:("+to_string(INPUT.GetMouseX())+","+to_string(INPUT.GetMouseY())+")  Zoom:"+FloatToStr(100*CAMERAZOOM)+"%");
 }
-void StateEditor::Render(){
+void StateEditor::Render() {
 	RenderBackground();
 
 	//Tirei background daqui
 	//level.background.Render(RENDERPOSX(0), RENDERPOSY(0), 0, CAMERAZOOM);
 	level.tileMap.Render();
 	RenderArray();
-	if(showGrid) RenderGrid(gridWidth, gridHeight);
+	if (showGrid) RenderGrid(gridWidth, gridHeight);
 	RenderBorder();
-	if(showCollision) RenderCollision();
+	if (showCollision) RenderCollision();
 	RenderCursor();
 	
 	gui.Render();
@@ -196,13 +196,13 @@ void StateEditor::Render(){
 	statusText.Render();
 }
 
-void StateEditor::Pause(){}
-void StateEditor::Resume(){}
+void StateEditor::Pause() {}
+void StateEditor::Resume() {}
 
-bool StateEditor::PopRequested(){
+bool StateEditor::PopRequested() {
 	return (closeFlag && popRequested);
 }
-bool StateEditor::QuitRequested(){
+bool StateEditor::QuitRequested() {
 	return (closeFlag && quitRequested);
 }
 
@@ -216,18 +216,18 @@ void StateEditor::RenderBackground() {
 void StateEditor::RenderGrid(int w, int h) {
 	SET_COLOR(GRID_COLOR);
 	
-	if(w > 0) {
+	if (w > 0) {
 		int first = floor(CAMERA.x/w)*w;
-		if(first>0) first+=w;
+		if (first>0) first+=w;
 		int lim = CAMERA.x+(WINSIZE.x/CAMERAZOOM);
-		for(int i=first;i<=lim;i+=w)
+		for (int i=first;i<=lim;i+=w)
 			DRAW_LINE(RENDERPOSX(i), 0, RENDERPOSX(i), WINSIZE.y);
 	}	
-	if(h > 0) {
+	if (h > 0) {
 		int first = floor(CAMERA.y/h)*h;
-		if(first>0) first+=h;
+		if (first>0) first+=h;
 		int lim = CAMERA.y+(WINSIZE.y/CAMERAZOOM);
-		for(int i=first;i<=lim;i+=h)
+		for (int i=first;i<=lim;i+=h)
 			DRAW_LINE(0, RENDERPOSY(i), WINSIZE.x, RENDERPOSY(i));
 	}
 }
@@ -252,7 +252,7 @@ void StateEditor::RenderCursor() {
 	int mapHeight = level.tileMap.GetHeight();
 	
 	Rect canvas(0, 0, mapWidth-1, mapHeight-1);
-	if(canvas.contains(cursor)) {
+	if (canvas.contains(cursor)) {
 		level.tileSet.Render(tileIndex, RENDERPOSX(cursor.x*tileWidth), RENDERPOSY(cursor.y*tileHeight), CAMERAZOOM);
 	
 		SET_COLOR(TILE_CURSOR_COLOR);
@@ -279,7 +279,7 @@ void StateEditor::RenderCollision() {
 	rect.h = (tileHeight*CAMERAZOOM)+1;
 	FOR(y,mapHeight) {
 		FOR(x,mapWidth) {
-			if(level.collisionLayer[(y*mapWidth)+x] == COLLISION_BLOCK) {
+			if (level.collisionLayer[(y*mapWidth)+x] == COLLISION_BLOCK) {
 				rect.x = RENDERPOSX(x*tileWidth);
 				rect.y = RENDERPOSY(y*tileWidth);
 				DRAW_RECT(&rect);
@@ -288,12 +288,12 @@ void StateEditor::RenderCollision() {
 	}
 }
 
-void StateEditor::Exit(){
+void StateEditor::Exit() {
 	Level savedLevel(fileName);
 	RecomputeCollisionRectangles();
 	level.SaveObjects(grouped);
 	
-	if(level == savedLevel)
+	if (level == savedLevel)
 		closeFlag = true;
 	else
 		CreateWindow(EXIT_EDITOR);
@@ -304,9 +304,9 @@ Vec2 StateEditor::GetCurrentTile() {
 	int tileWidth = level.tileSet.GetWidth();
 	int tileHeight = level.tileSet.GetHeight();
 
-	//if(pos.x<0) pos.x-=tileWidth;
+	//if (pos.x<0) pos.x-=tileWidth;
 	pos.x/=tileWidth;
-	//if(pos.y<0) pos.y-=tileHeight;
+	//if (pos.y<0) pos.y-=tileHeight;
 	pos.y/=tileHeight;
 	pos.floor();
 	//cout<<"mouse "<<INPUT.GetMouseX()<<" "<<INPUT.GetMouseY()<<endl;
@@ -314,13 +314,13 @@ Vec2 StateEditor::GetCurrentTile() {
 	return pos;
 }
 
-void StateEditor::SaveLevel(){
+void StateEditor::SaveLevel() {
 	RecomputeCollisionRectangles();
 	level.SaveObjects(grouped);
 	level.Save(fileName);
 }
 
-void StateEditor::ResizeLevel(){
+void StateEditor::ResizeLevel() {
 	int mapWidth = level.tileMap.GetWidth();
 	int mapHeight = level.tileMap.GetHeight();
 	
@@ -338,7 +338,7 @@ void StateEditor::ResizeLevel(){
 }
 
 
-void StateEditor::RecomputeCollisionRectangles(){
+void StateEditor::RecomputeCollisionRectangles() {
 	TileMap &tm = level.tileMap;
 	vector<int> &coll=level.collisionLayer;
 	int mapWidth=tm.GetWidth();
@@ -346,14 +346,14 @@ void StateEditor::RecomputeCollisionRectangles(){
 	
 	grouped.clear();
 	grouped.resize(mapWidth*mapHeight);
-	FOR(y,mapHeight){
-		FOR(x,mapWidth){
+	FOR(y,mapHeight) {
+		FOR(x,mapWidth) {
 			int ind = x+(y*mapWidth);
 			grouped[ind]=make_pair(ii{x,y},ii{x,y});
 		}
 	}
 
-	auto join = [this,mapWidth,mapHeight](int ind1,int ind2){
+	auto join = [this,mapWidth,mapHeight](int ind1,int ind2) {
 		ii beg=min(grouped[ind1].first, grouped[ind2].first);
 		ii end=max(grouped[ind1].second,grouped[ind2].second);
 
@@ -363,29 +363,29 @@ void StateEditor::RecomputeCollisionRectangles(){
 		grouped[ind1]=grouped[ind2]=grouped[ind3]=grouped[ind4]=make_pair(beg,end);
 	};
 
-	FOR(y,mapHeight){
-		FOR(x,mapWidth){
+	FOR(y,mapHeight) {
+		FOR(x,mapWidth) {
 			int ind = x+(y*mapWidth);
-			if(coll[ind]==EMPTY_TILE)grouped[ind]=make_pair(ii{0,0},ii{0,0});
-			else if(x+1 < mapWidth && coll[ind] == coll[1+ind]){
+			if (coll[ind]==EMPTY_TILE)grouped[ind]=make_pair(ii{0,0},ii{0,0});
+			else if (x+1 < mapWidth && coll[ind] == coll[1+ind]) {
 				join(ind,ind+1);
 			}
 		}
 	}
 
-	FOR(y,mapHeight-1){
-		FOR(x,mapWidth){
+	FOR(y,mapHeight-1) {
+		FOR(x,mapWidth) {
 			int ind1 = x+( y   *mapWidth);
 			int ind2 = x+((y+1)*mapWidth);
-			if(grouped[ind1].first.first == grouped[ind2].first.first &&
-				grouped[ind1].second.first == grouped[ind2].second.first){
+			if (grouped[ind1].first.first == grouped[ind2].first.first &&
+				grouped[ind1].second.first == grouped[ind2].second.first) {
 				join(ind1,ind2);
 			}
 		}
 	}
 }
 
-void StateEditor::LoadGUI(){
+void StateEditor::LoadGUI() {
 	GUI_NEW;
 	
 	GUI_SET(menu);
@@ -409,9 +409,9 @@ void StateEditor::LoadGUI(){
 	GUI_CREATE(HBar(GUI_GET(menu),WINSIZE.x));
 }
 
-void StateEditor::CreateWindow(uint type){
+void StateEditor::CreateWindow(uint type) {
 	GUI_NEW;
-	if(type==RESIZE_LEVEL){
+	if (type==RESIZE_LEVEL) {
 		levelWidth = level.tileMap.GetWidth();
 		levelHeight = level.tileMap.GetHeight();
 	
@@ -441,7 +441,7 @@ void StateEditor::CreateWindow(uint type){
 		
 		GUI_CREATE(Window(GUI_GET(window), RESIZE_WINDOW, "Resize Level"));
 	}
-	if(type==EXIT_EDITOR){
+	if (type==EXIT_EDITOR) {
 		GUI_SET(buttons);
 		GUI_ADD(TextButton(GUI_DENY,"  No  "));
 		GUI_ADD(TextButton(GUI_CONFIRM,"  Yes  "));
