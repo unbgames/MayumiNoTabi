@@ -1,17 +1,29 @@
+/*
+*  File: componentMemory.cpp
+*
+*  Description:  Implements componentMemory class
+*/
+
 #include <componentMemory.hpp>
-//#include <compLib.hpp>
-//#include <game.hpp>
-//#include <camera.hpp>
-//#include <inputManager.hpp>
 
+// No params constructor method
+CompMemory::CompMemory() {
+}
 
-CompMemory::CompMemory(){}
-CompMemory::~CompMemory(){}
+// No params destructor method
+CompMemory::~CompMemory() {
+}
 
-void CompMemory::Update(float time){
+// Updates memory according to the time param
+void CompMemory::Update(float time) {
 	for(auto& t:timers)t.second.Update(time);
 }
-void CompMemory::Render(){}
-Component::type CompMemory::GetType() const{
+
+// Renders memory, obviously not necessary
+void CompMemory::Render() {
+}
+
+// Returns if the component is if the 'memory' type
+Component::type CompMemory::GetType() const {
 	return Component::type::t_memory;
 }
