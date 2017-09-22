@@ -30,7 +30,6 @@ CompStaticRender::CompStaticRender(const Sprite &s,const Vec2 &p, const bool cs)
 
 CompStaticRender::~CompStaticRender() {}
 
-
 /*!
 	@fn CompStaticRender::Update(float time)
 	@brief Method that update the current time of Sprite apparition
@@ -42,7 +41,6 @@ CompStaticRender::~CompStaticRender() {}
 void CompStaticRender::Update(float time) {
 	sp.Update(time);
 }
-
 
 /*!
 	@fn CompStaticRender::Render()
@@ -60,7 +58,7 @@ void CompStaticRender::Render() {
 }
 
 /*!
-	@fn void CompMovement::Update(float time)
+	@fn Component::type CompStaticRender::GetType()const
 	@brief Method that render the type element movement
 	@return The method returns the type of movement of the static element
 	@warning Method that requires review of comment
