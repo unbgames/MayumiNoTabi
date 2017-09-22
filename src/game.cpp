@@ -24,7 +24,7 @@ Game* Game::instance=NULL;
 Game::Game(string title,int width,int height):frameStart{0},dt{0},winSize{(float)width,(float)height}{
 	srand(time(NULL));
 
-	if(instance){
+	if (instance) {
 		cerr << "Erro, mais de uma instancia de 'Game' instanciada, o programa ira encerrar agora" << endl;
 		exit(EXIT_FAILURE);
 	}
@@ -73,28 +73,28 @@ Game::Game(string title,int width,int height):frameStart{0},dt{0},winSize{(float
 	}
 
 	res = Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024);
-	if(res != 0)throw GameException("Problem when initiating SDL audio!");
+	if (res != 0)throw GameException("Problem when initiating SDL audio!");
 
 	res = TTF_Init();
-	if(res != 0)cerr << "Could not initialize TTF module!" << endl;
+	if (res != 0)cerr << "Could not initialize TTF module!" << endl;
 
 	window = SDL_CreateWindow(title.c_str(),SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,width,height,SDL_WINDOW_FULLSCREEN);
 	// window = SDL_CreateWindow(title.c_str(),SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,width,height,0);
-	if(!window)throw GameException("Window nao foi carregada)!");
+	if (!window)throw GameException("Window nao foi carregada)!");
 
 	renderer = SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED);
-	if(!renderer)throw GameException("Erro ao instanciar renderizador da SDL!");
+	if (!renderer)throw GameException("Erro ao instanciar renderizador da SDL!");
 
 	storedState = nullptr;
 	SDL_SetRenderDrawBlendMode(GAMERENDER, SDL_BLENDMODE_BLEND);
 };
 
-Game::~Game(){
-	while(stateStack.size()){
+Game::~Game() {
+	while (stateStack.size()) {
 		delete stateStack.top().get();
 		stateStack.pop();
 	}
-	if(storedState)delete storedState;
+	if (storedState)delete storedState;
 	Resources::ClearImages();
 	Resources::ClearMusics();
 	Resources::ClearFonts();
@@ -108,51 +108,51 @@ Game::~Game(){
 }
 
 
-Game& Game::GetInstance(){
+Game& Game::GetInstance() {
 	return (*instance);
 }
 
-State& Game::GetCurrentState(){
+State& Game::GetCurrentState() {
 	return (*stateStack.top());
 }
 
-SDL_Renderer* Game::GetRenderer(){
+SDL_Renderer* Game::GetRenderer() {
 	return renderer;
 }
 
-void Game::Push(State* state){
-	if(storedState)delete storedState;
+void Game::Push(State* state) {
+	if (storedState)delete storedState;
 	storedState=state;
 }
 
-void Game::Run(){
+void Game::Run() {
 	//SDL_Rect r;
 	//SDL_GetDisplayBounds(0, &r);
 	//cout<<r<<endl;
-	if(storedState){
+	if (storedState) {
 		stateStack.push(unique_ptr<State>(storedState));
 		storedState=nullptr;
 		GetCurrentState().Begin();
 	}
-	while(!stateStack.empty()){
+	while (!stateStack.empty()) {
 		CalculateDeltaTime();
 		INPUT.Update(dt);
-		//if(INPUT.KeyPress(KEY_F(11))) SwitchWindowMode();
+		//if (INPUT.KeyPress(KEY_F(11))) SwitchWindowMode();
 		GetCurrentState().Update(dt);
 		GetCurrentState().Render();
 		SDL_RenderPresent(renderer);
 		
-		if(GetCurrentState().QuitRequested()) break;
-		if(GetCurrentState().PopRequested()){
+		if (GetCurrentState().QuitRequested()) break;
+		if (GetCurrentState().PopRequested()) {
 			GetCurrentState().Pause();
 			GetCurrentState().End();
 			stateStack.pop();
 			Resources::ClearImages();
 			Resources::ClearMusics();
 			Resources::ClearFonts();
-			if(stateStack.size())GetCurrentState().Resume();
+			if (stateStack.size())GetCurrentState().Resume();
 		}
-		if(storedState){
+		if (storedState) {
 			GetCurrentState().Pause();
 			stateStack.push(unique_ptr<State>(storedState));
 			storedState=nullptr;
@@ -161,17 +161,17 @@ void Game::Run(){
 
 		SDL_Delay(17);
 	}
-	while(stateStack.size()){
+	while (stateStack.size()) {
 		GetCurrentState().End();
 		stateStack.pop();
 	}
 }
 
-float Game::GetDeltaTime(){
+float Game::GetDeltaTime() {
 	return dt;
 }
 
-void Game::CalculateDeltaTime(){
+void Game::CalculateDeltaTime() {
 	unsigned int tmp = frameStart;
 	frameStart = SDL_GetTicks();
 	dt = max((frameStart - tmp) / 1000.0, 0.001);
