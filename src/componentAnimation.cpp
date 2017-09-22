@@ -13,7 +13,7 @@
 #include <txtFuncs.hpp>
 //#include <inputManager.hpp>
 
-// No params constructor method
+// Constructor method with no params
 CompAnim::CompAnim() {
 
 }
