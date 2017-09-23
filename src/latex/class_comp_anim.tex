@@ -1,0 +1,240 @@
+\hypertarget{class_comp_anim}{\section{Comp\-Anim Class Reference}
+\label{class_comp_anim}\index{Comp\-Anim@{Comp\-Anim}}
+}
+
+
+{\ttfamily \#include $<$component\-Animation.\-hpp$>$}
+
+Inheritance diagram for Comp\-Anim\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_comp_anim}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_comp_anim_a91bd2d2bea5082f5f74635f12d4f276a}{Comp\-Anim} ()
+\item 
+\hyperlink{class_comp_anim_a846147b0dcfbb51ad8ab936797e2cf6a}{Comp\-Anim} (\hyperlink{_s_d_l__opengl__glext_8h_ae84541b4f3d8e1ea24ec0f466a8c568b}{string} file, \hyperlink{class_comp_collider}{Comp\-Collider} $\ast$coll)
+\item 
+\hyperlink{class_comp_anim_ac1b228a3161bf42d98193aebf70b7779}{$\sim$\-Comp\-Anim} ()
+\item 
+\hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int} \hyperlink{class_comp_anim_a3e6cc4751dbfca6e943fc4fceb6f507b}{Get\-Frame\-Count} () const 
+\item 
+\hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int} \hyperlink{class_comp_anim_a27cac4515350597b66a6e46242e39eea}{Get\-Cur\-Frame} () const 
+\item 
+\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_comp_anim_ab3167e189c39d976a4474874b0b2b168}{Set\-Cur\-Frame} (\hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int} frame, bool force=false)
+\item 
+bool \hyperlink{class_comp_anim_ac6bd76a5091dac4a91966773330c31d1}{Looped} () const 
+\item 
+\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_comp_anim_ac2e2e27fe70b13a8cce4f8a1df792e59}{Update} (float time)
+\item 
+\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_comp_anim_a41d7df3049e9cf1db1d8f00cbaf73062}{Own} (\hyperlink{class_game_object}{Game\-Object} $\ast$go)
+\item 
+\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_comp_anim_a5a453e9ac658863696c3db745e6fc0bf}{Render} ()
+\item 
+\hyperlink{class_component_ad6d161b6acf7b843b55bb9feac7af71a}{Component\-::type} \hyperlink{class_comp_anim_af25364111916fa6b5841d039d696295f}{Get\-Type} () const 
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+vector$<$ \hyperlink{class_comp_collider}{Comp\-Collider} $\ast$ $>$ \hyperlink{class_comp_anim_a57ed7e3844b7c61796ab58d6233b3635}{colliders}
+\item 
+map$<$ \hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int}, vector$<$ function\\*
+$<$ \hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void}(\hyperlink{class_game_object}{Game\-Object} $\ast$)$>$ $>$ $>$ \hyperlink{class_comp_anim_aa91a04d8c492ee48b82053250f23beaa}{frame\-Func}
+\item 
+\hyperlink{class_sprite}{Sprite} \hyperlink{class_comp_anim_a3e2ac4843d1760fa886462f73dfdadc9}{sp}
+\item 
+bool \hyperlink{class_comp_anim_a1db0be908cba7a9df357ac28560b508f}{called} =true
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 14 of file component\-Animation.\-hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_comp_anim_a91bd2d2bea5082f5f74635f12d4f276a}{\index{Comp\-Anim@{Comp\-Anim}!Comp\-Anim@{Comp\-Anim}}
+\index{Comp\-Anim@{Comp\-Anim}!CompAnim@{Comp\-Anim}}
+\subsubsection[{Comp\-Anim}]{\setlength{\rightskip}{0pt plus 5cm}Comp\-Anim\-::\-Comp\-Anim (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_comp_anim_a91bd2d2bea5082f5f74635f12d4f276a}
+
+
+Definition at line 17 of file component\-Animation.\-cpp.
+
+\hypertarget{class_comp_anim_a846147b0dcfbb51ad8ab936797e2cf6a}{\index{Comp\-Anim@{Comp\-Anim}!Comp\-Anim@{Comp\-Anim}}
+\index{Comp\-Anim@{Comp\-Anim}!CompAnim@{Comp\-Anim}}
+\subsubsection[{Comp\-Anim}]{\setlength{\rightskip}{0pt plus 5cm}Comp\-Anim\-::\-Comp\-Anim (
+\begin{DoxyParamCaption}
+\item[{{\bf string}}]{file, }
+\item[{{\bf Comp\-Collider} $\ast$}]{coll}
+\end{DoxyParamCaption}
+)}}\label{class_comp_anim_a846147b0dcfbb51ad8ab936797e2cf6a}
+
+
+Definition at line 23 of file component\-Animation.\-cpp.
+
+\hypertarget{class_comp_anim_ac1b228a3161bf42d98193aebf70b7779}{\index{Comp\-Anim@{Comp\-Anim}!$\sim$\-Comp\-Anim@{$\sim$\-Comp\-Anim}}
+\index{$\sim$\-Comp\-Anim@{$\sim$\-Comp\-Anim}!CompAnim@{Comp\-Anim}}
+\subsubsection[{$\sim$\-Comp\-Anim}]{\setlength{\rightskip}{0pt plus 5cm}Comp\-Anim\-::$\sim$\-Comp\-Anim (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_comp_anim_ac1b228a3161bf42d98193aebf70b7779}
+
+
+Definition at line 87 of file component\-Animation.\-cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_comp_anim_a27cac4515350597b66a6e46242e39eea}{\index{Comp\-Anim@{Comp\-Anim}!Get\-Cur\-Frame@{Get\-Cur\-Frame}}
+\index{Get\-Cur\-Frame@{Get\-Cur\-Frame}!CompAnim@{Comp\-Anim}}
+\subsubsection[{Get\-Cur\-Frame}]{\setlength{\rightskip}{0pt plus 5cm}{\bf int} Comp\-Anim\-::\-Get\-Cur\-Frame (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_comp_anim_a27cac4515350597b66a6e46242e39eea}
+
+
+Definition at line 106 of file component\-Animation.\-cpp.
+
+\hypertarget{class_comp_anim_a3e6cc4751dbfca6e943fc4fceb6f507b}{\index{Comp\-Anim@{Comp\-Anim}!Get\-Frame\-Count@{Get\-Frame\-Count}}
+\index{Get\-Frame\-Count@{Get\-Frame\-Count}!CompAnim@{Comp\-Anim}}
+\subsubsection[{Get\-Frame\-Count}]{\setlength{\rightskip}{0pt plus 5cm}{\bf int} Comp\-Anim\-::\-Get\-Frame\-Count (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_comp_anim_a3e6cc4751dbfca6e943fc4fceb6f507b}
+
+
+Definition at line 101 of file component\-Animation.\-cpp.
+
+\hypertarget{class_comp_anim_af25364111916fa6b5841d039d696295f}{\index{Comp\-Anim@{Comp\-Anim}!Get\-Type@{Get\-Type}}
+\index{Get\-Type@{Get\-Type}!CompAnim@{Comp\-Anim}}
+\subsubsection[{Get\-Type}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Component\-::type} Comp\-Anim\-::\-Get\-Type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_comp_anim_af25364111916fa6b5841d039d696295f}
+
+
+Implements \hyperlink{class_component_a1440354c23703096a6439d45ab85e4fd}{Component}.
+
+
+
+Definition at line 200 of file component\-Animation.\-cpp.
+
+\hypertarget{class_comp_anim_ac6bd76a5091dac4a91966773330c31d1}{\index{Comp\-Anim@{Comp\-Anim}!Looped@{Looped}}
+\index{Looped@{Looped}!CompAnim@{Comp\-Anim}}
+\subsubsection[{Looped}]{\setlength{\rightskip}{0pt plus 5cm}bool Comp\-Anim\-::\-Looped (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_comp_anim_ac6bd76a5091dac4a91966773330c31d1}
+
+
+Definition at line 142 of file component\-Animation.\-cpp.
+
+\hypertarget{class_comp_anim_a41d7df3049e9cf1db1d8f00cbaf73062}{\index{Comp\-Anim@{Comp\-Anim}!Own@{Own}}
+\index{Own@{Own}!CompAnim@{Comp\-Anim}}
+\subsubsection[{Own}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} Comp\-Anim\-::\-Own (
+\begin{DoxyParamCaption}
+\item[{{\bf Game\-Object} $\ast$}]{go}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_comp_anim_a41d7df3049e9cf1db1d8f00cbaf73062}
+
+
+Reimplemented from \hyperlink{class_component_af6a505dae181fc1a3498b779a4bd162e}{Component}.
+
+
+
+Definition at line 184 of file component\-Animation.\-cpp.
+
+\hypertarget{class_comp_anim_a5a453e9ac658863696c3db745e6fc0bf}{\index{Comp\-Anim@{Comp\-Anim}!Render@{Render}}
+\index{Render@{Render}!CompAnim@{Comp\-Anim}}
+\subsubsection[{Render}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} Comp\-Anim\-::\-Render (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_comp_anim_a5a453e9ac658863696c3db745e6fc0bf}
+
+
+Implements \hyperlink{class_component_a0c67ccdaf754b96520e3428284a74a7f}{Component}.
+
+
+
+Definition at line 175 of file component\-Animation.\-cpp.
+
+\hypertarget{class_comp_anim_ab3167e189c39d976a4474874b0b2b168}{\index{Comp\-Anim@{Comp\-Anim}!Set\-Cur\-Frame@{Set\-Cur\-Frame}}
+\index{Set\-Cur\-Frame@{Set\-Cur\-Frame}!CompAnim@{Comp\-Anim}}
+\subsubsection[{Set\-Cur\-Frame}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} Comp\-Anim\-::\-Set\-Cur\-Frame (
+\begin{DoxyParamCaption}
+\item[{{\bf int}}]{frame, }
+\item[{bool}]{force = {\ttfamily false}}
+\end{DoxyParamCaption}
+)}}\label{class_comp_anim_ab3167e189c39d976a4474874b0b2b168}
+
+
+Definition at line 112 of file component\-Animation.\-cpp.
+
+\hypertarget{class_comp_anim_ac2e2e27fe70b13a8cce4f8a1df792e59}{\index{Comp\-Anim@{Comp\-Anim}!Update@{Update}}
+\index{Update@{Update}!CompAnim@{Comp\-Anim}}
+\subsubsection[{Update}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} Comp\-Anim\-::\-Update (
+\begin{DoxyParamCaption}
+\item[{float}]{time}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_comp_anim_ac2e2e27fe70b13a8cce4f8a1df792e59}
+
+
+Implements \hyperlink{class_component_a20c791684d452b36fcce40ac9038c735}{Component}.
+
+
+
+Definition at line 148 of file component\-Animation.\-cpp.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_comp_anim_a1db0be908cba7a9df357ac28560b508f}{\index{Comp\-Anim@{Comp\-Anim}!called@{called}}
+\index{called@{called}!CompAnim@{Comp\-Anim}}
+\subsubsection[{called}]{\setlength{\rightskip}{0pt plus 5cm}bool Comp\-Anim\-::called =true}}\label{class_comp_anim_a1db0be908cba7a9df357ac28560b508f}
+
+
+Definition at line 19 of file component\-Animation.\-hpp.
+
+\hypertarget{class_comp_anim_a57ed7e3844b7c61796ab58d6233b3635}{\index{Comp\-Anim@{Comp\-Anim}!colliders@{colliders}}
+\index{colliders@{colliders}!CompAnim@{Comp\-Anim}}
+\subsubsection[{colliders}]{\setlength{\rightskip}{0pt plus 5cm}vector$<${\bf Comp\-Collider}$\ast$$>$ Comp\-Anim\-::colliders}}\label{class_comp_anim_a57ed7e3844b7c61796ab58d6233b3635}
+
+
+Definition at line 16 of file component\-Animation.\-hpp.
+
+\hypertarget{class_comp_anim_aa91a04d8c492ee48b82053250f23beaa}{\index{Comp\-Anim@{Comp\-Anim}!frame\-Func@{frame\-Func}}
+\index{frame\-Func@{frame\-Func}!CompAnim@{Comp\-Anim}}
+\subsubsection[{frame\-Func}]{\setlength{\rightskip}{0pt plus 5cm}map$<${\bf int},vector$<$function$<${\bf void}({\bf Game\-Object}$\ast$)$>$ $>$ $>$ Comp\-Anim\-::frame\-Func}}\label{class_comp_anim_aa91a04d8c492ee48b82053250f23beaa}
+
+
+Definition at line 17 of file component\-Animation.\-hpp.
+
+\hypertarget{class_comp_anim_a3e2ac4843d1760fa886462f73dfdadc9}{\index{Comp\-Anim@{Comp\-Anim}!sp@{sp}}
+\index{sp@{sp}!CompAnim@{Comp\-Anim}}
+\subsubsection[{sp}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Sprite} Comp\-Anim\-::sp}}\label{class_comp_anim_a3e2ac4843d1760fa886462f73dfdadc9}
+
+
+Definition at line 18 of file component\-Animation.\-hpp.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/home/andre/\-Desktop/tecprog/\-Mayumi\-No\-Tabi/\-Mayumi\-No\-Tabi/include/\hyperlink{component_animation_8hpp}{component\-Animation.\-hpp}\item 
+\hyperlink{component_animation_8cpp}{component\-Animation.\-cpp}\end{DoxyCompactItemize}
