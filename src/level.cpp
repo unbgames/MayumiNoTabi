@@ -1,7 +1,7 @@
 /*!
- *  File: inputManager.cpp
+ *  File: level.cpp
  *
- *  Description: Implements input manager
+ *  Description: Implements level behavior 
  */ 
 
 #include <level.hpp>

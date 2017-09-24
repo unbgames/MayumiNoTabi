@@ -9,7 +9,7 @@
 /*!
  *  @fn InputManager::InputManager() 
  *  @brief Constructor method of Input Manager 
- *  @return A InputManager object
+ *  @return An InputManager object
  */
 InputManager::InputManager() {
 
