@@ -21,17 +21,16 @@
 #define MIN_ZOOM 0.2f			// unit:
 
 // uint is actually the short for unsigned int
-uint Camera::focus = 0;
+uint Camera::focus = 0; //!<  Global variable defining camera focus value
 
-Vec2 Camera::pos;
-Vec2 Camera::speed;
-Vec2 Camera::sz{100,50};
+Vec2 Camera::pos;         //!<  Global variable defining camera pos
+Vec2 Camera::speed;       //!<  Global variable defining camera speed
+Vec2 Camera::sz{100, 50}; //!<  Global variable defining camera size
 
-float Camera::zoom = 1.0f;
+float Camera::zoom = 1.0f; //!< Global variable defining camera zoom
 
-bool Camera::lock = false;
-bool Camera::following = false;
-
+bool Camera::lock = false;      //!< Global variable defining camera lock
+bool Camera::following = false; //!< Global variable defining camera follow stat
 
 /*!
   @fn       void Camera::Follow(uint newFocus)
@@ -80,10 +79,11 @@ uint Camera::GetFocus() {
 */
 
 void Camera::Update(float time) {
-  Vec2 center = pos + (WINSIZE/2/zoom);
+  Vec2 center = pos + (WINSIZE/2/zoom); //!< Newvalue for center
 
-  // Zooms in if z key is pressed
-  if (INPUT.IsKeyDown(KEY(z))) {
+      // Zooms in if z key is pressed
+      if (INPUT.IsKeyDown(KEY(z)))
+  {
     zoom += 0.5 * time;
     zoom = min(zoom,MAX_ZOOM);
 
@@ -153,7 +153,8 @@ void Camera::Update(float time) {
 */
 
 void Camera::CenterTo(const Vec2& v) {
-  Vec2 target = v - (WINSIZE/2/zoom); // TODO: break down math
+  // TODO: break down math
+  Vec2 target = v - (WINSIZE/2/zoom); //!< Updates the camer target
 
   pos.x = max(pos.x, target.x - sz.x);
   pos.x = min(pos.x, target.x + sz.x);
