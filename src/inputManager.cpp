@@ -1,9 +1,9 @@
 #include <inputManager.hpp>
 
-InputManager::InputManager(){}
-InputManager::~InputManager(){}
+InputManager::InputManager() {}
+InputManager::~InputManager() {}
 
-void InputManager::Update(float time){
+void InputManager::Update(float time) {
 	int x,y;
 	SDL_GetMouseState(&x,&y);
 	mouseMotion = (mouse.x!=x || mouse.y!=y);
@@ -14,52 +14,52 @@ void InputManager::Update(float time){
 	cursorBlinker.Update(time);
 
 	SDL_Event event;
-	while(SDL_PollEvent(&event)){
-		if(event.type==SDL_QUIT)quitRequested=true;
-		else if(event.type==SDL_MOUSEBUTTONDOWN){
+	while (SDL_PollEvent(&event)) {
+		if (event.type==SDL_QUIT)quitRequested=true;
+		else if (event.type==SDL_MOUSEBUTTONDOWN) {
 			//cout << "mouse button down " << (int)event.button.button << endl;
-			if(/*event.button.button>=0 && */event.button.button<6 && mouseState[event.button.button]!=true){
+			if (/*event.button.button>=0 && */event.button.button<6 && mouseState[event.button.button]!=true) {
 				mouseUpdate[event.button.button]=updateCounter;
 				mouseState[event.button.button]=true;
 			}
 		}
-		else if(event.type==SDL_MOUSEBUTTONUP){
+		else if (event.type==SDL_MOUSEBUTTONUP) {
 			//cout << "mouse button up " << (int)event.button.button << endl;
-			if(/*event.button.button>=0 && */event.button.button<6 && mouseState[event.button.button]!=false){
+			if (/*event.button.button>=0 && */event.button.button<6 && mouseState[event.button.button]!=false) {
 				mouseUpdate[event.button.button]=updateCounter;
 				mouseState[event.button.button]=false;
 			}
 		}
-		else if(event.type==SDL_KEYDOWN){
+		else if (event.type==SDL_KEYDOWN) {
 			//cout << "key down" << endl;
-			if(!event.key.repeat){
+			if (!event.key.repeat) {
 				keyState[event.key.keysym.sym]=true;
 				keyUpdate[event.key.keysym.sym]=updateCounter;
 			}
 		}
-		else if(event.type==SDL_KEYUP){
+		else if (event.type==SDL_KEYUP) {
 			//cout << "key up" << endl;
 			keyState[event.key.keysym.sym]=false;
 			keyUpdate[event.key.keysym.sym]=updateCounter;
 		}
 		
-		if(text != nullptr){
-			if(event.type==SDL_TEXTINPUT){
+		if (text != nullptr) {
+			if (event.type==SDL_TEXTINPUT) {
 				string input(event.text.text);
 				text->insert(cursor,input);
 				cursor += input.size();
 			}
-			else if(event.type==SDL_KEYDOWN){
+			else if (event.type==SDL_KEYDOWN) {
 				cursorBlinker.Restart();
-				if(event.key.keysym.sym == SDLK_BACKSPACE && text->size() && cursor){
+				if (event.key.keysym.sym == SDLK_BACKSPACE && text->size() && cursor) {
 					text->erase(--cursor,1);
-					if(cursor>text->size())
+					if (cursor>text->size())
 						cursor=text->size();
 				}
-				else if(event.key.keysym.sym == SDLK_LEFT && cursor > 0){
+				else if (event.key.keysym.sym == SDLK_LEFT && cursor > 0) {
 					cursor--;
 				}
-				else if(event.key.keysym.sym == SDLK_RIGHT && cursor < text->size()){
+				else if (event.key.keysym.sym == SDLK_RIGHT && cursor < text->size()) {
 					cursor++;
 				}
 			}
@@ -68,64 +68,64 @@ void InputManager::Update(float time){
 	updateCounter++;
 }
 
-bool InputManager::KeyPress(int key){
+bool InputManager::KeyPress(int key) {
 	return (keyState[key] && keyUpdate[key]==updateCounter-1);
 }
-bool InputManager::KeyRelease(int key){
+bool InputManager::KeyRelease(int key) {
 	return ((!keyState[key]) && keyUpdate[key]==updateCounter-1);
 }
-bool InputManager::IsKeyDown(int key){
+bool InputManager::IsKeyDown(int key) {
 	return (keyState[key]);
 }
 
-bool InputManager::MousePress(int button){
+bool InputManager::MousePress(int button) {
 	return (mouseState[button] && mouseUpdate[button]==updateCounter-1);
 }
-bool InputManager::MouseRelease(int button){
+bool InputManager::MouseRelease(int button) {
 	return ((!mouseState[button]) && mouseUpdate[button]==updateCounter-1);
 }
-bool InputManager::IsMouseDown(int button){
+bool InputManager::IsMouseDown(int button) {
 	return (mouseState[button]);
 }
-bool InputManager::IsMouseMoving(){
+bool InputManager::IsMouseMoving() {
 	return mouseMotion;
 }
 
-Vec2 InputManager::GetMouse(){
+Vec2 InputManager::GetMouse() {
 	return mouse;
 }
 
-int InputManager::GetMouseX(){
+int InputManager::GetMouseX() {
 	return mouse.x;
 }
-int InputManager::GetMouseY(){
+int InputManager::GetMouseY() {
 	return mouse.y;
 }
 
-void InputManager::StartTextInput(string* t){
-	if(t == nullptr) return;
+void InputManager::StartTextInput(string* t) {
+	if (t == nullptr) return;
 	SDL_StartTextInput();
 	text = t;
 	cursor = text->size();
 	cursorBlinker.Restart();
 }
-void InputManager::StopTextInput(string* t){
-	if(text != t) return;
+void InputManager::StopTextInput(string* t) {
+	if (text != t) return;
 	text = nullptr;
 	SDL_StopTextInput();
 }
-uint InputManager::GetTextCursor(){
+uint InputManager::GetTextCursor() {
 	return cursor;
 }
-bool InputManager::TextCursorBlink(){
+bool InputManager::TextCursorBlink() {
 	return !((int)(cursorBlinker.Get()/0.5)%2);
 }
 
-bool InputManager::QuitRequested(){
+bool InputManager::QuitRequested() {
 	return quitRequested;
 }
 
-InputManager& InputManager::GetInstance(){
+InputManager& InputManager::GetInstance() {
 	static InputManager uniqueInst;
 	return uniqueInst;
 }

@@ -11,7 +11,6 @@
 
 // Constructor Method for component collider
 // Takes a floating value as a param to represent gravity
-
 CompGravity::CompGravity(float g):gravity{g} {
 }
 // No params constructor method

@@ -1,0 +1,12 @@
+---
+engines:
+  fixme:
+    enabled: true
+  gnu-complexity:
+    enabled: true
+    config:
+      threshold: 100
+ratings:
+  paths: []
+exclude_paths: 
+  include/SDL2/

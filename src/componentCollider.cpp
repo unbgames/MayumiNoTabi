@@ -60,9 +60,9 @@ void CompCollider::Render() {
 		for(Coll coll:colls){
 			// TODO: Refactorate decision structures
 			if     (coll.cType==CompCollider::collType::t_player) SET_COLOR4(255,0,0,100);
-			else if(coll.cType==CompCollider::collType::t_monster)SET_COLOR4(0,255,0,100);
-			else if(coll.cType==CompCollider::collType::t_bullet) SET_COLOR4(0,0,255,100);
-			else if(coll.cType==CompCollider::collType::t_ground) SET_COLOR4(255,255,0,100);
+			else if (coll.cType==CompCollider::collType::t_monster)SET_COLOR4(0,255,0,100);
+			else if (coll.cType==CompCollider::collType::t_bullet) SET_COLOR4(0,0,255,100);
+			else if (coll.cType==CompCollider::collType::t_ground) SET_COLOR4(255,255,0,100);
 			else SET_COLOR4(255,255,255,100);
 			SDL_Rect r = (coll.Box().renderBox().sdlRect());
 			FILL_RECT(&r);
@@ -92,7 +92,7 @@ void CompCollider::Own(GameObject *go) {
 // Checks if the component has died in the game, has time of death as a param
 bool CompCollider::Die(float time) {
 	UNUSED(time);
-  // Checks if the component has a type assciated to it
+  // Checks if the component has a type associated to it
 	if(GO(entity)->HasComponent(Component::type::t_animation))return true;
 	if(GO(entity)->HasComponent(Component::type::t_animation_control))return true;
 	return false;
@@ -125,11 +125,13 @@ void CompCollider::Coll::CollisionCheck(const CompCollider::Coll &other) {
 	if(useDefault.count(other.cType))useDefault[other.cType](*this,other);
 	else if(useDefault.count(collType::t_any))useDefault[collType::t_any](*this,other);
 	else if(GO(entity)->HasComponent(Component::type::t_movement)) {
+
 		CompMovement *compMove = COMPMOVEp(GO(entity));
 
 		Vec2 &speed=compMove->speed;
 		Vec2 &totMove=compMove->move;
 		Vec2 move;
+
 		// TODO : Comment this structure
 		if(totMove == Vec2{}) return;
 
@@ -156,11 +158,12 @@ Vec2 CompCollider::Coll::Collides(const Coll &other,const Vec2 &move,const Vec2 
 	Rect box1 = Box()+moved;
 	Rect box2 = other.Box();
 	Vec2 moveSafe,move100=move/precision,moveTry;
+
 	// Iterates throughout the 'rangeable' variables to identify collision
 	for(i,precision+1) {
 		moveTry = move100*i;
 		// Checks if a collision has happened
-		// TODO: Refactorate decision structures
+		// TODO: Refactorate decision structure
 		if((box1+moveTry).collides(box2))return moveSafe;
 		moveSafe = moveTry;
 	}
