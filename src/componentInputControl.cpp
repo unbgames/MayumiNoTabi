@@ -10,20 +10,41 @@
 CompInputControl::CompInputControl(function<void(GameObject*,float)> f):func{f} {
 }
 
-// No params constructor method
+/*!
+  * @fn CompInputControl::~CompInputControl()
+  * @brief No params destructor method
+  * @param No params
+*/
+
 CompInputControl::~CompInputControl() {
+
 }
 
-// Updates input control according to the time param
+/*!
+  * @fn CompInputControl::Update(float time)
+  * @brief Updates input control according to the time param
+  * @param float time
+*/
+
 void CompInputControl::Update(float time) {
 	func(GO(entity),time);
 }
 
-// Renders input control, obviously not necessary
+/*!
+  * @fn CompInputControl::Render()
+  * @brief Renders input control, obviously not necessary
+  * @param No params
+*/
+
 void CompInputControl::Render() {
 }
 
-// Returns if the component is if the 'input control' type
-Component::type CompInputControl::GetType()const{
+/*!
+  * @fn Component::type CompInputControl::GetType()
+  * @brief Returns if the component is if the 'input control' type
+  * @param float time
+*/
+
+Component::type CompInputControl::GetType() const {
 	return Component::type::t_input_control;
 }

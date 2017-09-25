@@ -17,36 +17,55 @@ CompHP::CompHP(int tot,bool showHP,bool showDMG,float dmgCD)
 CompHP::CompHP(int tot,int cur,bool showHP,bool showDMG,float dmgCD)
    :total{tot},current{cur},showHP{showHP},showDMG{showDMG},cooldown{dmgCD}{}
 
-// No params constructor method
+/*!
+  * @fn CompHP::~CompHP()
+  * @brief No params destructor method
+  * @param No params
+*/
+
 CompHP::~CompHP() {
 }
 
-// Updates the player HP value based on the damage inflicted, has current damage inflicted as param
-void CompHP::Damage(int dmg) {
-	// Verifies if current damage value bigger than the current value
+/*!
+  * @fn CompHP::Damage(int dmg)
+  * @brief Updates the player HP value based on the damage inflicted, has current damage inflicted as param
+  * @param int dmg
+  void CompHP::Damage(int dmg) {
+*/
+	//! Verifies if current damage value bigger than the current value
 	if(dmgCoolDown.Get()>cooldown){
 		dmgCoolDown.Restart();
 		current-=dmg;
-		//TODO: Renderizes damage value
+		//! TODO: Renderizes damage value
 		if(showDMG){
 		}
-		// Checks if element has 'memory' type and increases 'hit' value
+		//! Checks if element has 'memory' type and increases 'hit' value
+    //! TODO: Refactorate decision structure
 		if(GO(entity)->HasComponent(Component::type::t_memory))COMPMEMORYp(GO(entity))->ints["hit"]++;
 	}
 }
 
-// Updates HP value according to time param
+/*!
+  * @fn CompHP::Update(float time)
+  * @brief Updates HP value according to time param
+  * @param float time
+*/
 void CompHP::Update(float time) {
-	// Verifies if element is in the 'dead' state
-	// TODO: Refactorate decision structures
+	//! Verifies if element is in the 'dead' state
+	//! TODO: Refactorate decision structures
 	if(current<=0)GO(entity)->dead=true;
 	dmgCoolDown.Update(time);
 }
 
-// Renders on screen the HP value
+/*!
+  * @fn CompHP::~CompHP()
+  * @brief Renders on screen the HP value
+  * @param No params
+*/
+
 void CompHP::Render() {
-	// Shows HP on screen if it's set player and bigget than zero
-	// TODO: Refactorate decision structures
+	//! Shows HP on screen if it's set player and bigget than zero
+	//! TODO: Refactorate decision structures
 	if(SETTINGS.showHP && showHP && current>0){
 		Rect box{0,-GO(entity)->Box().w/5.0f - GO(entity)->Box().w/10.0f,GO(entity)->Box().w,GO(entity)->Box().w/5.0f};
 		box+=GO(entity)->Box().corner();
@@ -67,8 +86,12 @@ void CompHP::Render() {
 		SDL_RenderFillRect(GAMERENDER,&rect);
 	}
 }
+/*!
+  * @fn Component::type CompHP::GetType()
+  * @brief Returns if the component is if the 'HP' type
+  * @param No params
+*/
 
-// Returns if the component is if the 'HP' type
-Component::type CompHP::GetType()const{
+Component::type CompHP::GetType() const {
 	return Component::type::t_hp;
 }

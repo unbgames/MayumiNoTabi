@@ -9,27 +9,56 @@
 #include <gameObject.hpp>
 #include <game.hpp>
 
-// Constructor Method for component collider
-// Takes a floating value as a param to represent gravity
+/*!
+	* @fn CompGravity::CompGravity(float g)
+	* @brief Constructor Method for component collider
+	* @param float g
+*/
+
 CompGravity::CompGravity(float g):gravity{g} {
-}
-// No params constructor method
-CompGravity::~CompGravity() {
+
 }
 
-// Updates the current gravity value according the 'time' param
+/*!
+	* @fn CompGravity::~CompGravity()
+	* @brief No params destructor method
+	* @param No params
+*/
+
+CompGravity::~CompGravity() {
+
+}
+
+/*!
+	* @fn CompGravity::Update(float time)
+	* @brief Updates the current gravity value according the 'time' param
+	* @param float time
+*/
+
 void CompGravity::Update(float time) {
-	// Verifies if element has a type that characterizes movement in Y axis
+	//! Verifies if element has a type that characterizes movement in Y axis
 	if(GO(entity)->HasComponent(Component::type::t_movement)) {
 		COMPMOVEp(GO(entity))->speed.y+=gravity*time;
 	}
 }
 
-// Renders gravity on screen, obviously not needed
+/*!
+	* @fn CompCollider::Coll::Collides(const Coll &other,const Vec2 &move,const Vec2 &moved)
+	* @brief Renders gravity on screen, obviously not needed
+	* @param No params
+*/
+
 void CompGravity::Render() {
+
 }
 
-// Returns if the component is if the 'gravity' type
+/*!
+	* @fn Component::type CompGravity::GetType()
+  * @brief Returns if the component is if the 'gravity' type
+	* @param No params
+	* @return Component::type::t_gravity
+*/
+
 Component::type CompGravity::GetType() const {
 	return Component::type::t_gravity;
 }
