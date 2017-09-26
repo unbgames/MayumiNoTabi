@@ -1,56 +1,172 @@
+/*
+ * File: geometry.cpp
+ *
+ * Description: Generate the geometry of game.
+ */
+
 #include <geometry.hpp>
 #include <camera.hpp>
 
+//! A constructor.
+    /*!
+    This is a constructor method of Vec2 class
+		@param &a
+		@param &b
+		@warning Method that requires review of comment
+		*/
+
 Vec2::Vec2(const float &a,const float &b):x{a},y{b}{}
+
+//! A constructor.
+    /*!
+    This is a constructor method of Vec2 class
+		@param &b
+		@warning Method that requires review of comment
+		*/
+
 Vec2::Vec2(const Vec2 &b):x{b.x},y{b.y}{}
 
+/*!
+	@fn Vec2 Vec2::makeVec2(const float &len,const float &ang)
+	@brief Method that creates a Vector2
+	@param &len - lenght
+	@param &ang - angulo
+	@return The execution of this method returns a Vec2
+	@warning Method that requires review of comment
+*/
 
 Vec2 Vec2::makeVec2(const float &len,const float &ang) {
 	Vec2 v{len,0.0f};
 	return v.rotate(ang);
 }
 
+/*!
+	@fn Vec2 Vec2::operator=(const Vec2& b)
+	@brief Method that changes the items form vector2
+	@param b
+	@return The execution of this method returns a Vec2
+	@warning Method that requires review of comment
+*/
 
-Vec2 Vec2::operator=(const Vec2& b) {
-	x=b.x;
-	y=b.y;
+Vec2 Vec2::operator = (const Vec2& b) {
+	x = b.x; // x is the axis x in cordinates.
+	y = b.y; // y is the axis y in cordinates.
 	return *this;
 }
 
-Vec2 Vec2::operator+ (const Vec2& b)const{
+/*!
+	@fn Vec2 Vec2::operator=(const Vec2& b)
+	@brief Method that changes the items form vector2
+	@param b
+	@return The execution of this method returns a Vec2
+	@warning Method that requires review of comment
+*/
+
+Vec2 Vec2::operator + (const Vec2& b)const{
 	return {x+b.x,y+b.y};
 }
-void Vec2::operator+=(const Vec2& b) {
-	x+=b.x;
-	y+=b.y;
+
+/*!
+	@fn Vec2 Vec2::operator+=(const Vec2& b)
+	@brief Method that increments the items form vector2
+	@param b
+	@return The execution of this method returns a Vec2
+	@warning Method that requires review of comment
+*/
+
+void Vec2::operator += (const Vec2& b) {
+	x += b.x; // x is the axis x in cordinates.
+	y += b.y; // y is the axis y in cordinates.
 }
 
-Vec2 Vec2::operator- (const Vec2& b)const{
+/*!
+	@fn Vec2 Vec2::operator - (const Vec2& b)
+	@brief Method that changes the items form vector2
+	@param b
+	@return The execution of this method returns a Vec2
+	@warning Method that requires review of comment
+*/
+
+Vec2 Vec2::operator - (const Vec2& b)const{
 	return {x-b.x,y-b.y};
 }
+
+/*!
+	@fn Vec2 Vec2::operator - (const Vec2& b)
+	@brief Method that changes the items form vector2
+	@param b
+	@return The execution of this method returns no value
+	@warning Method that requires review of comment
+*/
+
 void Vec2::operator-=(const Vec2& b) {
-	x-=b.x;
-	y-=b.y;
+	x-=b.x; // x is the axis x in cordinates.
+	y-=b.y; // y is the axis y in cordinates.
 }
+
+/*!
+	@fn Vec2 Vec2::operator - (const Vec2& b)
+	@brief Method that changes the items form vector2
+	@param r - rotation of object
+	@return The execution of this method returns Vec2
+	@warning Method that requires review of comment
+*/
 
 Vec2 Vec2::operator* (const float& r)const{
 	return {x*r,y*r};
 }
+
+/*!
+	@fn Vec2 Vec2::operator - (const Vec2& b)
+	@brief Method that changes the items form vector2
+	@param r - rotation of object
+	@return The execution of this method returns no value
+	@warning Method that requires review of comment
+*/
+
 void Vec2::operator*=(const float& r) {
-	x*=r;
-	y*=r;
+	x*=r; // x is the axis x in cordinates. r is rotation from object
+	y*=r; // y is the axis y in cordinates. r is rotation from object
 }
 
-Vec2 Vec2::operator/ (const float& r)const{
+/*!
+	@fn Vec2 Vec2::operator/ (const float& r)
+	@brief Method that changes the items form vector2
+	@param r - rotation of object
+	@return The execution of this method returns Vec2
+	@warning Method that requires review of comment
+*/
+
+Vec2 Vec2::operator/ (const float& r)const {
 	return {x/r,y/r};
 }
+
+/*!
+	@fn void Vec2::operator/=(const float& r)
+	@brief Method that changes the items form vector2
+	@param r - rotation of object
+	@return The execution of this method returns no value
+	@warning Method that requires review of comment
+*/
+
 void Vec2::operator/=(const float& r) {
-	x/=r;
-	y/=r;
+	x/=r; // x is the axis x in cordinates. r is rotation from object
+	y/=r; // y is the axis y in cordinates. r is rotation from object
 }
+
+/*!
+	@fn bool Vec2::operator==(const Vec2& b)
+	@brief Method that compairs the items from vector2
+	@param b
+	@return The execution of this method returns a bool
+	@warning Method that requires review of comment
+*/
+
 bool Vec2::operator==(const Vec2& b)const{
 	return (equals(x,b.x) && equals(y,b.y));
 }
+
+
 bool Vec2::operator!=(const Vec2& b)const{
 	return !((*this)==b);
 }
