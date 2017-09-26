@@ -97,6 +97,10 @@ Game::Game(string title,int width,int height):frameStart{0},dt{0},winSize{(float
 	int audio_modules = MIX_INIT_OGG;
 	res = Mix_Init(audio_modules);
 
+	/* Check the possibility initiation of SDL audio and return a error messege
+		 if its necessary
+	 */
+
 	if (res != audio_modules) {
 		if ((MIX_INIT_OGG & res ) == 0 )cerr << "OGG flag not in res!" << endl;
 		if ((MIX_INIT_MP3 & res ) == 0 )cerr << "MP3 flag not in res!" << endl;
