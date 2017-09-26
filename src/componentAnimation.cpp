@@ -14,7 +14,7 @@
 #include <game.hpp>
 #include <stateStage.hpp>
 #include <txtFuncs.hpp>
-//#include <inputManager.hpp>
+// #include <inputManager.hpp>
 
 //! A constructor.
   /*!
@@ -53,14 +53,14 @@ CompAnim::CompAnim() {
 
 		colliders.resize(fCount,nullptr);
 
-		for (i,fCount) {
+		FOR(i,fCount) {
 			in >> collCount;
 
 			if (collCount) {
 				colliders[i] = new CompCollider{};
 				colliders[i]->entity = entity;
 
-				for (j, collCount) {
+				FOR(j, collCount) {
 					//TODO: use rotation
 					//TODO: different collider types for each coll
 					in >> x >> y >> w >> h >> r;
@@ -76,7 +76,7 @@ CompAnim::CompAnim() {
 
 			in >> funcCount;
 
-			for (funcI, funcCount) {
+			FOR(funcI, funcCount) {
 				in >> func;
 
 				if (txtFuncsF.count(func)) {
@@ -101,7 +101,7 @@ CompAnim::CompAnim() {
 
 CompAnim::~CompAnim() {
 	// Iterates through coliders
-	for (i, colliders.size()) {
+	FOR(i, colliders.size()) {
 
 		// Ignores deletion if current collider equals current frame
 		if (i == GetCurFrame()) {

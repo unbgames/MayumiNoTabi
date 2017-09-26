@@ -19,7 +19,7 @@
   */
 
 CompAnimControl::CompAnimControl(string file, CompCollider* coll) {
-	// TODO: variable declaration indent and comment
+  // TODO: variable declaration indent and comment
 	string name, animFile;
 
 	ifstream in(ANIMATION_PATH + file + ".txt");
@@ -189,7 +189,7 @@ void CompAnimControl::Render() {
 void CompAnimControl::Own(GameObject *go) {
 	entity = go->uid;
 
-	for (auto &anim:animations) {
+  for (auto &anim:animations) {
 		anim.second->Own(go);
 	}
 
