@@ -222,7 +222,10 @@ void Game::Run() {
 		GetCurrentState().Render();
 		SDL_RenderPresent(renderer);
 
-		if (GetCurrentState().QuitRequested()) break;
+		if (GetCurrentState().QuitRequested()) {
+				break;
+		}
+
 		if (GetCurrentState().PopRequested()) {
 			GetCurrentState().Pause();
 			GetCurrentState().End();
@@ -230,8 +233,12 @@ void Game::Run() {
 			Resources::ClearImages();
 			Resources::ClearMusics();
 			Resources::ClearFonts();
-			if (stateStack.size())GetCurrentState().Resume();
+
+			if (stateStack.size()) {
+				GetCurrentState().Resume();
+			}
 		}
+
 		if (storedState) {
 			GetCurrentState().Pause();
 			stateStack.push(unique_ptr<State>(storedState));
@@ -254,8 +261,7 @@ float Game::GetDeltaTime() {
 /*!
 	@fn void Game::CalculateDeltaTime()
 	@brief
-	@param
-	@return
+	@return The execution of this method returns no value
 	@warning Method that requires review of comment
 */
 
@@ -268,10 +274,10 @@ void Game::CalculateDeltaTime() {
 /*!
 	@fn void Game::SwitchWindowMode()
 	@brief
-	@param
-	@return
+	@return The execution of this method returns no value
 	@warning Method that requires review of comment
 */
 
 void Game::SwitchWindowMode() {
+	// Method body its empty
 }
