@@ -1,0 +1,161 @@
+\hypertarget{struct_comp_collider_1_1_coll}{\section{Comp\-Collider\-:\-:Coll Struct Reference}
+\label{struct_comp_collider_1_1_coll}\index{Comp\-Collider\-::\-Coll@{Comp\-Collider\-::\-Coll}}
+}
+
+
+{\ttfamily \#include $<$component\-Collider.\-hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_comp_collider_1_1_coll_aa2305456d6b8c69327dd4b5b0ce086cc}{Coll} (const \hyperlink{common_8hpp_a69aa29b598b851b0640aa225a9e5d61d}{uint} \&e, \hyperlink{class_comp_collider_a9eea092846b889fb5652416832727acd}{coll\-Type} \hyperlink{_s_d_l__opengl_8h_a7d65d00ca3b0630d9b5c52df855b19f5}{t}, const \hyperlink{class_rect}{Rect} \&\hyperlink{_s_d_l__opengl_8h_a42ce7cdc612e53abee15043f80220d97}{r}=\hyperlink{class_rect}{Rect}\{0.\-0f, 0.\-0f, 1.\-0f, 1.\-0f\})
+\item 
+\hyperlink{struct_comp_collider_1_1_coll_a1d835afcbaba6716f23d64ebaecfb914}{Coll} (const \hyperlink{common_8hpp_a69aa29b598b851b0640aa225a9e5d61d}{uint} \&e, \hyperlink{class_comp_collider_a9eea092846b889fb5652416832727acd}{coll\-Type} \hyperlink{_s_d_l__opengl_8h_a7d65d00ca3b0630d9b5c52df855b19f5}{t}, const \hyperlink{class_vec2}{Vec2} \&\hyperlink{_s_d_l__opengl__glext_8h_aa5367c14d90f462230c2611b81b41d23}{p}, const \hyperlink{class_vec2}{Vec2} \&sz=\hyperlink{class_vec2}{Vec2}\{1.\-0f, 1.\-0f\})
+\item 
+\hyperlink{class_rect}{Rect} \hyperlink{struct_comp_collider_1_1_coll_a72d67261903cf81dcd52ba0248f957fa}{Box} () const 
+\item 
+\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{struct_comp_collider_1_1_coll_ab7af2b6d79d048a59f5d2b5300c4996b}{Collision\-Check} (const \hyperlink{struct_comp_collider_1_1_coll}{Coll} \&other)
+\item 
+\hyperlink{class_vec2}{Vec2} \hyperlink{struct_comp_collider_1_1_coll_af00c6366c03a881e7e2460861347f738}{Collides} (const \hyperlink{struct_comp_collider_1_1_coll}{Coll} \&other, const \hyperlink{class_vec2}{Vec2} \&move, const \hyperlink{class_vec2}{Vec2} \&moved=\hyperlink{class_vec2}{Vec2}\{\}) const 
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const \hyperlink{common_8hpp_a69aa29b598b851b0640aa225a9e5d61d}{uint} \& \hyperlink{struct_comp_collider_1_1_coll_a8b70833ba1f9195107ce2cb4c1153121}{entity}
+\item 
+\hyperlink{class_vec2}{Vec2} \hyperlink{struct_comp_collider_1_1_coll_aa029c22c889d38a61d16822e31a59ed7}{pos}
+\item 
+\hyperlink{class_vec2}{Vec2} \hyperlink{struct_comp_collider_1_1_coll_a3ab6e568d387b8ff25d4bf2086b1eb7a}{size}
+\item 
+const \hyperlink{class_comp_collider_a9eea092846b889fb5652416832727acd}{coll\-Type} \hyperlink{struct_comp_collider_1_1_coll_a909077593b0c30bd3e5013ceb1d35af7}{c\-Type} =\hyperlink{class_comp_collider_a9eea092846b889fb5652416832727acda84d56508f27cd1107189cc89ee44e332}{t\-\_\-any}
+\item 
+bool \hyperlink{struct_comp_collider_1_1_coll_a1b6e5907a53635f126395cd5664a3ee7}{active} =true
+\item 
+map$<$ \hyperlink{class_comp_collider_a9eea092846b889fb5652416832727acd}{coll\-Type}, \hyperlink{component_collider_8hpp_ac6a141a5ae92c8a21c483c5b6499bd79}{collider\-Func} $>$ \hyperlink{struct_comp_collider_1_1_coll_a39408a6e8ee1ec2f6cc2f19245172fab}{use\-Default}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 18 of file component\-Collider.\-hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{struct_comp_collider_1_1_coll_aa2305456d6b8c69327dd4b5b0ce086cc}{\index{Comp\-Collider\-::\-Coll@{Comp\-Collider\-::\-Coll}!Coll@{Coll}}
+\index{Coll@{Coll}!CompCollider::Coll@{Comp\-Collider\-::\-Coll}}
+\subsubsection[{Coll}]{\setlength{\rightskip}{0pt plus 5cm}Comp\-Collider\-::\-Coll\-::\-Coll (
+\begin{DoxyParamCaption}
+\item[{const {\bf uint} \&}]{e, }
+\item[{{\bf coll\-Type}}]{t, }
+\item[{const {\bf Rect} \&}]{r = {\ttfamily {\bf Rect}\{0.0f,0.0f,1.0f,1.0f\}}}
+\end{DoxyParamCaption}
+)}}\label{struct_comp_collider_1_1_coll_aa2305456d6b8c69327dd4b5b0ce086cc}
+
+
+Definition at line 78 of file component\-Collider.\-cpp.
+
+\hypertarget{struct_comp_collider_1_1_coll_a1d835afcbaba6716f23d64ebaecfb914}{\index{Comp\-Collider\-::\-Coll@{Comp\-Collider\-::\-Coll}!Coll@{Coll}}
+\index{Coll@{Coll}!CompCollider::Coll@{Comp\-Collider\-::\-Coll}}
+\subsubsection[{Coll}]{\setlength{\rightskip}{0pt plus 5cm}Comp\-Collider\-::\-Coll\-::\-Coll (
+\begin{DoxyParamCaption}
+\item[{const {\bf uint} \&}]{e, }
+\item[{{\bf coll\-Type}}]{t, }
+\item[{const {\bf Vec2} \&}]{p, }
+\item[{const {\bf Vec2} \&}]{sz = {\ttfamily {\bf Vec2}\{1.0f,1.0f\}}}
+\end{DoxyParamCaption}
+)}}\label{struct_comp_collider_1_1_coll_a1d835afcbaba6716f23d64ebaecfb914}
+
+
+Definition at line 80 of file component\-Collider.\-cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{struct_comp_collider_1_1_coll_a72d67261903cf81dcd52ba0248f957fa}{\index{Comp\-Collider\-::\-Coll@{Comp\-Collider\-::\-Coll}!Box@{Box}}
+\index{Box@{Box}!CompCollider::Coll@{Comp\-Collider\-::\-Coll}}
+\subsubsection[{Box}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Rect} Comp\-Collider\-::\-Coll\-::\-Box (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{struct_comp_collider_1_1_coll_a72d67261903cf81dcd52ba0248f957fa}
+
+
+Definition at line 83 of file component\-Collider.\-cpp.
+
+\hypertarget{struct_comp_collider_1_1_coll_af00c6366c03a881e7e2460861347f738}{\index{Comp\-Collider\-::\-Coll@{Comp\-Collider\-::\-Coll}!Collides@{Collides}}
+\index{Collides@{Collides}!CompCollider::Coll@{Comp\-Collider\-::\-Coll}}
+\subsubsection[{Collides}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vec2} Comp\-Collider\-::\-Coll\-::\-Collides (
+\begin{DoxyParamCaption}
+\item[{const {\bf Coll} \&}]{other, }
+\item[{const {\bf Vec2} \&}]{move, }
+\item[{const {\bf Vec2} \&}]{moved = {\ttfamily {\bf Vec2}\{\}}}
+\end{DoxyParamCaption}
+) const}}\label{struct_comp_collider_1_1_coll_af00c6366c03a881e7e2460861347f738}
+
+
+Definition at line 116 of file component\-Collider.\-cpp.
+
+\hypertarget{struct_comp_collider_1_1_coll_ab7af2b6d79d048a59f5d2b5300c4996b}{\index{Comp\-Collider\-::\-Coll@{Comp\-Collider\-::\-Coll}!Collision\-Check@{Collision\-Check}}
+\index{Collision\-Check@{Collision\-Check}!CompCollider::Coll@{Comp\-Collider\-::\-Coll}}
+\subsubsection[{Collision\-Check}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} Comp\-Collider\-::\-Coll\-::\-Collision\-Check (
+\begin{DoxyParamCaption}
+\item[{const {\bf Coll} \&}]{other}
+\end{DoxyParamCaption}
+)}}\label{struct_comp_collider_1_1_coll_ab7af2b6d79d048a59f5d2b5300c4996b}
+
+
+Definition at line 88 of file component\-Collider.\-cpp.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{struct_comp_collider_1_1_coll_a1b6e5907a53635f126395cd5664a3ee7}{\index{Comp\-Collider\-::\-Coll@{Comp\-Collider\-::\-Coll}!active@{active}}
+\index{active@{active}!CompCollider::Coll@{Comp\-Collider\-::\-Coll}}
+\subsubsection[{active}]{\setlength{\rightskip}{0pt plus 5cm}bool Comp\-Collider\-::\-Coll\-::active =true}}\label{struct_comp_collider_1_1_coll_a1b6e5907a53635f126395cd5664a3ee7}
+
+
+Definition at line 23 of file component\-Collider.\-hpp.
+
+\hypertarget{struct_comp_collider_1_1_coll_a909077593b0c30bd3e5013ceb1d35af7}{\index{Comp\-Collider\-::\-Coll@{Comp\-Collider\-::\-Coll}!c\-Type@{c\-Type}}
+\index{c\-Type@{c\-Type}!CompCollider::Coll@{Comp\-Collider\-::\-Coll}}
+\subsubsection[{c\-Type}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf coll\-Type} Comp\-Collider\-::\-Coll\-::c\-Type ={\bf t\-\_\-any}}}\label{struct_comp_collider_1_1_coll_a909077593b0c30bd3e5013ceb1d35af7}
+
+
+Definition at line 22 of file component\-Collider.\-hpp.
+
+\hypertarget{struct_comp_collider_1_1_coll_a8b70833ba1f9195107ce2cb4c1153121}{\index{Comp\-Collider\-::\-Coll@{Comp\-Collider\-::\-Coll}!entity@{entity}}
+\index{entity@{entity}!CompCollider::Coll@{Comp\-Collider\-::\-Coll}}
+\subsubsection[{entity}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf uint}\& Comp\-Collider\-::\-Coll\-::entity}}\label{struct_comp_collider_1_1_coll_a8b70833ba1f9195107ce2cb4c1153121}
+
+
+Definition at line 19 of file component\-Collider.\-hpp.
+
+\hypertarget{struct_comp_collider_1_1_coll_aa029c22c889d38a61d16822e31a59ed7}{\index{Comp\-Collider\-::\-Coll@{Comp\-Collider\-::\-Coll}!pos@{pos}}
+\index{pos@{pos}!CompCollider::Coll@{Comp\-Collider\-::\-Coll}}
+\subsubsection[{pos}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vec2} Comp\-Collider\-::\-Coll\-::pos}}\label{struct_comp_collider_1_1_coll_aa029c22c889d38a61d16822e31a59ed7}
+
+
+Definition at line 20 of file component\-Collider.\-hpp.
+
+\hypertarget{struct_comp_collider_1_1_coll_a3ab6e568d387b8ff25d4bf2086b1eb7a}{\index{Comp\-Collider\-::\-Coll@{Comp\-Collider\-::\-Coll}!size@{size}}
+\index{size@{size}!CompCollider::Coll@{Comp\-Collider\-::\-Coll}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vec2} Comp\-Collider\-::\-Coll\-::size}}\label{struct_comp_collider_1_1_coll_a3ab6e568d387b8ff25d4bf2086b1eb7a}
+
+
+Definition at line 21 of file component\-Collider.\-hpp.
+
+\hypertarget{struct_comp_collider_1_1_coll_a39408a6e8ee1ec2f6cc2f19245172fab}{\index{Comp\-Collider\-::\-Coll@{Comp\-Collider\-::\-Coll}!use\-Default@{use\-Default}}
+\index{use\-Default@{use\-Default}!CompCollider::Coll@{Comp\-Collider\-::\-Coll}}
+\subsubsection[{use\-Default}]{\setlength{\rightskip}{0pt plus 5cm}map$<${\bf coll\-Type},{\bf collider\-Func}$>$ Comp\-Collider\-::\-Coll\-::use\-Default}}\label{struct_comp_collider_1_1_coll_a39408a6e8ee1ec2f6cc2f19245172fab}
+
+
+Definition at line 24 of file component\-Collider.\-hpp.
+
+
+
+The documentation for this struct was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/home/andre/\-Desktop/tecprog/\-Mayumi\-No\-Tabi/\-Mayumi\-No\-Tabi/include/\hyperlink{component_collider_8hpp}{component\-Collider.\-hpp}\item 
+\hyperlink{component_collider_8cpp}{component\-Collider.\-cpp}\end{DoxyCompactItemize}

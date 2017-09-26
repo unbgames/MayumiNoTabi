@@ -1,0 +1,187 @@
+\hypertarget{state_editor_8cpp}{\section{state\-Editor.\-cpp File Reference}
+\label{state_editor_8cpp}\index{state\-Editor.\-cpp@{state\-Editor.\-cpp}}
+}
+{\ttfamily \#include $<$state\-Editor.\-hpp$>$}\\*
+{\ttfamily \#include $<$common.\-hpp$>$}\\*
+{\ttfamily \#include $<$camera.\-hpp$>$}\\*
+{\ttfamily \#include $<$complib.\-hpp$>$}\\*
+{\ttfamily \#include $<$game.\-hpp$>$}\\*
+{\ttfamily \#include $<$resources.\-hpp$>$}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{state_editor_8cpp_af7a64b2b81a64c95b7766df5df3eaa86}{H\-E\-L\-P\-\_\-\-T\-E\-X\-T}~\char`\"{}Press \mbox{[}H\mbox{]} for help\char`\"{}
+\item 
+\#define \hyperlink{state_editor_8cpp_a7d84da9a8d9afcc4f9a0342f9ed8ae4b}{H\-E\-L\-P\-\_\-\-T\-E\-X\-T\-\_\-\-O\-P\-E\-N}~\char`\"{}S -\/ Save\textbackslash{}n\textbackslash{}\-G -\/ Toggle grid\textbackslash{}n\textbackslash{}\-L\-M\-B -\/ Place tile\textbackslash{}n\textbackslash{}\-R\-M\-B -\/ Erase tile\textbackslash{}n\textbackslash{}\-A -\/ Previous tile\textbackslash{}n\textbackslash{}\-D -\/ Next tile\textbackslash{}n\textbackslash{}\-C -\/ Show Collision \textbackslash{}n\textbackslash{}\-A\-R\-R\-O\-W K\-E\-Y\-S, M\-M\-B -\/ Move \hyperlink{jquery_8js_adc18d83abfd9f87d396e8fd6b6ac0fe1}{Camera\textbackslash{}n\textbackslash{}\-Z} -\/ Zoom In\textbackslash{}n\textbackslash{}\-X -\/ Zoom Out\char`\"{}
+\item 
+\#define \hyperlink{state_editor_8cpp_ad051b3cf5ee1c41a1ef7fe0bb7179a24}{M\-I\-N\-\_\-\-L\-V\-L\-\_\-\-W\-I\-D\-T\-H}~(\hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int})ceil(\hyperlink{jquery_8js_a4c3eadaa5164016d2c340d495fc6e55e}{W\-I\-N\-S\-I\-Z\-E.\-x}/64)
+\item 
+\#define \hyperlink{state_editor_8cpp_af5e0b72afdcafc27dbcefbd095fc30b1}{M\-I\-N\-\_\-\-L\-V\-L\-\_\-\-H\-E\-I\-G\-H\-T}~(\hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int})ceil(\hyperlink{_s_d_l__opengles2__gl2ext_8h_a1675d9d7bb68e1657ff028643b4037e3}{W\-I\-N\-S\-I\-Z\-E.\-y}/64)
+\item 
+\#define \hyperlink{state_editor_8cpp_a561af9acfde70727b34da839f10c3b4b}{M\-A\-X\-\_\-\-L\-V\-L\-\_\-\-S\-I\-Z\-E}~2000
+\item 
+\#define \hyperlink{state_editor_8cpp_a392dd254243827d37cdca40991ce6d44}{E\-D\-I\-T\-O\-R\-\_\-\-B\-G\-\_\-\-C\-O\-L\-O\-R}~127,127,127,255
+\item 
+\#define \hyperlink{state_editor_8cpp_aa144abea62a576df6a8b38fcbff5cabd}{G\-R\-I\-D\-\_\-\-C\-O\-L\-O\-R}~255,255,255,63
+\item 
+\#define \hyperlink{state_editor_8cpp_a35091b57dc39f5f9461a516527472a06}{L\-E\-V\-E\-L\-\_\-\-B\-O\-R\-D\-E\-R\-\_\-\-C\-O\-L\-O\-R}~255,255,255,255
+\item 
+\#define \hyperlink{state_editor_8cpp_acb5c8b80dc68682725b2627607ce95c7}{T\-I\-L\-E\-\_\-\-C\-U\-R\-S\-O\-R\-\_\-\-C\-O\-L\-O\-R}~255,255,0,255
+\item 
+\#define \hyperlink{state_editor_8cpp_a74c555ec7123833c4986c5fa01085c0c}{C\-O\-L\-L\-I\-S\-I\-O\-N\-\_\-\-C\-O\-L\-O\-R}~255,0,0,255
+\item 
+\#define \hyperlink{state_editor_8cpp_a9b5929ac37b8a484ce0bc6d1a3ce2804}{C\-O\-L\-L\-I\-S\-I\-O\-N\-\_\-\-B\-L\-O\-C\-K}~0
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{state_editor_8cpp_a8bb1ef53467e4f61410d12822d922498}{Action} \{ \\*
+\hyperlink{state_editor_8cpp_a8bb1ef53467e4f61410d12822d922498ac157bdf0b85a40d2619cbc8bc1ae5fe2}{N\-O\-N\-E}, 
+\hyperlink{state_editor_8cpp_a8bb1ef53467e4f61410d12822d922498ac2e095dcb8d836b8c45bf72410bb8185}{N\-E\-W\-\_\-\-L\-E\-V\-E\-L}, 
+\hyperlink{state_editor_8cpp_a8bb1ef53467e4f61410d12822d922498aa7fdf570ca3eaabcfb554e6c0631d33b}{L\-O\-A\-D\-\_\-\-L\-E\-V\-E\-L}, 
+\hyperlink{state_editor_8cpp_a8bb1ef53467e4f61410d12822d922498aadeb10875b22cdf545b019606d25cbeb}{S\-A\-V\-E\-\_\-\-L\-E\-V\-E\-L}, 
+\\*
+\hyperlink{state_editor_8cpp_a8bb1ef53467e4f61410d12822d922498a9c8f2dccfd14b35fb02d46e54fa12d04}{R\-E\-S\-I\-Z\-E\-\_\-\-L\-E\-V\-E\-L}, 
+\hyperlink{state_editor_8cpp_a8bb1ef53467e4f61410d12822d922498a227cd6ee77e2a99e53a3827f5bd6d9dd}{S\-H\-O\-W\-\_\-\-G\-R\-I\-D}, 
+\hyperlink{state_editor_8cpp_a8bb1ef53467e4f61410d12822d922498aac46c5ed79ca5f5249ea6442ee48a873}{S\-H\-O\-W\-\_\-\-C\-O\-L\-L\-I\-S\-I\-O\-N}, 
+\hyperlink{state_editor_8cpp_a8bb1ef53467e4f61410d12822d922498af72e3cb902b12024a2d77a388152c6d5}{E\-X\-I\-T\-\_\-\-E\-D\-I\-T\-O\-R}, 
+\\*
+\hyperlink{state_editor_8cpp_a8bb1ef53467e4f61410d12822d922498a4bf4cbde18067e0600c7c8a7a30ba316}{E\-X\-I\-T\-\_\-\-G\-A\-M\-E}
+ \}
+\item 
+enum \hyperlink{state_editor_8cpp_a6f567238a0aaa00ab1b336d0cf0faf4b}{Window} \{ \hyperlink{state_editor_8cpp_a6f567238a0aaa00ab1b336d0cf0faf4ba6b2a95a0f211c094187a8c735cbde2db}{M\-A\-I\-N\-\_\-\-W\-I\-N\-D\-O\-W}, 
+\hyperlink{state_editor_8cpp_a6f567238a0aaa00ab1b336d0cf0faf4ba7f4b8cb2d10cda1b181ed9e6a6917d85}{R\-E\-S\-I\-Z\-E\-\_\-\-W\-I\-N\-D\-O\-W}, 
+\hyperlink{state_editor_8cpp_a6f567238a0aaa00ab1b336d0cf0faf4bafe99efc1646281ec783fcf03c70bd9e7}{U\-N\-S\-A\-V\-E\-D\-\_\-\-C\-H\-A\-N\-G\-E\-S\-\_\-\-W\-I\-N\-D\-O\-W}
+ \}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{state_editor_8cpp_a9b5929ac37b8a484ce0bc6d1a3ce2804}{\index{state\-Editor.\-cpp@{state\-Editor.\-cpp}!C\-O\-L\-L\-I\-S\-I\-O\-N\-\_\-\-B\-L\-O\-C\-K@{C\-O\-L\-L\-I\-S\-I\-O\-N\-\_\-\-B\-L\-O\-C\-K}}
+\index{C\-O\-L\-L\-I\-S\-I\-O\-N\-\_\-\-B\-L\-O\-C\-K@{C\-O\-L\-L\-I\-S\-I\-O\-N\-\_\-\-B\-L\-O\-C\-K}!stateEditor.cpp@{state\-Editor.\-cpp}}
+\subsubsection[{C\-O\-L\-L\-I\-S\-I\-O\-N\-\_\-\-B\-L\-O\-C\-K}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\-O\-L\-L\-I\-S\-I\-O\-N\-\_\-\-B\-L\-O\-C\-K~0}}\label{state_editor_8cpp_a9b5929ac37b8a484ce0bc6d1a3ce2804}
+
+
+Definition at line 34 of file state\-Editor.\-cpp.
+
+\hypertarget{state_editor_8cpp_a74c555ec7123833c4986c5fa01085c0c}{\index{state\-Editor.\-cpp@{state\-Editor.\-cpp}!C\-O\-L\-L\-I\-S\-I\-O\-N\-\_\-\-C\-O\-L\-O\-R@{C\-O\-L\-L\-I\-S\-I\-O\-N\-\_\-\-C\-O\-L\-O\-R}}
+\index{C\-O\-L\-L\-I\-S\-I\-O\-N\-\_\-\-C\-O\-L\-O\-R@{C\-O\-L\-L\-I\-S\-I\-O\-N\-\_\-\-C\-O\-L\-O\-R}!stateEditor.cpp@{state\-Editor.\-cpp}}
+\subsubsection[{C\-O\-L\-L\-I\-S\-I\-O\-N\-\_\-\-C\-O\-L\-O\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\-O\-L\-L\-I\-S\-I\-O\-N\-\_\-\-C\-O\-L\-O\-R~255,0,0,255}}\label{state_editor_8cpp_a74c555ec7123833c4986c5fa01085c0c}
+
+
+Definition at line 31 of file state\-Editor.\-cpp.
+
+\hypertarget{state_editor_8cpp_a392dd254243827d37cdca40991ce6d44}{\index{state\-Editor.\-cpp@{state\-Editor.\-cpp}!E\-D\-I\-T\-O\-R\-\_\-\-B\-G\-\_\-\-C\-O\-L\-O\-R@{E\-D\-I\-T\-O\-R\-\_\-\-B\-G\-\_\-\-C\-O\-L\-O\-R}}
+\index{E\-D\-I\-T\-O\-R\-\_\-\-B\-G\-\_\-\-C\-O\-L\-O\-R@{E\-D\-I\-T\-O\-R\-\_\-\-B\-G\-\_\-\-C\-O\-L\-O\-R}!stateEditor.cpp@{state\-Editor.\-cpp}}
+\subsubsection[{E\-D\-I\-T\-O\-R\-\_\-\-B\-G\-\_\-\-C\-O\-L\-O\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\-D\-I\-T\-O\-R\-\_\-\-B\-G\-\_\-\-C\-O\-L\-O\-R~127,127,127,255}}\label{state_editor_8cpp_a392dd254243827d37cdca40991ce6d44}
+
+
+Definition at line 27 of file state\-Editor.\-cpp.
+
+\hypertarget{state_editor_8cpp_aa144abea62a576df6a8b38fcbff5cabd}{\index{state\-Editor.\-cpp@{state\-Editor.\-cpp}!G\-R\-I\-D\-\_\-\-C\-O\-L\-O\-R@{G\-R\-I\-D\-\_\-\-C\-O\-L\-O\-R}}
+\index{G\-R\-I\-D\-\_\-\-C\-O\-L\-O\-R@{G\-R\-I\-D\-\_\-\-C\-O\-L\-O\-R}!stateEditor.cpp@{state\-Editor.\-cpp}}
+\subsubsection[{G\-R\-I\-D\-\_\-\-C\-O\-L\-O\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define G\-R\-I\-D\-\_\-\-C\-O\-L\-O\-R~255,255,255,63}}\label{state_editor_8cpp_aa144abea62a576df6a8b38fcbff5cabd}
+
+
+Definition at line 28 of file state\-Editor.\-cpp.
+
+\hypertarget{state_editor_8cpp_af7a64b2b81a64c95b7766df5df3eaa86}{\index{state\-Editor.\-cpp@{state\-Editor.\-cpp}!H\-E\-L\-P\-\_\-\-T\-E\-X\-T@{H\-E\-L\-P\-\_\-\-T\-E\-X\-T}}
+\index{H\-E\-L\-P\-\_\-\-T\-E\-X\-T@{H\-E\-L\-P\-\_\-\-T\-E\-X\-T}!stateEditor.cpp@{state\-Editor.\-cpp}}
+\subsubsection[{H\-E\-L\-P\-\_\-\-T\-E\-X\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define H\-E\-L\-P\-\_\-\-T\-E\-X\-T~\char`\"{}Press \mbox{[}H\mbox{]} for help\char`\"{}}}\label{state_editor_8cpp_af7a64b2b81a64c95b7766df5df3eaa86}
+
+
+Definition at line 10 of file state\-Editor.\-cpp.
+
+\hypertarget{state_editor_8cpp_a7d84da9a8d9afcc4f9a0342f9ed8ae4b}{\index{state\-Editor.\-cpp@{state\-Editor.\-cpp}!H\-E\-L\-P\-\_\-\-T\-E\-X\-T\-\_\-\-O\-P\-E\-N@{H\-E\-L\-P\-\_\-\-T\-E\-X\-T\-\_\-\-O\-P\-E\-N}}
+\index{H\-E\-L\-P\-\_\-\-T\-E\-X\-T\-\_\-\-O\-P\-E\-N@{H\-E\-L\-P\-\_\-\-T\-E\-X\-T\-\_\-\-O\-P\-E\-N}!stateEditor.cpp@{state\-Editor.\-cpp}}
+\subsubsection[{H\-E\-L\-P\-\_\-\-T\-E\-X\-T\-\_\-\-O\-P\-E\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define H\-E\-L\-P\-\_\-\-T\-E\-X\-T\-\_\-\-O\-P\-E\-N~\char`\"{}S -\/ Save\textbackslash{}n\textbackslash{}\-G -\/ Toggle grid\textbackslash{}n\textbackslash{}\-L\-M\-B -\/ Place tile\textbackslash{}n\textbackslash{}\-R\-M\-B -\/ Erase tile\textbackslash{}n\textbackslash{}\-A -\/ Previous tile\textbackslash{}n\textbackslash{}\-D -\/ Next tile\textbackslash{}n\textbackslash{}\-C -\/ Show Collision \textbackslash{}n\textbackslash{}\-A\-R\-R\-O\-W K\-E\-Y\-S, M\-M\-B -\/ Move {\bf Camera\textbackslash{}n\textbackslash{}\-Z} -\/ Zoom In\textbackslash{}n\textbackslash{}\-X -\/ Zoom Out\char`\"{}}}\label{state_editor_8cpp_a7d84da9a8d9afcc4f9a0342f9ed8ae4b}
+
+
+Definition at line 11 of file state\-Editor.\-cpp.
+
+\hypertarget{state_editor_8cpp_a35091b57dc39f5f9461a516527472a06}{\index{state\-Editor.\-cpp@{state\-Editor.\-cpp}!L\-E\-V\-E\-L\-\_\-\-B\-O\-R\-D\-E\-R\-\_\-\-C\-O\-L\-O\-R@{L\-E\-V\-E\-L\-\_\-\-B\-O\-R\-D\-E\-R\-\_\-\-C\-O\-L\-O\-R}}
+\index{L\-E\-V\-E\-L\-\_\-\-B\-O\-R\-D\-E\-R\-\_\-\-C\-O\-L\-O\-R@{L\-E\-V\-E\-L\-\_\-\-B\-O\-R\-D\-E\-R\-\_\-\-C\-O\-L\-O\-R}!stateEditor.cpp@{state\-Editor.\-cpp}}
+\subsubsection[{L\-E\-V\-E\-L\-\_\-\-B\-O\-R\-D\-E\-R\-\_\-\-C\-O\-L\-O\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\-E\-V\-E\-L\-\_\-\-B\-O\-R\-D\-E\-R\-\_\-\-C\-O\-L\-O\-R~255,255,255,255}}\label{state_editor_8cpp_a35091b57dc39f5f9461a516527472a06}
+
+
+Definition at line 29 of file state\-Editor.\-cpp.
+
+\hypertarget{state_editor_8cpp_a561af9acfde70727b34da839f10c3b4b}{\index{state\-Editor.\-cpp@{state\-Editor.\-cpp}!M\-A\-X\-\_\-\-L\-V\-L\-\_\-\-S\-I\-Z\-E@{M\-A\-X\-\_\-\-L\-V\-L\-\_\-\-S\-I\-Z\-E}}
+\index{M\-A\-X\-\_\-\-L\-V\-L\-\_\-\-S\-I\-Z\-E@{M\-A\-X\-\_\-\-L\-V\-L\-\_\-\-S\-I\-Z\-E}!stateEditor.cpp@{state\-Editor.\-cpp}}
+\subsubsection[{M\-A\-X\-\_\-\-L\-V\-L\-\_\-\-S\-I\-Z\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-A\-X\-\_\-\-L\-V\-L\-\_\-\-S\-I\-Z\-E~2000}}\label{state_editor_8cpp_a561af9acfde70727b34da839f10c3b4b}
+
+
+Definition at line 25 of file state\-Editor.\-cpp.
+
+\hypertarget{state_editor_8cpp_af5e0b72afdcafc27dbcefbd095fc30b1}{\index{state\-Editor.\-cpp@{state\-Editor.\-cpp}!M\-I\-N\-\_\-\-L\-V\-L\-\_\-\-H\-E\-I\-G\-H\-T@{M\-I\-N\-\_\-\-L\-V\-L\-\_\-\-H\-E\-I\-G\-H\-T}}
+\index{M\-I\-N\-\_\-\-L\-V\-L\-\_\-\-H\-E\-I\-G\-H\-T@{M\-I\-N\-\_\-\-L\-V\-L\-\_\-\-H\-E\-I\-G\-H\-T}!stateEditor.cpp@{state\-Editor.\-cpp}}
+\subsubsection[{M\-I\-N\-\_\-\-L\-V\-L\-\_\-\-H\-E\-I\-G\-H\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-I\-N\-\_\-\-L\-V\-L\-\_\-\-H\-E\-I\-G\-H\-T~({\bf int})ceil({\bf W\-I\-N\-S\-I\-Z\-E.\-y}/64)}}\label{state_editor_8cpp_af5e0b72afdcafc27dbcefbd095fc30b1}
+
+
+Definition at line 24 of file state\-Editor.\-cpp.
+
+\hypertarget{state_editor_8cpp_ad051b3cf5ee1c41a1ef7fe0bb7179a24}{\index{state\-Editor.\-cpp@{state\-Editor.\-cpp}!M\-I\-N\-\_\-\-L\-V\-L\-\_\-\-W\-I\-D\-T\-H@{M\-I\-N\-\_\-\-L\-V\-L\-\_\-\-W\-I\-D\-T\-H}}
+\index{M\-I\-N\-\_\-\-L\-V\-L\-\_\-\-W\-I\-D\-T\-H@{M\-I\-N\-\_\-\-L\-V\-L\-\_\-\-W\-I\-D\-T\-H}!stateEditor.cpp@{state\-Editor.\-cpp}}
+\subsubsection[{M\-I\-N\-\_\-\-L\-V\-L\-\_\-\-W\-I\-D\-T\-H}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-I\-N\-\_\-\-L\-V\-L\-\_\-\-W\-I\-D\-T\-H~({\bf int})ceil({\bf W\-I\-N\-S\-I\-Z\-E.\-x}/64)}}\label{state_editor_8cpp_ad051b3cf5ee1c41a1ef7fe0bb7179a24}
+
+
+Definition at line 23 of file state\-Editor.\-cpp.
+
+\hypertarget{state_editor_8cpp_acb5c8b80dc68682725b2627607ce95c7}{\index{state\-Editor.\-cpp@{state\-Editor.\-cpp}!T\-I\-L\-E\-\_\-\-C\-U\-R\-S\-O\-R\-\_\-\-C\-O\-L\-O\-R@{T\-I\-L\-E\-\_\-\-C\-U\-R\-S\-O\-R\-\_\-\-C\-O\-L\-O\-R}}
+\index{T\-I\-L\-E\-\_\-\-C\-U\-R\-S\-O\-R\-\_\-\-C\-O\-L\-O\-R@{T\-I\-L\-E\-\_\-\-C\-U\-R\-S\-O\-R\-\_\-\-C\-O\-L\-O\-R}!stateEditor.cpp@{state\-Editor.\-cpp}}
+\subsubsection[{T\-I\-L\-E\-\_\-\-C\-U\-R\-S\-O\-R\-\_\-\-C\-O\-L\-O\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\-I\-L\-E\-\_\-\-C\-U\-R\-S\-O\-R\-\_\-\-C\-O\-L\-O\-R~255,255,0,255}}\label{state_editor_8cpp_acb5c8b80dc68682725b2627607ce95c7}
+
+
+Definition at line 30 of file state\-Editor.\-cpp.
+
+
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{state_editor_8cpp_a8bb1ef53467e4f61410d12822d922498}{\index{state\-Editor.\-cpp@{state\-Editor.\-cpp}!Action@{Action}}
+\index{Action@{Action}!stateEditor.cpp@{state\-Editor.\-cpp}}
+\subsubsection[{Action}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Action}}}\label{state_editor_8cpp_a8bb1ef53467e4f61410d12822d922498}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{N\-O\-N\-E@{N\-O\-N\-E}!state\-Editor.\-cpp@{state\-Editor.\-cpp}}\index{state\-Editor.\-cpp@{state\-Editor.\-cpp}!N\-O\-N\-E@{N\-O\-N\-E}}\item[{\em 
+\hypertarget{state_editor_8cpp_a8bb1ef53467e4f61410d12822d922498ac157bdf0b85a40d2619cbc8bc1ae5fe2}{N\-O\-N\-E}\label{state_editor_8cpp_a8bb1ef53467e4f61410d12822d922498ac157bdf0b85a40d2619cbc8bc1ae5fe2}
+}]\index{N\-E\-W\-\_\-\-L\-E\-V\-E\-L@{N\-E\-W\-\_\-\-L\-E\-V\-E\-L}!state\-Editor.\-cpp@{state\-Editor.\-cpp}}\index{state\-Editor.\-cpp@{state\-Editor.\-cpp}!N\-E\-W\-\_\-\-L\-E\-V\-E\-L@{N\-E\-W\-\_\-\-L\-E\-V\-E\-L}}\item[{\em 
+\hypertarget{state_editor_8cpp_a8bb1ef53467e4f61410d12822d922498ac2e095dcb8d836b8c45bf72410bb8185}{N\-E\-W\-\_\-\-L\-E\-V\-E\-L}\label{state_editor_8cpp_a8bb1ef53467e4f61410d12822d922498ac2e095dcb8d836b8c45bf72410bb8185}
+}]\index{L\-O\-A\-D\-\_\-\-L\-E\-V\-E\-L@{L\-O\-A\-D\-\_\-\-L\-E\-V\-E\-L}!state\-Editor.\-cpp@{state\-Editor.\-cpp}}\index{state\-Editor.\-cpp@{state\-Editor.\-cpp}!L\-O\-A\-D\-\_\-\-L\-E\-V\-E\-L@{L\-O\-A\-D\-\_\-\-L\-E\-V\-E\-L}}\item[{\em 
+\hypertarget{state_editor_8cpp_a8bb1ef53467e4f61410d12822d922498aa7fdf570ca3eaabcfb554e6c0631d33b}{L\-O\-A\-D\-\_\-\-L\-E\-V\-E\-L}\label{state_editor_8cpp_a8bb1ef53467e4f61410d12822d922498aa7fdf570ca3eaabcfb554e6c0631d33b}
+}]\index{S\-A\-V\-E\-\_\-\-L\-E\-V\-E\-L@{S\-A\-V\-E\-\_\-\-L\-E\-V\-E\-L}!state\-Editor.\-cpp@{state\-Editor.\-cpp}}\index{state\-Editor.\-cpp@{state\-Editor.\-cpp}!S\-A\-V\-E\-\_\-\-L\-E\-V\-E\-L@{S\-A\-V\-E\-\_\-\-L\-E\-V\-E\-L}}\item[{\em 
+\hypertarget{state_editor_8cpp_a8bb1ef53467e4f61410d12822d922498aadeb10875b22cdf545b019606d25cbeb}{S\-A\-V\-E\-\_\-\-L\-E\-V\-E\-L}\label{state_editor_8cpp_a8bb1ef53467e4f61410d12822d922498aadeb10875b22cdf545b019606d25cbeb}
+}]\index{R\-E\-S\-I\-Z\-E\-\_\-\-L\-E\-V\-E\-L@{R\-E\-S\-I\-Z\-E\-\_\-\-L\-E\-V\-E\-L}!state\-Editor.\-cpp@{state\-Editor.\-cpp}}\index{state\-Editor.\-cpp@{state\-Editor.\-cpp}!R\-E\-S\-I\-Z\-E\-\_\-\-L\-E\-V\-E\-L@{R\-E\-S\-I\-Z\-E\-\_\-\-L\-E\-V\-E\-L}}\item[{\em 
+\hypertarget{state_editor_8cpp_a8bb1ef53467e4f61410d12822d922498a9c8f2dccfd14b35fb02d46e54fa12d04}{R\-E\-S\-I\-Z\-E\-\_\-\-L\-E\-V\-E\-L}\label{state_editor_8cpp_a8bb1ef53467e4f61410d12822d922498a9c8f2dccfd14b35fb02d46e54fa12d04}
+}]\index{S\-H\-O\-W\-\_\-\-G\-R\-I\-D@{S\-H\-O\-W\-\_\-\-G\-R\-I\-D}!state\-Editor.\-cpp@{state\-Editor.\-cpp}}\index{state\-Editor.\-cpp@{state\-Editor.\-cpp}!S\-H\-O\-W\-\_\-\-G\-R\-I\-D@{S\-H\-O\-W\-\_\-\-G\-R\-I\-D}}\item[{\em 
+\hypertarget{state_editor_8cpp_a8bb1ef53467e4f61410d12822d922498a227cd6ee77e2a99e53a3827f5bd6d9dd}{S\-H\-O\-W\-\_\-\-G\-R\-I\-D}\label{state_editor_8cpp_a8bb1ef53467e4f61410d12822d922498a227cd6ee77e2a99e53a3827f5bd6d9dd}
+}]\index{S\-H\-O\-W\-\_\-\-C\-O\-L\-L\-I\-S\-I\-O\-N@{S\-H\-O\-W\-\_\-\-C\-O\-L\-L\-I\-S\-I\-O\-N}!state\-Editor.\-cpp@{state\-Editor.\-cpp}}\index{state\-Editor.\-cpp@{state\-Editor.\-cpp}!S\-H\-O\-W\-\_\-\-C\-O\-L\-L\-I\-S\-I\-O\-N@{S\-H\-O\-W\-\_\-\-C\-O\-L\-L\-I\-S\-I\-O\-N}}\item[{\em 
+\hypertarget{state_editor_8cpp_a8bb1ef53467e4f61410d12822d922498aac46c5ed79ca5f5249ea6442ee48a873}{S\-H\-O\-W\-\_\-\-C\-O\-L\-L\-I\-S\-I\-O\-N}\label{state_editor_8cpp_a8bb1ef53467e4f61410d12822d922498aac46c5ed79ca5f5249ea6442ee48a873}
+}]\index{E\-X\-I\-T\-\_\-\-E\-D\-I\-T\-O\-R@{E\-X\-I\-T\-\_\-\-E\-D\-I\-T\-O\-R}!state\-Editor.\-cpp@{state\-Editor.\-cpp}}\index{state\-Editor.\-cpp@{state\-Editor.\-cpp}!E\-X\-I\-T\-\_\-\-E\-D\-I\-T\-O\-R@{E\-X\-I\-T\-\_\-\-E\-D\-I\-T\-O\-R}}\item[{\em 
+\hypertarget{state_editor_8cpp_a8bb1ef53467e4f61410d12822d922498af72e3cb902b12024a2d77a388152c6d5}{E\-X\-I\-T\-\_\-\-E\-D\-I\-T\-O\-R}\label{state_editor_8cpp_a8bb1ef53467e4f61410d12822d922498af72e3cb902b12024a2d77a388152c6d5}
+}]\index{E\-X\-I\-T\-\_\-\-G\-A\-M\-E@{E\-X\-I\-T\-\_\-\-G\-A\-M\-E}!state\-Editor.\-cpp@{state\-Editor.\-cpp}}\index{state\-Editor.\-cpp@{state\-Editor.\-cpp}!E\-X\-I\-T\-\_\-\-G\-A\-M\-E@{E\-X\-I\-T\-\_\-\-G\-A\-M\-E}}\item[{\em 
+\hypertarget{state_editor_8cpp_a8bb1ef53467e4f61410d12822d922498a4bf4cbde18067e0600c7c8a7a30ba316}{E\-X\-I\-T\-\_\-\-G\-A\-M\-E}\label{state_editor_8cpp_a8bb1ef53467e4f61410d12822d922498a4bf4cbde18067e0600c7c8a7a30ba316}
+}]\end{description}
+\end{Desc}
+
+
+Definition at line 36 of file state\-Editor.\-cpp.
+
+\hypertarget{state_editor_8cpp_a6f567238a0aaa00ab1b336d0cf0faf4b}{\index{state\-Editor.\-cpp@{state\-Editor.\-cpp}!Window@{Window}}
+\index{Window@{Window}!stateEditor.cpp@{state\-Editor.\-cpp}}
+\subsubsection[{Window}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Window}}}\label{state_editor_8cpp_a6f567238a0aaa00ab1b336d0cf0faf4b}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{M\-A\-I\-N\-\_\-\-W\-I\-N\-D\-O\-W@{M\-A\-I\-N\-\_\-\-W\-I\-N\-D\-O\-W}!state\-Editor.\-cpp@{state\-Editor.\-cpp}}\index{state\-Editor.\-cpp@{state\-Editor.\-cpp}!M\-A\-I\-N\-\_\-\-W\-I\-N\-D\-O\-W@{M\-A\-I\-N\-\_\-\-W\-I\-N\-D\-O\-W}}\item[{\em 
+\hypertarget{state_editor_8cpp_a6f567238a0aaa00ab1b336d0cf0faf4ba6b2a95a0f211c094187a8c735cbde2db}{M\-A\-I\-N\-\_\-\-W\-I\-N\-D\-O\-W}\label{state_editor_8cpp_a6f567238a0aaa00ab1b336d0cf0faf4ba6b2a95a0f211c094187a8c735cbde2db}
+}]\index{R\-E\-S\-I\-Z\-E\-\_\-\-W\-I\-N\-D\-O\-W@{R\-E\-S\-I\-Z\-E\-\_\-\-W\-I\-N\-D\-O\-W}!state\-Editor.\-cpp@{state\-Editor.\-cpp}}\index{state\-Editor.\-cpp@{state\-Editor.\-cpp}!R\-E\-S\-I\-Z\-E\-\_\-\-W\-I\-N\-D\-O\-W@{R\-E\-S\-I\-Z\-E\-\_\-\-W\-I\-N\-D\-O\-W}}\item[{\em 
+\hypertarget{state_editor_8cpp_a6f567238a0aaa00ab1b336d0cf0faf4ba7f4b8cb2d10cda1b181ed9e6a6917d85}{R\-E\-S\-I\-Z\-E\-\_\-\-W\-I\-N\-D\-O\-W}\label{state_editor_8cpp_a6f567238a0aaa00ab1b336d0cf0faf4ba7f4b8cb2d10cda1b181ed9e6a6917d85}
+}]\index{U\-N\-S\-A\-V\-E\-D\-\_\-\-C\-H\-A\-N\-G\-E\-S\-\_\-\-W\-I\-N\-D\-O\-W@{U\-N\-S\-A\-V\-E\-D\-\_\-\-C\-H\-A\-N\-G\-E\-S\-\_\-\-W\-I\-N\-D\-O\-W}!state\-Editor.\-cpp@{state\-Editor.\-cpp}}\index{state\-Editor.\-cpp@{state\-Editor.\-cpp}!U\-N\-S\-A\-V\-E\-D\-\_\-\-C\-H\-A\-N\-G\-E\-S\-\_\-\-W\-I\-N\-D\-O\-W@{U\-N\-S\-A\-V\-E\-D\-\_\-\-C\-H\-A\-N\-G\-E\-S\-\_\-\-W\-I\-N\-D\-O\-W}}\item[{\em 
+\hypertarget{state_editor_8cpp_a6f567238a0aaa00ab1b336d0cf0faf4bafe99efc1646281ec783fcf03c70bd9e7}{U\-N\-S\-A\-V\-E\-D\-\_\-\-C\-H\-A\-N\-G\-E\-S\-\_\-\-W\-I\-N\-D\-O\-W}\label{state_editor_8cpp_a6f567238a0aaa00ab1b336d0cf0faf4bafe99efc1646281ec783fcf03c70bd9e7}
+}]\end{description}
+\end{Desc}
+
+
+Definition at line 48 of file state\-Editor.\-cpp.
+
