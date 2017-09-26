@@ -108,14 +108,17 @@ Game::Game(string title,int width,int height):frameStart{0},dt{0},winSize{(float
 	}
 
 	res = Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024);
+
 	if (res != 0)throw GameException("Problem when initiating SDL audio!");
 
 	res = TTF_Init();
 	if (res != 0)cerr << "Could not initialize TTF module!" << endl;
 
+	// Creating the window that will contain the game interface
+
+
 	window = SDL_CreateWindow(title.c_str(),SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,width,height,SDL_WINDOW_FULLSCREEN);
 
-	// window = SDL_CreateWindow(title.c_str(),SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,width,height,0);
 	if (!window)throw GameException("Window nao foi carregada)!");
 
 	renderer = SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED);
@@ -127,10 +130,7 @@ Game::Game(string title,int width,int height):frameStart{0},dt{0},winSize{(float
 
 /*!
 	@fn Game::~Game()
-	@brief This is a constructor
-	@param title
-	@param width
-	@param height
+	@brief This is a destructor
 	@warning Method that requires review of comment
 */
 
@@ -153,10 +153,9 @@ Game::~Game() {
 }
 
 /*!
-	@fn void Game::Run()
-	@brief
-	@param
-	@return
+	@fn Game& Game::GetInstance()
+	@brief Create a instance of class Game
+	@return Returns a instance of Game
 	@warning Method that requires review of comment
 */
 
@@ -165,10 +164,9 @@ Game& Game::GetInstance() {
 }
 
 /*!
-	@fn void Game::Run()
-	@brief
-	@param
-	@return
+	@fn State& Game::GetCurrentState()
+	@brief Verify the current object state
+	@return state
 	@warning Method that requires review of comment
 */
 
@@ -190,9 +188,9 @@ SDL_Renderer* Game::GetRenderer() {
 
 /*!
 	@fn void Game::Push(State* state)
-	@brief
-	@param
-	@return
+	@brief Swapping the object state
+	@param state
+	@return The execution of this method returns no value
 	@warning Method that requires review of comment
 */
 
@@ -205,14 +203,12 @@ void Game::Push(State* state) {
 	@fn void Game::Run()
 	@brief
 	@param
-	@return
+	@return The execution of this method returns no value
 	@warning Method that requires review of comment
 */
 
 void Game::Run() {
-	//SDL_Rect r;
-	//SDL_GetDisplayBounds(0, &r);
-	//cout<<r<<endl;
+
 	if (storedState) {
 		stateStack.push(unique_ptr<State>(storedState));
 		storedState=nullptr;
@@ -221,7 +217,7 @@ void Game::Run() {
 	while (!stateStack.empty()) {
 		CalculateDeltaTime();
 		INPUT.Update(dt);
-		//if (INPUT.KeyPress(KEY_F(11))) SwitchWindowMode();
+
 		GetCurrentState().Update(dt);
 		GetCurrentState().Render();
 		SDL_RenderPresent(renderer);
