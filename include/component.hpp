@@ -37,8 +37,8 @@ public:
 
 	virtual void Update(float time)=0;
 	virtual void Render()=0;
-	virtual void Own(GameObject *go);
-	virtual bool Die(float time);//return true to remove this component
+	virtual void own(GameObject *go);
+	virtual bool kills_component(float time);//return true to remove this component
 	virtual type GetType()const=0;
 };
 

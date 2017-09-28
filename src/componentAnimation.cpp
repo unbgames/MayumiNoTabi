@@ -238,20 +238,20 @@ void CompAnim::Render() {
 }
 
 /*!
-	@fn       void CompAnim::Own(GameObject* go)
+	@fn       void CompAnim::own(GameObject* go)
 	@brief    Sets ownage of a animation to a game object
 	@param    GameObject* go
 	@return   void
 	@warning  none
 */
 
-void CompAnim::Own(GameObject* go) {
+void CompAnim::own(GameObject* go) {
 	entity = go->uid;
 
 	// Iterates through the colliders and defines its ownage if they're not null
 	for (CompCollider *coll:colliders) {
 		if (coll != nullptr) {
-			coll->Own(go);
+			coll->own(go);
 		}
 	}
 

@@ -19,7 +19,7 @@ public:
 	~CompTimer();
 	void Update(float time);
 	void Render();
-	void Own(GameObject* go);
+	void own(GameObject* go);
 	Component::type GetType()const;
 };
 

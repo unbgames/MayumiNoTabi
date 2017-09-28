@@ -21,8 +21,8 @@ public:
 	~CompAI();
 
 	void Update(float time);
-	void Render();
-	Component::type GetType()const;
+	void render_component_ai();
+	Component::type get_type()const;
 };
 
 #endif//COMPONENTAIHPP

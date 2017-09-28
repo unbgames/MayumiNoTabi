@@ -85,11 +85,11 @@ extern int debugCount;
 #define FILL_RECT(r) SDL_RenderFillRect(GAMERENDER, (r))
 #define DRAW_LINE(x0,y0,x,y) SDL_RenderDrawLine(GAMERENDER,(x0),(y0),(x),(y))
 
-#define SDL_COLOR_BLACK MakeColor(0,0,0)
-#define SDL_COLOR_RED   MakeColor(255,0,0)
-#define SDL_COLOR_GREEN MakeColor(0,255,0)
-#define SDL_COLOR_BLUE  MakeColor(0,0,255)
-#define SDL_COLOR_WHITE MakeColor(255,255,255)
+#define SDL_COLOR_BLACK generate_color(0,0,0)
+#define SDL_COLOR_RED   generate_color(255,0,0)
+#define SDL_COLOR_GREEN generate_color(0,255,0)
+#define SDL_COLOR_BLUE  generate_color(0,0,255)
+#define SDL_COLOR_WHITE generate_color(255,255,255)
 
 #define PRECISION 0.0001
 #define PLAYER_JUMP 8.1//m/s

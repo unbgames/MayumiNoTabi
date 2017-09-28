@@ -50,7 +50,7 @@ void GameObject::Update(float time) {
 		// for (auto i=Component::type::t_first+1;i!=Component::type::t_count;i++) {
 		FOR(i,Component::type::t_count) {
 			if (HasComponent(i)) {
-				if (components[i]->Die(time))RemoveComponent((Component::type)i);
+				if (components[i]->kills_component(time))RemoveComponent((Component::type)i);
 				else remove=false;
 			}
 		}
@@ -79,14 +79,14 @@ void GameObject::AddComponent(Component* component) {
 	auto t=component->GetType();
 	if (HasComponent(t))cerr << "Error, adding component " << t << " to a GameObject that already has it" << endl;
 	components[t]=component;
-	component->Own(this);
+	component->own(this);
 }
 void GameObject::ReplaceComponent(Component* component) {
 	auto t=component->GetType();
 	if (!HasComponent(t))cerr << "Error, replacing component " << t << " on a GameObject that doesnt have it" << endl;
 	else delete components[t];
 	components[t]=component;
-	component->Own(this);
+	component->own(this);
 }
 void GameObject::RemoveComponent(Component::type t) {
 	if (!HasComponent(t))cerr << "Error, removing component " << t << " on a GameObject that doesnt have it" << endl;
@@ -97,7 +97,7 @@ void GameObject::RemoveComponent(Component::type t) {
 }
 void GameObject::SetComponent(Component::type t,Component* component) {
 	components[t]=component;
-	component->Own(this);
+	component->own(this);
 }
 bool GameObject::HasComponent(size_t t) const{
 	return (components[t] != nullptr);

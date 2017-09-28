@@ -297,7 +297,7 @@ string GUI_IntBox::GetValue()const{
 }
 
 //GUI_Label
-GUI_Label::GUI_Label(const string& t,Snap s,const Vec2& pos):GUI_Element(pos),text{t,DEFAULT_FONT_SIZE,MakeColor(LABEL_COLOR)},snap{s}{
+GUI_Label::GUI_Label(const string& t,Snap s,const Vec2& pos):GUI_Element(pos),text{t,DEFAULT_FONT_SIZE,generate_color(LABEL_COLOR)},snap{s}{
 	text.SetHotspot();
 	box.w = text.GetBox().w;
 	if (snap==SNAP_LEFT || snap==SNAP_RIGHT)

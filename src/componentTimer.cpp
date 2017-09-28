@@ -20,7 +20,7 @@ void CompTimer::Update(float time) {
 void CompTimer::Render() {}
 
 
-void CompTimer::Own(GameObject* go) {
+void CompTimer::own(GameObject* go) {
 	entity=go->uid;
 }
 

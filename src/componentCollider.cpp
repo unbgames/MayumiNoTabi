@@ -45,7 +45,7 @@ void CompCollider::Render() {
 			FILL_RECT(&r);
 		}
 };
-void CompCollider::Own(GameObject *go) {
+void CompCollider::own(GameObject *go) {
 	entity=go->uid;
 	if (go != nullptr) {
 		if (colls.size()) {
@@ -60,7 +60,7 @@ void CompCollider::Own(GameObject *go) {
 		}
 	}
 }
-bool CompCollider::Die(float time) {
+bool CompCollider::kills_component(float time) {
 	UNUSED(time);
 
 	if (GO(entity)->HasComponent(Component::type::t_animation))return true;

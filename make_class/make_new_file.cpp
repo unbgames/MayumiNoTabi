@@ -98,7 +98,7 @@ void makeCOMPONENT_HPP(string s) {
 	file << "	~" << className << "();" << endl;
 	file << "	void Update(float time);" << endl;
 	file << "	void Render();" << endl;
-	file << "	void Own(GameObject* go);" << endl;
+	file << "	void own(GameObject* go);" << endl;
 	file << "	Component::type GetType()const;" << endl;
 	file << "};" << endl;
 	file << endl;
@@ -130,7 +130,7 @@ void makeCOMPONENT_CPP(string s) {
 	file << endl << endl;
 	file << "void " << className << "::Render() {}" << endl;
 	file << endl << endl;
-	file << "void " << className << "::Own(GameObject* go) {" << endl;
+	file << "void " << className << "::own(GameObject* go) {" << endl;
 	file << "	entity=go->uid;" << endl;
 	file << "}" << endl;
 	file << endl << endl;

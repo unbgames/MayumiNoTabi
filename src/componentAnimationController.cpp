@@ -82,7 +82,7 @@ void CompAnimControl::ChangeCur(string anim,
 
 			GetCur().SetCurFrame(0);
 			GetCur().sp.looped = false;
-			GetCur().Own(GO(entity));
+			GetCur().own(GO(entity));
 		}
 	}
 	else {
@@ -179,32 +179,32 @@ void CompAnimControl::Render() {
 }
 
 /*!
-	@fn       void CompAnimControl::Own(GameObject *go)
+	@fn       void CompAnimControl::own(GameObject *go)
 	@brief    Sets ownage of animation to a Game Object
 	@param    GameObject object
 	@return   void
 	@warning  none
 */
 
-void CompAnimControl::Own(GameObject *go) {
+void CompAnimControl::own(GameObject *go) {
 	entity = go->uid;
 
   for (auto &anim:animations) {
-		anim.second->Own(go);
+		anim.second->own(go);
 	}
 
-	GetCur().Own(go);
+	GetCur().own(go);
 }
 
 /*!
-	@fn       bool CompAnimControl::Die(float time)
+	@fn       bool CompAnimControl::kills_component(float time)
 	@brief    Method for rendering player's death animation
 	@param    float time value
 	@return   boolean value
 	@warning  TODO: alternative flux in condition structures
 */
 
-bool CompAnimControl::Die(float time) { // range: unknown
+bool CompAnimControl::kills_component(float time) { // range: unknown
 	UNUSED(time);
 
 	// TODO: else (do nothing)

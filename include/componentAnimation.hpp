@@ -30,7 +30,7 @@ public:
 	bool Looped()const;
 
 	void Update(float time);
-	void Own(GameObject *go);
+	void own(GameObject *go);
 	void Render();
 	Component::type GetType()const;
 };

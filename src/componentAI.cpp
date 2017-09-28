@@ -34,37 +34,36 @@ CompAI::~CompAI() {
 }
 
 /*!
-	@fn       void CompAI::Update(float time)
-	@brief    Updates the component AI based on the time param
-	@param    float value that resembles time
-	@return   void
-	@warning  none
+  @fn       void CompAI::Update(float time)
+  @brief    Updates the component AI based on the time param
+  @param    float value that resembles time
+  @return   void
+  @warning  none
 */
 
 void CompAI::Update(float time) {
-	foo(this,time);
+  foo(this,time);  // Maybe I should leave it's name like this
 }
 
 /*!
-	@fn       void CompAI::Render()
-	@brief    Renders component ai
-	@param    none
-	@return   void
-	@warning  Empty
+  @fn       void CompAI::Render()
+  @brief    Renders component ai
+  @param    none
+  @return   void
+  @warning  Empty
 */
 
-void CompAI::Render() {
-
+void CompAI::render_component_ai() {
 }
 
 /*!
-	@fn       Component::type CompAI::GetType()const
-	@brief    Method that picks a component type and returns it
-	@param    none
-	@return   Component::type
-	@warning  TODO: refactorate for better understanding
+  @fn       Component::type CompAI::GetType()const
+  @brief    Method that picks a component type and returns it
+  @param    none
+  @return   Component::type
+  @warning  TODO: refactorate for better understanding
 */
 
-Component::type CompAI::GetType()const {
-	return Component::type::t_ai;
+Component::type CompAI::get_type()const {
+  return Component::type::t_ai;
 }
