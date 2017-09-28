@@ -177,7 +177,7 @@ void StateEditor::Update(float time) {
 	
 	//UpdateArray(time);
 	
-	statusText.SetText("Mouse:("+to_string(INPUT.GetMouseX())+","+to_string(INPUT.GetMouseY())+")  Zoom:"+FloatToStr(100*CAMERAZOOM)+"%");
+	statusText.SetText("Mouse:("+to_string(INPUT.GetMouseX())+","+to_string(INPUT.GetMouseY())+")  Zoom:"+convert_float_to_str(100*CAMERAZOOM)+"%");
 }
 void StateEditor::Render() {
 	RenderBackground();
