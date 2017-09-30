@@ -15,10 +15,10 @@ void TileSet::Load(int  w, int h, string file) {
 	columns = tileSet.GetWidth()/tileWidth;
 }
 
-void TileSet::Render(unsigned int index,float x,float y, float extScale) {
+void TileSet::render(unsigned int index,float x,float y, float extScale) {
 	if ((int)index<(rows*columns)) {
 		tileSet.SetClip(tileWidth*(index%columns),(tileHeight*(index/columns)),tileWidth,tileHeight);
-		tileSet.Render(x,y,0,extScale);
+		tileSet.render(x,y,0,extScale);
 	}
 }
 

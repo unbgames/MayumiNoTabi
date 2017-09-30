@@ -8,7 +8,7 @@ GUIManager::~GUIManager() {
 	elements.clear();
 }
 
-void GUIManager::Update() {
+void GUIManager::update() {
 	if (popRequested) {
 		selectedWindow = nullptr;
 		selectedButton = nullptr;
@@ -32,17 +32,17 @@ void GUIManager::Update() {
 	if (selectedButton) {
 		GUI_Button* selectedButtonCopy = selectedButton;
 		selectedButton = nullptr;
-		selectedButtonCopy->Update();
+		selectedButtonCopy->update();
 		selectedButton = selectedButtonCopy;
 		currentButtonState = selectedButton->IsPressed();
 	}
 	
-	elements.back()->Update();	
+	elements.back()->update();	
 }
-void GUIManager::Render() {
+void GUIManager::render() {
 	for (auto& it:elements)
 		if (it->IsVisible())
-			it->Render();
+			it->render();
 }
 
 void GUIManager::PushElement(GUI_Element* element) {

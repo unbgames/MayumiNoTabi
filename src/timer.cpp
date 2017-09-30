@@ -2,7 +2,7 @@
 
 Timer::Timer() {}
 
-void Timer::Update(float dTime) {
+void Timer::update(float dTime) {
 	time+=dTime;
 }
 void Timer::Restart() {

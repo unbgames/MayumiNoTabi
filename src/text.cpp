@@ -18,7 +18,7 @@ Text::~Text() {
 		if (i.texture)SDL_DestroyTexture(i.texture);
 }
 
-void Text::Render(Vec2 camera, Rect* clipRect) {
+void Text::render(Vec2 camera, Rect* clipRect) {
 	Vec2 pos = box.hotspot(hotspot);
 
 	int x = pos.x-(camera.x*CAMERAZOOM);

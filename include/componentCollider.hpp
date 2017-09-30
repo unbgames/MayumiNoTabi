@@ -40,11 +40,11 @@ public:
 	//functions
 	void CollisionCheck(CompCollider *other);
 
-	void Update(float time);
-	void Render();
+	void update(float time);
+	void render();
 	void own(GameObject *go);
 	bool kills_component(float time);//return true to remove this component
-	Component::type GetType() const;
+	Component::type get_type() const;
 };
 
 #endif//COMPONENTCOLLIDERHPP

@@ -82,11 +82,11 @@ void TileMap::RenderLayer(int layer,int posX ,int posY) {
 		for (int x=firstX;x<=lastX;x++) {
 			tile = At(x, y, layer);
 			if (tile != EMPTY_TILE)
-				tileSet->Render(tile, RENDERPOSX(posX+(x*w)), RENDERPOSY(posY+(y*h)), CAMERAZOOM);
+				tileSet->render(tile, RENDERPOSX(posX+(x*w)), RENDERPOSY(posY+(y*h)), CAMERAZOOM);
 		}
 	}
 }
-void TileMap::Render(Vec2 pos) {
+void TileMap::render(Vec2 pos) {
 	FOR(i,mapDepth) {
 		RenderLayer(i,pos.x,pos.y);
 	}

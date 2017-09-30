@@ -28,7 +28,7 @@ public:
 	int& At(int x,int y,int z);
 	int  At(int x,int y,int z) const;
 	
-	void Render(Vec2 pos = {0,0});
+	void render(Vec2 pos = {0,0});
 	void RenderLayer(int layer,int posX=0,int posY=0);
 	
 	int GetWidth() const;

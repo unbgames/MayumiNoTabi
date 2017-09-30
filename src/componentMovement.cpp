@@ -8,12 +8,12 @@ CompMovement::CompMovement(const Vec2& s,moveType t):mType{t},speed{s}{}
 CompMovement::~CompMovement() {}
 
 
-void CompMovement::Update(float time) {
+void CompMovement::update(float time) {
 	UNUSED(time);
 	GO(entity)->pos+=move;
 	if (mType==moveType::t_bullet)GO(entity)->rotation=speed.angle();
 }
-void CompMovement::Render() {}
-Component::type CompMovement::GetType()const{
+void CompMovement::render() {}
+Component::type CompMovement::get_type()const{
 	return Component::type::t_movement;
 }

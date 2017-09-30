@@ -75,9 +75,9 @@ void StateEditor::Begin() {
 	statusText.SetHotspot(Hotspot::BOTTOM_RIGHT);
 }
 
-void StateEditor::Update(float time) {
-	Camera::Update(time);
-	gui.Update();
+void StateEditor::update(float time) {
+	Camera::update(time);
+	gui.update();
 	if (INPUT.QuitRequested() || gui.ButtonClick(EXIT_GAME)) {
 		quitRequested = true;
 		Exit();
@@ -179,21 +179,21 @@ void StateEditor::Update(float time) {
 	
 	statusText.SetText("Mouse:("+to_string(INPUT.GetMouseX())+","+to_string(INPUT.GetMouseY())+")  Zoom:"+convert_float_to_str(100*CAMERAZOOM)+"%");
 }
-void StateEditor::Render() {
+void StateEditor::render() {
 	RenderBackground();
 
 	//Tirei background daqui
-	//level.background.Render(RENDERPOSX(0), RENDERPOSY(0), 0, CAMERAZOOM);
-	level.tileMap.Render();
+	//level.background.render(RENDERPOSX(0), RENDERPOSY(0), 0, CAMERAZOOM);
+	level.tileMap.render();
 	RenderArray();
 	if (showGrid) RenderGrid(gridWidth, gridHeight);
 	RenderBorder();
 	if (showCollision) RenderCollision();
 	RenderCursor();
 	
-	gui.Render();
-	//helpText.Render();
-	statusText.Render();
+	gui.render();
+	//helpText.render();
+	statusText.render();
 }
 
 void StateEditor::Pause() {}
@@ -253,7 +253,7 @@ void StateEditor::RenderCursor() {
 	
 	Rect canvas(0, 0, mapWidth-1, mapHeight-1);
 	if (canvas.contains(cursor)) {
-		level.tileSet.Render(tileIndex, RENDERPOSX(cursor.x*tileWidth), RENDERPOSY(cursor.y*tileHeight), CAMERAZOOM);
+		level.tileSet.render(tileIndex, RENDERPOSX(cursor.x*tileWidth), RENDERPOSY(cursor.y*tileHeight), CAMERAZOOM);
 	
 		SET_COLOR(TILE_CURSOR_COLOR);
 	

@@ -6,10 +6,10 @@
 CompInputControl::CompInputControl(function<void(GameObject*,float)> f):func{f}{}
 CompInputControl::~CompInputControl() {}
 
-void CompInputControl::Update(float time) {
+void CompInputControl::update(float time) {
 	func(GO(entity),time);
 }
-void CompInputControl::Render() {}
-Component::type CompInputControl::GetType()const{
+void CompInputControl::render() {}
+Component::type CompInputControl::get_type()const{
 	return Component::type::t_input_control;
 }

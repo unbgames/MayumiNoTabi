@@ -8,16 +8,16 @@ CompStaticRender::CompStaticRender(const Sprite &s,const Vec2 &p, const bool cs)
 CompStaticRender::~CompStaticRender() {}
 
 
-void CompStaticRender::Update(float time) {
-	sp.Update(time);
+void CompStaticRender::update(float time) {
+	sp.update(time);
 }
-void CompStaticRender::Render() {
+void CompStaticRender::render() {
 	Vec2 p = pos;
 	p = GO(entity)->Box().corner() + p.rotate(GO(entity)->rotation);
 	sp.SetFlipH(GO(entity)->flipped);
-	if (camScaling) sp.Render((p-CAMERA)*CAMERAZOOM,GO(entity)->rotation, CAMERAZOOM);
-	else sp.Render(p,GO(entity)->rotation, 1);
+	if (camScaling) sp.render((p-CAMERA)*CAMERAZOOM,GO(entity)->rotation, CAMERAZOOM);
+	else sp.render(p,GO(entity)->rotation, 1);
 }
-Component::type CompStaticRender::GetType()const{
+Component::type CompStaticRender::get_type()const{
 	return Component::type::t_static_render;
 }

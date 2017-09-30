@@ -136,10 +136,10 @@ void Game::Run() {
 	}
 	while (!stateStack.empty()) {
 		CalculateDeltaTime();
-		INPUT.Update(dt);
+		INPUT.update(dt);
 		//if (INPUT.KeyPress(KEY_F(11))) SwitchWindowMode();
-		GetCurrentState().Update(dt);
-		GetCurrentState().Render();
+		GetCurrentState().update(dt);
+		GetCurrentState().render();
 		SDL_RenderPresent(renderer);
 		
 		if (GetCurrentState().QuitRequested()) break;

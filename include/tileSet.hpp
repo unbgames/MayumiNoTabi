@@ -19,7 +19,7 @@ public:
 	
 	void Load(int w, int h, string file);
 	
-	void Render(unsigned int index,float x,float y, float extScale = 1.0f);
+	void render(unsigned int index,float x,float y, float extScale = 1.0f);
 	
 	int GetWidth();
 	int GetHeight();

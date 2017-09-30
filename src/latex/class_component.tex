@@ -43,9 +43,9 @@ enum \hyperlink{class_component_ad6d161b6acf7b843b55bb9feac7af71a}{type} \{ \\*
 \item 
 virtual \hyperlink{class_component_a2e9aa4348314d981f05f67397ad2f872}{$\sim$\-Component} ()
 \item 
-virtual \hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_component_a20c791684d452b36fcce40ac9038c735}{Update} (float time)=0
+virtual \hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_component_a20c791684d452b36fcce40ac9038c735}{update} (float time)=0
 \item 
-virtual \hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_component_a0c67ccdaf754b96520e3428284a74a7f}{Render} ()=0
+virtual \hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_component_a0c67ccdaf754b96520e3428284a74a7f}{render} ()=0
 \item 
 virtual \hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_component_af6a505dae181fc1a3498b779a4bd162e}{Own} (\hyperlink{class_game_object}{Game\-Object} $\ast$go)
 \item 
@@ -164,7 +164,7 @@ Definition at line 18 of file component.\-cpp.
 ) const\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_component_a1440354c23703096a6439d45ab85e4fd}
 
 
-Implemented in \hyperlink{class_comp_collider_a90ff44d718410925072cfcb3d934f196}{Comp\-Collider}, \hyperlink{class_comp_anim_control_adaed169358aac3d66d8d543ca36817c4}{Comp\-Anim\-Control}, \hyperlink{class_comp_anim_af25364111916fa6b5841d039d696295f}{Comp\-Anim}, \hyperlink{class_comp_h_p_a0fd0311386f7029e9b5cc49742fce649}{Comp\-H\-P}, \hyperlink{class_comp_movement_a922f5115a34e151e9414141ac8f0c324}{Comp\-Movement}, \hyperlink{class_comp_static_render_af6da06eca12dbf351fd02de3d8228b37}{Comp\-Static\-Render}, \hyperlink{class_comp_a_i_ab94fe24642c71cc2c61fe13b89b4b84c}{Comp\-A\-I}, \hyperlink{class_comp_memory_abb43c1384fa0f909e590fbe11d855a72}{Comp\-Memory}, \hyperlink{class_comp_text_a9ebc96605bb9c997ec65d5cda5075891}{Comp\-Text}, \hyperlink{class_comp_timer_a6e1db211f4104879a1f36cb82320663c}{Comp\-Timer}, \hyperlink{class_comp_input_control_a2e4ee7ab44ba39bb4d011af305717ff6}{Comp\-Input\-Control}, and \hyperlink{class_comp_gravity_aa480e4c57226eb0363478f1543fc411a}{Comp\-Gravity}.
+Implemented in \hyperlink{class_comp_collider_a90ff44d718410925072cfcb3d934f196}{Comp\-Collider}, \hyperlink{class_comp_anim_control_adaed169358aac3d66d8d543ca36817c4}{Comp\-Anim\-Control}, \hyperlink{class_comp_anim_af25364111916fa6b5841d039d696295f}{Comp\-Anim}, \hyperlink{class_comp_h_p_a0fd0311386f7029e9b5cc49742fce649}{Comp\-H\-P}, \hyperlink{class_comp_movement_a922f5115a34e151e9414141ac8f0c324}{Comp\-Movement}, \hyperlink{class_comp_static_render_af6da06eca12dbf351fd02de3d8228b37}{Comp\-Static\-render}, \hyperlink{class_comp_a_i_ab94fe24642c71cc2c61fe13b89b4b84c}{Comp\-A\-I}, \hyperlink{class_comp_memory_abb43c1384fa0f909e590fbe11d855a72}{Comp\-Memory}, \hyperlink{class_comp_text_a9ebc96605bb9c997ec65d5cda5075891}{Comp\-Text}, \hyperlink{class_comp_timer_a6e1db211f4104879a1f36cb82320663c}{Comp\-Timer}, \hyperlink{class_comp_input_control_a2e4ee7ab44ba39bb4d011af305717ff6}{Comp\-Input\-Control}, and \hyperlink{class_comp_gravity_aa480e4c57226eb0363478f1543fc411a}{Comp\-Gravity}.
 
 \hypertarget{class_component_af6a505dae181fc1a3498b779a4bd162e}{\index{Component@{Component}!Own@{Own}}
 \index{Own@{Own}!Component@{Component}}
@@ -181,27 +181,27 @@ Reimplemented in \hyperlink{class_comp_collider_a0e23be031b8aef7f2d21d05bc254bbb
 
 Definition at line 12 of file component.\-cpp.
 
-\hypertarget{class_component_a0c67ccdaf754b96520e3428284a74a7f}{\index{Component@{Component}!Render@{Render}}
-\index{Render@{Render}!Component@{Component}}
-\subsubsection[{Render}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf void} Component\-::\-Render (
+\hypertarget{class_component_a0c67ccdaf754b96520e3428284a74a7f}{\index{Component@{Component}!render@{render}}
+\index{render@{render}!Component@{Component}}
+\subsubsection[{render}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf void} Component\-::\-render (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_component_a0c67ccdaf754b96520e3428284a74a7f}
 
 
-Implemented in \hyperlink{class_comp_collider_a0797d855ac72f90c7385764785bd5862}{Comp\-Collider}, \hyperlink{class_comp_anim_a5a453e9ac658863696c3db745e6fc0bf}{Comp\-Anim}, \hyperlink{class_comp_anim_control_a2b23ff1dc6a0748ed5a7fadb07bb8bbb}{Comp\-Anim\-Control}, \hyperlink{class_comp_h_p_a81565c18ea23d7e67cfeccecad45fdd9}{Comp\-H\-P}, \hyperlink{class_comp_movement_ad387deb1874044cca15dd58a014e3544}{Comp\-Movement}, \hyperlink{class_comp_static_render_a1dee437e9c9c133b8dbbf73fe1a3010d}{Comp\-Static\-Render}, \hyperlink{class_comp_a_i_afd0228f41ea5612976f08ffbcdef632a}{Comp\-A\-I}, \hyperlink{class_comp_memory_a327e5e6a1abac3d72c32f85b99baf592}{Comp\-Memory}, \hyperlink{class_comp_text_ac546961e42fa2b51e63aa55e7415936d}{Comp\-Text}, \hyperlink{class_comp_timer_acdf498b351f60ce88f2b1ca8c91c2338}{Comp\-Timer}, \hyperlink{class_comp_input_control_ae451f1ce791bf18d967dd768b164f59c}{Comp\-Input\-Control}, and \hyperlink{class_comp_gravity_a87d2f55051fe45905a21e7a98639dca0}{Comp\-Gravity}.
+Implemented in \hyperlink{class_comp_collider_a0797d855ac72f90c7385764785bd5862}{Comp\-Collider}, \hyperlink{class_comp_anim_a5a453e9ac658863696c3db745e6fc0bf}{Comp\-Anim}, \hyperlink{class_comp_anim_control_a2b23ff1dc6a0748ed5a7fadb07bb8bbb}{Comp\-Anim\-Control}, \hyperlink{class_comp_h_p_a81565c18ea23d7e67cfeccecad45fdd9}{Comp\-H\-P}, \hyperlink{class_comp_movement_ad387deb1874044cca15dd58a014e3544}{Comp\-Movement}, \hyperlink{class_comp_static_render_a1dee437e9c9c133b8dbbf73fe1a3010d}{Comp\-Static\-render}, \hyperlink{class_comp_a_i_afd0228f41ea5612976f08ffbcdef632a}{Comp\-A\-I}, \hyperlink{class_comp_memory_a327e5e6a1abac3d72c32f85b99baf592}{Comp\-Memory}, \hyperlink{class_comp_text_ac546961e42fa2b51e63aa55e7415936d}{Comp\-Text}, \hyperlink{class_comp_timer_acdf498b351f60ce88f2b1ca8c91c2338}{Comp\-Timer}, \hyperlink{class_comp_input_control_ae451f1ce791bf18d967dd768b164f59c}{Comp\-Input\-Control}, and \hyperlink{class_comp_gravity_a87d2f55051fe45905a21e7a98639dca0}{Comp\-Gravity}.
 
-\hypertarget{class_component_a20c791684d452b36fcce40ac9038c735}{\index{Component@{Component}!Update@{Update}}
-\index{Update@{Update}!Component@{Component}}
-\subsubsection[{Update}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf void} Component\-::\-Update (
+\hypertarget{class_component_a20c791684d452b36fcce40ac9038c735}{\index{Component@{Component}!update@{update}}
+\index{update@{update}!Component@{Component}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf void} Component\-::\-update (
 \begin{DoxyParamCaption}
 \item[{float}]{time}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_component_a20c791684d452b36fcce40ac9038c735}
 
 
-Implemented in \hyperlink{class_comp_collider_ae2883ed5f225e3f496f77bcf5c6f9286}{Comp\-Collider}, \hyperlink{class_comp_anim_ac2e2e27fe70b13a8cce4f8a1df792e59}{Comp\-Anim}, \hyperlink{class_comp_anim_control_a30942bb6ac00771fe7c517ea64096d65}{Comp\-Anim\-Control}, \hyperlink{class_comp_h_p_addbc7227df2932a60af577a1da7ff7a5}{Comp\-H\-P}, \hyperlink{class_comp_movement_a9d20396d3bf2646bb8e0d2fffc0cccd0}{Comp\-Movement}, \hyperlink{class_comp_static_render_ae48cbdf0b5800c555d7454a3791de2f5}{Comp\-Static\-Render}, \hyperlink{class_comp_a_i_a24c424b8be6b67a470d89a0fa781c866}{Comp\-A\-I}, \hyperlink{class_comp_memory_aa5ade8164c2bd2cea6f36b4d8c307cbb}{Comp\-Memory}, \hyperlink{class_comp_text_a7c77ec33b3fe74de7bb54906eac33faa}{Comp\-Text}, \hyperlink{class_comp_timer_a6d5a7782297956042ba4dd8eb20a42fc}{Comp\-Timer}, \hyperlink{class_comp_input_control_acd26d145112fbbfd2e94582f36e6535c}{Comp\-Input\-Control}, and \hyperlink{class_comp_gravity_a8d229e6d5f10dd78f343e6cfb35feb42}{Comp\-Gravity}.
+Implemented in \hyperlink{class_comp_collider_ae2883ed5f225e3f496f77bcf5c6f9286}{Comp\-Collider}, \hyperlink{class_comp_anim_ac2e2e27fe70b13a8cce4f8a1df792e59}{Comp\-Anim}, \hyperlink{class_comp_anim_control_a30942bb6ac00771fe7c517ea64096d65}{Comp\-Anim\-Control}, \hyperlink{class_comp_h_p_addbc7227df2932a60af577a1da7ff7a5}{Comp\-H\-P}, \hyperlink{class_comp_movement_a9d20396d3bf2646bb8e0d2fffc0cccd0}{Comp\-Movement}, \hyperlink{class_comp_static_render_ae48cbdf0b5800c555d7454a3791de2f5}{Comp\-Static\-render}, \hyperlink{class_comp_a_i_a24c424b8be6b67a470d89a0fa781c866}{Comp\-A\-I}, \hyperlink{class_comp_memory_aa5ade8164c2bd2cea6f36b4d8c307cbb}{Comp\-Memory}, \hyperlink{class_comp_text_a7c77ec33b3fe74de7bb54906eac33faa}{Comp\-Text}, \hyperlink{class_comp_timer_a6d5a7782297956042ba4dd8eb20a42fc}{Comp\-Timer}, \hyperlink{class_comp_input_control_acd26d145112fbbfd2e94582f36e6535c}{Comp\-Input\-Control}, and \hyperlink{class_comp_gravity_a8d229e6d5f10dd78f343e6cfb35feb42}{Comp\-Gravity}.
 
 
 

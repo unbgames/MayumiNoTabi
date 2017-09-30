@@ -26,13 +26,13 @@ Inheritance diagram for Comp\-Anim\-:\begin{figure}[H]
 \item 
 \hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_comp_anim_ab3167e189c39d976a4474874b0b2b168}{Set\-Cur\-Frame} (\hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int} frame, bool force=false)
 \item 
-bool \hyperlink{class_comp_anim_ac6bd76a5091dac4a91966773330c31d1}{Looped} () const 
+bool \hyperlink{class_comp_anim_ac6bd76a5091dac4a91966773330c31d1}{is_looped} () const 
 \item 
-\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_comp_anim_ac2e2e27fe70b13a8cce4f8a1df792e59}{Update} (float time)
+\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_comp_anim_ac2e2e27fe70b13a8cce4f8a1df792e59}{update} (float time)
 \item 
 \hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_comp_anim_a41d7df3049e9cf1db1d8f00cbaf73062}{Own} (\hyperlink{class_game_object}{Game\-Object} $\ast$go)
 \item 
-\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_comp_anim_a5a453e9ac658863696c3db745e6fc0bf}{Render} ()
+\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_comp_anim_a5a453e9ac658863696c3db745e6fc0bf}{render} ()
 \item 
 \hyperlink{class_component_ad6d161b6acf7b843b55bb9feac7af71a}{Component\-::type} \hyperlink{class_comp_anim_af25364111916fa6b5841d039d696295f}{Get\-Type} () const 
 \end{DoxyCompactItemize}
@@ -133,9 +133,9 @@ Implements \hyperlink{class_component_a1440354c23703096a6439d45ab85e4fd}{Compone
 
 Definition at line 200 of file component\-Animation.\-cpp.
 
-\hypertarget{class_comp_anim_ac6bd76a5091dac4a91966773330c31d1}{\index{Comp\-Anim@{Comp\-Anim}!Looped@{Looped}}
-\index{Looped@{Looped}!CompAnim@{Comp\-Anim}}
-\subsubsection[{Looped}]{\setlength{\rightskip}{0pt plus 5cm}bool Comp\-Anim\-::\-Looped (
+\hypertarget{class_comp_anim_ac6bd76a5091dac4a91966773330c31d1}{\index{Comp\-Anim@{Comp\-Anim}!is_looped@{is_looped}}
+\index{is_looped@{is_looped}!CompAnim@{Comp\-Anim}}
+\subsubsection[{is_looped}]{\setlength{\rightskip}{0pt plus 5cm}bool Comp\-Anim\-::\-is_looped (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
@@ -159,9 +159,9 @@ Reimplemented from \hyperlink{class_component_af6a505dae181fc1a3498b779a4bd162e}
 
 Definition at line 184 of file component\-Animation.\-cpp.
 
-\hypertarget{class_comp_anim_a5a453e9ac658863696c3db745e6fc0bf}{\index{Comp\-Anim@{Comp\-Anim}!Render@{Render}}
-\index{Render@{Render}!CompAnim@{Comp\-Anim}}
-\subsubsection[{Render}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} Comp\-Anim\-::\-Render (
+\hypertarget{class_comp_anim_a5a453e9ac658863696c3db745e6fc0bf}{\index{Comp\-Anim@{Comp\-Anim}!render@{render}}
+\index{render@{render}!CompAnim@{Comp\-Anim}}
+\subsubsection[{render}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} Comp\-Anim\-::\-render (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
@@ -186,9 +186,9 @@ Definition at line 175 of file component\-Animation.\-cpp.
 
 Definition at line 112 of file component\-Animation.\-cpp.
 
-\hypertarget{class_comp_anim_ac2e2e27fe70b13a8cce4f8a1df792e59}{\index{Comp\-Anim@{Comp\-Anim}!Update@{Update}}
-\index{Update@{Update}!CompAnim@{Comp\-Anim}}
-\subsubsection[{Update}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} Comp\-Anim\-::\-Update (
+\hypertarget{class_comp_anim_ac2e2e27fe70b13a8cce4f8a1df792e59}{\index{Comp\-Anim@{Comp\-Anim}!update@{update}}
+\index{update@{update}!CompAnim@{Comp\-Anim}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} Comp\-Anim\-::\-update (
 \begin{DoxyParamCaption}
 \item[{float}]{time}
 \end{DoxyParamCaption}

@@ -20,7 +20,7 @@ public:
 	CompAI(aiFunc func);
 	~CompAI();
 
-	void Update(float time);
+	void update(float time);
 	void render_component_ai();
 	Component::type get_type()const;
 };

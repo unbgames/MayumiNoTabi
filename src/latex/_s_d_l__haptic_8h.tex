@@ -137,7 +137,7 @@ typedef union \hyperlink{union_s_d_l___haptic_effect}{S\-D\-L\-\_\-\-Haptic\-Eff
 \begin{DoxyCompactList}\small\item\em Checks to see if effect is supported by haptic. \end{DoxyCompactList}\item 
 \hyperlink{begin__code_8h_aa4c7a931f4a968f818b2a1b10a432185}{D\-E\-C\-L\-S\-P\-E\-C} \hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int} \hyperlink{begin__code_8h_a81faf4ba0455dc75f2e0507eddb79401}{S\-D\-L\-C\-A\-L\-L} \hyperlink{_s_d_l__haptic_8h_a176c52ff4b77b63cb94ea83f8f4183ad}{S\-D\-L\-\_\-\-Haptic\-New\-Effect} (\hyperlink{_s_d_l__haptic_8h_a79db098a0e8cb102db6c2339a2422e29}{S\-D\-L\-\_\-\-Haptic} $\ast$haptic, \hyperlink{union_s_d_l___haptic_effect}{S\-D\-L\-\_\-\-Haptic\-Effect} $\ast$effect)
 \begin{DoxyCompactList}\small\item\em Creates a new haptic effect on the device. \end{DoxyCompactList}\item 
-\hyperlink{begin__code_8h_aa4c7a931f4a968f818b2a1b10a432185}{D\-E\-C\-L\-S\-P\-E\-C} \hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int} \hyperlink{begin__code_8h_a81faf4ba0455dc75f2e0507eddb79401}{S\-D\-L\-C\-A\-L\-L} \hyperlink{_s_d_l__haptic_8h_a4c212cbdb3487dd8d72882d355a19472}{S\-D\-L\-\_\-\-Haptic\-Update\-Effect} (\hyperlink{_s_d_l__haptic_8h_a79db098a0e8cb102db6c2339a2422e29}{S\-D\-L\-\_\-\-Haptic} $\ast$haptic, \hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int} effect, \hyperlink{union_s_d_l___haptic_effect}{S\-D\-L\-\_\-\-Haptic\-Effect} $\ast$\hyperlink{_s_d_l__opengl_8h_a2e335d56e2846b0fea47eed068b2d34a}{data})
+\hyperlink{begin__code_8h_aa4c7a931f4a968f818b2a1b10a432185}{D\-E\-C\-L\-S\-P\-E\-C} \hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int} \hyperlink{begin__code_8h_a81faf4ba0455dc75f2e0507eddb79401}{S\-D\-L\-C\-A\-L\-L} \hyperlink{_s_d_l__haptic_8h_a4c212cbdb3487dd8d72882d355a19472}{S\-D\-L\-\_\-\-Haptic\-update\-Effect} (\hyperlink{_s_d_l__haptic_8h_a79db098a0e8cb102db6c2339a2422e29}{S\-D\-L\-\_\-\-Haptic} $\ast$haptic, \hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int} effect, \hyperlink{union_s_d_l___haptic_effect}{S\-D\-L\-\_\-\-Haptic\-Effect} $\ast$\hyperlink{_s_d_l__opengl_8h_a2e335d56e2846b0fea47eed068b2d34a}{data})
 \begin{DoxyCompactList}\small\item\em Updates the properties of an effect. \end{DoxyCompactList}\item 
 \hyperlink{begin__code_8h_aa4c7a931f4a968f818b2a1b10a432185}{D\-E\-C\-L\-S\-P\-E\-C} \hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int} \hyperlink{begin__code_8h_a81faf4ba0455dc75f2e0507eddb79401}{S\-D\-L\-C\-A\-L\-L} \hyperlink{_s_d_l__haptic_8h_a1cd1294768bb00f35b77f67031a8a9cb}{S\-D\-L\-\_\-\-Haptic\-Run\-Effect} (\hyperlink{_s_d_l__haptic_8h_a79db098a0e8cb102db6c2339a2422e29}{S\-D\-L\-\_\-\-Haptic} $\ast$haptic, \hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int} effect, \hyperlink{_s_d_l__stdinc_8h_add440eff171ea5f55cb00c4a9ab8672d}{Uint32} iterations)
 \begin{DoxyCompactList}\small\item\em Runs the haptic effect on its associated haptic device. \end{DoxyCompactList}\item 
@@ -1093,7 +1093,7 @@ Creates a new haptic effect on the device.
 The id of the effect on success or -\/1 on error.
 \end{DoxyReturn}
 \begin{DoxySeeAlso}{See Also}
-\hyperlink{_s_d_l__haptic_8h_a4c212cbdb3487dd8d72882d355a19472}{S\-D\-L\-\_\-\-Haptic\-Update\-Effect} 
+\hyperlink{_s_d_l__haptic_8h_a4c212cbdb3487dd8d72882d355a19472}{S\-D\-L\-\_\-\-Haptic\-update\-Effect} 
 
 \hyperlink{_s_d_l__haptic_8h_a1cd1294768bb00f35b77f67031a8a9cb}{S\-D\-L\-\_\-\-Haptic\-Run\-Effect} 
 
@@ -1608,9 +1608,9 @@ Call to unpause after \hyperlink{_s_d_l__haptic_8h_af0181e59ecd14c6aecd1fd3c5099
 \begin{DoxySeeAlso}{See Also}
 \hyperlink{_s_d_l__haptic_8h_af0181e59ecd14c6aecd1fd3c5099330a}{S\-D\-L\-\_\-\-Haptic\-Pause} 
 \end{DoxySeeAlso}
-\hypertarget{_s_d_l__haptic_8h_a4c212cbdb3487dd8d72882d355a19472}{\index{S\-D\-L\-\_\-haptic.\-h@{S\-D\-L\-\_\-haptic.\-h}!S\-D\-L\-\_\-\-Haptic\-Update\-Effect@{S\-D\-L\-\_\-\-Haptic\-Update\-Effect}}
-\index{S\-D\-L\-\_\-\-Haptic\-Update\-Effect@{S\-D\-L\-\_\-\-Haptic\-Update\-Effect}!SDL_haptic.h@{S\-D\-L\-\_\-haptic.\-h}}
-\subsubsection[{S\-D\-L\-\_\-\-Haptic\-Update\-Effect}]{\setlength{\rightskip}{0pt plus 5cm}{\bf D\-E\-C\-L\-S\-P\-E\-C} {\bf int} {\bf S\-D\-L\-C\-A\-L\-L} S\-D\-L\-\_\-\-Haptic\-Update\-Effect (
+\hypertarget{_s_d_l__haptic_8h_a4c212cbdb3487dd8d72882d355a19472}{\index{S\-D\-L\-\_\-haptic.\-h@{S\-D\-L\-\_\-haptic.\-h}!S\-D\-L\-\_\-\-Haptic\-update\-Effect@{S\-D\-L\-\_\-\-Haptic\-update\-Effect}}
+\index{S\-D\-L\-\_\-\-Haptic\-update\-Effect@{S\-D\-L\-\_\-\-Haptic\-update\-Effect}!SDL_haptic.h@{S\-D\-L\-\_\-haptic.\-h}}
+\subsubsection[{S\-D\-L\-\_\-\-Haptic\-update\-Effect}]{\setlength{\rightskip}{0pt plus 5cm}{\bf D\-E\-C\-L\-S\-P\-E\-C} {\bf int} {\bf S\-D\-L\-C\-A\-L\-L} S\-D\-L\-\_\-\-Haptic\-update\-Effect (
 \begin{DoxyParamCaption}
 \item[{{\bf S\-D\-L\-\_\-\-Haptic} $\ast$}]{haptic, }
 \item[{{\bf int}}]{effect, }
@@ -1621,7 +1621,7 @@ Call to unpause after \hyperlink{_s_d_l__haptic_8h_af0181e59ecd14c6aecd1fd3c5099
 
 Updates the properties of an effect. 
 
-Can be used dynamically, although behaviour when dynamically changing direction may be strange. Specifically the effect may reupload itself and start playing from the start. You cannot change the type either when running \hyperlink{_s_d_l__haptic_8h_a4c212cbdb3487dd8d72882d355a19472}{S\-D\-L\-\_\-\-Haptic\-Update\-Effect()}.
+Can be used dynamically, although behaviour when dynamically changing direction may be strange. Specifically the effect may reupload itself and start playing from the start. You cannot change the type either when running \hyperlink{_s_d_l__haptic_8h_a4c212cbdb3487dd8d72882d355a19472}{S\-D\-L\-\_\-\-Haptic\-update\-Effect()}.
 
 
 \begin{DoxyParams}{Parameters}

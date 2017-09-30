@@ -17,10 +17,10 @@ public:
 
 	CompTimer(float l);
 	~CompTimer();
-	void Update(float time);
-	void Render();
+	void update(float time);
+	void render();
 	void own(GameObject* go);
-	Component::type GetType()const;
+	Component::type get_type()const;
 };
 
 #endif//COMPTIMERHPP
