@@ -27,11 +27,12 @@ CompHP::~CompHP() {
 }
 
 /*!
-  * @fn CompHP::Damage(int dmg)
+  * @fn CompHP::Damage(int damage)
   * @brief Updates the player HP value based on the damage inflicted, has current damage inflicted as param
-  * @param int dmg
-  void CompHP::Damage(int dmg) {
+  * @param int damage
 */
+
+void CompHP::Damage(int damage) {
 	//! Verifies if current damage value bigger than the current value
 	if(dmgCoolDown.Get()>cooldown){
 		dmgCoolDown.Restart();
@@ -50,11 +51,12 @@ CompHP::~CompHP() {
   * @brief Updates HP value according to time param
   * @param float time
 */
+
 void CompHP::Update(float time) {
 	//! Verifies if element is in the 'dead' state
 	//! TODO: Refactorate decision structures
 	if(current<=0)GO(entity)->dead=true;
-	dmgCoolDown.Update(time);
+	damageCoolDown.Update(time);
 }
 
 /*!
@@ -86,6 +88,7 @@ void CompHP::Render() {
 		SDL_RenderFillRect(GAMERENDER,&rect);
 	}
 }
+
 /*!
   * @fn Component::type CompHP::GetType()
   * @brief Returns if the component is if the 'HP' type

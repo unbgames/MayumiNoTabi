@@ -33,7 +33,7 @@ CompMemory::~CompMemory() {
 */
 
 void CompMemory::Update(float time) {
-	//! TODO: Refactorate decision strucuture
+	//! TODO: Refactorate repetition strucuture
 	for(auto& t:timers)t.second.Update(time);
 }
 
@@ -49,9 +49,9 @@ void CompMemory::Render() {
 
 /*!
   * @fn Component::type CompMemory::GetType()
-	* @brief Returns if the component is if the 'memory' type
   * @param No params
 	* @return Component::type::t_memory
+	* @brief Obtain the component type
 */
 
 Component::type CompMemory::GetType() const {
