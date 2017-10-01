@@ -36,3 +36,8 @@
 
 #executavel
 JOGO
+
+#pastas geradas pelo Doxygen
+html/*
+latex/*
+
