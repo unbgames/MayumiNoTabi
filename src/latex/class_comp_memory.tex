@@ -1,0 +1,155 @@
+\hypertarget{class_comp_memory}{\section{Comp\-Memory Class Reference}
+\label{class_comp_memory}\index{Comp\-Memory@{Comp\-Memory}}
+}
+
+
+{\ttfamily \#include $<$component\-Memory.\-hpp$>$}
+
+Inheritance diagram for Comp\-Memory\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_comp_memory}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_comp_memory_a52c20a508512312f33175e89b1ca565f}{Comp\-Memory} ()
+\item 
+\hyperlink{class_comp_memory_ae9755d1c9212d9d0c4978fe29d70c3dd}{$\sim$\-Comp\-Memory} ()
+\item 
+\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_comp_memory_aa5ade8164c2bd2cea6f36b4d8c307cbb}{Update} (float time)
+\item 
+\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_comp_memory_a327e5e6a1abac3d72c32f85b99baf592}{Render} ()
+\item 
+\hyperlink{class_component_ad6d161b6acf7b843b55bb9feac7af71a}{Component\-::type} \hyperlink{class_comp_memory_abb43c1384fa0f909e590fbe11d855a72}{Get\-Type} () const 
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+map$<$ \hyperlink{_s_d_l__opengl__glext_8h_ae84541b4f3d8e1ea24ec0f466a8c568b}{string}, \hyperlink{_s_d_l__opengl__glext_8h_ae84541b4f3d8e1ea24ec0f466a8c568b}{string} $>$ \hyperlink{class_comp_memory_aa2a6de6504cff7ef8cf152fd85639322}{strings}
+\item 
+map$<$ \hyperlink{_s_d_l__opengl__glext_8h_ae84541b4f3d8e1ea24ec0f466a8c568b}{string}, \hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int} $>$ \hyperlink{class_comp_memory_a5ed439123e45c30b66ddbaf5bfed6f0e}{ints}
+\item 
+map$<$ \hyperlink{_s_d_l__opengl__glext_8h_ae84541b4f3d8e1ea24ec0f466a8c568b}{string}, float $>$ \hyperlink{class_comp_memory_a09050d8321433589dcf39328f75e2793}{floats}
+\item 
+map$<$ \hyperlink{_s_d_l__opengl__glext_8h_ae84541b4f3d8e1ea24ec0f466a8c568b}{string}, \hyperlink{class_timer}{Timer} $>$ \hyperlink{class_comp_memory_a39c595db31aa1fe1785ec2a4e9b65eec}{timers}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 11 of file component\-Memory.\-hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_comp_memory_a52c20a508512312f33175e89b1ca565f}{\index{Comp\-Memory@{Comp\-Memory}!Comp\-Memory@{Comp\-Memory}}
+\index{Comp\-Memory@{Comp\-Memory}!CompMemory@{Comp\-Memory}}
+\subsubsection[{Comp\-Memory}]{\setlength{\rightskip}{0pt plus 5cm}Comp\-Memory\-::\-Comp\-Memory (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_comp_memory_a52c20a508512312f33175e89b1ca565f}
+
+
+Definition at line 8 of file component\-Memory.\-cpp.
+
+\hypertarget{class_comp_memory_ae9755d1c9212d9d0c4978fe29d70c3dd}{\index{Comp\-Memory@{Comp\-Memory}!$\sim$\-Comp\-Memory@{$\sim$\-Comp\-Memory}}
+\index{$\sim$\-Comp\-Memory@{$\sim$\-Comp\-Memory}!CompMemory@{Comp\-Memory}}
+\subsubsection[{$\sim$\-Comp\-Memory}]{\setlength{\rightskip}{0pt plus 5cm}Comp\-Memory\-::$\sim$\-Comp\-Memory (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_comp_memory_ae9755d1c9212d9d0c4978fe29d70c3dd}
+
+
+Definition at line 9 of file component\-Memory.\-cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_comp_memory_abb43c1384fa0f909e590fbe11d855a72}{\index{Comp\-Memory@{Comp\-Memory}!Get\-Type@{Get\-Type}}
+\index{Get\-Type@{Get\-Type}!CompMemory@{Comp\-Memory}}
+\subsubsection[{Get\-Type}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Component\-::type} Comp\-Memory\-::\-Get\-Type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_comp_memory_abb43c1384fa0f909e590fbe11d855a72}
+
+
+Implements \hyperlink{class_component_a1440354c23703096a6439d45ab85e4fd}{Component}.
+
+
+
+Definition at line 15 of file component\-Memory.\-cpp.
+
+\hypertarget{class_comp_memory_a327e5e6a1abac3d72c32f85b99baf592}{\index{Comp\-Memory@{Comp\-Memory}!Render@{Render}}
+\index{Render@{Render}!CompMemory@{Comp\-Memory}}
+\subsubsection[{Render}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} Comp\-Memory\-::\-Render (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_comp_memory_a327e5e6a1abac3d72c32f85b99baf592}
+
+
+Implements \hyperlink{class_component_a0c67ccdaf754b96520e3428284a74a7f}{Component}.
+
+
+
+Definition at line 14 of file component\-Memory.\-cpp.
+
+\hypertarget{class_comp_memory_aa5ade8164c2bd2cea6f36b4d8c307cbb}{\index{Comp\-Memory@{Comp\-Memory}!Update@{Update}}
+\index{Update@{Update}!CompMemory@{Comp\-Memory}}
+\subsubsection[{Update}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} Comp\-Memory\-::\-Update (
+\begin{DoxyParamCaption}
+\item[{float}]{time}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_comp_memory_aa5ade8164c2bd2cea6f36b4d8c307cbb}
+
+
+Implements \hyperlink{class_component_a20c791684d452b36fcce40ac9038c735}{Component}.
+
+
+
+Definition at line 11 of file component\-Memory.\-cpp.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_comp_memory_a09050d8321433589dcf39328f75e2793}{\index{Comp\-Memory@{Comp\-Memory}!floats@{floats}}
+\index{floats@{floats}!CompMemory@{Comp\-Memory}}
+\subsubsection[{floats}]{\setlength{\rightskip}{0pt plus 5cm}map$<${\bf string},float$>$ Comp\-Memory\-::floats}}\label{class_comp_memory_a09050d8321433589dcf39328f75e2793}
+
+
+Definition at line 17 of file component\-Memory.\-hpp.
+
+\hypertarget{class_comp_memory_a5ed439123e45c30b66ddbaf5bfed6f0e}{\index{Comp\-Memory@{Comp\-Memory}!ints@{ints}}
+\index{ints@{ints}!CompMemory@{Comp\-Memory}}
+\subsubsection[{ints}]{\setlength{\rightskip}{0pt plus 5cm}map$<${\bf string},{\bf int}$>$ Comp\-Memory\-::ints}}\label{class_comp_memory_a5ed439123e45c30b66ddbaf5bfed6f0e}
+
+
+Definition at line 16 of file component\-Memory.\-hpp.
+
+\hypertarget{class_comp_memory_aa2a6de6504cff7ef8cf152fd85639322}{\index{Comp\-Memory@{Comp\-Memory}!strings@{strings}}
+\index{strings@{strings}!CompMemory@{Comp\-Memory}}
+\subsubsection[{strings}]{\setlength{\rightskip}{0pt plus 5cm}map$<${\bf string},{\bf string}$>$ Comp\-Memory\-::strings}}\label{class_comp_memory_aa2a6de6504cff7ef8cf152fd85639322}
+
+
+Definition at line 15 of file component\-Memory.\-hpp.
+
+\hypertarget{class_comp_memory_a39c595db31aa1fe1785ec2a4e9b65eec}{\index{Comp\-Memory@{Comp\-Memory}!timers@{timers}}
+\index{timers@{timers}!CompMemory@{Comp\-Memory}}
+\subsubsection[{timers}]{\setlength{\rightskip}{0pt plus 5cm}map$<${\bf string},{\bf Timer}$>$ Comp\-Memory\-::timers}}\label{class_comp_memory_a39c595db31aa1fe1785ec2a4e9b65eec}
+
+
+Definition at line 18 of file component\-Memory.\-hpp.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/home/andre/\-Desktop/tecprog/\-Mayumi\-No\-Tabi/\-Mayumi\-No\-Tabi/include/\hyperlink{component_memory_8hpp}{component\-Memory.\-hpp}\item 
+\hyperlink{component_memory_8cpp}{component\-Memory.\-cpp}\end{DoxyCompactItemize}

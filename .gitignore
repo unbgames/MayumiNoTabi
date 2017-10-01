@@ -31,6 +31,8 @@
 # Dependency files
 *.d
 
+# Temporary files
+.tmp
 
 #executavel
 JOGO

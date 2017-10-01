@@ -1,0 +1,201 @@
+\hypertarget{class_comp_anim_control}{\section{Comp\-Anim\-Control Class Reference}
+\label{class_comp_anim_control}\index{Comp\-Anim\-Control@{Comp\-Anim\-Control}}
+}
+
+
+{\ttfamily \#include $<$component\-Animation\-Controller.\-hpp$>$}
+
+Inheritance diagram for Comp\-Anim\-Control\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_comp_anim_control}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_comp_anim_control_a973d5ec96115727a84968388bcbe7b7c}{Comp\-Anim\-Control} (\hyperlink{_s_d_l__opengl__glext_8h_ae84541b4f3d8e1ea24ec0f466a8c568b}{string} file, \hyperlink{class_comp_collider}{Comp\-Collider} $\ast$coll)
+\item 
+\hyperlink{class_comp_anim_control_a6786dbe926d75c85dd4e8bc89ba6525a}{$\sim$\-Comp\-Anim\-Control} ()
+\item 
+\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_comp_anim_control_a34e3519f9bedde639fdd4342da644d51}{Change\-Cur} (\hyperlink{_s_d_l__opengl__glext_8h_ae84541b4f3d8e1ea24ec0f466a8c568b}{string} anim, bool rep=true)
+\item 
+\hyperlink{class_comp_anim}{Comp\-Anim} \& \hyperlink{class_comp_anim_control_af094714708b9851b117dd6e3d837213b}{Get\-Cur} ()
+\item 
+const \hyperlink{_s_d_l__opengl__glext_8h_ae84541b4f3d8e1ea24ec0f466a8c568b}{string} \& \hyperlink{class_comp_anim_control_aab22a377f8848fe448d801e4d23266f2}{Get\-Cur\-Name} () const 
+\item 
+\hyperlink{_s_d_l__opengl__glext_8h_ae84541b4f3d8e1ea24ec0f466a8c568b}{string} \& \hyperlink{class_comp_anim_control_a4d1597b040731483f5d744feac77f19a}{Get\-Cur\-Name} ()
+\item 
+\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_comp_anim_control_a30942bb6ac00771fe7c517ea64096d65}{Update} (float time)
+\item 
+\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_comp_anim_control_a2b23ff1dc6a0748ed5a7fadb07bb8bbb}{Render} ()
+\item 
+\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_comp_anim_control_a5a4ad75cc577d413fdaa4753d64e8d8c}{Own} (\hyperlink{class_game_object}{Game\-Object} $\ast$go)
+\item 
+bool \hyperlink{class_comp_anim_control_a88db8f36cc8a393770bb71d743a296e2}{Die} (float time)
+\item 
+\hyperlink{class_component_ad6d161b6acf7b843b55bb9feac7af71a}{Component\-::type} \hyperlink{class_comp_anim_control_adaed169358aac3d66d8d543ca36817c4}{Get\-Type} () const 
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 15 of file component\-Animation\-Controller.\-hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_comp_anim_control_a973d5ec96115727a84968388bcbe7b7c}{\index{Comp\-Anim\-Control@{Comp\-Anim\-Control}!Comp\-Anim\-Control@{Comp\-Anim\-Control}}
+\index{Comp\-Anim\-Control@{Comp\-Anim\-Control}!CompAnimControl@{Comp\-Anim\-Control}}
+\subsubsection[{Comp\-Anim\-Control}]{\setlength{\rightskip}{0pt plus 5cm}Comp\-Anim\-Control\-::\-Comp\-Anim\-Control (
+\begin{DoxyParamCaption}
+\item[{{\bf string}}]{file, }
+\item[{{\bf Comp\-Collider} $\ast$}]{coll}
+\end{DoxyParamCaption}
+)}}\label{class_comp_anim_control_a973d5ec96115727a84968388bcbe7b7c}
+
+
+Definition at line 15 of file component\-Animation\-Controller.\-cpp.
+
+\hypertarget{class_comp_anim_control_a6786dbe926d75c85dd4e8bc89ba6525a}{\index{Comp\-Anim\-Control@{Comp\-Anim\-Control}!$\sim$\-Comp\-Anim\-Control@{$\sim$\-Comp\-Anim\-Control}}
+\index{$\sim$\-Comp\-Anim\-Control@{$\sim$\-Comp\-Anim\-Control}!CompAnimControl@{Comp\-Anim\-Control}}
+\subsubsection[{$\sim$\-Comp\-Anim\-Control}]{\setlength{\rightskip}{0pt plus 5cm}Comp\-Anim\-Control\-::$\sim$\-Comp\-Anim\-Control (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_comp_anim_control_a6786dbe926d75c85dd4e8bc89ba6525a}
+
+
+Definition at line 43 of file component\-Animation\-Controller.\-cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_comp_anim_control_a34e3519f9bedde639fdd4342da644d51}{\index{Comp\-Anim\-Control@{Comp\-Anim\-Control}!Change\-Cur@{Change\-Cur}}
+\index{Change\-Cur@{Change\-Cur}!CompAnimControl@{Comp\-Anim\-Control}}
+\subsubsection[{Change\-Cur}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} Comp\-Anim\-Control\-::\-Change\-Cur (
+\begin{DoxyParamCaption}
+\item[{{\bf string}}]{anim, }
+\item[{bool}]{rep = {\ttfamily true}}
+\end{DoxyParamCaption}
+)}}\label{class_comp_anim_control_a34e3519f9bedde639fdd4342da644d51}
+
+
+Definition at line 49 of file component\-Animation\-Controller.\-cpp.
+
+\hypertarget{class_comp_anim_control_a88db8f36cc8a393770bb71d743a296e2}{\index{Comp\-Anim\-Control@{Comp\-Anim\-Control}!Die@{Die}}
+\index{Die@{Die}!CompAnimControl@{Comp\-Anim\-Control}}
+\subsubsection[{Die}]{\setlength{\rightskip}{0pt plus 5cm}bool Comp\-Anim\-Control\-::\-Die (
+\begin{DoxyParamCaption}
+\item[{float}]{time}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_comp_anim_control_a88db8f36cc8a393770bb71d743a296e2}
+
+
+Reimplemented from \hyperlink{class_component_adf7c2452a79ee10d2d1f658d6df5b0ff}{Component}.
+
+
+
+Definition at line 143 of file component\-Animation\-Controller.\-cpp.
+
+\hypertarget{class_comp_anim_control_af094714708b9851b117dd6e3d837213b}{\index{Comp\-Anim\-Control@{Comp\-Anim\-Control}!Get\-Cur@{Get\-Cur}}
+\index{Get\-Cur@{Get\-Cur}!CompAnimControl@{Comp\-Anim\-Control}}
+\subsubsection[{Get\-Cur}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Comp\-Anim} \& Comp\-Anim\-Control\-::\-Get\-Cur (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_comp_anim_control_af094714708b9851b117dd6e3d837213b}
+
+
+Definition at line 80 of file component\-Animation\-Controller.\-cpp.
+
+\hypertarget{class_comp_anim_control_aab22a377f8848fe448d801e4d23266f2}{\index{Comp\-Anim\-Control@{Comp\-Anim\-Control}!Get\-Cur\-Name@{Get\-Cur\-Name}}
+\index{Get\-Cur\-Name@{Get\-Cur\-Name}!CompAnimControl@{Comp\-Anim\-Control}}
+\subsubsection[{Get\-Cur\-Name}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf string} \& Comp\-Anim\-Control\-::\-Get\-Cur\-Name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_comp_anim_control_aab22a377f8848fe448d801e4d23266f2}
+
+
+Definition at line 85 of file component\-Animation\-Controller.\-cpp.
+
+\hypertarget{class_comp_anim_control_a4d1597b040731483f5d744feac77f19a}{\index{Comp\-Anim\-Control@{Comp\-Anim\-Control}!Get\-Cur\-Name@{Get\-Cur\-Name}}
+\index{Get\-Cur\-Name@{Get\-Cur\-Name}!CompAnimControl@{Comp\-Anim\-Control}}
+\subsubsection[{Get\-Cur\-Name}]{\setlength{\rightskip}{0pt plus 5cm}{\bf string} \& Comp\-Anim\-Control\-::\-Get\-Cur\-Name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_comp_anim_control_a4d1597b040731483f5d744feac77f19a}
+
+
+Definition at line 91 of file component\-Animation\-Controller.\-cpp.
+
+\hypertarget{class_comp_anim_control_adaed169358aac3d66d8d543ca36817c4}{\index{Comp\-Anim\-Control@{Comp\-Anim\-Control}!Get\-Type@{Get\-Type}}
+\index{Get\-Type@{Get\-Type}!CompAnimControl@{Comp\-Anim\-Control}}
+\subsubsection[{Get\-Type}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Component\-::type} Comp\-Anim\-Control\-::\-Get\-Type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_comp_anim_control_adaed169358aac3d66d8d543ca36817c4}
+
+
+Implements \hyperlink{class_component_a1440354c23703096a6439d45ab85e4fd}{Component}.
+
+
+
+Definition at line 171 of file component\-Animation\-Controller.\-cpp.
+
+\hypertarget{class_comp_anim_control_a5a4ad75cc577d413fdaa4753d64e8d8c}{\index{Comp\-Anim\-Control@{Comp\-Anim\-Control}!Own@{Own}}
+\index{Own@{Own}!CompAnimControl@{Comp\-Anim\-Control}}
+\subsubsection[{Own}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} Comp\-Anim\-Control\-::\-Own (
+\begin{DoxyParamCaption}
+\item[{{\bf Game\-Object} $\ast$}]{go}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_comp_anim_control_a5a4ad75cc577d413fdaa4753d64e8d8c}
+
+
+Reimplemented from \hyperlink{class_component_af6a505dae181fc1a3498b779a4bd162e}{Component}.
+
+
+
+Definition at line 131 of file component\-Animation\-Controller.\-cpp.
+
+\hypertarget{class_comp_anim_control_a2b23ff1dc6a0748ed5a7fadb07bb8bbb}{\index{Comp\-Anim\-Control@{Comp\-Anim\-Control}!Render@{Render}}
+\index{Render@{Render}!CompAnimControl@{Comp\-Anim\-Control}}
+\subsubsection[{Render}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} Comp\-Anim\-Control\-::\-Render (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_comp_anim_control_a2b23ff1dc6a0748ed5a7fadb07bb8bbb}
+
+
+Implements \hyperlink{class_component_a0c67ccdaf754b96520e3428284a74a7f}{Component}.
+
+
+
+Definition at line 121 of file component\-Animation\-Controller.\-cpp.
+
+\hypertarget{class_comp_anim_control_a30942bb6ac00771fe7c517ea64096d65}{\index{Comp\-Anim\-Control@{Comp\-Anim\-Control}!Update@{Update}}
+\index{Update@{Update}!CompAnimControl@{Comp\-Anim\-Control}}
+\subsubsection[{Update}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} Comp\-Anim\-Control\-::\-Update (
+\begin{DoxyParamCaption}
+\item[{float}]{time}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_comp_anim_control_a30942bb6ac00771fe7c517ea64096d65}
+
+
+Implements \hyperlink{class_component_a20c791684d452b36fcce40ac9038c735}{Component}.
+
+
+
+Definition at line 97 of file component\-Animation\-Controller.\-cpp.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/home/andre/\-Desktop/tecprog/\-Mayumi\-No\-Tabi/\-Mayumi\-No\-Tabi/include/\hyperlink{component_animation_controller_8hpp}{component\-Animation\-Controller.\-hpp}\item 
+\hyperlink{component_animation_controller_8cpp}{component\-Animation\-Controller.\-cpp}\end{DoxyCompactItemize}

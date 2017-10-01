@@ -24,7 +24,7 @@ public:
 	map<ii,set<uint>> group;
 
 	State();
-	virtual ~State(){}
+	virtual ~State() {}
 
 	virtual void Update(float time)=0;
 	virtual void Render()=0;
