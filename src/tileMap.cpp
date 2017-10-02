@@ -9,9 +9,9 @@
 
 TileMap::TileMap(int width, int height, TileSet* tile_set) : tileSet{tile_set},map_width{width},map_height{height},map_depth{1} {
 	tile_matrix.reserve(map_width*map_height);
-	FOR(height_counter, map_height)
-		FOR(width_counter, map_width)
-			at(width_counter, height_counter, 0) = EMPTY_TILE;
+	FOR(height_iterator, map_height)
+		FOR(width_iterator, map_width)
+			at(width_iterator, height_iterator, 0) = EMPTY_TILE;
 }
 TileMap::TileMap(TileSet* tile_set):tileSet{tile_set}{
 }
@@ -39,10 +39,10 @@ void TileMap::load(ifstream& input_file) {
 void TileMap::save(stringstream& output_file) {
 	output_file<<map_width<<","<<map_height<<","<<map_depth<<endl<<endl;
 
-	FOR(depth_counter,map_depth) {
-		FOR(height_counter,map_height) {
-			FOR(width_counter,map_width) {
-				output_file<<at(width_counter,height_counter,depth_counter)+1<<",\t";
+	FOR(depth_iterator,map_depth) {
+		FOR(height_iterator,map_height) {
+			FOR(width_iterator,map_width) {
+				output_file<<at(width_iterator,height_iterator,depth_iterator)+1<<",\t";
 			}
 			output_file<<endl;
 		}
@@ -78,17 +78,17 @@ void TileMap::render_layer(int layer,int position_x ,int position_y) {
 	if (mapCorner.y>cameraCorner.y)
 		lastY -= (mapCorner.y-cameraCorner.y)/height;
 
-	for (int y_counter=firstY;y_counter<=lastY;y_counter++) {
-		for (int x_counter=firstX;x_counter<=lastX;x_counter++) {
-			tile = at(x_counter, y_counter, layer);
+	for (int y_iterator=firstY;y_iterator<=lastY;y_iterator++) {
+		for (int x_iterator=firstX;x_iterator<=lastX;x_iterator++) {
+			tile = at(x_iterator, y_iterator, layer);
 			if (tile != EMPTY_TILE)
-				tile_set->render(tile, RENDERPOSX(position_x+(x_counter*width)), RENDERPOSY(position_y+(y_counter*height)), CAMERAZOOM);
+				tile_set->render(tile, RENDERPOSX(position_x+(x_iterator*width)), RENDERPOSY(position_y+(y_iterator*height)), CAMERAZOOM);
 		}
 	}
 }
 void TileMap::render(Vec2 position) {
-	FOR(depth_counter,map_depth) {
-		RenderLayer(depth_counter,positions.x,positions.y);
+	FOR(depth_iterator,map_depth) {
+		RenderLayer(depth_iterator,positions.x,positions.y);
 	}
 }
 
@@ -107,10 +107,10 @@ void TileMap::change_size(int new_width,int new_height) {
 	int max_x = min(new_width, map_width);
 	int max_y = min(new_height, map_height);
 
-	FOR(depth_counter,map_depth)
-		FOR(height_counter,maxY)
-			FOR(width_counter,maxX)
-				new_matrix[width_counter+(height_counter*new_width)+(depth_counter*new_width*new_height)] = at(width_counter,height_counter,depth_counter);
+	FOR(depth_iterator,map_depth)
+		FOR(height_iterator,maxY)
+			FOR(width_iterator,maxX)
+				new_matrix[width_iterator+(height_iterator*new_width)+(depth_iterator*new_width*new_height)] = at(width_iterator,height_iterator,depth_iterator);
 
 	map_width = new_width;
 	map_height = new_height;
