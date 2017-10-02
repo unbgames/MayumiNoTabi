@@ -9,7 +9,7 @@ CompMemory::CompMemory() {}
 CompMemory::~CompMemory() {}
 
 void CompMemory::update(float time) {
-	for (auto& t:timers)t.second.update(time);
+	for (auto& t:timers)t.second.add_time(time);
 }
 void CompMemory::render() {}
 Component::type CompMemory::get_type() const{
