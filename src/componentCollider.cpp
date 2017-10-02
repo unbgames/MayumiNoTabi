@@ -65,8 +65,8 @@ void CompCollider::Update(float currentTime) {
 	//! Iterates throughout the collisons to update its range of verification
 	for(Coll &coll:colls) {
 		if(coll.active) {
-			int lowerRange = coll.Box().x-10;
-			int upperRange = coll.Box().x2()+10;
+			int lowerRange = coll.Box().x-10; //!< Creates variable that sets the lower range of the game box
+			int upperRange = coll.Box().x2()+10; //!< Creates variable that sets the upper range of the game box
 			set<uint> ent = GAMESTATE.GetEntitiesInRange(lowerRange,upperRange);
 			//! Iterates throughout the screen elements to check if there has been collisions
 			FOR(uint go:ent) {
@@ -95,7 +95,7 @@ void CompCollider::Render() {
 			else if (coll.cType==CompCollider::collType::t_bullet) SET_COLOR4(0,0,255,100);
 			else if (coll.cType==CompCollider::collType::t_ground) SET_COLOR4(255,255,0,100);
 			else SET_COLOR4(255,255,255,100);
-			SDL_Rect rectangle = (coll.Box().renderBox().sdlRect());
+			SDL_Rect rectangle = (coll.Box().renderBox().sdlRect()); //!< Creates an rectangle entity to be fulfilled
 			FILL_RECT(&rectangle);
 		}
 };
@@ -115,12 +115,12 @@ void CompCollider::Own(GameObject *object) {
 			Rect rectangle{};
 			//! Verifies if the element size is equal to the collisions size
 			for(Coll coll:colls)rectangle = rectangle.sum(Rect{coll.position,coll.size});
-			object->curPos = rectangle.corner();
-			object->curSize = rectangle.size();
+			object->curPos = rectangle.corner(); //!< Updates the value of the current position of the object
+			object->curSize = rectangle.size(); //!< Updates the value of the current size of the object
 		}
 		else { //! If collision has no size it gives 'zero' values to it
-			object->curPos = Vec2{};
-			object->curSize = Vec2{0.0f,0.0f};
+			object->curPos = Vec2{}; //!< Updates the value of the current position of the object
+			object->curSize = Vec2{0.0f,0.0f}; //!< Updates the value of the current size of the object
 		}
 	}
 }
@@ -227,8 +227,8 @@ void CompCollider::Coll::CollisionCheck(const CompCollider::Coll &otherComponent
 
 Vec2 CompCollider::Coll::Collides(const Coll &otherComponent,const Vec2 &move,const Vec2 &moved) const {
 	const int precision = 100;
-	Rect rectangle = Box()+moved;
-	Rect anotherRectangle = otherComponent.Box();
+	Rect rectangle = Box()+moved; //!< Updates the current value of the rectangle
+	Rect anotherRectangle = otherComponent.Box(); //!< Updates the value of another rectangle
 	Vec2 moveSafe,move100=move/precision,moveTry;
 
 	//! Iterates throughout the 'rangeable' variables to identify collision

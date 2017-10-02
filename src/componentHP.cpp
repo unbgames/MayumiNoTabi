@@ -34,9 +34,9 @@ CompHP::~CompHP() {
 
 void CompHP::Damage(int damage) {
 	//! Verifies if current damage value bigger than the current value
-	if(dmgCoolDown.Get()>cooldown){
-		dmgCoolDown.Restart();
-		current-=dmg;
+	if(damageCoolDown.Get()>cooldown){
+		damageCoolDown.Restart();
+		current-=damage; //!< Decrements the value of the current life value according to the damage inflicted
 		//! TODO: Renderizes damage value
 		if(showDMG){
 		}
