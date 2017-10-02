@@ -53,11 +53,11 @@ void Level::Load(const string& file) {
 	in.ignore(1);
 
 	//Loading the tilemap:
-	tileMap.Load(in);
+	tileMap.load(in);
 
 	//Loading the collision layer:
-	int mapWidth = tileMap.GetWidth();
-	int mapHeight = tileMap.GetHeight();
+	int mapWidth = tileMap.get_width();
+	int mapHeight = tileMap.get_height();
 	collisionLayer.clear();
 	collisionLayer.resize(mapWidth*mapHeight);
 
@@ -108,11 +108,11 @@ string Level::Save(const string& file) {
 	out<<tileSet.get_width()<<","<<tileSet.get_height()<<endl<<endl;
 
 	//Saving the tilemap:
-	tileMap.Save(out);
+	tileMap.save(out);
 
 	//Saving the collision layer:
-	int mapWidth = tileMap.GetWidth();
-	int mapHeight = tileMap.GetHeight();
+	int mapWidth = tileMap.get_width();
+	int mapHeight = tileMap.get_height();
 	FOR(y,mapHeight) {
 		FOR(x,mapWidth) {
 			char s[200];
@@ -149,8 +149,8 @@ void Level::LoadObjects(bool collisors) {
 
 	int tileWidth = tileSet.get_width();
 	int tileHeight = tileSet.get_height();
-	int mapWidth = tileMap.GetWidth();
-	int mapHeight = tileMap.GetHeight();
+	int mapWidth = tileMap.get_width();
+	int mapHeight = tileMap.get_height();
 	map<int,pair<Rect,int>> mp;
 	FOR(y,mapHeight) {
 		FOR(x,mapWidth) {
@@ -188,8 +188,8 @@ void Level::LoadObjects(bool collisors) {
 
 void Level::SaveObjects(const vector<pair<ii,ii>>& grouped) {
 	//Saving the collision groups:
-	int mapWidth = tileMap.GetWidth();
-	int mapHeight = tileMap.GetHeight();
+	int mapWidth = tileMap.get_width();
+	int mapHeight = tileMap.get_height();
 	int id=1;
 	map<ii,int> ids;
 	FOR(y,mapHeight) {
