@@ -18,10 +18,10 @@ TileMap::TileMap(TileSet* ts):tileSet{ts}{
 
 void TileMap::Load(ifstream& in) {
 	string line;
-	
+
 	getline(in,line);
 	sscanf(line.c_str()," %d,%d,%d",&mapWidth,&mapHeight,&mapDepth);
-	
+
 	tileMatrix.clear();
 	tileMatrix.reserve(mapWidth*mapHeight*mapDepth);
 
@@ -38,7 +38,7 @@ void TileMap::Load(ifstream& in) {
 }
 void TileMap::Save(stringstream& out) {
 	out<<mapWidth<<","<<mapHeight<<","<<mapDepth<<endl<<endl;
-	
+
 	FOR(d,mapDepth) {
 		FOR(h,mapHeight) {
 			FOR(w,mapWidth) {
@@ -62,11 +62,11 @@ int TileMap::At(int x,int y,int z) const{
 }
 
 void TileMap::RenderLayer(int layer,int posX ,int posY) {
-	int w=tileSet->GetWidth();
-	int h=tileSet->GetHeight();
+	int w=tileSet->get_width();
+	int h=tileSet->get_height();
 	int tile;
 	int firstX=0,firstY=0,lastX=mapWidth,lastY=mapHeight;
-	
+
 	if (posX<CAMERA.x)
 		firstX = (CAMERA.x-posX)/w;
 	if (posY<CAMERA.y)
@@ -77,7 +77,7 @@ void TileMap::RenderLayer(int layer,int posX ,int posY) {
 		lastX -= (mapCorner.x-cameraCorner.x)/w;
 	if (mapCorner.y>cameraCorner.y)
 		lastY -= (mapCorner.y-cameraCorner.y)/h;
-	
+
 	for (int y=firstY;y<=lastY;y++) {
 		for (int x=firstX;x<=lastX;x++) {
 			tile = At(x, y, layer);
@@ -106,12 +106,12 @@ void TileMap::SetSize(int newWidth,int newHeight) {
 	vector<int> newMatrix(newWidth*newHeight*mapDepth, EMPTY_TILE);
 	int maxX = min(newWidth, mapWidth);
 	int maxY = min(newHeight, mapHeight);
-	
+
 	FOR(z,mapDepth)
 		FOR(y,maxY)
 			FOR(x,maxX)
 				newMatrix[x+(y*newWidth)+(z*newWidth*newHeight)] = At(x,y,z);
-	
+
 	mapWidth = newWidth;
 	mapHeight = newHeight;
 	tileMatrix.clear();
