@@ -18,7 +18,7 @@ void CompCollider::CollisionCheck(CompCollider *other) {
 	for (Coll &collA:colls)for (Coll &collB:other->colls)collA.CollisionCheck(collB);
 }
 
-void CompCollider::Update(float time) {
+void CompCollider::update(float time) {
 	UNUSED(time);
 	for (Coll &coll:colls) {
 		if (coll.active) {
@@ -33,7 +33,7 @@ void CompCollider::Update(float time) {
 		}
 	}
 }
-void CompCollider::Render() {
+void CompCollider::render() {
 	if (SETTINGS.showCollision)
 		for (Coll coll:colls) {
 			if     (coll.cType==CompCollider::collType::t_player) SET_COLOR4(255,0,0,100);
@@ -45,7 +45,7 @@ void CompCollider::Render() {
 			FILL_RECT(&r);
 		}
 };
-void CompCollider::Own(GameObject *go) {
+void CompCollider::own(GameObject *go) {
 	entity=go->uid;
 	if (go != nullptr) {
 		if (colls.size()) {
@@ -60,14 +60,14 @@ void CompCollider::Own(GameObject *go) {
 		}
 	}
 }
-bool CompCollider::Die(float time) {
+bool CompCollider::kills_component(float time) {
 	UNUSED(time);
 
 	if (GO(entity)->HasComponent(Component::type::t_animation))return true;
 	if (GO(entity)->HasComponent(Component::type::t_animation_control))return true;
 	return false;
 }
-Component::type CompCollider::GetType() const{
+Component::type CompCollider::get_type() const{
 	return Component::type::t_collider;
 }
 

@@ -49,7 +49,7 @@ bool GUI_Element::IsVisible()const{
 GUI_Button::GUI_Button(uint a,const Vec2& pos):GUI_Element(pos),action{a}{
 }
 
-void GUI_Button::Update() {
+void GUI_Button::update() {
 	if (GUI.IsButtonSelected(this)) return;
 	else if (GUI.IsButtonDown()) return;
 	
@@ -67,7 +67,7 @@ void GUI_Button::Update() {
 		press = false;
 	}
 }
-void GUI_Button::Render() {
+void GUI_Button::render() {
 	SDL_Rect rect=box.sdlRect();
 
 	SET_COLOR(BASE_COLOR);
@@ -101,7 +101,7 @@ bool GUI_Button::IsHovered()const{
 GUI_CheckButton::GUI_CheckButton(bool& v,const Vec2& pos):GUI_Button(GUI_NONE,pos),value{v}{
 }
 
-void GUI_CheckButton::Update() {
+void GUI_CheckButton::update() {
 	if (GUI.IsButtonSelected(this)) return;
 	else if (GUI.IsButtonDown()) return;
 	
@@ -119,7 +119,7 @@ void GUI_CheckButton::Update() {
 		press = false;
 	}
 }
-void GUI_CheckButton::Render() {
+void GUI_CheckButton::render() {
 	SDL_Rect rect=box.sdlRect();
 
 	SET_COLOR(BASE_COLOR);
@@ -142,11 +142,11 @@ GUI_TextButton::GUI_TextButton(uint a,const string& l,const Vec2& pos):GUI_Butto
 	box.w = label.GetBox().w+DEFAULT_MARGIN*4;
 }
 
-void GUI_TextButton::Render() {
-	GUI_Button::Render();
+void GUI_TextButton::render() {
+	GUI_Button::render();
 	
 	label.SetPos(box.center());
-	label.Render();
+	label.render();
 }
 
 //GUI_IconButton
@@ -156,9 +156,9 @@ GUI_IconButton::GUI_IconButton(uint a,string i,const Vec2& pos):GUI_Button(a,pos
 	box.h = icon.GetHeight()+DEFAULT_MARGIN*4;
 }
 
-void GUI_IconButton::Render() {
-	GUI_Button::Render();
-	icon.Render((int)(box.x+DEFAULT_MARGIN*2), (int)(box.y+DEFAULT_MARGIN*2));
+void GUI_IconButton::render() {
+	GUI_Button::render();
+	icon.render((int)(box.x+DEFAULT_MARGIN*2), (int)(box.y+DEFAULT_MARGIN*2));
 }
 
 //GUI_InputBox
@@ -173,7 +173,7 @@ GUI_InputBox::~GUI_InputBox() {
 		INPUT.StopTextInput(&input);
 }
 
-void GUI_InputBox::Update() {
+void GUI_InputBox::update() {
 	if (GUI.IsButtonSelected(this)) return;
 	else if (GUI.IsButtonDown()) return;
 	
@@ -214,7 +214,7 @@ void GUI_InputBox::Update() {
 		input.clear();
 	}
 }
-void GUI_InputBox::Render() {
+void GUI_InputBox::render() {
 	SDL_Rect rect=box.sdlRect();
 
 	SET_COLOR(BASE_COLOR);
@@ -263,12 +263,12 @@ void GUI_InputBox::Render() {
 		
 		text.SetText(input);
 		Rect textClip{(float)offset,0,(float)rect.w,DEFAULT_FONT_SIZE+2};
-		text.Render({(float)offset,0}, &textClip);
+		text.render({(float)offset,0}, &textClip);
 	}
 	else {
 		text.SetText(GetValue());
 		Rect textClip{0,0,(float)rect.w,DEFAULT_FONT_SIZE+2};
-		text.Render({0,0}, &textClip);
+		text.render({0,0}, &textClip);
 	}
 }
 
@@ -297,7 +297,7 @@ string GUI_IntBox::GetValue()const{
 }
 
 //GUI_Label
-GUI_Label::GUI_Label(const string& t,Snap s,const Vec2& pos):GUI_Element(pos),text{t,DEFAULT_FONT_SIZE,MakeColor(LABEL_COLOR)},snap{s}{
+GUI_Label::GUI_Label(const string& t,Snap s,const Vec2& pos):GUI_Element(pos),text{t,DEFAULT_FONT_SIZE,generate_color(LABEL_COLOR)},snap{s}{
 	text.SetHotspot();
 	box.w = text.GetBox().w;
 	if (snap==SNAP_LEFT || snap==SNAP_RIGHT)
@@ -306,8 +306,8 @@ GUI_Label::GUI_Label(const string& t,Snap s,const Vec2& pos):GUI_Element(pos),te
 		box.w+=DEFAULT_MARGIN*2;
 }
 
-void GUI_Label::Update() {}
-void GUI_Label::Render() {
+void GUI_Label::update() {}
+void GUI_Label::render() {
 	SDL_Rect rect=box.sdlRect();
 
 	SET_COLOR(BASE_COLOR);
@@ -319,7 +319,7 @@ void GUI_Label::Render() {
 		text.SetPos(box.center()+Vec2(DEFAULT_MARGIN,0));
 	else
 		text.SetPos(box.center());
-	text.Render();
+	text.render();
 }
 
 //GUI_Array
@@ -330,20 +330,20 @@ GUI_Array::~GUI_Array() {
 		delete it;
 }
 
-void GUI_Array::Update() {
+void GUI_Array::update() {
 	Vec2 mouse = INPUT.GetMouse();
 	for (auto it=array.rbegin();it!=array.rend();it++) {
 		GUI_Element& element = **it;
 		if (&element && element.GetBox().contains(mouse) && element.IsVisible()) {
-			element.Update();
+			element.update();
 			return;
 		}
 	}
 }
-void GUI_Array::Render() {
+void GUI_Array::render() {
 	for (auto& it:array)
 		if (it->IsVisible())
-			it->Render();
+			it->render();
 }
 
 //GUI_HBar
@@ -367,7 +367,7 @@ GUI_HBar::GUI_HBar(vector<GUI_Element*>& v,uint width,const Vec2& pos):GUI_Array
 	}	
 }
 
-void GUI_HBar::Render() {
+void GUI_HBar::render() {
 	Vec2 pos(box.x,box.y);
 	int divX;
 	int divY=pos.y+DEFAULT_MARGIN;
@@ -381,7 +381,7 @@ void GUI_HBar::Render() {
 		if (it) {
 			if (it->IsVisible()) {
 				it->SetPos(pos);
-				it->Render();
+				it->render();
 				pos.x+=it->GetBox().w;
 				empty = false;
 			}
@@ -418,7 +418,7 @@ GUI_VBar::GUI_VBar(vector<GUI_Element*>& v,uint height,const Vec2& pos):GUI_Arra
 	}	
 }
 
-void GUI_VBar::Render() {
+void GUI_VBar::render() {
 	Vec2 pos(box.x,box.y);
 	int divX=pos.x+DEFAULT_MARGIN;
 	int divY;
@@ -432,7 +432,7 @@ void GUI_VBar::Render() {
 		if (it) {
 			if (it->IsVisible()) {
 				it->SetPos(pos);
-				it->Render();
+				it->render();
 				pos.y+=it->GetBox().h;
 				empty = false;
 			}
@@ -461,7 +461,7 @@ GUI_Window::GUI_Window(vector<GUI_Element*>& v,int i,const string& l,const Vec2&
 	GUI.SelectWindow(this);
 }
 
-void GUI_Window::Update() {
+void GUI_Window::update() {
 	if (pop) {
 		GUI.RequestPop(this);
 		return;
@@ -476,12 +476,12 @@ void GUI_Window::Update() {
 	
 	if (INPUT.MousePress(MBUTTON_LEFT))
 		GUI.SelectWindow(this);
-	closeButton.Update();
+	closeButton.update();
 	if (GUI.ButtonClick(GUI_CLOSE)||GUI.ButtonClick(GUI_CONFIRM)||GUI.ButtonClick(GUI_DENY))
 		pop = true;
-	array.Update();
+	array.update();
 }
-void GUI_Window::Render() {
+void GUI_Window::render() {
 	SDL_Rect rect = box.sdlRect();
 	
 	SET_COLOR(SHADOW_COLOR);
@@ -494,10 +494,10 @@ void GUI_Window::Render() {
 	FILL_RECT(&rect);
 	label.SetPos({box.x+DEFAULT_MARGIN,box.y+(DEFAULT_HEIGHT/2)});
 	Rect textClip{0,0,box.w-(DEFAULT_WIDTH+DEFAULT_MARGIN),DEFAULT_FONT_SIZE+2};
-	label.Render({0,0}, &textClip);
+	label.render({0,0}, &textClip);
 	closeButton.SetPos({box.x+box.w-DEFAULT_WIDTH-1,box.y});
-	closeButton.Render();
+	closeButton.render();
 	
 	array.SetPos({box.x,box.y+DEFAULT_HEIGHT});
-	array.Render();
+	array.render();
 }

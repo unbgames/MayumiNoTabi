@@ -20,11 +20,11 @@
 \item 
 \hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_sprite_a3ad46a400f83d41eaba2c2df77e0cf7c}{Set\-Clip} (\hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int} \hyperlink{_s_d_l__opengl_8h_ad0e63d0edcdbd3d79554076bf309fd47}{x}, \hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int} \hyperlink{_s_d_l__opengl_8h_a1675d9d7bb68e1657ff028643b4037e3}{y}, \hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int} \hyperlink{_s_d_l__opengl__glext_8h_a6ee8f168a7ab6785a9bb57c6715dad99}{w}, \hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int} \hyperlink{_s_d_l__opengl__glext_8h_afa0fb1b5e976920c0abeff2dca3ed774}{h})
 \item 
-\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_sprite_a01797197466499614f6d3662c9689bc9}{Render} (float \hyperlink{_s_d_l__opengl_8h_ad0e63d0edcdbd3d79554076bf309fd47}{x}, float \hyperlink{_s_d_l__opengl_8h_a1675d9d7bb68e1657ff028643b4037e3}{y}, float \hyperlink{_s_d_l__opengl__glext_8h_a9e06c1f76a20fed54ca742cd25cb02c4}{angle}=0.\-0f, float ext\-Scale=1.\-0f)
+\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_sprite_a01797197466499614f6d3662c9689bc9}{render} (float \hyperlink{_s_d_l__opengl_8h_ad0e63d0edcdbd3d79554076bf309fd47}{x}, float \hyperlink{_s_d_l__opengl_8h_a1675d9d7bb68e1657ff028643b4037e3}{y}, float \hyperlink{_s_d_l__opengl__glext_8h_a9e06c1f76a20fed54ca742cd25cb02c4}{angle}=0.\-0f, float ext\-Scale=1.\-0f)
 \item 
-\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_sprite_a73fabb950e4027366ab85761bf00d684}{Render} (const \hyperlink{class_vec2}{Vec2} \&\hyperlink{_s_d_l__opengl_8h_a10a82eabcb59d2fcd74acee063775f90}{v}, float \hyperlink{_s_d_l__opengl__glext_8h_a9e06c1f76a20fed54ca742cd25cb02c4}{angle}=0.\-0f, float ext\-Scale=1.\-0f)
+\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_sprite_a73fabb950e4027366ab85761bf00d684}{render} (const \hyperlink{class_vec2}{Vec2} \&\hyperlink{_s_d_l__opengl_8h_a10a82eabcb59d2fcd74acee063775f90}{v}, float \hyperlink{_s_d_l__opengl__glext_8h_a9e06c1f76a20fed54ca742cd25cb02c4}{angle}=0.\-0f, float ext\-Scale=1.\-0f)
 \item 
-\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_sprite_a7234e69f8dacddac5652848606122eb1}{Update} (float time)
+\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_sprite_a7234e69f8dacddac5652848606122eb1}{update} (float time)
 \item 
 \hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_sprite_a351dd54dac6cadbbdec48f9e1d8a36c0}{Set\-Frame} (\hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int} frame)
 \item 
@@ -44,7 +44,7 @@
 \item 
 bool \hyperlink{class_sprite_aff3af34673a6245acc8b0324a5b80664}{Is\-Open} () const 
 \item 
-bool \hyperlink{class_sprite_ab13293c64ee9585faba8b10cb7aa0f93}{Looped} () const 
+bool \hyperlink{class_sprite_ab13293c64ee9585faba8b10cb7aa0f93}{is_looped} () const 
 \item 
 \hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_sprite_a54d18a18383575b04f397f5bec3113d0}{Set\-Scale} (float \hyperlink{_s_d_l__opengl__glext_8h_a281421b881aa7a1266842b73a3bc7655}{scale})
 \item 
@@ -227,9 +227,9 @@ Definition at line 84 of file sprite.\-cpp.
 
 Definition at line 105 of file sprite.\-cpp.
 
-\hypertarget{class_sprite_ab13293c64ee9585faba8b10cb7aa0f93}{\index{Sprite@{Sprite}!Looped@{Looped}}
-\index{Looped@{Looped}!Sprite@{Sprite}}
-\subsubsection[{Looped}]{\setlength{\rightskip}{0pt plus 5cm}bool Sprite\-::\-Looped (
+\hypertarget{class_sprite_ab13293c64ee9585faba8b10cb7aa0f93}{\index{Sprite@{Sprite}!is_looped@{is_looped}}
+\index{is_looped@{is_looped}!Sprite@{Sprite}}
+\subsubsection[{is_looped}]{\setlength{\rightskip}{0pt plus 5cm}bool Sprite\-::\-is_looped (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
@@ -253,9 +253,9 @@ Definition at line 108 of file sprite.\-cpp.
 
 Definition at line 20 of file sprite.\-cpp.
 
-\hypertarget{class_sprite_a01797197466499614f6d3662c9689bc9}{\index{Sprite@{Sprite}!Render@{Render}}
-\index{Render@{Render}!Sprite@{Sprite}}
-\subsubsection[{Render}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} Sprite\-::\-Render (
+\hypertarget{class_sprite_a01797197466499614f6d3662c9689bc9}{\index{Sprite@{Sprite}!render@{render}}
+\index{render@{render}!Sprite@{Sprite}}
+\subsubsection[{render}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} Sprite\-::\-render (
 \begin{DoxyParamCaption}
 \item[{float}]{x, }
 \item[{float}]{y, }
@@ -267,9 +267,9 @@ Definition at line 20 of file sprite.\-cpp.
 
 Definition at line 40 of file sprite.\-cpp.
 
-\hypertarget{class_sprite_a73fabb950e4027366ab85761bf00d684}{\index{Sprite@{Sprite}!Render@{Render}}
-\index{Render@{Render}!Sprite@{Sprite}}
-\subsubsection[{Render}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} Sprite\-::\-Render (
+\hypertarget{class_sprite_a73fabb950e4027366ab85761bf00d684}{\index{Sprite@{Sprite}!render@{render}}
+\index{render@{render}!Sprite@{Sprite}}
+\subsubsection[{render}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} Sprite\-::\-render (
 \begin{DoxyParamCaption}
 \item[{const {\bf Vec2} \&}]{v, }
 \item[{float}]{angle = {\ttfamily 0.0f}, }
@@ -441,9 +441,9 @@ Definition at line 135 of file sprite.\-cpp.
 
 Definition at line 140 of file sprite.\-cpp.
 
-\hypertarget{class_sprite_a7234e69f8dacddac5652848606122eb1}{\index{Sprite@{Sprite}!Update@{Update}}
-\index{Update@{Update}!Sprite@{Sprite}}
-\subsubsection[{Update}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} Sprite\-::\-Update (
+\hypertarget{class_sprite_a7234e69f8dacddac5652848606122eb1}{\index{Sprite@{Sprite}!update@{update}}
+\index{update@{update}!Sprite@{Sprite}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} Sprite\-::\-update (
 \begin{DoxyParamCaption}
 \item[{float}]{time}
 \end{DoxyParamCaption}

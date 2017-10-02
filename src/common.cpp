@@ -9,12 +9,12 @@
 
 #include <common.hpp>
 
-int debugCount = 0; //!< Global variable used as debug counter
+int debug_count = 0; //!< Global variable used as debug counter
 
 // Hotspot screen positions to be used as shortcuts
 // The number on the left is x axis and the right one is y axis
 pair<float, float>
-    HotspotPos[] = {
+    hotspot_positions[] = {
         // TOP_LEFT
         {0.0, 0.0},
         // TOP
@@ -35,24 +35,24 @@ pair<float, float>
         {1.0, 1.0}};
 
 /*!
-	@fn       SDL_Color MakeColor(int r, int g, int b, int a)
+	@fn       SDL_Color generate_color(int r, int g, int b, int a)
 	@brief    Generates color with a alpha channel
 	@param    int r, int g, int b, int a
 	@return   SDL_Color rgba color value
 	@warning  none
 */
 
-SDL_Color MakeColor(int r,		// red value, 	range: 0 -> 255
-										int g,		// green value, range: 0 -> 255
-										int b,		// blue value,	range: 0 -> 255
-										int a) {	// alpha value, range: unknown
+SDL_Color generate_color(int red,		// red value, 	range: 0 -> 255
+                         int green,		// green value, range: 0 -> 255
+                         int blue,		// blue value,	range: 0 -> 255
+                         int alpha) {	// alpha value, range: unknown
 
   SDL_Color color; //!< Object with the 4 color values
 
-  color.r = r;
-	color.g = g;
-	color.b = b;
-	color.a = a;
+  color.r = red;
+	color.g = green;
+	color.b = blue;
+	color.a = alpha;
 
 	return color;
 }
@@ -71,7 +71,7 @@ bool equals(const float &a, const float &b) {
 }
 
 /*!
-  @fn       float closeDist(const float &from, const float &to, 
+  @fn       float close_distance(const float &from, const float &to, 
   const float &change)
 	@brief    Function that cannot be comprehended by mere human beings
 	@param    const float &from, const float &to, const float &change
@@ -79,7 +79,7 @@ bool equals(const float &a, const float &b) {
 	@warning  TODO: this method must be refactorated for better understanding
 */
 
-float closeDist(const float &from, const float &to, const float &change) {
+float close_distance(const float &from, const float &to, const float &change) {
 	if (abs(from - to) < change) {
 		return to;
 	}
@@ -92,17 +92,17 @@ float closeDist(const float &from, const float &to, const float &change) {
 }
 
 /*!
-	@fn       string FloatToStr(float f)
+	@fn       string convert_float_to_str(float f)
 	@brief    Converts a float number to a string and returns it
 	@param    float number f
 	@return   The number passed as param transformed in a string
 	@warning  none
 */
 
-string FloatToStr(float f) {
-  char s[15]; //!< Temporary storage variable for saving chars
+string convert_float_to_str(float float_number) {
+  char string_to_be_saved[15]; //!< Temporary storage variable for saving chars
 
-  sprintf(s,"%.2f",f);
+  sprintf(string_to_be_saved,"%.2f",float_number);
 
-	return s;
+	return string_to_be_saved;
 }

@@ -8,7 +8,7 @@ class Timer{
 public:
 	Timer();
 
-	void Update(float dTime);
+	void update(float dTime);
 	void Restart();
 	float Get();
 };

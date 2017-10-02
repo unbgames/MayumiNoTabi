@@ -99,7 +99,7 @@ $\ast$\hyperlink{begin__code_8h_a81faf4ba0455dc75f2e0507eddb79401}{S\-D\-L\-C\-A
 \item 
 \hyperlink{begin__code_8h_aa4c7a931f4a968f818b2a1b10a432185}{D\-E\-C\-L\-S\-P\-E\-C} \hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int} \hyperlink{begin__code_8h_a81faf4ba0455dc75f2e0507eddb79401}{S\-D\-L\-C\-A\-L\-L} \hyperlink{_s_d_l__gamecontroller_8h_a457fd59b3dec7d1b6ed384973b584bc6}{S\-D\-L\-\_\-\-Game\-Controller\-Event\-State} (\hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int} state)
 \item 
-\hyperlink{begin__code_8h_aa4c7a931f4a968f818b2a1b10a432185}{D\-E\-C\-L\-S\-P\-E\-C} \hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{begin__code_8h_a81faf4ba0455dc75f2e0507eddb79401}{S\-D\-L\-C\-A\-L\-L} \hyperlink{_s_d_l__gamecontroller_8h_a92fe68241a17b60b2240c04d01b73e6b}{S\-D\-L\-\_\-\-Game\-Controller\-Update} (\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void})
+\hyperlink{begin__code_8h_aa4c7a931f4a968f818b2a1b10a432185}{D\-E\-C\-L\-S\-P\-E\-C} \hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{begin__code_8h_a81faf4ba0455dc75f2e0507eddb79401}{S\-D\-L\-C\-A\-L\-L} \hyperlink{_s_d_l__gamecontroller_8h_a92fe68241a17b60b2240c04d01b73e6b}{S\-D\-L\-\_\-\-Game\-Controller\-update} (\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void})
 \item 
 \hyperlink{begin__code_8h_aa4c7a931f4a968f818b2a1b10a432185}{D\-E\-C\-L\-S\-P\-E\-C} \\*
 \hyperlink{_s_d_l__gamecontroller_8h_a96d0bda99d806397e4c697241ccffa1c}{S\-D\-L\-\_\-\-Game\-Controller\-Axis} \hyperlink{begin__code_8h_a81faf4ba0455dc75f2e0507eddb79401}{S\-D\-L\-C\-A\-L\-L} \hyperlink{_s_d_l__gamecontroller_8h_a44a5320a7241b218417d9bfb995907d7}{S\-D\-L\-\_\-\-Game\-Controller\-Get\-Axis\-From\-String} (const char $\ast$pch\-String)
@@ -315,7 +315,7 @@ Close a controller previously opened with \hyperlink{_s_d_l__gamecontroller_8h_a
 )}}\label{_s_d_l__gamecontroller_8h_a457fd59b3dec7d1b6ed384973b584bc6}
 Enable/disable controller event polling.
 
-If controller events are disabled, you must call \hyperlink{_s_d_l__gamecontroller_8h_a92fe68241a17b60b2240c04d01b73e6b}{S\-D\-L\-\_\-\-Game\-Controller\-Update()} yourself and check the state of the controller when you want controller information.
+If controller events are disabled, you must call \hyperlink{_s_d_l__gamecontroller_8h_a92fe68241a17b60b2240c04d01b73e6b}{S\-D\-L\-\_\-\-Game\-Controller\-update()} yourself and check the state of the controller when you want controller information.
 
 The state can be one of \hyperlink{_s_d_l__events_8h_a56cee6a1344dd6d33598af982fa9607f}{S\-D\-L\-\_\-\-Q\-U\-E\-R\-Y}, \hyperlink{_s_d_l__events_8h_ae8ffaa5d3d65f4dd75dcf1563e1cc8a9}{S\-D\-L\-\_\-\-E\-N\-A\-B\-L\-E} or \hyperlink{_s_d_l__events_8h_af1ff071ae5e1576d6de5663d68391ac5}{S\-D\-L\-\_\-\-I\-G\-N\-O\-R\-E}. \hypertarget{_s_d_l__gamecontroller_8h_a34e43c763202a2d7124f24fdaf508a2a}{\index{S\-D\-L\-\_\-gamecontroller.\-h@{S\-D\-L\-\_\-gamecontroller.\-h}!S\-D\-L\-\_\-\-Game\-Controller\-From\-Instance\-I\-D@{S\-D\-L\-\_\-\-Game\-Controller\-From\-Instance\-I\-D}}
 \index{S\-D\-L\-\_\-\-Game\-Controller\-From\-Instance\-I\-D@{S\-D\-L\-\_\-\-Game\-Controller\-From\-Instance\-I\-D}!SDL_gamecontroller.h@{S\-D\-L\-\_\-gamecontroller.\-h}}
@@ -454,14 +454,14 @@ Open a game controller for use. The index passed as an argument refers to the N'
 \begin{DoxyReturn}{Returns}
 A controller identifier, or N\-U\-L\-L if an error occurred. 
 \end{DoxyReturn}
-\hypertarget{_s_d_l__gamecontroller_8h_a92fe68241a17b60b2240c04d01b73e6b}{\index{S\-D\-L\-\_\-gamecontroller.\-h@{S\-D\-L\-\_\-gamecontroller.\-h}!S\-D\-L\-\_\-\-Game\-Controller\-Update@{S\-D\-L\-\_\-\-Game\-Controller\-Update}}
-\index{S\-D\-L\-\_\-\-Game\-Controller\-Update@{S\-D\-L\-\_\-\-Game\-Controller\-Update}!SDL_gamecontroller.h@{S\-D\-L\-\_\-gamecontroller.\-h}}
-\subsubsection[{S\-D\-L\-\_\-\-Game\-Controller\-Update}]{\setlength{\rightskip}{0pt plus 5cm}{\bf D\-E\-C\-L\-S\-P\-E\-C} {\bf void} {\bf S\-D\-L\-C\-A\-L\-L} S\-D\-L\-\_\-\-Game\-Controller\-Update (
+\hypertarget{_s_d_l__gamecontroller_8h_a92fe68241a17b60b2240c04d01b73e6b}{\index{S\-D\-L\-\_\-gamecontroller.\-h@{S\-D\-L\-\_\-gamecontroller.\-h}!S\-D\-L\-\_\-\-Game\-Controller\-update@{S\-D\-L\-\_\-\-Game\-Controller\-update}}
+\index{S\-D\-L\-\_\-\-Game\-Controller\-update@{S\-D\-L\-\_\-\-Game\-Controller\-update}!SDL_gamecontroller.h@{S\-D\-L\-\_\-gamecontroller.\-h}}
+\subsubsection[{S\-D\-L\-\_\-\-Game\-Controller\-update}]{\setlength{\rightskip}{0pt plus 5cm}{\bf D\-E\-C\-L\-S\-P\-E\-C} {\bf void} {\bf S\-D\-L\-C\-A\-L\-L} S\-D\-L\-\_\-\-Game\-Controller\-update (
 \begin{DoxyParamCaption}
 \item[{{\bf void}}]{}
 \end{DoxyParamCaption}
 )}}\label{_s_d_l__gamecontroller_8h_a92fe68241a17b60b2240c04d01b73e6b}
-Update the current state of the open game controllers.
+update the current state of the open game controllers.
 
 This is called automatically by the event loop if any game controller events are enabled. \hypertarget{_s_d_l__gamecontroller_8h_a3307c27938a336b83c317b6054d91bd4}{\index{S\-D\-L\-\_\-gamecontroller.\-h@{S\-D\-L\-\_\-gamecontroller.\-h}!S\-D\-L\-\_\-\-Is\-Game\-Controller@{S\-D\-L\-\_\-\-Is\-Game\-Controller}}
 \index{S\-D\-L\-\_\-\-Is\-Game\-Controller@{S\-D\-L\-\_\-\-Is\-Game\-Controller}!SDL_gamecontroller.h@{S\-D\-L\-\_\-gamecontroller.\-h}}

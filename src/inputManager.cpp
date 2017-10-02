@@ -3,7 +3,7 @@
 InputManager::InputManager() {}
 InputManager::~InputManager() {}
 
-void InputManager::Update(float time) {
+void InputManager::update(float time) {
 	int x,y;
 	SDL_GetMouseState(&x,&y);
 	mouseMotion = (mouse.x!=x || mouse.y!=y);
@@ -11,7 +11,7 @@ void InputManager::Update(float time) {
 	mouse.y = (float)y;
 	quitRequested=false;
 	
-	cursorBlinker.Update(time);
+	cursorBlinker.update(time);
 
 	SDL_Event event;
 	while (SDL_PollEvent(&event)) {

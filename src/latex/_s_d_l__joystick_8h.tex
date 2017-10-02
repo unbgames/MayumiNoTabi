@@ -87,7 +87,7 @@ enum \hyperlink{_s_d_l__joystick_8h_a293471a907265fb92ea12caf5bcc8065}{S\-D\-L\-
 \item 
 \hyperlink{begin__code_8h_aa4c7a931f4a968f818b2a1b10a432185}{D\-E\-C\-L\-S\-P\-E\-C} \hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int} \hyperlink{begin__code_8h_a81faf4ba0455dc75f2e0507eddb79401}{S\-D\-L\-C\-A\-L\-L} \hyperlink{_s_d_l__joystick_8h_adfc662e571011ae7ec303101ab34e53a}{S\-D\-L\-\_\-\-Joystick\-Num\-Buttons} (\hyperlink{_s_d_l__joystick_8h_a1246a982e91df301042a77e65c694987}{S\-D\-L\-\_\-\-Joystick} $\ast$joystick)
 \item 
-\hyperlink{begin__code_8h_aa4c7a931f4a968f818b2a1b10a432185}{D\-E\-C\-L\-S\-P\-E\-C} \hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{begin__code_8h_a81faf4ba0455dc75f2e0507eddb79401}{S\-D\-L\-C\-A\-L\-L} \hyperlink{_s_d_l__joystick_8h_a3ea23a9504ea56f2778147dbf39a029f}{S\-D\-L\-\_\-\-Joystick\-Update} (\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void})
+\hyperlink{begin__code_8h_aa4c7a931f4a968f818b2a1b10a432185}{D\-E\-C\-L\-S\-P\-E\-C} \hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{begin__code_8h_a81faf4ba0455dc75f2e0507eddb79401}{S\-D\-L\-C\-A\-L\-L} \hyperlink{_s_d_l__joystick_8h_a3ea23a9504ea56f2778147dbf39a029f}{S\-D\-L\-\_\-\-Joystick\-update} (\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void})
 \item 
 \hyperlink{begin__code_8h_aa4c7a931f4a968f818b2a1b10a432185}{D\-E\-C\-L\-S\-P\-E\-C} \hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int} \hyperlink{begin__code_8h_a81faf4ba0455dc75f2e0507eddb79401}{S\-D\-L\-C\-A\-L\-L} \hyperlink{_s_d_l__joystick_8h_a51ba353843fd4477f6a485ac4ef35d00}{S\-D\-L\-\_\-\-Joystick\-Event\-State} (\hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int} state)
 \item 
@@ -259,7 +259,7 @@ Return the battery level of this joystick \hypertarget{_s_d_l__joystick_8h_a51ba
 )}}\label{_s_d_l__joystick_8h_a51ba353843fd4477f6a485ac4ef35d00}
 Enable/disable joystick event polling.
 
-If joystick events are disabled, you must call \hyperlink{_s_d_l__joystick_8h_a3ea23a9504ea56f2778147dbf39a029f}{S\-D\-L\-\_\-\-Joystick\-Update()} yourself and check the state of the joystick when you want joystick information.
+If joystick events are disabled, you must call \hyperlink{_s_d_l__joystick_8h_a3ea23a9504ea56f2778147dbf39a029f}{S\-D\-L\-\_\-\-Joystick\-update()} yourself and check the state of the joystick when you want joystick information.
 
 The state can be one of \hyperlink{_s_d_l__events_8h_a56cee6a1344dd6d33598af982fa9607f}{S\-D\-L\-\_\-\-Q\-U\-E\-R\-Y}, \hyperlink{_s_d_l__events_8h_ae8ffaa5d3d65f4dd75dcf1563e1cc8a9}{S\-D\-L\-\_\-\-E\-N\-A\-B\-L\-E} or \hyperlink{_s_d_l__events_8h_af1ff071ae5e1576d6de5663d68391ac5}{S\-D\-L\-\_\-\-I\-G\-N\-O\-R\-E}. \hypertarget{_s_d_l__joystick_8h_abdca7bdd08c34dc7c292c296c440698a}{\index{S\-D\-L\-\_\-joystick.\-h@{S\-D\-L\-\_\-joystick.\-h}!S\-D\-L\-\_\-\-Joystick\-From\-Instance\-I\-D@{S\-D\-L\-\_\-\-Joystick\-From\-Instance\-I\-D}}
 \index{S\-D\-L\-\_\-\-Joystick\-From\-Instance\-I\-D@{S\-D\-L\-\_\-\-Joystick\-From\-Instance\-I\-D}!SDL_joystick.h@{S\-D\-L\-\_\-joystick.\-h}}
@@ -431,14 +431,14 @@ Open a joystick for use. The index passed as an argument refers to the N'th joys
 \begin{DoxyReturn}{Returns}
 A joystick identifier, or N\-U\-L\-L if an error occurred. 
 \end{DoxyReturn}
-\hypertarget{_s_d_l__joystick_8h_a3ea23a9504ea56f2778147dbf39a029f}{\index{S\-D\-L\-\_\-joystick.\-h@{S\-D\-L\-\_\-joystick.\-h}!S\-D\-L\-\_\-\-Joystick\-Update@{S\-D\-L\-\_\-\-Joystick\-Update}}
-\index{S\-D\-L\-\_\-\-Joystick\-Update@{S\-D\-L\-\_\-\-Joystick\-Update}!SDL_joystick.h@{S\-D\-L\-\_\-joystick.\-h}}
-\subsubsection[{S\-D\-L\-\_\-\-Joystick\-Update}]{\setlength{\rightskip}{0pt plus 5cm}{\bf D\-E\-C\-L\-S\-P\-E\-C} {\bf void} {\bf S\-D\-L\-C\-A\-L\-L} S\-D\-L\-\_\-\-Joystick\-Update (
+\hypertarget{_s_d_l__joystick_8h_a3ea23a9504ea56f2778147dbf39a029f}{\index{S\-D\-L\-\_\-joystick.\-h@{S\-D\-L\-\_\-joystick.\-h}!S\-D\-L\-\_\-\-Joystick\-update@{S\-D\-L\-\_\-\-Joystick\-update}}
+\index{S\-D\-L\-\_\-\-Joystick\-update@{S\-D\-L\-\_\-\-Joystick\-update}!SDL_joystick.h@{S\-D\-L\-\_\-joystick.\-h}}
+\subsubsection[{S\-D\-L\-\_\-\-Joystick\-update}]{\setlength{\rightskip}{0pt plus 5cm}{\bf D\-E\-C\-L\-S\-P\-E\-C} {\bf void} {\bf S\-D\-L\-C\-A\-L\-L} S\-D\-L\-\_\-\-Joystick\-update (
 \begin{DoxyParamCaption}
 \item[{{\bf void}}]{}
 \end{DoxyParamCaption}
 )}}\label{_s_d_l__joystick_8h_a3ea23a9504ea56f2778147dbf39a029f}
-Update the current state of the open joysticks.
+update the current state of the open joysticks.
 
 This is called automatically by the event loop if any joystick events are enabled. \hypertarget{_s_d_l__joystick_8h_a2ab130eaa28f8e3bd544a5432041a311}{\index{S\-D\-L\-\_\-joystick.\-h@{S\-D\-L\-\_\-joystick.\-h}!S\-D\-L\-\_\-\-Num\-Joysticks@{S\-D\-L\-\_\-\-Num\-Joysticks}}
 \index{S\-D\-L\-\_\-\-Num\-Joysticks@{S\-D\-L\-\_\-\-Num\-Joysticks}!SDL_joystick.h@{S\-D\-L\-\_\-joystick.\-h}}

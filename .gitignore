@@ -34,5 +34,13 @@
 # Temporary files
 .tmp
 
+# Doxygen files
+latex
+src/html/**/*
+src/latex/*
+
+# Ignores the vscode folder
+.vscode/**/*
+
 #executavel
 JOGO

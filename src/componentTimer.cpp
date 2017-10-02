@@ -9,23 +9,23 @@ CompTimer::CompTimer(float l):limit{l}{}
 CompTimer::~CompTimer() {}
 
 
-void CompTimer::Update(float time) {
-	t.Update(time);
+void CompTimer::update(float time) {
+	t.update(time);
 	if (t.Get()>limit) {
 		GO(entity)->dead=true;
 	}
 }
 
 
-void CompTimer::Render() {}
+void CompTimer::render() {}
 
 
-void CompTimer::Own(GameObject* go) {
+void CompTimer::own(GameObject* go) {
 	entity=go->uid;
 }
 
 
-Component::type CompTimer::GetType() const{
+Component::type CompTimer::get_type() const{
 	return Component::type::t_timer;
 }
 

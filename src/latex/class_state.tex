@@ -18,9 +18,9 @@ Inheritance diagram for State\-:\begin{figure}[H]
 \item 
 virtual \hyperlink{class_state_a9ddc1df6f998184d6477b48fab90281c}{$\sim$\-State} ()
 \item 
-virtual \hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_state_a6445efe57dd006dec3d5041272d4688c}{Update} (float time)=0
+virtual \hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_state_a6445efe57dd006dec3d5041272d4688c}{update} (float time)=0
 \item 
-virtual \hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_state_a34e26f04dda59f19396ae4b84c5379b6}{Render} ()=0
+virtual \hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_state_a34e26f04dda59f19396ae4b84c5379b6}{render} ()=0
 \item 
 virtual \hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_state_a7a2ee658bbed3ce76534b0f361227918}{Begin} ()=0
 \item 
@@ -60,9 +60,9 @@ map$<$ \hyperlink{common_8hpp_a45680061f7e655744e42cdfa30b44fa8}{ii}, set$<$ \hy
 \subsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-virtual \hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_state_a23287331ba19c3a06e49b5c77bc7bfc5}{Update\-Array} (float time)
+virtual \hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_state_a23287331ba19c3a06e49b5c77bc7bfc5}{update\-Array} (float time)
 \item 
-virtual \hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_state_aaaad11346a36120afd9c4049f0fa1798}{Render\-Array} ()
+virtual \hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_state_aaaad11346a36120afd9c4049f0fa1798}{render\-Array} ()
 \end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
@@ -248,9 +248,9 @@ Reimplemented in \hyperlink{class_state_editor_afaec9a4eb834d1051019078d8c55b95b
 
 Definition at line 45 of file state.\-cpp.
 
-\hypertarget{class_state_a34e26f04dda59f19396ae4b84c5379b6}{\index{State@{State}!Render@{Render}}
-\index{Render@{Render}!State@{State}}
-\subsubsection[{Render}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf void} State\-::\-Render (
+\hypertarget{class_state_a34e26f04dda59f19396ae4b84c5379b6}{\index{State@{State}!render@{render}}
+\index{render@{render}!State@{State}}
+\subsubsection[{render}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf void} State\-::\-render (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
@@ -259,9 +259,9 @@ Definition at line 45 of file state.\-cpp.
 
 Implemented in \hyperlink{class_state_editor_a9246837b2af58c5fe769b8b0f0bbf5b9}{State\-Editor}, \hyperlink{class_state_stage_a4dac7e9dbec93f8d5ecfa1088796590c}{State\-Stage}, and \hyperlink{class_state_title_a4a967bd487216860a8d0ca6a34a334c2}{State\-Title}.
 
-\hypertarget{class_state_aaaad11346a36120afd9c4049f0fa1798}{\index{State@{State}!Render\-Array@{Render\-Array}}
-\index{Render\-Array@{Render\-Array}!State@{State}}
-\subsubsection[{Render\-Array}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} State\-::\-Render\-Array (
+\hypertarget{class_state_aaaad11346a36120afd9c4049f0fa1798}{\index{State@{State}!render\-Array@{render\-Array}}
+\index{render\-Array@{render\-Array}!State@{State}}
+\subsubsection[{render\-Array}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} State\-::\-render\-Array (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
@@ -281,9 +281,9 @@ Definition at line 64 of file state.\-cpp.
 
 Implemented in \hyperlink{class_state_editor_af29ad722e62abb7f2268749c28de6221}{State\-Editor}, \hyperlink{class_state_stage_ae396effb4e08200f70f4901f1b204b58}{State\-Stage}, and \hyperlink{class_state_title_acb25d1aed1f0c5474a4d71da45026ca5}{State\-Title}.
 
-\hypertarget{class_state_a6445efe57dd006dec3d5041272d4688c}{\index{State@{State}!Update@{Update}}
-\index{Update@{Update}!State@{State}}
-\subsubsection[{Update}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf void} State\-::\-Update (
+\hypertarget{class_state_a6445efe57dd006dec3d5041272d4688c}{\index{State@{State}!update@{update}}
+\index{update@{update}!State@{State}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf void} State\-::\-update (
 \begin{DoxyParamCaption}
 \item[{float}]{time}
 \end{DoxyParamCaption}
@@ -292,9 +292,9 @@ Implemented in \hyperlink{class_state_editor_af29ad722e62abb7f2268749c28de6221}{
 
 Implemented in \hyperlink{class_state_editor_a9446b67f8a03ec57ba9d7226a2d1d3f2}{State\-Editor}, \hyperlink{class_state_stage_a80984c55012d74f3eb0b0318d8f6511a}{State\-Stage}, and \hyperlink{class_state_title_a407820de3e95376a459db406ebde34f2}{State\-Title}.
 
-\hypertarget{class_state_a23287331ba19c3a06e49b5c77bc7bfc5}{\index{State@{State}!Update\-Array@{Update\-Array}}
-\index{Update\-Array@{Update\-Array}!State@{State}}
-\subsubsection[{Update\-Array}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} State\-::\-Update\-Array (
+\hypertarget{class_state_a23287331ba19c3a06e49b5c77bc7bfc5}{\index{State@{State}!update\-Array@{update\-Array}}
+\index{update\-Array@{update\-Array}!State@{State}}
+\subsubsection[{update\-Array}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} State\-::\-update\-Array (
 \begin{DoxyParamCaption}
 \item[{float}]{time}
 \end{DoxyParamCaption}
