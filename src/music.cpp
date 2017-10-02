@@ -25,43 +25,43 @@ Music::Music():music{shared_ptr<Mix_Music>(nullptr)} {
  *  @return A Music object
  */
 Music::Music(string file) {
-    Open(file);
+    open_music_file(file);
 }
 
 /*!
- *  @fn Music::Play(int times)
+ *  @fn Music::play_music(int times)
  *  @brief Play the music 
  *  @param int times 
  *  @return The method returns no param
  */
-void Music::Play(int times) {
+void Music::play_music(int times) {
     Mix_PlayMusic(music.get(),times);
 }
 
 /*!
- *  @fn Music::Stop()
+ *  @fn Music::stop_music()
  *  @brief Stop the music 
  *  @return The method returns no param
  */
-void Music::Stop() {
+void Music::stop_music() {
     Mix_FadeOutMusic(FADETIME);
 }
 
 /*!
- *  @fn Music::Open(string file)
+ *  @fn Music::open_music_file(string file)
  *  @brief Open the music file 
  *  @param string file
  *  @return The method returns no param
  */
-void Music::Open(string file) {
+void Music::open_music_file(string file) {
     music=Resources::GetMusic(file);
 }
 
 /*!
- *  @fn Music::IsOpen()
+ *  @fn Music::music_is_open()
  *  @brief Check if music file is open 
  *  @return True or false 
  */
-bool Music::IsOpen() {
+bool Music::music_is_open() {
     return (music.get()!=nullptr);
 }
