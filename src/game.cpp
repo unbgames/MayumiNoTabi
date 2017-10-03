@@ -39,7 +39,7 @@ Game* Game::instance = NULL;
 	@warning Method that requires review of comment
 */
 
-Game::Game(string title,int width,int height):frameStart{0},dt{0},winSize{(float)width,(float)height} {
+Game::Game(string title,int width,int height):frameStart{0},dt{0},windowSize{(float)width,(float)height} {
 
 	srand(time(NULL));
 
@@ -53,9 +53,9 @@ Game::Game(string title,int width,int height):frameStart{0},dt{0},winSize{(float
 	bool success = SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_TIMER) == 0;
 
 	if (!success) {
-		string error_msg(error_msg = SDL_GetError());
-		error_msg = "Could not initialize SDL:\n" + error_msg;
-		throw GameException(error_msg);
+		string error_msg(error_messege = SDL_GetError());
+		error_messege = "Could not initialize SDL:\n" + error_messege;
+		throw GameException(error_messege);
 	}
 
 	// Initialize image module and check if process went OK
@@ -82,16 +82,16 @@ Game::Game(string title,int width,int height):frameStart{0},dt{0},winSize{(float
 	 */
 
 	if (image_settings != res) {
-		string error_msg_main = SDL_GetError();
-		string error_msg = "Could not initiazlie image libary for type:";
+		string error_messege_main = SDL_GetError();
+		string error_messege = "Could not initiazlie image libary for type:";
 		for (auto format : image_formats)
 			if ((format & res) == 0) {
-				error_msg += code_name_map[format];
+				error_messege += code_name_map[format];
 			}
-		error_msg += "\n";
-		error_msg = error_msg_main + error_msg;
+		error_messege += "\n";
+		error_messege = error_messege_main + error_messege;
 
-		throw GameException(error_msg);
+		throw GameException(error_messege);
 	}
 
 	int audio_modules = MIX_INIT_OGG;
