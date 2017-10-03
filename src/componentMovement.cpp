@@ -19,7 +19,7 @@
     /*!
     This is a constructor method of componentMovement class
     */
-CompMovement::CompMovement(const Vec2& s,moveType t):mType{t},speed{s}{}
+CompMovement::CompMovement(const Vec2& sprite,moveType movetype):mType{movetype},speed{s}{}
 
 //! A destructor.
     /*!
@@ -39,8 +39,8 @@ CompMovement::~CompMovement() {}
 
 void CompMovement::Update(float time) {
 	UNUSED(time);
-	GO(entity)->pos+=move;
-	if (mType==moveType::t_bullet)GO(entity)->rotation=speed.angle();
+	GO(entity)->position+=move;
+	if (mType==moveType::type_bullet)GO(entity)->rotation=speed.angle();
 }
 
 /*!
@@ -60,5 +60,5 @@ void CompMovement::Render() {}
 */
 
 Component::type CompMovement::GetType()const{
-	return Component::type::t_movement;
+	return Component::type::type_movement;
 }
