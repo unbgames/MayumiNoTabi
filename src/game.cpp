@@ -39,7 +39,7 @@ Game* Game::instance = NULL;
 	@warning Method that requires review of comment
 */
 
-Game::Game(string title,int width,int height):frameStart{0},dt{0},windowSize{(float)width,(float)height} {
+Game::Game(string title,int width,int height):frameStart{0},deltatime{0},windowSize{(float)width,(float)height} {
 
 	srand(time(NULL));
 
@@ -60,10 +60,10 @@ Game::Game(string title,int width,int height):frameStart{0},dt{0},windowSize{(fl
 
 	// Initialize image module and check if process went OK
 
-	map<int, string> code_name_map = {{IMG_INIT_TIF, "tif"},
-									  {IMG_INIT_JPG, "jpg"},
-									  {IMG_INIT_PNG, "png"}};
-	vector<int> image_formats{IMG_INIT_TIF, IMG_INIT_JPG, IMG_INIT_PNG};
+	map<int, string> code_name_map = {{IMAGE_INIT_TIF, "tif"},
+									  {IMAGE_INIT_JPG, "jpg"},
+									  {IMAGE_INIT_PNG, "png"}};
+	vector<int> image_formats{IMAGE_INIT_TIF, IMAGE_INIT_JPG, IMAGE_INIT_PNG};
 
 	// Initialize image module or between all desired formats
 
@@ -75,7 +75,7 @@ Game::Game(string title,int width,int height):frameStart{0},dt{0},windowSize{(fl
 									}
 	);
 
-	int res = IMG_Init(image_settings);
+	int res = IMAGE_Init(image_settings);
 
 	/* Check the possibility initialize image library and return the error messege
 	   for ever type
@@ -146,7 +146,7 @@ Game::~Game() {
 	TTF_Quit();
 	Mix_CloseAudio();
 	Mix_Quit();
-	IMG_Quit();
+	IMAGE_Quit();
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
 	SDL_Quit();
@@ -216,9 +216,9 @@ void Game::Run() {
 	}
 	while (!stateStack.empty()) {
 		CalculateDeltaTime();
-		INPUT.Update(dt);
+		INPUT.Update(deltatime);
 
-		GetCurrentState().Update(dt);
+		GetCurrentState().Update(deltatime);
 		GetCurrentState().Render();
 		SDL_RenderPresent(renderer);
 
@@ -255,7 +255,7 @@ void Game::Run() {
 }
 
 float Game::GetDeltaTime() {
-	return dt;
+	return deltatime;
 }
 
 /*!
@@ -268,7 +268,7 @@ float Game::GetDeltaTime() {
 void Game::CalculateDeltaTime() {
 	unsigned int tmp = frameStart;
 	frameStart = SDL_GetTicks();
-	dt = max((frameStart - tmp) / 1000.0, 0.001);
+	deltatime = max((frameStart - tmp) / 1000.0, 0.001);
 }
 
 /*!

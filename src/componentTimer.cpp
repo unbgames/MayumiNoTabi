@@ -18,7 +18,7 @@
     /*!
     This is a constructor method of componentTimer class
     */
-CompTimer::CompTimer(float l):limit{l}{}
+CompTimer::CompTimer(float limit):limit{limit}{}
 
 //! A destructor.
     /*!
@@ -38,8 +38,8 @@ CompTimer::~CompTimer() {}
 
 
 void CompTimer::Update(float time) {
-	t.Update(time);
-	if (t.Get()>limit) {
+	time.Update(time);
+	if (time.Get()>limit) {
 		GO(entity)->dead=true;
 	}
 }
@@ -76,5 +76,5 @@ void CompTimer::Own(GameObject* go) {
 
 
 Component::type CompTimer::GetType() const{
-	return Component::type::t_timer;
+	return Component::type::type_timer;
 }
