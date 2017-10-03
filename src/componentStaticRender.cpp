@@ -21,9 +21,9 @@
     This is a constructor method of componentStaticRender class
     */
 
-CompStaticRender::CompStaticRender(const Sprite &s,
-	                                 const Vec2 &p,
-																	 const bool cs):sp{s},pos{p}, camScaling{cs}{
+CompStaticRender::CompStaticRender(const Sprite &sprite,
+	                                 const Vec2 &position,
+																	 const bool camerascaling):sprite{sprite},position{position}, cameraScaling{camerascaling}{
 }
 
 //! A destructor.
@@ -55,15 +55,15 @@ void CompStaticRender::Update(float time) {
 
 void CompStaticRender::Render() {
 
-	Vec2 p = pos;
-	p = GO(entity)->Box().corner() + p.rotate(GO(entity)->rotation);
-	sp.SetFlipH(GO(entity)->flipped);
+	Vec2 position = position;
+	position = GO(entity)->Box().corner() + position.rotate(GO(entity)->rotation);
+	sprite.SetFlipH(GO(entity)->flipped);
 
 	if (camScaling) {
-			sp.Render((p-CAMERA)*CAMERAZOOM,GO(entity)->rotation, CAMERAZOOM);
+			sprite.Render((position-CAMERA)*CAMERAZOOM,GO(entity)->rotation, CAMERAZOOM);
 	}
 	else {
-			sp.Render(p,GO(entity)->rotation, 1);
+			sprite.Render(position,GO(entity)->rotation, 1);
 	}
 
 }
