@@ -28,7 +28,7 @@ CompTimer::CompTimer(float limit):limit{limit}{}
 CompTimer::~CompTimer() {}
 
 /*!
-	@fn CompTimer::Update(float time)
+	@fn CompTimer::update(float time)
 	@brief Method that update the game time
 	and check the time limit
 	@param time
@@ -36,34 +36,31 @@ CompTimer::~CompTimer() {}
 	@warning Method that requires review of comment
 */
 
-
-void CompTimer::Update(float time) {
-	time.Update(time);
-	if (time.Get()>limit) {
+void CompTimer::update(float time) {
+	t.add_time(time);
+	if (t.get_time()>limit) {
 		GO(entity)->dead=true;
 	}
 }
 
 /*!
-	@fn void CompTimer::Render()
+	@fn void CompTimer::render()
 	@brief Method that render the game time
 	@return The execution of this method returns no value
 	@warning Method that requires review of comment
 */
 
-
-void CompTimer::Render() {}
+void CompTimer::render() {}
 
 /*!
-	@fn void CompTimer::Own(GameObject* go)
+	@fn void CompTimer::own(GameObject* go)
 	@brief Method that monitor the game element
 	@param GameObject* go
 	@return The execution of this method returns no value
 	@warning Method that requires review of comment
 */
 
-
-void CompTimer::Own(GameObject* go) {
+void CompTimer::own(GameObject* go) {
 	entity=go->uid;
 }
 
@@ -74,7 +71,6 @@ void CompTimer::Own(GameObject* go) {
 	@warning Method that requires review of comment
 */
 
-
-Component::type CompTimer::GetType() const{
-	return Component::type::type_timer;
+Component::type CompTimer::get_type() const{
+	return Component::type::t_timer;
 }

@@ -28,7 +28,6 @@ CompMovement::CompMovement(const Vec2& sprite,moveType movetype):mType{movetype}
 
 CompMovement::~CompMovement() {}
 
-
 /*!
 	@fn void CompMovement::Update(float time)
 	@brief Method that update element movement
@@ -37,7 +36,7 @@ CompMovement::~CompMovement() {}
 	@warning Method that requires review of comment
 */
 
-void CompMovement::Update(float time) {
+void CompMovement::update(float time) {
 	UNUSED(time);
 	GO(entity)->position+=move;
 	if (mType==moveType::type_bullet)GO(entity)->rotation=speed.angle();
@@ -50,7 +49,7 @@ void CompMovement::Update(float time) {
 	@warning Method that requires review of comment
 */
 
-void CompMovement::Render() {}
+void CompMovement::render() {}
 
 /*!
 	@fn Component::type CompMovement::GetType()const
@@ -59,6 +58,6 @@ void CompMovement::Render() {}
 	@warning Method that requires review of comment
 */
 
-Component::type CompMovement::GetType()const{
-	return Component::type::type_movement;
+Component::type CompMovement::get_type()const{
+	return Component::type::t_movement;
 }

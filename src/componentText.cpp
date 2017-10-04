@@ -18,7 +18,7 @@
     This is a constructor method of componentText class
     */
 CompText::CompText(const Text &t,Hotspot h,Vec2 p):txt{t},pos{p}{
-	txt.SetHotspot(h);
+	txt.set_hotspot(h);
 }
 
 //! A constructor.
@@ -27,7 +27,7 @@ CompText::CompText(const Text &t,Hotspot h,Vec2 p):txt{t},pos{p}{
 		with overload
     */
 CompText::CompText(string text,int size,SDL_Color c,Hotspot h,Vec2 p):txt{text,size,c},pos{p}{
-	txt.SetHotspot(h);
+	txt.set_hotspot(h);
 }
 
 //! A destructor.
@@ -45,18 +45,18 @@ CompText::~CompText() {}
 	@warning Method that requires review of comment
 */
 
-void CompText::Update(float time) {
+void CompText::update(float time) {
 	UNUSED(time);
 }
 
 /*!
-	@fn void CompText::Render()
+	@fn void CompText::render()
 	@brief Method that render the text messege
 	@return The execution of this method returns no value
 	@warning Method that requires review of comment
 */
 
-void CompText::Render() {
+void CompText::render() {
 	Vec2 p = pos + GO(entity)->Box().corner();
 	txt.SetPos(p);
 
@@ -65,12 +65,12 @@ void CompText::Render() {
 }
 
 /*!
-	@fn Component::type CompText::GetType()const
+	@fn Component::type CompText::get_type()const
 	@brief Method that sets the text messege
 	@return the type of the text messege
 	@warning Method that requires review of comment
 */
 
-Component::type CompText::GetType()const{
+Component::type CompText::get_type()const{
 	return Component::type::t_text;
 }

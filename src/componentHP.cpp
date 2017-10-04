@@ -12,8 +12,8 @@ CompHP::~CompHP() {}
 
 
 void CompHP::Damage(int dmg) {
-	if (dmgCoolDown.Get()>cooldown) {
-		dmgCoolDown.Restart();
+	if (dmgCoolDown.get_time()>cooldown) {
+		dmgCoolDown.restart_time();
 		current-=dmg;
 		if (showDMG) {
 			//TODO: renderiza dano
@@ -23,11 +23,11 @@ void CompHP::Damage(int dmg) {
 }
 
 
-void CompHP::Update(float time) {
+void CompHP::update(float time) {
 	if (current<=0)GO(entity)->dead=true;
-	dmgCoolDown.Update(time);
+	dmgCoolDown.add_time(time);
 }
-void CompHP::Render() {
+void CompHP::render() {
 	if (SETTINGS.showHP && showHP && current>0) {
 		Rect box{0,-GO(entity)->Box().w/5.0f - GO(entity)->Box().w/10.0f,GO(entity)->Box().w,GO(entity)->Box().w/5.0f};
 		box+=GO(entity)->Box().corner();
@@ -48,6 +48,6 @@ void CompHP::Render() {
 		SDL_RenderFillRect(GAMERENDER,&rect);
 	}
 }
-Component::type CompHP::GetType()const{
+Component::type CompHP::get_type()const{
 	return Component::type::t_hp;
 }

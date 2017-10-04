@@ -1,0 +1,604 @@
+\hypertarget{common_8hpp}{\section{/home/andre/\-Desktop/tecprog/\-Mayumi\-No\-Tabi/\-Mayumi\-No\-Tabi/include/common.hpp File Reference}
+\label{common_8hpp}\index{/home/andre/\-Desktop/tecprog/\-Mayumi\-No\-Tabi/\-Mayumi\-No\-Tabi/include/common.\-hpp@{/home/andre/\-Desktop/tecprog/\-Mayumi\-No\-Tabi/\-Mayumi\-No\-Tabi/include/common.\-hpp}}
+}
+{\ttfamily \#include $<$algorithm$>$}\\*
+{\ttfamily \#include $<$array$>$}\\*
+{\ttfamily \#include $<$bitset$>$}\\*
+{\ttfamily \#include $<$climits$>$}\\*
+{\ttfamily \#include $<$cmath$>$}\\*
+{\ttfamily \#include $<$fstream$>$}\\*
+{\ttfamily \#include $<$functional$>$}\\*
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include $<$map$>$}\\*
+{\ttfamily \#include $<$memory$>$}\\*
+{\ttfamily \#include $<$queue$>$}\\*
+{\ttfamily \#include $<$set$>$}\\*
+{\ttfamily \#include $<$sstream$>$}\\*
+{\ttfamily \#include $<$stack$>$}\\*
+{\ttfamily \#include $<$string$>$}\\*
+{\ttfamily \#include $<$unordered\-\_\-map$>$}\\*
+{\ttfamily \#include $<$utility$>$}\\*
+{\ttfamily \#include $<$vector$>$}\\*
+{\ttfamily \#include $<$S\-D\-L2/\-S\-D\-L.\-h$>$}\\*
+{\ttfamily \#include $<$S\-D\-L2/\-S\-D\-L\-\_\-image.\-h$>$}\\*
+{\ttfamily \#include $<$S\-D\-L2/\-S\-D\-L\-\_\-mixer.\-h$>$}\\*
+{\ttfamily \#include $<$S\-D\-L2/\-S\-D\-L\-\_\-ttf.\-h$>$}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{common_8hpp_a08185b13d1d9f36d1257789c1323bdd4}{F\-O\-R}(cont,max)~for (\hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int} (cont)=0 	       ,\-\_\-max\-\_\-=(max);(cont)$<$ \-\_\-max\-\_\-;(cont)++)
+\item 
+\#define \hyperlink{common_8hpp_a0e91409e83e1fba73e41aecf95059e79}{F\-O\-R2}(cont, min, max)~for (\hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int} (cont)=(\hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int})(min)  ,\-\_\-max\-\_\-=(max);(cont)$<$ \-\_\-max\-\_\-;(cont)++)
+\item 
+\#define \hyperlink{common_8hpp_afa6defa5aff22c2ec11a553eccd4c01f}{F\-O\-R\-R}(cont,max)~for (\hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int} (cont)=(\hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int})(max-\/1)            ;(cont)$>$=0;    (cont)-\/-\/)
+\item 
+\#define \hyperlink{common_8hpp_a4df744b80d28700d91ed3fc9c433e1a7}{F\-O\-R2\-R}(cont, min, max)~for (\hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int} (cont)=(\hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int})(max-\/1),\-\_\-min\-\_\-=(min);(cont)$>$=\-\_\-min\-\_\-;(cont)-\/-\/)
+\item 
+\#define \hyperlink{common_8hpp_a996f7be338ccb40d1a2a5abc1ad61759}{A\-B\-S}(\hyperlink{_s_d_l__opengl_8h_ad0e63d0edcdbd3d79554076bf309fd47}{x})~(((\hyperlink{_s_d_l__opengl_8h_ad0e63d0edcdbd3d79554076bf309fd47}{x})$<$0)?-\/(\hyperlink{_s_d_l__opengl_8h_ad0e63d0edcdbd3d79554076bf309fd47}{x})\-:(\hyperlink{_s_d_l__opengl_8h_ad0e63d0edcdbd3d79554076bf309fd47}{x}))
+\item 
+\#define \hyperlink{common_8hpp_a049cab9e37563963368ddb34e4d0e2ad}{B\-E\-T\-W\-E\-E\-N}(\hyperlink{_s_d_l__opengl_8h_ad0e63d0edcdbd3d79554076bf309fd47}{x}, \hyperlink{_s_d_l__opengl__glext_8h_a3309789fc188587d666cda5ece79cf82}{a}, \hyperlink{_s_d_l__opengl__glext_8h_a0f71581a41fd2264c8944126dabbd010}{b})~((\hyperlink{_s_d_l__opengl_8h_ad0e63d0edcdbd3d79554076bf309fd47}{x}$>$=\hyperlink{_s_d_l__opengl__glext_8h_a3309789fc188587d666cda5ece79cf82}{a}) \&\& (\hyperlink{_s_d_l__opengl_8h_ad0e63d0edcdbd3d79554076bf309fd47}{x}$<$\hyperlink{_s_d_l__opengl__glext_8h_a0f71581a41fd2264c8944126dabbd010}{b}))
+\item 
+\#define \hyperlink{common_8hpp_a3dfa58b1c5c2943dd49d8aa1981d377d}{D\-E\-B\-U\-G}(\hyperlink{_s_d_l__opengl_8h_ad0e63d0edcdbd3d79554076bf309fd47}{x})~cerr $<$$<$ \#\hyperlink{_s_d_l__opengl_8h_ad0e63d0edcdbd3d79554076bf309fd47}{x} $<$$<$ \char`\"{} = \char`\"{} $<$$<$ \hyperlink{_s_d_l__opengl_8h_ad0e63d0edcdbd3d79554076bf309fd47}{x} $<$$<$ endl;
+\item 
+\#define \hyperlink{common_8hpp_a86d500a34c624c2cae56bc25a31b12f3}{U\-N\-U\-S\-E\-D}(\hyperlink{_s_d_l__opengl_8h_ad0e63d0edcdbd3d79554076bf309fd47}{x})~((\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void})(\hyperlink{_s_d_l__opengl_8h_ad0e63d0edcdbd3d79554076bf309fd47}{x}))
+\item 
+\#define \hyperlink{common_8hpp_a051dcff3fa35db18fbabb4fde1bd1167}{C\-O\-U\-T}(\hyperlink{_s_d_l__opengl_8h_ad0e63d0edcdbd3d79554076bf309fd47}{x})~cout $<$$<$ \#\hyperlink{_s_d_l__opengl_8h_ad0e63d0edcdbd3d79554076bf309fd47}{x} $<$$<$ \char`\"{} \char`\"{}
+\item 
+\#define \hyperlink{common_8hpp_a3ecd15e766487dcc67abef35aa589250}{C\-O\-U\-T\-L}(\hyperlink{_s_d_l__opengl_8h_ad0e63d0edcdbd3d79554076bf309fd47}{x})~cout $<$$<$ \#\hyperlink{_s_d_l__opengl_8h_ad0e63d0edcdbd3d79554076bf309fd47}{x} $<$$<$ endl
+\item 
+\#define \hyperlink{common_8hpp_aedac27103da1d7cbeb79d62837ce00d1}{D\-E\-B\-U\-G\-\_\-}~cout $<$$<$ \char`\"{}D\-E\-B\-U\-G \char`\"{} $<$$<$ debug\-Count++ $<$$<$ endl
+\item 
+\#define \hyperlink{common_8hpp_a6016d8fe3425b2bb1338dec66f829a46}{R\-A\-N\-D}(\hyperlink{_s_d_l__opengl_8h_ad0e63d0edcdbd3d79554076bf309fd47}{x})~(rand()\%(\hyperlink{_s_d_l__opengl_8h_ad0e63d0edcdbd3d79554076bf309fd47}{x}))
+\item 
+\#define \hyperlink{common_8hpp_ae3df6480c0943ce2f7047cc0c21480f7}{R\-A\-N\-D\-R}(low, high)~((low) + (rand()\%((high)-\/(low))))
+\item 
+\#define \hyperlink{common_8hpp_affc129b2ee6510a7c1859cbce19273dc}{S\-E\-T\-\_\-\-C\-O\-L\-O\-R}(\hyperlink{_s_d_l__opengl__glext_8h_a3ea846f998d64f079b86052b6c4193a8}{color})~\hyperlink{_s_d_l__render_8h_aa26234da40f87f4b16d715564242a341}{S\-D\-L\-\_\-\-Set\-render\-Draw\-Color}(\hyperlink{game_8hpp_a76345fcb4fb9830b5819af787a1af383}{G\-A\-M\-E\-R\-E\-N\-D\-E\-R},\hyperlink{_s_d_l__opengl__glext_8h_a3ea846f998d64f079b86052b6c4193a8}{color})
+\item 
+\#define \hyperlink{common_8hpp_a15d1ac32e668df193d977b510833453b}{S\-E\-T\-\_\-\-C\-O\-L\-O\-R4}(\hyperlink{_s_d_l__opengl_8h_a42ce7cdc612e53abee15043f80220d97}{r}, \hyperlink{_s_d_l__opengl__glext_8h_acaceb3a655ff28b75259860bcb868f9f}{g}, \hyperlink{_s_d_l__opengl__glext_8h_a0f71581a41fd2264c8944126dabbd010}{b}, \hyperlink{_s_d_l__opengl__glext_8h_a3309789fc188587d666cda5ece79cf82}{a})~\hyperlink{_s_d_l__render_8h_aa26234da40f87f4b16d715564242a341}{S\-D\-L\-\_\-\-Set\-render\-Draw\-Color}(\hyperlink{game_8hpp_a76345fcb4fb9830b5819af787a1af383}{G\-A\-M\-E\-R\-E\-N\-D\-E\-R},(\hyperlink{_s_d_l__opengl_8h_a42ce7cdc612e53abee15043f80220d97}{r}),(\hyperlink{_s_d_l__opengl__glext_8h_acaceb3a655ff28b75259860bcb868f9f}{g}),(\hyperlink{_s_d_l__opengl__glext_8h_a0f71581a41fd2264c8944126dabbd010}{b}),(\hyperlink{_s_d_l__opengl__glext_8h_a3309789fc188587d666cda5ece79cf82}{a}))
+\item 
+\#define \hyperlink{common_8hpp_a2cefeb85b6e06fce060e6f024a83bee6}{C\-L\-E\-A\-R\-\_\-\-S\-C\-R\-E\-E\-N}()~\hyperlink{_s_d_l__render_8h_a473b4abbb29c60e98876eb68ad850f79}{S\-D\-L\-\_\-\-render\-Clear}(\hyperlink{game_8hpp_a76345fcb4fb9830b5819af787a1af383}{G\-A\-M\-E\-R\-E\-N\-D\-E\-R})
+\item 
+\#define \hyperlink{common_8hpp_a3b6cece846428fc082991b041675ddc6}{D\-R\-A\-W\-\_\-\-R\-E\-C\-T}(\hyperlink{_s_d_l__opengl_8h_a42ce7cdc612e53abee15043f80220d97}{r})~\hyperlink{_s_d_l__render_8h_ab2a89b5a0c25adb6abdb9aeff28f177c}{S\-D\-L\-\_\-\-render\-Draw\-Rect}(\hyperlink{game_8hpp_a76345fcb4fb9830b5819af787a1af383}{G\-A\-M\-E\-R\-E\-N\-D\-E\-R}, (\hyperlink{_s_d_l__opengl_8h_a42ce7cdc612e53abee15043f80220d97}{r}))
+\item 
+\#define \hyperlink{common_8hpp_a30e88f944fa750916c9ac4c8be7b5ef7}{F\-I\-L\-L\-\_\-\-R\-E\-C\-T}(\hyperlink{_s_d_l__opengl_8h_a42ce7cdc612e53abee15043f80220d97}{r})~\hyperlink{_s_d_l__render_8h_a3b5098c1944441034d2c5cff419f93cc}{S\-D\-L\-\_\-\-render\-Fill\-Rect}(\hyperlink{game_8hpp_a76345fcb4fb9830b5819af787a1af383}{G\-A\-M\-E\-R\-E\-N\-D\-E\-R}, (\hyperlink{_s_d_l__opengl_8h_a42ce7cdc612e53abee15043f80220d97}{r}))
+\item 
+\#define \hyperlink{common_8hpp_a6291352abc23a6b04e98d699b7fb45af}{D\-R\-A\-W\-\_\-\-L\-I\-N\-E}(\hyperlink{_s_d_l__opengl__glext_8h_a98ac434677655cc8438bb72de2719f39}{x0}, \hyperlink{_s_d_l__opengl__glext_8h_ae7f97ed6c9c8e502fcbc44c7cb8a8312}{y0}, \hyperlink{_s_d_l__opengl_8h_ad0e63d0edcdbd3d79554076bf309fd47}{x}, \hyperlink{_s_d_l__opengl_8h_a1675d9d7bb68e1657ff028643b4037e3}{y})~\hyperlink{_s_d_l__render_8h_a6d50e252f15e0c6c14639bdd343285fd}{S\-D\-L\-\_\-\-render\-Draw\-Line}(\hyperlink{game_8hpp_a76345fcb4fb9830b5819af787a1af383}{G\-A\-M\-E\-R\-E\-N\-D\-E\-R},(\hyperlink{_s_d_l__opengl__glext_8h_a98ac434677655cc8438bb72de2719f39}{x0}),(\hyperlink{_s_d_l__opengl__glext_8h_ae7f97ed6c9c8e502fcbc44c7cb8a8312}{y0}),(\hyperlink{_s_d_l__opengl_8h_ad0e63d0edcdbd3d79554076bf309fd47}{x}),(\hyperlink{_s_d_l__opengl_8h_a1675d9d7bb68e1657ff028643b4037e3}{y}))
+\item 
+\#define \hyperlink{common_8hpp_a54ec4ccfee0bdb1f740deddfc0059304}{S\-D\-L\-\_\-\-C\-O\-L\-O\-R\-\_\-\-B\-L\-A\-C\-K}~\hyperlink{common_8cpp_af700dd18dd6e2a1141e63cc923d72d94}{Make\-Color}(0,0,0)
+\item 
+\#define \hyperlink{common_8hpp_a37a79ef0f142059124da432bdd122653}{S\-D\-L\-\_\-\-C\-O\-L\-O\-R\-\_\-\-R\-E\-D}~\hyperlink{common_8cpp_af700dd18dd6e2a1141e63cc923d72d94}{Make\-Color}(255,0,0)
+\item 
+\#define \hyperlink{common_8hpp_acead8251aa2d9e6455c17b9c571808d3}{S\-D\-L\-\_\-\-C\-O\-L\-O\-R\-\_\-\-G\-R\-E\-E\-N}~\hyperlink{common_8cpp_af700dd18dd6e2a1141e63cc923d72d94}{Make\-Color}(0,255,0)
+\item 
+\#define \hyperlink{common_8hpp_a1bfa3d45e54942da8ea37d0d30e29871}{S\-D\-L\-\_\-\-C\-O\-L\-O\-R\-\_\-\-B\-L\-U\-E}~\hyperlink{common_8cpp_af700dd18dd6e2a1141e63cc923d72d94}{Make\-Color}(0,0,255)
+\item 
+\#define \hyperlink{common_8hpp_a8747c93cef1c9985be8fc426565f466e}{S\-D\-L\-\_\-\-C\-O\-L\-O\-R\-\_\-\-W\-H\-I\-T\-E}~\hyperlink{common_8cpp_af700dd18dd6e2a1141e63cc923d72d94}{Make\-Color}(255,255,255)
+\item 
+\#define \hyperlink{common_8hpp_a9c7b069fee3c8184e14a7de8e5da2dc6}{P\-R\-E\-C\-I\-S\-I\-O\-N}~0.\-0001
+\item 
+\#define \hyperlink{common_8hpp_a27b5922e9871cc546a163c698edda2d5}{P\-L\-A\-Y\-E\-R\-\_\-\-J\-U\-M\-P}~8.\-1
+\item 
+\#define \hyperlink{common_8hpp_ad73b28bd01b01fc40fe385c789c9b36d}{W\-A\-L\-K\-\_\-\-S\-P\-E\-E\-D}~2.\-4
+\item 
+\#define \hyperlink{common_8hpp_a31153a23152a73c3d16b2a6c007793c7}{M\-E\-T\-E\-R}~100
+\item 
+\#define \hyperlink{common_8hpp_a6801baa546c6112d19eb095111d24720}{G\-R\-A\-V\-I\-T\-Y}~15.\-0
+\item 
+\#define \hyperlink{common_8hpp_ac26a668e32beeb7eae8b6e4adbe5d1e1}{D\-A\-T\-A\-\_\-\-P\-A\-T\-H}~(\hyperlink{_s_d_l__opengl__glext_8h_ae84541b4f3d8e1ea24ec0f466a8c568b}{string})\char`\"{}data/\char`\"{}
+\item 
+\#define \hyperlink{common_8hpp_a94e544152d154734bd37c3fc113fc346}{A\-N\-I\-M\-A\-T\-I\-O\-N\-\_\-\-P\-A\-T\-H}~\hyperlink{common_8hpp_ac26a668e32beeb7eae8b6e4adbe5d1e1}{D\-A\-T\-A\-\_\-\-P\-A\-T\-H}+\char`\"{}animation/\char`\"{}
+\item 
+\#define \hyperlink{common_8hpp_a28ed94c52441190f52a0a76bac026a13}{B\-L\-U\-E\-P\-R\-I\-N\-T\-\_\-\-P\-A\-T\-H}~\hyperlink{common_8hpp_ac26a668e32beeb7eae8b6e4adbe5d1e1}{D\-A\-T\-A\-\_\-\-P\-A\-T\-H}+\char`\"{}blueprint/\char`\"{}
+\item 
+\#define \hyperlink{common_8hpp_ae1c1f750cd159175faa03140bb298165}{P\-R\-O\-J\-E\-C\-T\-I\-L\-E\-\_\-\-P\-A\-T\-H}~\hyperlink{common_8hpp_ac26a668e32beeb7eae8b6e4adbe5d1e1}{D\-A\-T\-A\-\_\-\-P\-A\-T\-H}+\char`\"{}projectile/\char`\"{}
+\item 
+\#define \hyperlink{common_8hpp_a833ae233ed0529bd108096453975af7b}{L\-E\-V\-E\-L\-\_\-\-P\-A\-T\-H}~\hyperlink{common_8hpp_ac26a668e32beeb7eae8b6e4adbe5d1e1}{D\-A\-T\-A\-\_\-\-P\-A\-T\-H}+\char`\"{}level/\char`\"{}
+\item 
+\#define \hyperlink{common_8hpp_acddeca130c2b4a00b4637e20c242d835}{N\-O\-M\-E\-P\-R\-O\-J\-E\-T\-O}~\char`\"{}I\-D\-J -\/ Projeto\char`\"{}
+\item 
+\#define \hyperlink{common_8hpp_a3e46cbdf5d5092365d81aa781f0f7bb4}{R\-E\-N\-D\-E\-R\-C\-O\-L\-L\-I\-S\-I\-O\-N}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+using \hyperlink{common_8hpp_a45680061f7e655744e42cdfa30b44fa8}{ii} = pair$<$ \hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int}, \hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int} $>$
+\item 
+using \hyperlink{common_8hpp_a69aa29b598b851b0640aa225a9e5d61d}{uint} = unsigned \hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{common_8hpp_aaa588ba8f99807e02a59c99df80af509}{Hotspot} \{ \\*
+\hyperlink{common_8hpp_aaa588ba8f99807e02a59c99df80af509a6b4ed010af97f067c8ba669e400f3f93}{T\-O\-P\-\_\-\-L\-E\-F\-T}, 
+\hyperlink{common_8hpp_aaa588ba8f99807e02a59c99df80af509a0ad44897a70fba309c24a5b6007de3e3}{T\-O\-P}, 
+\hyperlink{common_8hpp_aaa588ba8f99807e02a59c99df80af509aab97669fecf009df518a0d2016b86364}{T\-O\-P\-\_\-\-R\-I\-G\-H\-T}, 
+\hyperlink{common_8hpp_aaa588ba8f99807e02a59c99df80af509adb45120aafd37a973140edee24708065}{L\-E\-F\-T}, 
+\\*
+\hyperlink{common_8hpp_aaa588ba8f99807e02a59c99df80af509a2159ffbd3a68037511ab5ab4dd35ace7}{C\-E\-N\-T\-E\-R}, 
+\hyperlink{common_8hpp_aaa588ba8f99807e02a59c99df80af509aec8379af7490bb9eaaf579cf17876f38}{R\-I\-G\-H\-T}, 
+\hyperlink{common_8hpp_aaa588ba8f99807e02a59c99df80af509a6f6b2705d50f7af47405ee7becaabbdb}{B\-O\-T\-T\-O\-M\-\_\-\-L\-E\-F\-T}, 
+\hyperlink{common_8hpp_aaa588ba8f99807e02a59c99df80af509a8c371f4e766fb2c49c219bbc88989461}{B\-O\-T\-T\-O\-M}, 
+\\*
+\hyperlink{common_8hpp_aaa588ba8f99807e02a59c99df80af509a5bc569072880e473b667c10005c7aefd}{B\-O\-T\-T\-O\-M\-\_\-\-R\-I\-G\-H\-T}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_s_d_l___color}{S\-D\-L\-\_\-\-Color} \hyperlink{common_8hpp_a3890bbdc1cbeb2ef6eaa652ab7eaae8c}{Make\-Color} (\hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int} \hyperlink{_s_d_l__opengl_8h_a42ce7cdc612e53abee15043f80220d97}{r}, \hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int} \hyperlink{_s_d_l__opengl__glext_8h_acaceb3a655ff28b75259860bcb868f9f}{g}, \hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int} \hyperlink{_s_d_l__opengl__glext_8h_a0f71581a41fd2264c8944126dabbd010}{b}, \hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int} \hyperlink{_s_d_l__opengl__glext_8h_a3309789fc188587d666cda5ece79cf82}{a}=255)
+\item 
+bool \hyperlink{common_8hpp_aa3330b1374a6e61a2fcbbc6bc6fde845}{equals} (const float \&\hyperlink{_s_d_l__opengl__glext_8h_a3309789fc188587d666cda5ece79cf82}{a}, const float \&\hyperlink{_s_d_l__opengl__glext_8h_a0f71581a41fd2264c8944126dabbd010}{b})
+\item 
+float \hyperlink{common_8hpp_a8aff38cae3172504eaab3df9ca3bbbfd}{close\-Dist} (const float \&from, const float \&to, const float \&change)
+\item 
+\hyperlink{_s_d_l__opengl__glext_8h_ae84541b4f3d8e1ea24ec0f466a8c568b}{string} \hyperlink{common_8hpp_a870b8745d992696899d4f6201f69a2b0}{Float\-To\-Str} (float \hyperlink{_s_d_l__opengl__glext_8h_a691492ec0bd6383f91200e49f6ae40ed}{f})
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int} \hyperlink{common_8hpp_a0e5c6a91564ac05e635f1549a6ce7c3f}{debug\-Count}
+\item 
+pair$<$ float, float $>$ \hyperlink{common_8hpp_af12d0e76740d19ed56dd72058485b99d}{Hotspot\-Pos} \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{common_8hpp_a996f7be338ccb40d1a2a5abc1ad61759}{\index{common.\-hpp@{common.\-hpp}!A\-B\-S@{A\-B\-S}}
+\index{A\-B\-S@{A\-B\-S}!common.hpp@{common.\-hpp}}
+\subsubsection[{A\-B\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define A\-B\-S(
+\begin{DoxyParamCaption}
+\item[{}]{{\bf x}}
+\end{DoxyParamCaption}
+)~((({\bf x})$<$0)?-\/({\bf x})\-:({\bf x}))}}\label{common_8hpp_a996f7be338ccb40d1a2a5abc1ad61759}
+
+
+Definition at line 69 of file common.\-hpp.
+
+\hypertarget{common_8hpp_a94e544152d154734bd37c3fc113fc346}{\index{common.\-hpp@{common.\-hpp}!A\-N\-I\-M\-A\-T\-I\-O\-N\-\_\-\-P\-A\-T\-H@{A\-N\-I\-M\-A\-T\-I\-O\-N\-\_\-\-P\-A\-T\-H}}
+\index{A\-N\-I\-M\-A\-T\-I\-O\-N\-\_\-\-P\-A\-T\-H@{A\-N\-I\-M\-A\-T\-I\-O\-N\-\_\-\-P\-A\-T\-H}!common.hpp@{common.\-hpp}}
+\subsubsection[{A\-N\-I\-M\-A\-T\-I\-O\-N\-\_\-\-P\-A\-T\-H}]{\setlength{\rightskip}{0pt plus 5cm}\#define A\-N\-I\-M\-A\-T\-I\-O\-N\-\_\-\-P\-A\-T\-H~{\bf D\-A\-T\-A\-\_\-\-P\-A\-T\-H}+\char`\"{}animation/\char`\"{}}}\label{common_8hpp_a94e544152d154734bd37c3fc113fc346}
+
+
+Definition at line 102 of file common.\-hpp.
+
+\hypertarget{common_8hpp_a049cab9e37563963368ddb34e4d0e2ad}{\index{common.\-hpp@{common.\-hpp}!B\-E\-T\-W\-E\-E\-N@{B\-E\-T\-W\-E\-E\-N}}
+\index{B\-E\-T\-W\-E\-E\-N@{B\-E\-T\-W\-E\-E\-N}!common.hpp@{common.\-hpp}}
+\subsubsection[{B\-E\-T\-W\-E\-E\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\-E\-T\-W\-E\-E\-N(
+\begin{DoxyParamCaption}
+\item[{}]{{\bf x}, }
+\item[{}]{{\bf a}, }
+\item[{}]{{\bf b}}
+\end{DoxyParamCaption}
+)~(({\bf x}$>$={\bf a}) \&\& ({\bf x}$<${\bf b}))}}\label{common_8hpp_a049cab9e37563963368ddb34e4d0e2ad}
+
+
+Definition at line 70 of file common.\-hpp.
+
+\hypertarget{common_8hpp_a28ed94c52441190f52a0a76bac026a13}{\index{common.\-hpp@{common.\-hpp}!B\-L\-U\-E\-P\-R\-I\-N\-T\-\_\-\-P\-A\-T\-H@{B\-L\-U\-E\-P\-R\-I\-N\-T\-\_\-\-P\-A\-T\-H}}
+\index{B\-L\-U\-E\-P\-R\-I\-N\-T\-\_\-\-P\-A\-T\-H@{B\-L\-U\-E\-P\-R\-I\-N\-T\-\_\-\-P\-A\-T\-H}!common.hpp@{common.\-hpp}}
+\subsubsection[{B\-L\-U\-E\-P\-R\-I\-N\-T\-\_\-\-P\-A\-T\-H}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\-L\-U\-E\-P\-R\-I\-N\-T\-\_\-\-P\-A\-T\-H~{\bf D\-A\-T\-A\-\_\-\-P\-A\-T\-H}+\char`\"{}blueprint/\char`\"{}}}\label{common_8hpp_a28ed94c52441190f52a0a76bac026a13}
+
+
+Definition at line 103 of file common.\-hpp.
+
+\hypertarget{common_8hpp_a2cefeb85b6e06fce060e6f024a83bee6}{\index{common.\-hpp@{common.\-hpp}!C\-L\-E\-A\-R\-\_\-\-S\-C\-R\-E\-E\-N@{C\-L\-E\-A\-R\-\_\-\-S\-C\-R\-E\-E\-N}}
+\index{C\-L\-E\-A\-R\-\_\-\-S\-C\-R\-E\-E\-N@{C\-L\-E\-A\-R\-\_\-\-S\-C\-R\-E\-E\-N}!common.hpp@{common.\-hpp}}
+\subsubsection[{C\-L\-E\-A\-R\-\_\-\-S\-C\-R\-E\-E\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\-L\-E\-A\-R\-\_\-\-S\-C\-R\-E\-E\-N(
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)~{\bf S\-D\-L\-\_\-\-render\-Clear}({\bf G\-A\-M\-E\-R\-E\-N\-D\-E\-R})}}\label{common_8hpp_a2cefeb85b6e06fce060e6f024a83bee6}
+
+
+Definition at line 83 of file common.\-hpp.
+
+\hypertarget{common_8hpp_a051dcff3fa35db18fbabb4fde1bd1167}{\index{common.\-hpp@{common.\-hpp}!C\-O\-U\-T@{C\-O\-U\-T}}
+\index{C\-O\-U\-T@{C\-O\-U\-T}!common.hpp@{common.\-hpp}}
+\subsubsection[{C\-O\-U\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\-O\-U\-T(
+\begin{DoxyParamCaption}
+\item[{}]{{\bf x}}
+\end{DoxyParamCaption}
+)~cout $<$$<$ \#{\bf x} $<$$<$ \char`\"{} \char`\"{}}}\label{common_8hpp_a051dcff3fa35db18fbabb4fde1bd1167}
+
+
+Definition at line 73 of file common.\-hpp.
+
+\hypertarget{common_8hpp_a3ecd15e766487dcc67abef35aa589250}{\index{common.\-hpp@{common.\-hpp}!C\-O\-U\-T\-L@{C\-O\-U\-T\-L}}
+\index{C\-O\-U\-T\-L@{C\-O\-U\-T\-L}!common.hpp@{common.\-hpp}}
+\subsubsection[{C\-O\-U\-T\-L}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\-O\-U\-T\-L(
+\begin{DoxyParamCaption}
+\item[{}]{{\bf x}}
+\end{DoxyParamCaption}
+)~cout $<$$<$ \#{\bf x} $<$$<$ endl}}\label{common_8hpp_a3ecd15e766487dcc67abef35aa589250}
+
+
+Definition at line 74 of file common.\-hpp.
+
+\hypertarget{common_8hpp_ac26a668e32beeb7eae8b6e4adbe5d1e1}{\index{common.\-hpp@{common.\-hpp}!D\-A\-T\-A\-\_\-\-P\-A\-T\-H@{D\-A\-T\-A\-\_\-\-P\-A\-T\-H}}
+\index{D\-A\-T\-A\-\_\-\-P\-A\-T\-H@{D\-A\-T\-A\-\_\-\-P\-A\-T\-H}!common.hpp@{common.\-hpp}}
+\subsubsection[{D\-A\-T\-A\-\_\-\-P\-A\-T\-H}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\-A\-T\-A\-\_\-\-P\-A\-T\-H~({\bf string})\char`\"{}data/\char`\"{}}}\label{common_8hpp_ac26a668e32beeb7eae8b6e4adbe5d1e1}
+
+
+Definition at line 101 of file common.\-hpp.
+
+\hypertarget{common_8hpp_a3dfa58b1c5c2943dd49d8aa1981d377d}{\index{common.\-hpp@{common.\-hpp}!D\-E\-B\-U\-G@{D\-E\-B\-U\-G}}
+\index{D\-E\-B\-U\-G@{D\-E\-B\-U\-G}!common.hpp@{common.\-hpp}}
+\subsubsection[{D\-E\-B\-U\-G}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\-E\-B\-U\-G(
+\begin{DoxyParamCaption}
+\item[{}]{{\bf x}}
+\end{DoxyParamCaption}
+)~cerr $<$$<$ \#{\bf x} $<$$<$ \char`\"{} = \char`\"{} $<$$<$ {\bf x} $<$$<$ endl;}}\label{common_8hpp_a3dfa58b1c5c2943dd49d8aa1981d377d}
+
+
+Definition at line 71 of file common.\-hpp.
+
+\hypertarget{common_8hpp_aedac27103da1d7cbeb79d62837ce00d1}{\index{common.\-hpp@{common.\-hpp}!D\-E\-B\-U\-G\-\_\-@{D\-E\-B\-U\-G\-\_\-}}
+\index{D\-E\-B\-U\-G\-\_\-@{D\-E\-B\-U\-G\-\_\-}!common.hpp@{common.\-hpp}}
+\subsubsection[{D\-E\-B\-U\-G\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\-E\-B\-U\-G\-\_\-~cout $<$$<$ \char`\"{}D\-E\-B\-U\-G \char`\"{} $<$$<$ debug\-Count++ $<$$<$ endl}}\label{common_8hpp_aedac27103da1d7cbeb79d62837ce00d1}
+
+
+Definition at line 75 of file common.\-hpp.
+
+\hypertarget{common_8hpp_a6291352abc23a6b04e98d699b7fb45af}{\index{common.\-hpp@{common.\-hpp}!D\-R\-A\-W\-\_\-\-L\-I\-N\-E@{D\-R\-A\-W\-\_\-\-L\-I\-N\-E}}
+\index{D\-R\-A\-W\-\_\-\-L\-I\-N\-E@{D\-R\-A\-W\-\_\-\-L\-I\-N\-E}!common.hpp@{common.\-hpp}}
+\subsubsection[{D\-R\-A\-W\-\_\-\-L\-I\-N\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\-R\-A\-W\-\_\-\-L\-I\-N\-E(
+\begin{DoxyParamCaption}
+\item[{}]{{\bf x0}, }
+\item[{}]{{\bf y0}, }
+\item[{}]{{\bf x}, }
+\item[{}]{{\bf y}}
+\end{DoxyParamCaption}
+)~{\bf S\-D\-L\-\_\-\-render\-Draw\-Line}({\bf G\-A\-M\-E\-R\-E\-N\-D\-E\-R},({\bf x0}),({\bf y0}),({\bf x}),({\bf y}))}}\label{common_8hpp_a6291352abc23a6b04e98d699b7fb45af}
+
+
+Definition at line 86 of file common.\-hpp.
+
+\hypertarget{common_8hpp_a3b6cece846428fc082991b041675ddc6}{\index{common.\-hpp@{common.\-hpp}!D\-R\-A\-W\-\_\-\-R\-E\-C\-T@{D\-R\-A\-W\-\_\-\-R\-E\-C\-T}}
+\index{D\-R\-A\-W\-\_\-\-R\-E\-C\-T@{D\-R\-A\-W\-\_\-\-R\-E\-C\-T}!common.hpp@{common.\-hpp}}
+\subsubsection[{D\-R\-A\-W\-\_\-\-R\-E\-C\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\-R\-A\-W\-\_\-\-R\-E\-C\-T(
+\begin{DoxyParamCaption}
+\item[{}]{{\bf r}}
+\end{DoxyParamCaption}
+)~{\bf S\-D\-L\-\_\-\-render\-Draw\-Rect}({\bf G\-A\-M\-E\-R\-E\-N\-D\-E\-R}, ({\bf r}))}}\label{common_8hpp_a3b6cece846428fc082991b041675ddc6}
+
+
+Definition at line 84 of file common.\-hpp.
+
+\hypertarget{common_8hpp_a30e88f944fa750916c9ac4c8be7b5ef7}{\index{common.\-hpp@{common.\-hpp}!F\-I\-L\-L\-\_\-\-R\-E\-C\-T@{F\-I\-L\-L\-\_\-\-R\-E\-C\-T}}
+\index{F\-I\-L\-L\-\_\-\-R\-E\-C\-T@{F\-I\-L\-L\-\_\-\-R\-E\-C\-T}!common.hpp@{common.\-hpp}}
+\subsubsection[{F\-I\-L\-L\-\_\-\-R\-E\-C\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-I\-L\-L\-\_\-\-R\-E\-C\-T(
+\begin{DoxyParamCaption}
+\item[{}]{{\bf r}}
+\end{DoxyParamCaption}
+)~{\bf S\-D\-L\-\_\-\-render\-Fill\-Rect}({\bf G\-A\-M\-E\-R\-E\-N\-D\-E\-R}, ({\bf r}))}}\label{common_8hpp_a30e88f944fa750916c9ac4c8be7b5ef7}
+
+
+Definition at line 85 of file common.\-hpp.
+
+\hypertarget{common_8hpp_a08185b13d1d9f36d1257789c1323bdd4}{\index{common.\-hpp@{common.\-hpp}!F\-O\-R@{F\-O\-R}}
+\index{F\-O\-R@{F\-O\-R}!common.hpp@{common.\-hpp}}
+\subsubsection[{F\-O\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-O\-R(
+\begin{DoxyParamCaption}
+\item[{}]{cont, }
+\item[{}]{max}
+\end{DoxyParamCaption}
+)~for ({\bf int} (cont)=0 	       ,\-\_\-max\-\_\-=(max);(cont)$<$ \-\_\-max\-\_\-;(cont)++)}}\label{common_8hpp_a08185b13d1d9f36d1257789c1323bdd4}
+
+
+Definition at line 65 of file common.\-hpp.
+
+\hypertarget{common_8hpp_a0e91409e83e1fba73e41aecf95059e79}{\index{common.\-hpp@{common.\-hpp}!F\-O\-R2@{F\-O\-R2}}
+\index{F\-O\-R2@{F\-O\-R2}!common.hpp@{common.\-hpp}}
+\subsubsection[{F\-O\-R2}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-O\-R2(
+\begin{DoxyParamCaption}
+\item[{}]{cont, }
+\item[{}]{min, }
+\item[{}]{max}
+\end{DoxyParamCaption}
+)~for ({\bf int} (cont)=({\bf int})(min)  ,\-\_\-max\-\_\-=(max);(cont)$<$ \-\_\-max\-\_\-;(cont)++)}}\label{common_8hpp_a0e91409e83e1fba73e41aecf95059e79}
+
+
+Definition at line 66 of file common.\-hpp.
+
+\hypertarget{common_8hpp_a4df744b80d28700d91ed3fc9c433e1a7}{\index{common.\-hpp@{common.\-hpp}!F\-O\-R2\-R@{F\-O\-R2\-R}}
+\index{F\-O\-R2\-R@{F\-O\-R2\-R}!common.hpp@{common.\-hpp}}
+\subsubsection[{F\-O\-R2\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-O\-R2\-R(
+\begin{DoxyParamCaption}
+\item[{}]{cont, }
+\item[{}]{min, }
+\item[{}]{max}
+\end{DoxyParamCaption}
+)~for ({\bf int} (cont)=({\bf int})(max-\/1),\-\_\-min\-\_\-=(min);(cont)$>$=\-\_\-min\-\_\-;(cont)-\/-\/)}}\label{common_8hpp_a4df744b80d28700d91ed3fc9c433e1a7}
+
+
+Definition at line 68 of file common.\-hpp.
+
+\hypertarget{common_8hpp_afa6defa5aff22c2ec11a553eccd4c01f}{\index{common.\-hpp@{common.\-hpp}!F\-O\-R\-R@{F\-O\-R\-R}}
+\index{F\-O\-R\-R@{F\-O\-R\-R}!common.hpp@{common.\-hpp}}
+\subsubsection[{F\-O\-R\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-O\-R\-R(
+\begin{DoxyParamCaption}
+\item[{}]{cont, }
+\item[{}]{max}
+\end{DoxyParamCaption}
+)~for ({\bf int} (cont)=({\bf int})(max-\/1)            ;(cont)$>$=0;    (cont)-\/-\/)}}\label{common_8hpp_afa6defa5aff22c2ec11a553eccd4c01f}
+
+
+Definition at line 67 of file common.\-hpp.
+
+\hypertarget{common_8hpp_a6801baa546c6112d19eb095111d24720}{\index{common.\-hpp@{common.\-hpp}!G\-R\-A\-V\-I\-T\-Y@{G\-R\-A\-V\-I\-T\-Y}}
+\index{G\-R\-A\-V\-I\-T\-Y@{G\-R\-A\-V\-I\-T\-Y}!common.hpp@{common.\-hpp}}
+\subsubsection[{G\-R\-A\-V\-I\-T\-Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define G\-R\-A\-V\-I\-T\-Y~15.\-0}}\label{common_8hpp_a6801baa546c6112d19eb095111d24720}
+
+
+Definition at line 99 of file common.\-hpp.
+
+\hypertarget{common_8hpp_a833ae233ed0529bd108096453975af7b}{\index{common.\-hpp@{common.\-hpp}!L\-E\-V\-E\-L\-\_\-\-P\-A\-T\-H@{L\-E\-V\-E\-L\-\_\-\-P\-A\-T\-H}}
+\index{L\-E\-V\-E\-L\-\_\-\-P\-A\-T\-H@{L\-E\-V\-E\-L\-\_\-\-P\-A\-T\-H}!common.hpp@{common.\-hpp}}
+\subsubsection[{L\-E\-V\-E\-L\-\_\-\-P\-A\-T\-H}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\-E\-V\-E\-L\-\_\-\-P\-A\-T\-H~{\bf D\-A\-T\-A\-\_\-\-P\-A\-T\-H}+\char`\"{}level/\char`\"{}}}\label{common_8hpp_a833ae233ed0529bd108096453975af7b}
+
+
+Definition at line 105 of file common.\-hpp.
+
+\hypertarget{common_8hpp_a31153a23152a73c3d16b2a6c007793c7}{\index{common.\-hpp@{common.\-hpp}!M\-E\-T\-E\-R@{M\-E\-T\-E\-R}}
+\index{M\-E\-T\-E\-R@{M\-E\-T\-E\-R}!common.hpp@{common.\-hpp}}
+\subsubsection[{M\-E\-T\-E\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-E\-T\-E\-R~100}}\label{common_8hpp_a31153a23152a73c3d16b2a6c007793c7}
+
+
+Definition at line 97 of file common.\-hpp.
+
+\hypertarget{common_8hpp_acddeca130c2b4a00b4637e20c242d835}{\index{common.\-hpp@{common.\-hpp}!N\-O\-M\-E\-P\-R\-O\-J\-E\-T\-O@{N\-O\-M\-E\-P\-R\-O\-J\-E\-T\-O}}
+\index{N\-O\-M\-E\-P\-R\-O\-J\-E\-T\-O@{N\-O\-M\-E\-P\-R\-O\-J\-E\-T\-O}!common.hpp@{common.\-hpp}}
+\subsubsection[{N\-O\-M\-E\-P\-R\-O\-J\-E\-T\-O}]{\setlength{\rightskip}{0pt plus 5cm}\#define N\-O\-M\-E\-P\-R\-O\-J\-E\-T\-O~\char`\"{}I\-D\-J -\/ Projeto\char`\"{}}}\label{common_8hpp_acddeca130c2b4a00b4637e20c242d835}
+
+
+Definition at line 107 of file common.\-hpp.
+
+\hypertarget{common_8hpp_a27b5922e9871cc546a163c698edda2d5}{\index{common.\-hpp@{common.\-hpp}!P\-L\-A\-Y\-E\-R\-\_\-\-J\-U\-M\-P@{P\-L\-A\-Y\-E\-R\-\_\-\-J\-U\-M\-P}}
+\index{P\-L\-A\-Y\-E\-R\-\_\-\-J\-U\-M\-P@{P\-L\-A\-Y\-E\-R\-\_\-\-J\-U\-M\-P}!common.hpp@{common.\-hpp}}
+\subsubsection[{P\-L\-A\-Y\-E\-R\-\_\-\-J\-U\-M\-P}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-L\-A\-Y\-E\-R\-\_\-\-J\-U\-M\-P~8.\-1}}\label{common_8hpp_a27b5922e9871cc546a163c698edda2d5}
+
+
+Definition at line 95 of file common.\-hpp.
+
+\hypertarget{common_8hpp_a9c7b069fee3c8184e14a7de8e5da2dc6}{\index{common.\-hpp@{common.\-hpp}!P\-R\-E\-C\-I\-S\-I\-O\-N@{P\-R\-E\-C\-I\-S\-I\-O\-N}}
+\index{P\-R\-E\-C\-I\-S\-I\-O\-N@{P\-R\-E\-C\-I\-S\-I\-O\-N}!common.hpp@{common.\-hpp}}
+\subsubsection[{P\-R\-E\-C\-I\-S\-I\-O\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-R\-E\-C\-I\-S\-I\-O\-N~0.\-0001}}\label{common_8hpp_a9c7b069fee3c8184e14a7de8e5da2dc6}
+
+
+Definition at line 94 of file common.\-hpp.
+
+\hypertarget{common_8hpp_ae1c1f750cd159175faa03140bb298165}{\index{common.\-hpp@{common.\-hpp}!P\-R\-O\-J\-E\-C\-T\-I\-L\-E\-\_\-\-P\-A\-T\-H@{P\-R\-O\-J\-E\-C\-T\-I\-L\-E\-\_\-\-P\-A\-T\-H}}
+\index{P\-R\-O\-J\-E\-C\-T\-I\-L\-E\-\_\-\-P\-A\-T\-H@{P\-R\-O\-J\-E\-C\-T\-I\-L\-E\-\_\-\-P\-A\-T\-H}!common.hpp@{common.\-hpp}}
+\subsubsection[{P\-R\-O\-J\-E\-C\-T\-I\-L\-E\-\_\-\-P\-A\-T\-H}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-R\-O\-J\-E\-C\-T\-I\-L\-E\-\_\-\-P\-A\-T\-H~{\bf D\-A\-T\-A\-\_\-\-P\-A\-T\-H}+\char`\"{}projectile/\char`\"{}}}\label{common_8hpp_ae1c1f750cd159175faa03140bb298165}
+
+
+Definition at line 104 of file common.\-hpp.
+
+\hypertarget{common_8hpp_a6016d8fe3425b2bb1338dec66f829a46}{\index{common.\-hpp@{common.\-hpp}!R\-A\-N\-D@{R\-A\-N\-D}}
+\index{R\-A\-N\-D@{R\-A\-N\-D}!common.hpp@{common.\-hpp}}
+\subsubsection[{R\-A\-N\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define R\-A\-N\-D(
+\begin{DoxyParamCaption}
+\item[{}]{{\bf x}}
+\end{DoxyParamCaption}
+)~(rand()\%({\bf x}))}}\label{common_8hpp_a6016d8fe3425b2bb1338dec66f829a46}
+
+
+Definition at line 76 of file common.\-hpp.
+
+\hypertarget{common_8hpp_ae3df6480c0943ce2f7047cc0c21480f7}{\index{common.\-hpp@{common.\-hpp}!R\-A\-N\-D\-R@{R\-A\-N\-D\-R}}
+\index{R\-A\-N\-D\-R@{R\-A\-N\-D\-R}!common.hpp@{common.\-hpp}}
+\subsubsection[{R\-A\-N\-D\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define R\-A\-N\-D\-R(
+\begin{DoxyParamCaption}
+\item[{}]{low, }
+\item[{}]{high}
+\end{DoxyParamCaption}
+)~((low) + (rand()\%((high)-\/(low))))}}\label{common_8hpp_ae3df6480c0943ce2f7047cc0c21480f7}
+
+
+Definition at line 77 of file common.\-hpp.
+
+\hypertarget{common_8hpp_a3e46cbdf5d5092365d81aa781f0f7bb4}{\index{common.\-hpp@{common.\-hpp}!R\-E\-N\-D\-E\-R\-C\-O\-L\-L\-I\-S\-I\-O\-N@{R\-E\-N\-D\-E\-R\-C\-O\-L\-L\-I\-S\-I\-O\-N}}
+\index{R\-E\-N\-D\-E\-R\-C\-O\-L\-L\-I\-S\-I\-O\-N@{R\-E\-N\-D\-E\-R\-C\-O\-L\-L\-I\-S\-I\-O\-N}!common.hpp@{common.\-hpp}}
+\subsubsection[{R\-E\-N\-D\-E\-R\-C\-O\-L\-L\-I\-S\-I\-O\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define R\-E\-N\-D\-E\-R\-C\-O\-L\-L\-I\-S\-I\-O\-N}}\label{common_8hpp_a3e46cbdf5d5092365d81aa781f0f7bb4}
+
+
+Definition at line 108 of file common.\-hpp.
+
+\hypertarget{common_8hpp_a54ec4ccfee0bdb1f740deddfc0059304}{\index{common.\-hpp@{common.\-hpp}!S\-D\-L\-\_\-\-C\-O\-L\-O\-R\-\_\-\-B\-L\-A\-C\-K@{S\-D\-L\-\_\-\-C\-O\-L\-O\-R\-\_\-\-B\-L\-A\-C\-K}}
+\index{S\-D\-L\-\_\-\-C\-O\-L\-O\-R\-\_\-\-B\-L\-A\-C\-K@{S\-D\-L\-\_\-\-C\-O\-L\-O\-R\-\_\-\-B\-L\-A\-C\-K}!common.hpp@{common.\-hpp}}
+\subsubsection[{S\-D\-L\-\_\-\-C\-O\-L\-O\-R\-\_\-\-B\-L\-A\-C\-K}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-D\-L\-\_\-\-C\-O\-L\-O\-R\-\_\-\-B\-L\-A\-C\-K~{\bf Make\-Color}(0,0,0)}}\label{common_8hpp_a54ec4ccfee0bdb1f740deddfc0059304}
+
+
+Definition at line 88 of file common.\-hpp.
+
+\hypertarget{common_8hpp_a1bfa3d45e54942da8ea37d0d30e29871}{\index{common.\-hpp@{common.\-hpp}!S\-D\-L\-\_\-\-C\-O\-L\-O\-R\-\_\-\-B\-L\-U\-E@{S\-D\-L\-\_\-\-C\-O\-L\-O\-R\-\_\-\-B\-L\-U\-E}}
+\index{S\-D\-L\-\_\-\-C\-O\-L\-O\-R\-\_\-\-B\-L\-U\-E@{S\-D\-L\-\_\-\-C\-O\-L\-O\-R\-\_\-\-B\-L\-U\-E}!common.hpp@{common.\-hpp}}
+\subsubsection[{S\-D\-L\-\_\-\-C\-O\-L\-O\-R\-\_\-\-B\-L\-U\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-D\-L\-\_\-\-C\-O\-L\-O\-R\-\_\-\-B\-L\-U\-E~{\bf Make\-Color}(0,0,255)}}\label{common_8hpp_a1bfa3d45e54942da8ea37d0d30e29871}
+
+
+Definition at line 91 of file common.\-hpp.
+
+\hypertarget{common_8hpp_acead8251aa2d9e6455c17b9c571808d3}{\index{common.\-hpp@{common.\-hpp}!S\-D\-L\-\_\-\-C\-O\-L\-O\-R\-\_\-\-G\-R\-E\-E\-N@{S\-D\-L\-\_\-\-C\-O\-L\-O\-R\-\_\-\-G\-R\-E\-E\-N}}
+\index{S\-D\-L\-\_\-\-C\-O\-L\-O\-R\-\_\-\-G\-R\-E\-E\-N@{S\-D\-L\-\_\-\-C\-O\-L\-O\-R\-\_\-\-G\-R\-E\-E\-N}!common.hpp@{common.\-hpp}}
+\subsubsection[{S\-D\-L\-\_\-\-C\-O\-L\-O\-R\-\_\-\-G\-R\-E\-E\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-D\-L\-\_\-\-C\-O\-L\-O\-R\-\_\-\-G\-R\-E\-E\-N~{\bf Make\-Color}(0,255,0)}}\label{common_8hpp_acead8251aa2d9e6455c17b9c571808d3}
+
+
+Definition at line 90 of file common.\-hpp.
+
+\hypertarget{common_8hpp_a37a79ef0f142059124da432bdd122653}{\index{common.\-hpp@{common.\-hpp}!S\-D\-L\-\_\-\-C\-O\-L\-O\-R\-\_\-\-R\-E\-D@{S\-D\-L\-\_\-\-C\-O\-L\-O\-R\-\_\-\-R\-E\-D}}
+\index{S\-D\-L\-\_\-\-C\-O\-L\-O\-R\-\_\-\-R\-E\-D@{S\-D\-L\-\_\-\-C\-O\-L\-O\-R\-\_\-\-R\-E\-D}!common.hpp@{common.\-hpp}}
+\subsubsection[{S\-D\-L\-\_\-\-C\-O\-L\-O\-R\-\_\-\-R\-E\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-D\-L\-\_\-\-C\-O\-L\-O\-R\-\_\-\-R\-E\-D~{\bf Make\-Color}(255,0,0)}}\label{common_8hpp_a37a79ef0f142059124da432bdd122653}
+
+
+Definition at line 89 of file common.\-hpp.
+
+\hypertarget{common_8hpp_a8747c93cef1c9985be8fc426565f466e}{\index{common.\-hpp@{common.\-hpp}!S\-D\-L\-\_\-\-C\-O\-L\-O\-R\-\_\-\-W\-H\-I\-T\-E@{S\-D\-L\-\_\-\-C\-O\-L\-O\-R\-\_\-\-W\-H\-I\-T\-E}}
+\index{S\-D\-L\-\_\-\-C\-O\-L\-O\-R\-\_\-\-W\-H\-I\-T\-E@{S\-D\-L\-\_\-\-C\-O\-L\-O\-R\-\_\-\-W\-H\-I\-T\-E}!common.hpp@{common.\-hpp}}
+\subsubsection[{S\-D\-L\-\_\-\-C\-O\-L\-O\-R\-\_\-\-W\-H\-I\-T\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-D\-L\-\_\-\-C\-O\-L\-O\-R\-\_\-\-W\-H\-I\-T\-E~{\bf Make\-Color}(255,255,255)}}\label{common_8hpp_a8747c93cef1c9985be8fc426565f466e}
+
+
+Definition at line 92 of file common.\-hpp.
+
+\hypertarget{common_8hpp_affc129b2ee6510a7c1859cbce19273dc}{\index{common.\-hpp@{common.\-hpp}!S\-E\-T\-\_\-\-C\-O\-L\-O\-R@{S\-E\-T\-\_\-\-C\-O\-L\-O\-R}}
+\index{S\-E\-T\-\_\-\-C\-O\-L\-O\-R@{S\-E\-T\-\_\-\-C\-O\-L\-O\-R}!common.hpp@{common.\-hpp}}
+\subsubsection[{S\-E\-T\-\_\-\-C\-O\-L\-O\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-E\-T\-\_\-\-C\-O\-L\-O\-R(
+\begin{DoxyParamCaption}
+\item[{}]{{\bf color}}
+\end{DoxyParamCaption}
+)~{\bf S\-D\-L\-\_\-\-Set\-render\-Draw\-Color}({\bf G\-A\-M\-E\-R\-E\-N\-D\-E\-R},{\bf color})}}\label{common_8hpp_affc129b2ee6510a7c1859cbce19273dc}
+
+
+Definition at line 81 of file common.\-hpp.
+
+\hypertarget{common_8hpp_a15d1ac32e668df193d977b510833453b}{\index{common.\-hpp@{common.\-hpp}!S\-E\-T\-\_\-\-C\-O\-L\-O\-R4@{S\-E\-T\-\_\-\-C\-O\-L\-O\-R4}}
+\index{S\-E\-T\-\_\-\-C\-O\-L\-O\-R4@{S\-E\-T\-\_\-\-C\-O\-L\-O\-R4}!common.hpp@{common.\-hpp}}
+\subsubsection[{S\-E\-T\-\_\-\-C\-O\-L\-O\-R4}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-E\-T\-\_\-\-C\-O\-L\-O\-R4(
+\begin{DoxyParamCaption}
+\item[{}]{{\bf r}, }
+\item[{}]{{\bf g}, }
+\item[{}]{{\bf b}, }
+\item[{}]{{\bf a}}
+\end{DoxyParamCaption}
+)~{\bf S\-D\-L\-\_\-\-Set\-render\-Draw\-Color}({\bf G\-A\-M\-E\-R\-E\-N\-D\-E\-R},({\bf r}),({\bf g}),({\bf b}),({\bf a}))}}\label{common_8hpp_a15d1ac32e668df193d977b510833453b}
+
+
+Definition at line 82 of file common.\-hpp.
+
+\hypertarget{common_8hpp_a86d500a34c624c2cae56bc25a31b12f3}{\index{common.\-hpp@{common.\-hpp}!U\-N\-U\-S\-E\-D@{U\-N\-U\-S\-E\-D}}
+\index{U\-N\-U\-S\-E\-D@{U\-N\-U\-S\-E\-D}!common.hpp@{common.\-hpp}}
+\subsubsection[{U\-N\-U\-S\-E\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define U\-N\-U\-S\-E\-D(
+\begin{DoxyParamCaption}
+\item[{}]{{\bf x}}
+\end{DoxyParamCaption}
+)~(({\bf void})({\bf x}))}}\label{common_8hpp_a86d500a34c624c2cae56bc25a31b12f3}
+
+
+Definition at line 72 of file common.\-hpp.
+
+\hypertarget{common_8hpp_ad73b28bd01b01fc40fe385c789c9b36d}{\index{common.\-hpp@{common.\-hpp}!W\-A\-L\-K\-\_\-\-S\-P\-E\-E\-D@{W\-A\-L\-K\-\_\-\-S\-P\-E\-E\-D}}
+\index{W\-A\-L\-K\-\_\-\-S\-P\-E\-E\-D@{W\-A\-L\-K\-\_\-\-S\-P\-E\-E\-D}!common.hpp@{common.\-hpp}}
+\subsubsection[{W\-A\-L\-K\-\_\-\-S\-P\-E\-E\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\-A\-L\-K\-\_\-\-S\-P\-E\-E\-D~2.\-4}}\label{common_8hpp_ad73b28bd01b01fc40fe385c789c9b36d}
+
+
+Definition at line 96 of file common.\-hpp.
+
+
+
+\subsection{Typedef Documentation}
+\hypertarget{common_8hpp_a45680061f7e655744e42cdfa30b44fa8}{\index{common.\-hpp@{common.\-hpp}!ii@{ii}}
+\index{ii@{ii}!common.hpp@{common.\-hpp}}
+\subsubsection[{ii}]{\setlength{\rightskip}{0pt plus 5cm}using {\bf ii} =  pair$<${\bf int},{\bf int}$>$}}\label{common_8hpp_a45680061f7e655744e42cdfa30b44fa8}
+
+
+Definition at line 62 of file common.\-hpp.
+
+\hypertarget{common_8hpp_a69aa29b598b851b0640aa225a9e5d61d}{\index{common.\-hpp@{common.\-hpp}!uint@{uint}}
+\index{uint@{uint}!common.hpp@{common.\-hpp}}
+\subsubsection[{uint}]{\setlength{\rightskip}{0pt plus 5cm}using {\bf uint} =  unsigned {\bf int}}}\label{common_8hpp_a69aa29b598b851b0640aa225a9e5d61d}
+
+
+Definition at line 63 of file common.\-hpp.
+
+
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{common_8hpp_aaa588ba8f99807e02a59c99df80af509}{\index{common.\-hpp@{common.\-hpp}!Hotspot@{Hotspot}}
+\index{Hotspot@{Hotspot}!common.hpp@{common.\-hpp}}
+\subsubsection[{Hotspot}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Hotspot}}}\label{common_8hpp_aaa588ba8f99807e02a59c99df80af509}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{T\-O\-P\-\_\-\-L\-E\-F\-T@{T\-O\-P\-\_\-\-L\-E\-F\-T}!common.\-hpp@{common.\-hpp}}\index{common.\-hpp@{common.\-hpp}!T\-O\-P\-\_\-\-L\-E\-F\-T@{T\-O\-P\-\_\-\-L\-E\-F\-T}}\item[{\em 
+\hypertarget{common_8hpp_aaa588ba8f99807e02a59c99df80af509a6b4ed010af97f067c8ba669e400f3f93}{T\-O\-P\-\_\-\-L\-E\-F\-T}\label{common_8hpp_aaa588ba8f99807e02a59c99df80af509a6b4ed010af97f067c8ba669e400f3f93}
+}]\index{T\-O\-P@{T\-O\-P}!common.\-hpp@{common.\-hpp}}\index{common.\-hpp@{common.\-hpp}!T\-O\-P@{T\-O\-P}}\item[{\em 
+\hypertarget{common_8hpp_aaa588ba8f99807e02a59c99df80af509a0ad44897a70fba309c24a5b6007de3e3}{T\-O\-P}\label{common_8hpp_aaa588ba8f99807e02a59c99df80af509a0ad44897a70fba309c24a5b6007de3e3}
+}]\index{T\-O\-P\-\_\-\-R\-I\-G\-H\-T@{T\-O\-P\-\_\-\-R\-I\-G\-H\-T}!common.\-hpp@{common.\-hpp}}\index{common.\-hpp@{common.\-hpp}!T\-O\-P\-\_\-\-R\-I\-G\-H\-T@{T\-O\-P\-\_\-\-R\-I\-G\-H\-T}}\item[{\em 
+\hypertarget{common_8hpp_aaa588ba8f99807e02a59c99df80af509aab97669fecf009df518a0d2016b86364}{T\-O\-P\-\_\-\-R\-I\-G\-H\-T}\label{common_8hpp_aaa588ba8f99807e02a59c99df80af509aab97669fecf009df518a0d2016b86364}
+}]\index{L\-E\-F\-T@{L\-E\-F\-T}!common.\-hpp@{common.\-hpp}}\index{common.\-hpp@{common.\-hpp}!L\-E\-F\-T@{L\-E\-F\-T}}\item[{\em 
+\hypertarget{common_8hpp_aaa588ba8f99807e02a59c99df80af509adb45120aafd37a973140edee24708065}{L\-E\-F\-T}\label{common_8hpp_aaa588ba8f99807e02a59c99df80af509adb45120aafd37a973140edee24708065}
+}]\index{C\-E\-N\-T\-E\-R@{C\-E\-N\-T\-E\-R}!common.\-hpp@{common.\-hpp}}\index{common.\-hpp@{common.\-hpp}!C\-E\-N\-T\-E\-R@{C\-E\-N\-T\-E\-R}}\item[{\em 
+\hypertarget{common_8hpp_aaa588ba8f99807e02a59c99df80af509a2159ffbd3a68037511ab5ab4dd35ace7}{C\-E\-N\-T\-E\-R}\label{common_8hpp_aaa588ba8f99807e02a59c99df80af509a2159ffbd3a68037511ab5ab4dd35ace7}
+}]\index{R\-I\-G\-H\-T@{R\-I\-G\-H\-T}!common.\-hpp@{common.\-hpp}}\index{common.\-hpp@{common.\-hpp}!R\-I\-G\-H\-T@{R\-I\-G\-H\-T}}\item[{\em 
+\hypertarget{common_8hpp_aaa588ba8f99807e02a59c99df80af509aec8379af7490bb9eaaf579cf17876f38}{R\-I\-G\-H\-T}\label{common_8hpp_aaa588ba8f99807e02a59c99df80af509aec8379af7490bb9eaaf579cf17876f38}
+}]\index{B\-O\-T\-T\-O\-M\-\_\-\-L\-E\-F\-T@{B\-O\-T\-T\-O\-M\-\_\-\-L\-E\-F\-T}!common.\-hpp@{common.\-hpp}}\index{common.\-hpp@{common.\-hpp}!B\-O\-T\-T\-O\-M\-\_\-\-L\-E\-F\-T@{B\-O\-T\-T\-O\-M\-\_\-\-L\-E\-F\-T}}\item[{\em 
+\hypertarget{common_8hpp_aaa588ba8f99807e02a59c99df80af509a6f6b2705d50f7af47405ee7becaabbdb}{B\-O\-T\-T\-O\-M\-\_\-\-L\-E\-F\-T}\label{common_8hpp_aaa588ba8f99807e02a59c99df80af509a6f6b2705d50f7af47405ee7becaabbdb}
+}]\index{B\-O\-T\-T\-O\-M@{B\-O\-T\-T\-O\-M}!common.\-hpp@{common.\-hpp}}\index{common.\-hpp@{common.\-hpp}!B\-O\-T\-T\-O\-M@{B\-O\-T\-T\-O\-M}}\item[{\em 
+\hypertarget{common_8hpp_aaa588ba8f99807e02a59c99df80af509a8c371f4e766fb2c49c219bbc88989461}{B\-O\-T\-T\-O\-M}\label{common_8hpp_aaa588ba8f99807e02a59c99df80af509a8c371f4e766fb2c49c219bbc88989461}
+}]\index{B\-O\-T\-T\-O\-M\-\_\-\-R\-I\-G\-H\-T@{B\-O\-T\-T\-O\-M\-\_\-\-R\-I\-G\-H\-T}!common.\-hpp@{common.\-hpp}}\index{common.\-hpp@{common.\-hpp}!B\-O\-T\-T\-O\-M\-\_\-\-R\-I\-G\-H\-T@{B\-O\-T\-T\-O\-M\-\_\-\-R\-I\-G\-H\-T}}\item[{\em 
+\hypertarget{common_8hpp_aaa588ba8f99807e02a59c99df80af509a5bc569072880e473b667c10005c7aefd}{B\-O\-T\-T\-O\-M\-\_\-\-R\-I\-G\-H\-T}\label{common_8hpp_aaa588ba8f99807e02a59c99df80af509a5bc569072880e473b667c10005c7aefd}
+}]\end{description}
+\end{Desc}
+
+
+Definition at line 111 of file common.\-hpp.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{common_8hpp_a8aff38cae3172504eaab3df9ca3bbbfd}{\index{common.\-hpp@{common.\-hpp}!close\-Dist@{close\-Dist}}
+\index{close\-Dist@{close\-Dist}!common.hpp@{common.\-hpp}}
+\subsubsection[{close\-Dist}]{\setlength{\rightskip}{0pt plus 5cm}float close\-Dist (
+\begin{DoxyParamCaption}
+\item[{const float \&}]{from, }
+\item[{const float \&}]{to, }
+\item[{const float \&}]{change}
+\end{DoxyParamCaption}
+)}}\label{common_8hpp_a8aff38cae3172504eaab3df9ca3bbbfd}
+
+
+Definition at line 58 of file common.\-cpp.
+
+\hypertarget{common_8hpp_aa3330b1374a6e61a2fcbbc6bc6fde845}{\index{common.\-hpp@{common.\-hpp}!equals@{equals}}
+\index{equals@{equals}!common.hpp@{common.\-hpp}}
+\subsubsection[{equals}]{\setlength{\rightskip}{0pt plus 5cm}bool equals (
+\begin{DoxyParamCaption}
+\item[{const float \&}]{a, }
+\item[{const float \&}]{b}
+\end{DoxyParamCaption}
+)}}\label{common_8hpp_aa3330b1374a6e61a2fcbbc6bc6fde845}
+
+
+Definition at line 52 of file common.\-cpp.
+
+\hypertarget{common_8hpp_a870b8745d992696899d4f6201f69a2b0}{\index{common.\-hpp@{common.\-hpp}!Float\-To\-Str@{Float\-To\-Str}}
+\index{Float\-To\-Str@{Float\-To\-Str}!common.hpp@{common.\-hpp}}
+\subsubsection[{Float\-To\-Str}]{\setlength{\rightskip}{0pt plus 5cm}{\bf string} Float\-To\-Str (
+\begin{DoxyParamCaption}
+\item[{float}]{f}
+\end{DoxyParamCaption}
+)}}\label{common_8hpp_a870b8745d992696899d4f6201f69a2b0}
+
+
+Definition at line 71 of file common.\-cpp.
+
+\hypertarget{common_8hpp_a3890bbdc1cbeb2ef6eaa652ab7eaae8c}{\index{common.\-hpp@{common.\-hpp}!Make\-Color@{Make\-Color}}
+\index{Make\-Color@{Make\-Color}!common.hpp@{common.\-hpp}}
+\subsubsection[{Make\-Color}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\-D\-L\-\_\-\-Color} Make\-Color (
+\begin{DoxyParamCaption}
+\item[{{\bf int}}]{r, }
+\item[{{\bf int}}]{g, }
+\item[{{\bf int}}]{b, }
+\item[{{\bf int}}]{a = {\ttfamily 255}}
+\end{DoxyParamCaption}
+)}}\label{common_8hpp_a3890bbdc1cbeb2ef6eaa652ab7eaae8c}
+
+
+Definition at line 36 of file common.\-cpp.
+
+
+
+\subsection{Variable Documentation}
+\hypertarget{common_8hpp_a0e5c6a91564ac05e635f1549a6ce7c3f}{\index{common.\-hpp@{common.\-hpp}!debug\-Count@{debug\-Count}}
+\index{debug\-Count@{debug\-Count}!common.hpp@{common.\-hpp}}
+\subsubsection[{debug\-Count}]{\setlength{\rightskip}{0pt plus 5cm}{\bf int} debug\-Count}}\label{common_8hpp_a0e5c6a91564ac05e635f1549a6ce7c3f}
+
+
+Definition at line 10 of file common.\-cpp.
+
+\hypertarget{common_8hpp_af12d0e76740d19ed56dd72058485b99d}{\index{common.\-hpp@{common.\-hpp}!Hotspot\-Pos@{Hotspot\-Pos}}
+\index{Hotspot\-Pos@{Hotspot\-Pos}!common.hpp@{common.\-hpp}}
+\subsubsection[{Hotspot\-Pos}]{\setlength{\rightskip}{0pt plus 5cm}pair$<$float,float$>$ Hotspot\-Pos\mbox{[}$\,$\mbox{]}}}\label{common_8hpp_af12d0e76740d19ed56dd72058485b99d}
+
+
+Definition at line 14 of file common.\-cpp.
+

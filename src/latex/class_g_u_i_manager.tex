@@ -1,0 +1,224 @@
+\hypertarget{class_g_u_i_manager}{\section{G\-U\-I\-Manager Class Reference}
+\label{class_g_u_i_manager}\index{G\-U\-I\-Manager@{G\-U\-I\-Manager}}
+}
+
+
+{\ttfamily \#include $<$gui\-Manager.\-hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_g_u_i_manager_a5587062fc64af58b9adbe5df4ba25097}{G\-U\-I\-Manager} ()
+\item 
+\hyperlink{class_g_u_i_manager_a4e1a7873e94f406c1b6cb4c50d3f2aab}{$\sim$\-G\-U\-I\-Manager} ()
+\item 
+\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_g_u_i_manager_ab13b8c243a5950575c42674365558bcc}{update} ()
+\item 
+\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_g_u_i_manager_a33fff41b6ac48ca99233c59304869bf6}{render} ()
+\item 
+\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_g_u_i_manager_a475af471c47fc35b54dd73f38aa7ea6c}{Push\-Element} (\hyperlink{class_g_u_i___element}{G\-U\-I\-\_\-\-Element} $\ast$element)
+\item 
+\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_g_u_i_manager_a66d3a697ee17d8261174dd22fd784b48}{Request\-Pop} (\hyperlink{class_g_u_i___element}{G\-U\-I\-\_\-\-Element} $\ast$element)
+\item 
+\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_g_u_i_manager_a951b31fcd1e6c5e9fcc39393e411c52c}{Select\-Window} (\hyperlink{class_g_u_i___window}{G\-U\-I\-\_\-\-Window} $\ast$\hyperlink{jquery_8js_a04a8a2bbfa9c15500892b8e5033d625b}{window})
+\item 
+bool \hyperlink{class_g_u_i_manager_aee22bffcd6ac8a8022e304845f41a110}{Is\-Window\-Selected} (\hyperlink{class_g_u_i___window}{G\-U\-I\-\_\-\-Window} $\ast$\hyperlink{jquery_8js_a04a8a2bbfa9c15500892b8e5033d625b}{window}) const 
+\item 
+\hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int} \hyperlink{class_g_u_i_manager_aa73f6183274bb9ff4887a249c3dc4d09}{Get\-Selected\-Window\-I\-D} () const 
+\item 
+\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_g_u_i_manager_ae21ab2c923ef3bde5ec37a3fd1f294eb}{Select\-Button} (\hyperlink{class_g_u_i___button}{G\-U\-I\-\_\-\-Button} $\ast$button)
+\item 
+bool \hyperlink{class_g_u_i_manager_abb992549850f9995c9c07572a46d2b94}{Is\-Button\-Selected} (\hyperlink{class_g_u_i___button}{G\-U\-I\-\_\-\-Button} $\ast$button) const 
+\item 
+bool \hyperlink{class_g_u_i_manager_af7e1a28bef29999c4d7a43448af74809}{Button\-Press} (\hyperlink{common_8hpp_a69aa29b598b851b0640aa225a9e5d61d}{uint} action=0) const 
+\item 
+bool \hyperlink{class_g_u_i_manager_a15f62e82b964feaad02cb99c63440004}{Button\-Release} (\hyperlink{common_8hpp_a69aa29b598b851b0640aa225a9e5d61d}{uint} action=0) const 
+\item 
+bool \hyperlink{class_g_u_i_manager_a75723ac809bcb99543be671f40d9eeba}{Button\-Click} (\hyperlink{common_8hpp_a69aa29b598b851b0640aa225a9e5d61d}{uint} action=0) const 
+\item 
+bool \hyperlink{class_g_u_i_manager_a82fdaaffd68dad6f985dacad37a484f6}{Is\-Button\-Down} (\hyperlink{common_8hpp_a69aa29b598b851b0640aa225a9e5d61d}{uint} action=0) const 
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 12 of file gui\-Manager.\-hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_g_u_i_manager_a5587062fc64af58b9adbe5df4ba25097}{\index{G\-U\-I\-Manager@{G\-U\-I\-Manager}!G\-U\-I\-Manager@{G\-U\-I\-Manager}}
+\index{G\-U\-I\-Manager@{G\-U\-I\-Manager}!GUIManager@{G\-U\-I\-Manager}}
+\subsubsection[{G\-U\-I\-Manager}]{\setlength{\rightskip}{0pt plus 5cm}G\-U\-I\-Manager\-::\-G\-U\-I\-Manager (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_g_u_i_manager_a5587062fc64af58b9adbe5df4ba25097}
+
+
+Definition at line 6 of file gui\-Manager.\-cpp.
+
+\hypertarget{class_g_u_i_manager_a4e1a7873e94f406c1b6cb4c50d3f2aab}{\index{G\-U\-I\-Manager@{G\-U\-I\-Manager}!$\sim$\-G\-U\-I\-Manager@{$\sim$\-G\-U\-I\-Manager}}
+\index{$\sim$\-G\-U\-I\-Manager@{$\sim$\-G\-U\-I\-Manager}!GUIManager@{G\-U\-I\-Manager}}
+\subsubsection[{$\sim$\-G\-U\-I\-Manager}]{\setlength{\rightskip}{0pt plus 5cm}G\-U\-I\-Manager\-::$\sim$\-G\-U\-I\-Manager (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_g_u_i_manager_a4e1a7873e94f406c1b6cb4c50d3f2aab}
+
+
+Definition at line 7 of file gui\-Manager.\-cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_g_u_i_manager_a75723ac809bcb99543be671f40d9eeba}{\index{G\-U\-I\-Manager@{G\-U\-I\-Manager}!Button\-Click@{Button\-Click}}
+\index{Button\-Click@{Button\-Click}!GUIManager@{G\-U\-I\-Manager}}
+\subsubsection[{Button\-Click}]{\setlength{\rightskip}{0pt plus 5cm}bool G\-U\-I\-Manager\-::\-Button\-Click (
+\begin{DoxyParamCaption}
+\item[{{\bf uint}}]{action = {\ttfamily 0}}
+\end{DoxyParamCaption}
+) const}}\label{class_g_u_i_manager_a75723ac809bcb99543be671f40d9eeba}
+
+
+Definition at line 86 of file gui\-Manager.\-cpp.
+
+\hypertarget{class_g_u_i_manager_af7e1a28bef29999c4d7a43448af74809}{\index{G\-U\-I\-Manager@{G\-U\-I\-Manager}!Button\-Press@{Button\-Press}}
+\index{Button\-Press@{Button\-Press}!GUIManager@{G\-U\-I\-Manager}}
+\subsubsection[{Button\-Press}]{\setlength{\rightskip}{0pt plus 5cm}bool G\-U\-I\-Manager\-::\-Button\-Press (
+\begin{DoxyParamCaption}
+\item[{{\bf uint}}]{action = {\ttfamily 0}}
+\end{DoxyParamCaption}
+) const}}\label{class_g_u_i_manager_af7e1a28bef29999c4d7a43448af74809}
+
+
+Definition at line 76 of file gui\-Manager.\-cpp.
+
+\hypertarget{class_g_u_i_manager_a15f62e82b964feaad02cb99c63440004}{\index{G\-U\-I\-Manager@{G\-U\-I\-Manager}!Button\-Release@{Button\-Release}}
+\index{Button\-Release@{Button\-Release}!GUIManager@{G\-U\-I\-Manager}}
+\subsubsection[{Button\-Release}]{\setlength{\rightskip}{0pt plus 5cm}bool G\-U\-I\-Manager\-::\-Button\-Release (
+\begin{DoxyParamCaption}
+\item[{{\bf uint}}]{action = {\ttfamily 0}}
+\end{DoxyParamCaption}
+) const}}\label{class_g_u_i_manager_a15f62e82b964feaad02cb99c63440004}
+
+
+Definition at line 81 of file gui\-Manager.\-cpp.
+
+\hypertarget{class_g_u_i_manager_aa73f6183274bb9ff4887a249c3dc4d09}{\index{G\-U\-I\-Manager@{G\-U\-I\-Manager}!Get\-Selected\-Window\-I\-D@{Get\-Selected\-Window\-I\-D}}
+\index{Get\-Selected\-Window\-I\-D@{Get\-Selected\-Window\-I\-D}!GUIManager@{G\-U\-I\-Manager}}
+\subsubsection[{Get\-Selected\-Window\-I\-D}]{\setlength{\rightskip}{0pt plus 5cm}{\bf int} G\-U\-I\-Manager\-::\-Get\-Selected\-Window\-I\-D (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_g_u_i_manager_aa73f6183274bb9ff4887a249c3dc4d09}
+
+
+Definition at line 63 of file gui\-Manager.\-cpp.
+
+\hypertarget{class_g_u_i_manager_a82fdaaffd68dad6f985dacad37a484f6}{\index{G\-U\-I\-Manager@{G\-U\-I\-Manager}!Is\-Button\-Down@{Is\-Button\-Down}}
+\index{Is\-Button\-Down@{Is\-Button\-Down}!GUIManager@{G\-U\-I\-Manager}}
+\subsubsection[{Is\-Button\-Down}]{\setlength{\rightskip}{0pt plus 5cm}bool G\-U\-I\-Manager\-::\-Is\-Button\-Down (
+\begin{DoxyParamCaption}
+\item[{{\bf uint}}]{action = {\ttfamily 0}}
+\end{DoxyParamCaption}
+) const}}\label{class_g_u_i_manager_a82fdaaffd68dad6f985dacad37a484f6}
+
+
+Definition at line 91 of file gui\-Manager.\-cpp.
+
+\hypertarget{class_g_u_i_manager_abb992549850f9995c9c07572a46d2b94}{\index{G\-U\-I\-Manager@{G\-U\-I\-Manager}!Is\-Button\-Selected@{Is\-Button\-Selected}}
+\index{Is\-Button\-Selected@{Is\-Button\-Selected}!GUIManager@{G\-U\-I\-Manager}}
+\subsubsection[{Is\-Button\-Selected}]{\setlength{\rightskip}{0pt plus 5cm}bool G\-U\-I\-Manager\-::\-Is\-Button\-Selected (
+\begin{DoxyParamCaption}
+\item[{{\bf G\-U\-I\-\_\-\-Button} $\ast$}]{button}
+\end{DoxyParamCaption}
+) const}}\label{class_g_u_i_manager_abb992549850f9995c9c07572a46d2b94}
+
+
+Definition at line 72 of file gui\-Manager.\-cpp.
+
+\hypertarget{class_g_u_i_manager_aee22bffcd6ac8a8022e304845f41a110}{\index{G\-U\-I\-Manager@{G\-U\-I\-Manager}!Is\-Window\-Selected@{Is\-Window\-Selected}}
+\index{Is\-Window\-Selected@{Is\-Window\-Selected}!GUIManager@{G\-U\-I\-Manager}}
+\subsubsection[{Is\-Window\-Selected}]{\setlength{\rightskip}{0pt plus 5cm}bool G\-U\-I\-Manager\-::\-Is\-Window\-Selected (
+\begin{DoxyParamCaption}
+\item[{{\bf G\-U\-I\-\_\-\-Window} $\ast$}]{window}
+\end{DoxyParamCaption}
+) const}}\label{class_g_u_i_manager_aee22bffcd6ac8a8022e304845f41a110}
+
+
+Definition at line 60 of file gui\-Manager.\-cpp.
+
+\hypertarget{class_g_u_i_manager_a475af471c47fc35b54dd73f38aa7ea6c}{\index{G\-U\-I\-Manager@{G\-U\-I\-Manager}!Push\-Element@{Push\-Element}}
+\index{Push\-Element@{Push\-Element}!GUIManager@{G\-U\-I\-Manager}}
+\subsubsection[{Push\-Element}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} G\-U\-I\-Manager\-::\-Push\-Element (
+\begin{DoxyParamCaption}
+\item[{{\bf G\-U\-I\-\_\-\-Element} $\ast$}]{element}
+\end{DoxyParamCaption}
+)}}\label{class_g_u_i_manager_a475af471c47fc35b54dd73f38aa7ea6c}
+
+
+Definition at line 48 of file gui\-Manager.\-cpp.
+
+\hypertarget{class_g_u_i_manager_a33fff41b6ac48ca99233c59304869bf6}{\index{G\-U\-I\-Manager@{G\-U\-I\-Manager}!render@{render}}
+\index{render@{render}!GUIManager@{G\-U\-I\-Manager}}
+\subsubsection[{render}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} G\-U\-I\-Manager\-::\-render (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_g_u_i_manager_a33fff41b6ac48ca99233c59304869bf6}
+
+
+Definition at line 42 of file gui\-Manager.\-cpp.
+
+\hypertarget{class_g_u_i_manager_a66d3a697ee17d8261174dd22fd784b48}{\index{G\-U\-I\-Manager@{G\-U\-I\-Manager}!Request\-Pop@{Request\-Pop}}
+\index{Request\-Pop@{Request\-Pop}!GUIManager@{G\-U\-I\-Manager}}
+\subsubsection[{Request\-Pop}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} G\-U\-I\-Manager\-::\-Request\-Pop (
+\begin{DoxyParamCaption}
+\item[{{\bf G\-U\-I\-\_\-\-Element} $\ast$}]{element}
+\end{DoxyParamCaption}
+)}}\label{class_g_u_i_manager_a66d3a697ee17d8261174dd22fd784b48}
+
+
+Definition at line 52 of file gui\-Manager.\-cpp.
+
+\hypertarget{class_g_u_i_manager_ae21ab2c923ef3bde5ec37a3fd1f294eb}{\index{G\-U\-I\-Manager@{G\-U\-I\-Manager}!Select\-Button@{Select\-Button}}
+\index{Select\-Button@{Select\-Button}!GUIManager@{G\-U\-I\-Manager}}
+\subsubsection[{Select\-Button}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} G\-U\-I\-Manager\-::\-Select\-Button (
+\begin{DoxyParamCaption}
+\item[{{\bf G\-U\-I\-\_\-\-Button} $\ast$}]{button}
+\end{DoxyParamCaption}
+)}}\label{class_g_u_i_manager_ae21ab2c923ef3bde5ec37a3fd1f294eb}
+
+
+Definition at line 69 of file gui\-Manager.\-cpp.
+
+\hypertarget{class_g_u_i_manager_a951b31fcd1e6c5e9fcc39393e411c52c}{\index{G\-U\-I\-Manager@{G\-U\-I\-Manager}!Select\-Window@{Select\-Window}}
+\index{Select\-Window@{Select\-Window}!GUIManager@{G\-U\-I\-Manager}}
+\subsubsection[{Select\-Window}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} G\-U\-I\-Manager\-::\-Select\-Window (
+\begin{DoxyParamCaption}
+\item[{{\bf G\-U\-I\-\_\-\-Window} $\ast$}]{window}
+\end{DoxyParamCaption}
+)}}\label{class_g_u_i_manager_a951b31fcd1e6c5e9fcc39393e411c52c}
+
+
+Definition at line 57 of file gui\-Manager.\-cpp.
+
+\hypertarget{class_g_u_i_manager_ab13b8c243a5950575c42674365558bcc}{\index{G\-U\-I\-Manager@{G\-U\-I\-Manager}!update@{update}}
+\index{update@{update}!GUIManager@{G\-U\-I\-Manager}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} G\-U\-I\-Manager\-::\-update (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_g_u_i_manager_ab13b8c243a5950575c42674365558bcc}
+
+
+Definition at line 11 of file gui\-Manager.\-cpp.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/home/andre/\-Desktop/tecprog/\-Mayumi\-No\-Tabi/\-Mayumi\-No\-Tabi/include/\hyperlink{gui_manager_8hpp}{gui\-Manager.\-hpp}\item 
+\hyperlink{gui_manager_8cpp}{gui\-Manager.\-cpp}\end{DoxyCompactItemize}

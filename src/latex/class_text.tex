@@ -1,0 +1,264 @@
+\hypertarget{class_text}{\section{Text Class Reference}
+\label{class_text}\index{Text@{Text}}
+}
+
+
+{\ttfamily \#include $<$text.\-hpp$>$}
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_text_1_1_text_line}{Text\-Line}
+\end{DoxyCompactItemize}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{class_text_ac82ae440952fc1c8e10a16f81a593ce1}{Style} \{ \hyperlink{class_text_ac82ae440952fc1c8e10a16f81a593ce1abc6bd1bc8b9a92001a6b30259448fafe}{S\-O\-L\-I\-D}, 
+\hyperlink{class_text_ac82ae440952fc1c8e10a16f81a593ce1a8eac34454b77764eff697e6f55f7906b}{S\-H\-A\-D\-E\-D}, 
+\hyperlink{class_text_ac82ae440952fc1c8e10a16f81a593ce1aac6e9b56165c8afe563da5866b394f7b}{B\-L\-E\-N\-D\-E\-D}
+ \}
+\item 
+enum \hyperlink{class_text_a93b1e85f0f6745446ed27cd708289339}{Align} \{ \hyperlink{class_text_a93b1e85f0f6745446ed27cd708289339ab4e62c417c456da191cbc9d563cf82bd}{L\-E\-F\-T}, 
+\hyperlink{class_text_a93b1e85f0f6745446ed27cd708289339ae512ceb95e45275aaa14f027d4155352}{R\-I\-G\-H\-T}, 
+\hyperlink{class_text_a93b1e85f0f6745446ed27cd708289339a35c76f89224d723030882a395fda58d6}{C\-E\-N\-T\-E\-R\-E\-D}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_text_a9291762a0deefcb919152c7b66ae448d}{Text} (const \hyperlink{_s_d_l__opengl__glext_8h_ae84541b4f3d8e1ea24ec0f466a8c568b}{string} \&txt, \hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int} f\-Size, \hyperlink{struct_s_d_l___color}{S\-D\-L\-\_\-\-Color} \hyperlink{_s_d_l__opengl__glext_8h_a1f2d7f8147412c43ba2303a56f97ee73}{c}=\hyperlink{common_8hpp_a8747c93cef1c9985be8fc426565f466e}{S\-D\-L\-\_\-\-C\-O\-L\-O\-R\-\_\-\-W\-H\-I\-T\-E}, \hyperlink{class_text_ac82ae440952fc1c8e10a16f81a593ce1}{Style} st=Style\-::\-B\-L\-E\-N\-D\-E\-D, \hyperlink{_s_d_l__opengl__glext_8h_ae84541b4f3d8e1ea24ec0f466a8c568b}{string} file=\char`\"{}font/arial.\-ttf\char`\"{}, int \hyperlink{_s_d_l__opengl_8h_ad0e63d0edcdbd3d79554076bf309fd47}{x}=0, \hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int} \hyperlink{_s_d_l__opengl_8h_a1675d9d7bb68e1657ff028643b4037e3}{y}=0)
+\item 
+\hyperlink{class_text_a2d49e5c280e205125b149f7777ae30c7}{$\sim$\-Text} ()
+\item 
+\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_text_a9eaf3c6d97df6f04451724287cf1b696}{render} (\hyperlink{class_vec2}{Vec2} camera=\{0, 0\}, \hyperlink{class_rect}{Rect} $\ast$clip\-Rect=nullptr)
+\item 
+\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_text_a54e5a8deab134c5a94c6c3b074655c9f}{Set\-Pos} (\hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int} \hyperlink{_s_d_l__opengl_8h_ad0e63d0edcdbd3d79554076bf309fd47}{x}, \hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int} \hyperlink{_s_d_l__opengl_8h_a1675d9d7bb68e1657ff028643b4037e3}{y})
+\item 
+\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_text_a1d03c838f06ed656dde42843cd7b961c}{Set\-Pos} (\hyperlink{class_vec2}{Vec2} \hyperlink{_s_d_l__opengl_8h_a10a82eabcb59d2fcd74acee063775f90}{v})
+\item 
+\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_text_a300c34a38e7a01c5e5537391d13c1c78}{Set\-Text} (\hyperlink{_s_d_l__opengl__glext_8h_ae84541b4f3d8e1ea24ec0f466a8c568b}{string} txt)
+\item 
+\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_text_a979111d4dc7b543216d292bb987121e4}{Set\-Line} (\hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int} line, \hyperlink{_s_d_l__opengl__glext_8h_ae84541b4f3d8e1ea24ec0f466a8c568b}{string} txt)
+\item 
+\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_text_a37d65f0d089fe45dea05073e974ad175}{Set\-Color} (\hyperlink{struct_s_d_l___color}{S\-D\-L\-\_\-\-Color} \hyperlink{_s_d_l__opengl__glext_8h_a1f2d7f8147412c43ba2303a56f97ee73}{c})
+\item 
+\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_text_a8483a29f1f37bbe4e3237827bf4ea69f}{Set\-Style} (\hyperlink{class_text_ac82ae440952fc1c8e10a16f81a593ce1}{Style} st)
+\item 
+\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_text_a8f773d76ae3e4806e8448e7800e2c002}{Set\-Font\-Size} (\hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int} f\-Size)
+\item 
+\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_text_ac13e9efff6c580fca0dd1385fc754f71}{Set\-Alignment} (\hyperlink{class_text_a93b1e85f0f6745446ed27cd708289339}{Align} al)
+\item 
+\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_text_a566507adcc38cc048c8603870197b878}{Set\-Hotspot} (\hyperlink{common_8hpp_aaa588ba8f99807e02a59c99df80af509}{Hotspot} \hyperlink{_s_d_l__opengl__glext_8h_afa0fb1b5e976920c0abeff2dca3ed774}{h}=\hyperlink{common_8hpp_aaa588ba8f99807e02a59c99df80af509a2159ffbd3a68037511ab5ab4dd35ace7}{Hotspot\-::\-C\-E\-N\-T\-E\-R})
+\item 
+\hyperlink{class_rect}{Rect} \hyperlink{class_text_a105371980812219e643b07a4460d6940}{Get\-Box} () const 
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 8 of file text.\-hpp.
+
+
+
+\subsection{Member Enumeration Documentation}
+\hypertarget{class_text_a93b1e85f0f6745446ed27cd708289339}{\index{Text@{Text}!Align@{Align}}
+\index{Align@{Align}!Text@{Text}}
+\subsubsection[{Align}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Text\-::\-Align}}}\label{class_text_a93b1e85f0f6745446ed27cd708289339}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{L\-E\-F\-T@{L\-E\-F\-T}!Text@{Text}}\index{Text@{Text}!L\-E\-F\-T@{L\-E\-F\-T}}\item[{\em 
+\hypertarget{class_text_a93b1e85f0f6745446ed27cd708289339ab4e62c417c456da191cbc9d563cf82bd}{L\-E\-F\-T}\label{class_text_a93b1e85f0f6745446ed27cd708289339ab4e62c417c456da191cbc9d563cf82bd}
+}]\index{R\-I\-G\-H\-T@{R\-I\-G\-H\-T}!Text@{Text}}\index{Text@{Text}!R\-I\-G\-H\-T@{R\-I\-G\-H\-T}}\item[{\em 
+\hypertarget{class_text_a93b1e85f0f6745446ed27cd708289339ae512ceb95e45275aaa14f027d4155352}{R\-I\-G\-H\-T}\label{class_text_a93b1e85f0f6745446ed27cd708289339ae512ceb95e45275aaa14f027d4155352}
+}]\index{C\-E\-N\-T\-E\-R\-E\-D@{C\-E\-N\-T\-E\-R\-E\-D}!Text@{Text}}\index{Text@{Text}!C\-E\-N\-T\-E\-R\-E\-D@{C\-E\-N\-T\-E\-R\-E\-D}}\item[{\em 
+\hypertarget{class_text_a93b1e85f0f6745446ed27cd708289339a35c76f89224d723030882a395fda58d6}{C\-E\-N\-T\-E\-R\-E\-D}\label{class_text_a93b1e85f0f6745446ed27cd708289339a35c76f89224d723030882a395fda58d6}
+}]\end{description}
+\end{Desc}
+
+
+Definition at line 11 of file text.\-hpp.
+
+\hypertarget{class_text_ac82ae440952fc1c8e10a16f81a593ce1}{\index{Text@{Text}!Style@{Style}}
+\index{Style@{Style}!Text@{Text}}
+\subsubsection[{Style}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Text\-::\-Style}}}\label{class_text_ac82ae440952fc1c8e10a16f81a593ce1}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{S\-O\-L\-I\-D@{S\-O\-L\-I\-D}!Text@{Text}}\index{Text@{Text}!S\-O\-L\-I\-D@{S\-O\-L\-I\-D}}\item[{\em 
+\hypertarget{class_text_ac82ae440952fc1c8e10a16f81a593ce1abc6bd1bc8b9a92001a6b30259448fafe}{S\-O\-L\-I\-D}\label{class_text_ac82ae440952fc1c8e10a16f81a593ce1abc6bd1bc8b9a92001a6b30259448fafe}
+}]\index{S\-H\-A\-D\-E\-D@{S\-H\-A\-D\-E\-D}!Text@{Text}}\index{Text@{Text}!S\-H\-A\-D\-E\-D@{S\-H\-A\-D\-E\-D}}\item[{\em 
+\hypertarget{class_text_ac82ae440952fc1c8e10a16f81a593ce1a8eac34454b77764eff697e6f55f7906b}{S\-H\-A\-D\-E\-D}\label{class_text_ac82ae440952fc1c8e10a16f81a593ce1a8eac34454b77764eff697e6f55f7906b}
+}]\index{B\-L\-E\-N\-D\-E\-D@{B\-L\-E\-N\-D\-E\-D}!Text@{Text}}\index{Text@{Text}!B\-L\-E\-N\-D\-E\-D@{B\-L\-E\-N\-D\-E\-D}}\item[{\em 
+\hypertarget{class_text_ac82ae440952fc1c8e10a16f81a593ce1aac6e9b56165c8afe563da5866b394f7b}{B\-L\-E\-N\-D\-E\-D}\label{class_text_ac82ae440952fc1c8e10a16f81a593ce1aac6e9b56165c8afe563da5866b394f7b}
+}]\end{description}
+\end{Desc}
+
+
+Definition at line 10 of file text.\-hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_text_a9291762a0deefcb919152c7b66ae448d}{\index{Text@{Text}!Text@{Text}}
+\index{Text@{Text}!Text@{Text}}
+\subsubsection[{Text}]{\setlength{\rightskip}{0pt plus 5cm}Text\-::\-Text (
+\begin{DoxyParamCaption}
+\item[{const {\bf string} \&}]{txt, }
+\item[{{\bf int}}]{f\-Size, }
+\item[{{\bf S\-D\-L\-\_\-\-Color}}]{c = {\ttfamily {\bf S\-D\-L\-\_\-\-C\-O\-L\-O\-R\-\_\-\-W\-H\-I\-T\-E}}, }
+\item[{{\bf Style}}]{st = {\ttfamily Style\-:\-:BLENDED}, }
+\item[{{\bf string}}]{file = {\ttfamily \char`\"{}font/arial.ttf\char`\"{}}, }
+\item[{{\bf int}}]{x = {\ttfamily 0}, }
+\item[{{\bf int}}]{y = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}}\label{class_text_a9291762a0deefcb919152c7b66ae448d}
+
+
+Definition at line 7 of file text.\-cpp.
+
+\hypertarget{class_text_a2d49e5c280e205125b149f7777ae30c7}{\index{Text@{Text}!$\sim$\-Text@{$\sim$\-Text}}
+\index{$\sim$\-Text@{$\sim$\-Text}!Text@{Text}}
+\subsubsection[{$\sim$\-Text}]{\setlength{\rightskip}{0pt plus 5cm}Text\-::$\sim$\-Text (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_text_a2d49e5c280e205125b149f7777ae30c7}
+
+
+Definition at line 16 of file text.\-cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_text_a105371980812219e643b07a4460d6940}{\index{Text@{Text}!Get\-Box@{Get\-Box}}
+\index{Get\-Box@{Get\-Box}!Text@{Text}}
+\subsubsection[{Get\-Box}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Rect} Text\-::\-Get\-Box (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_text_a105371980812219e643b07a4460d6940}
+
+
+Definition at line 140 of file text.\-cpp.
+
+\hypertarget{class_text_a9eaf3c6d97df6f04451724287cf1b696}{\index{Text@{Text}!render@{render}}
+\index{render@{render}!Text@{Text}}
+\subsubsection[{render}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} Text\-::\-render (
+\begin{DoxyParamCaption}
+\item[{{\bf Vec2}}]{camera = {\ttfamily \{0,0\}}, }
+\item[{{\bf Rect} $\ast$}]{clip\-Rect = {\ttfamily nullptr}}
+\end{DoxyParamCaption}
+)}}\label{class_text_a9eaf3c6d97df6f04451724287cf1b696}
+
+
+Definition at line 21 of file text.\-cpp.
+
+\hypertarget{class_text_ac13e9efff6c580fca0dd1385fc754f71}{\index{Text@{Text}!Set\-Alignment@{Set\-Alignment}}
+\index{Set\-Alignment@{Set\-Alignment}!Text@{Text}}
+\subsubsection[{Set\-Alignment}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} Text\-::\-Set\-Alignment (
+\begin{DoxyParamCaption}
+\item[{{\bf Align}}]{al}
+\end{DoxyParamCaption}
+)}}\label{class_text_ac13e9efff6c580fca0dd1385fc754f71}
+
+
+Definition at line 131 of file text.\-cpp.
+
+\hypertarget{class_text_a37d65f0d089fe45dea05073e974ad175}{\index{Text@{Text}!Set\-Color@{Set\-Color}}
+\index{Set\-Color@{Set\-Color}!Text@{Text}}
+\subsubsection[{Set\-Color}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} Text\-::\-Set\-Color (
+\begin{DoxyParamCaption}
+\item[{{\bf S\-D\-L\-\_\-\-Color}}]{c}
+\end{DoxyParamCaption}
+)}}\label{class_text_a37d65f0d089fe45dea05073e974ad175}
+
+
+Definition at line 112 of file text.\-cpp.
+
+\hypertarget{class_text_a8f773d76ae3e4806e8448e7800e2c002}{\index{Text@{Text}!Set\-Font\-Size@{Set\-Font\-Size}}
+\index{Set\-Font\-Size@{Set\-Font\-Size}!Text@{Text}}
+\subsubsection[{Set\-Font\-Size}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} Text\-::\-Set\-Font\-Size (
+\begin{DoxyParamCaption}
+\item[{{\bf int}}]{f\-Size}
+\end{DoxyParamCaption}
+)}}\label{class_text_a8f773d76ae3e4806e8448e7800e2c002}
+
+
+Definition at line 125 of file text.\-cpp.
+
+\hypertarget{class_text_a566507adcc38cc048c8603870197b878}{\index{Text@{Text}!Set\-Hotspot@{Set\-Hotspot}}
+\index{Set\-Hotspot@{Set\-Hotspot}!Text@{Text}}
+\subsubsection[{Set\-Hotspot}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} Text\-::\-Set\-Hotspot (
+\begin{DoxyParamCaption}
+\item[{{\bf Hotspot}}]{h = {\ttfamily {\bf Hotspot\-::\-C\-E\-N\-T\-E\-R}}}
+\end{DoxyParamCaption}
+)}}\label{class_text_a566507adcc38cc048c8603870197b878}
+
+
+Definition at line 136 of file text.\-cpp.
+
+\hypertarget{class_text_a979111d4dc7b543216d292bb987121e4}{\index{Text@{Text}!Set\-Line@{Set\-Line}}
+\index{Set\-Line@{Set\-Line}!Text@{Text}}
+\subsubsection[{Set\-Line}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} Text\-::\-Set\-Line (
+\begin{DoxyParamCaption}
+\item[{{\bf int}}]{line, }
+\item[{{\bf string}}]{txt}
+\end{DoxyParamCaption}
+)}}\label{class_text_a979111d4dc7b543216d292bb987121e4}
+
+
+Definition at line 105 of file text.\-cpp.
+
+\hypertarget{class_text_a54e5a8deab134c5a94c6c3b074655c9f}{\index{Text@{Text}!Set\-Pos@{Set\-Pos}}
+\index{Set\-Pos@{Set\-Pos}!Text@{Text}}
+\subsubsection[{Set\-Pos}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} Text\-::\-Set\-Pos (
+\begin{DoxyParamCaption}
+\item[{{\bf int}}]{x, }
+\item[{{\bf int}}]{y}
+\end{DoxyParamCaption}
+)}}\label{class_text_a54e5a8deab134c5a94c6c3b074655c9f}
+
+
+Definition at line 82 of file text.\-cpp.
+
+\hypertarget{class_text_a1d03c838f06ed656dde42843cd7b961c}{\index{Text@{Text}!Set\-Pos@{Set\-Pos}}
+\index{Set\-Pos@{Set\-Pos}!Text@{Text}}
+\subsubsection[{Set\-Pos}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} Text\-::\-Set\-Pos (
+\begin{DoxyParamCaption}
+\item[{{\bf Vec2}}]{v}
+\end{DoxyParamCaption}
+)}}\label{class_text_a1d03c838f06ed656dde42843cd7b961c}
+
+
+Definition at line 87 of file text.\-cpp.
+
+\hypertarget{class_text_a8483a29f1f37bbe4e3237827bf4ea69f}{\index{Text@{Text}!Set\-Style@{Set\-Style}}
+\index{Set\-Style@{Set\-Style}!Text@{Text}}
+\subsubsection[{Set\-Style}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} Text\-::\-Set\-Style (
+\begin{DoxyParamCaption}
+\item[{{\bf Style}}]{st}
+\end{DoxyParamCaption}
+)}}\label{class_text_a8483a29f1f37bbe4e3237827bf4ea69f}
+
+
+Definition at line 120 of file text.\-cpp.
+
+\hypertarget{class_text_a300c34a38e7a01c5e5537391d13c1c78}{\index{Text@{Text}!Set\-Text@{Set\-Text}}
+\index{Set\-Text@{Set\-Text}!Text@{Text}}
+\subsubsection[{Set\-Text}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} Text\-::\-Set\-Text (
+\begin{DoxyParamCaption}
+\item[{{\bf string}}]{txt}
+\end{DoxyParamCaption}
+)}}\label{class_text_a300c34a38e7a01c5e5537391d13c1c78}
+
+
+Definition at line 91 of file text.\-cpp.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/home/andre/\-Desktop/tecprog/\-Mayumi\-No\-Tabi/\-Mayumi\-No\-Tabi/include/\hyperlink{text_8hpp}{text.\-hpp}\item 
+\hyperlink{text_8cpp}{text.\-cpp}\end{DoxyCompactItemize}

@@ -1,0 +1,470 @@
+\hypertarget{class_sprite}{\section{Sprite Class Reference}
+\label{class_sprite}\index{Sprite@{Sprite}}
+}
+
+
+{\ttfamily \#include $<$sprite.\-hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_sprite_a12cba3ac1868418add3c4d95ce87e615}{Sprite} ()
+\item 
+\hyperlink{class_sprite_a1dd38cbcb37dd53a6282fbdc2b698577}{Sprite} (const \hyperlink{_s_d_l__opengl__glext_8h_ae84541b4f3d8e1ea24ec0f466a8c568b}{string} \&file, \hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int} f\-Count\-X=1, float f\-Time=1.\-0f, int f\-Count=-\/1)
+\item 
+\hyperlink{class_sprite_ad89bfc6ea1a4f109ffda930452aced2d}{Sprite} (const \hyperlink{_s_d_l__opengl__glext_8h_ae84541b4f3d8e1ea24ec0f466a8c568b}{string} \&file, \hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int} f\-Count\-X, \hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int} f\-Count\-Y, float f\-Time=1.\-0f, int f\-Count=-\/1)
+\item 
+\hyperlink{class_sprite_a8accab430f9d90ae5117b57d67e32b84}{$\sim$\-Sprite} ()
+\item 
+\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_sprite_a8b96f1f8672d51322c707e434c47acc7}{Open} (const \hyperlink{_s_d_l__opengl__glext_8h_ae84541b4f3d8e1ea24ec0f466a8c568b}{string} \&file, \hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int} f\-Count\-X=1, \hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int} f\-Count\-Y=1, float f\-Time=1.\-0f, int f\-Count=-\/1)
+\item 
+\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_sprite_a3ad46a400f83d41eaba2c2df77e0cf7c}{Set\-Clip} (\hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int} \hyperlink{_s_d_l__opengl_8h_ad0e63d0edcdbd3d79554076bf309fd47}{x}, \hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int} \hyperlink{_s_d_l__opengl_8h_a1675d9d7bb68e1657ff028643b4037e3}{y}, \hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int} \hyperlink{_s_d_l__opengl__glext_8h_a6ee8f168a7ab6785a9bb57c6715dad99}{w}, \hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int} \hyperlink{_s_d_l__opengl__glext_8h_afa0fb1b5e976920c0abeff2dca3ed774}{h})
+\item 
+\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_sprite_a01797197466499614f6d3662c9689bc9}{render} (float \hyperlink{_s_d_l__opengl_8h_ad0e63d0edcdbd3d79554076bf309fd47}{x}, float \hyperlink{_s_d_l__opengl_8h_a1675d9d7bb68e1657ff028643b4037e3}{y}, float \hyperlink{_s_d_l__opengl__glext_8h_a9e06c1f76a20fed54ca742cd25cb02c4}{angle}=0.\-0f, float ext\-Scale=1.\-0f)
+\item 
+\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_sprite_a73fabb950e4027366ab85761bf00d684}{render} (const \hyperlink{class_vec2}{Vec2} \&\hyperlink{_s_d_l__opengl_8h_a10a82eabcb59d2fcd74acee063775f90}{v}, float \hyperlink{_s_d_l__opengl__glext_8h_a9e06c1f76a20fed54ca742cd25cb02c4}{angle}=0.\-0f, float ext\-Scale=1.\-0f)
+\item 
+\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_sprite_a7234e69f8dacddac5652848606122eb1}{update} (float time)
+\item 
+\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_sprite_a351dd54dac6cadbbdec48f9e1d8a36c0}{Set\-Frame} (\hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int} frame)
+\item 
+\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_sprite_ab801fc0fe155c4d7c61ca36d9e0c5532}{Set\-Frame\-Count} (\hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int} f\-Count\-X, \hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int} f\-Count\-Y=1, \hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int} f\-Count=-\/1)
+\item 
+\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_sprite_aafefc524417e38d2862ea1e937e450d8}{Set\-Frame\-Time} (float f\-Time)
+\item 
+\hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int} \hyperlink{class_sprite_a827cd586d97dfc614761a545d3384932}{Get\-Width} () const 
+\item 
+\hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int} \hyperlink{class_sprite_a623bec41db2bfd09a5dec27637017929}{Get\-Height} () const 
+\item 
+\hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int} \hyperlink{class_sprite_ace8829016a4bff0bf0234343a30cb59b}{Get\-Cur\-Frame} () const 
+\item 
+\hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int} \hyperlink{class_sprite_ae158d25990988868dd894f44ed8bb65a}{Get\-Frame\-Count} () const 
+\item 
+\hyperlink{class_vec2}{Vec2} \hyperlink{class_sprite_a5782537ff8912892e7ff948fb41f81ec}{Get\-Frame\-Count} (bool \hyperlink{_s_d_l__opengl__glext_8h_a0f71581a41fd2264c8944126dabbd010}{b}) const 
+\item 
+bool \hyperlink{class_sprite_aff3af34673a6245acc8b0324a5b80664}{Is\-Open} () const 
+\item 
+bool \hyperlink{class_sprite_ab13293c64ee9585faba8b10cb7aa0f93}{is_looped} () const 
+\item 
+\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_sprite_a54d18a18383575b04f397f5bec3113d0}{Set\-Scale} (float \hyperlink{_s_d_l__opengl__glext_8h_a281421b881aa7a1266842b73a3bc7655}{scale})
+\item 
+\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_sprite_aad7bb29fc017ac2197dffec177c17e15}{Set\-Scale\-X} (float \hyperlink{_s_d_l__opengl__glext_8h_a281421b881aa7a1266842b73a3bc7655}{scale})
+\item 
+\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_sprite_a2853ee7687dc906b9be791d197a1b1b6}{Set\-Scale\-Y} (float \hyperlink{_s_d_l__opengl__glext_8h_a281421b881aa7a1266842b73a3bc7655}{scale})
+\item 
+\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_sprite_a0b1937c62fb3663bea962def877b466c}{Set\-Scale\-To\-Fit} (float \hyperlink{_s_d_l__opengl__glext_8h_a6ee8f168a7ab6785a9bb57c6715dad99}{w}, float \hyperlink{_s_d_l__opengl__glext_8h_afa0fb1b5e976920c0abeff2dca3ed774}{h})
+\item 
+\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_sprite_a8449123f589f0992743bbad38ffbe840}{Set\-Scale\-To\-Fit} (\hyperlink{class_vec2}{Vec2} \hyperlink{_s_d_l__opengl_8h_a10a82eabcb59d2fcd74acee063775f90}{v})
+\item 
+\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_sprite_af111df3d34efc8c52675b36e122e9ebe}{Stretch\-To\-Fit} (float \hyperlink{_s_d_l__opengl__glext_8h_a6ee8f168a7ab6785a9bb57c6715dad99}{w}, float \hyperlink{_s_d_l__opengl__glext_8h_afa0fb1b5e976920c0abeff2dca3ed774}{h})
+\item 
+\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_sprite_ad76a6625cce7b19ac1d121c24272dcbf}{Stretch\-To\-Fit} (\hyperlink{class_vec2}{Vec2} \hyperlink{_s_d_l__opengl_8h_a10a82eabcb59d2fcd74acee063775f90}{v})
+\item 
+\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_sprite_a8a8fd42eeb61e6b81a91848c5b0abffa}{Flip\-H} ()
+\item 
+\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_sprite_ad05cd60894ecd2d22568fa8a87c28c98}{Flip\-V} ()
+\item 
+\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_sprite_a8b70148a86dcdc914256c17a06b91a88}{Set\-Flip\-H} (bool \hyperlink{_s_d_l__opengl__glext_8h_a691492ec0bd6383f91200e49f6ae40ed}{f})
+\item 
+\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_sprite_a954d3c6e67aa11d026b200ff723bcf4c}{Set\-Flip\-V} (bool \hyperlink{_s_d_l__opengl__glext_8h_a691492ec0bd6383f91200e49f6ae40ed}{f})
+\item 
+\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_sprite_a1a951d57cb30c46fa5436338380c6b0e}{Set\-Blend} (bool \hyperlink{_s_d_l__opengl__glext_8h_a0f71581a41fd2264c8944126dabbd010}{b})
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_sprite_a6990b015c0cdf5cece69b14e4de286a4}{looped} =false
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 8 of file sprite.\-hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_sprite_a12cba3ac1868418add3c4d95ce87e615}{\index{Sprite@{Sprite}!Sprite@{Sprite}}
+\index{Sprite@{Sprite}!Sprite@{Sprite}}
+\subsubsection[{Sprite}]{\setlength{\rightskip}{0pt plus 5cm}Sprite\-::\-Sprite (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_sprite_a12cba3ac1868418add3c4d95ce87e615}
+
+
+Definition at line 9 of file sprite.\-cpp.
+
+\hypertarget{class_sprite_a1dd38cbcb37dd53a6282fbdc2b698577}{\index{Sprite@{Sprite}!Sprite@{Sprite}}
+\index{Sprite@{Sprite}!Sprite@{Sprite}}
+\subsubsection[{Sprite}]{\setlength{\rightskip}{0pt plus 5cm}Sprite\-::\-Sprite (
+\begin{DoxyParamCaption}
+\item[{const {\bf string} \&}]{file, }
+\item[{{\bf int}}]{f\-Count\-X = {\ttfamily 1}, }
+\item[{float}]{f\-Time = {\ttfamily 1.0f}, }
+\item[{{\bf int}}]{f\-Count = {\ttfamily -\/1}}
+\end{DoxyParamCaption}
+)}}\label{class_sprite_a1dd38cbcb37dd53a6282fbdc2b698577}
+
+
+Definition at line 14 of file sprite.\-cpp.
+
+\hypertarget{class_sprite_ad89bfc6ea1a4f109ffda930452aced2d}{\index{Sprite@{Sprite}!Sprite@{Sprite}}
+\index{Sprite@{Sprite}!Sprite@{Sprite}}
+\subsubsection[{Sprite}]{\setlength{\rightskip}{0pt plus 5cm}Sprite\-::\-Sprite (
+\begin{DoxyParamCaption}
+\item[{const {\bf string} \&}]{file, }
+\item[{{\bf int}}]{f\-Count\-X, }
+\item[{{\bf int}}]{f\-Count\-Y, }
+\item[{float}]{f\-Time = {\ttfamily 1.0f}, }
+\item[{{\bf int}}]{f\-Count = {\ttfamily -\/1}}
+\end{DoxyParamCaption}
+)}}\label{class_sprite_ad89bfc6ea1a4f109ffda930452aced2d}
+
+
+Definition at line 10 of file sprite.\-cpp.
+
+\hypertarget{class_sprite_a8accab430f9d90ae5117b57d67e32b84}{\index{Sprite@{Sprite}!$\sim$\-Sprite@{$\sim$\-Sprite}}
+\index{$\sim$\-Sprite@{$\sim$\-Sprite}!Sprite@{Sprite}}
+\subsubsection[{$\sim$\-Sprite}]{\setlength{\rightskip}{0pt plus 5cm}Sprite\-::$\sim$\-Sprite (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_sprite_a8accab430f9d90ae5117b57d67e32b84}
+
+
+Definition at line 18 of file sprite.\-cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_sprite_a8a8fd42eeb61e6b81a91848c5b0abffa}{\index{Sprite@{Sprite}!Flip\-H@{Flip\-H}}
+\index{Flip\-H@{Flip\-H}!Sprite@{Sprite}}
+\subsubsection[{Flip\-H}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} Sprite\-::\-Flip\-H (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_sprite_a8a8fd42eeb61e6b81a91848c5b0abffa}
+
+
+Definition at line 144 of file sprite.\-cpp.
+
+\hypertarget{class_sprite_ad05cd60894ecd2d22568fa8a87c28c98}{\index{Sprite@{Sprite}!Flip\-V@{Flip\-V}}
+\index{Flip\-V@{Flip\-V}!Sprite@{Sprite}}
+\subsubsection[{Flip\-V}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} Sprite\-::\-Flip\-V (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_sprite_ad05cd60894ecd2d22568fa8a87c28c98}
+
+
+Definition at line 148 of file sprite.\-cpp.
+
+\hypertarget{class_sprite_ace8829016a4bff0bf0234343a30cb59b}{\index{Sprite@{Sprite}!Get\-Cur\-Frame@{Get\-Cur\-Frame}}
+\index{Get\-Cur\-Frame@{Get\-Cur\-Frame}!Sprite@{Sprite}}
+\subsubsection[{Get\-Cur\-Frame}]{\setlength{\rightskip}{0pt plus 5cm}{\bf int} Sprite\-::\-Get\-Cur\-Frame (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_sprite_ace8829016a4bff0bf0234343a30cb59b}
+
+
+Definition at line 92 of file sprite.\-cpp.
+
+\hypertarget{class_sprite_ae158d25990988868dd894f44ed8bb65a}{\index{Sprite@{Sprite}!Get\-Frame\-Count@{Get\-Frame\-Count}}
+\index{Get\-Frame\-Count@{Get\-Frame\-Count}!Sprite@{Sprite}}
+\subsubsection[{Get\-Frame\-Count}]{\setlength{\rightskip}{0pt plus 5cm}{\bf int} Sprite\-::\-Get\-Frame\-Count (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_sprite_ae158d25990988868dd894f44ed8bb65a}
+
+
+Definition at line 96 of file sprite.\-cpp.
+
+\hypertarget{class_sprite_a5782537ff8912892e7ff948fb41f81ec}{\index{Sprite@{Sprite}!Get\-Frame\-Count@{Get\-Frame\-Count}}
+\index{Get\-Frame\-Count@{Get\-Frame\-Count}!Sprite@{Sprite}}
+\subsubsection[{Get\-Frame\-Count}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vec2} Sprite\-::\-Get\-Frame\-Count (
+\begin{DoxyParamCaption}
+\item[{bool}]{b}
+\end{DoxyParamCaption}
+) const}}\label{class_sprite_a5782537ff8912892e7ff948fb41f81ec}
+
+
+Definition at line 100 of file sprite.\-cpp.
+
+\hypertarget{class_sprite_a623bec41db2bfd09a5dec27637017929}{\index{Sprite@{Sprite}!Get\-Height@{Get\-Height}}
+\index{Get\-Height@{Get\-Height}!Sprite@{Sprite}}
+\subsubsection[{Get\-Height}]{\setlength{\rightskip}{0pt plus 5cm}{\bf int} Sprite\-::\-Get\-Height (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_sprite_a623bec41db2bfd09a5dec27637017929}
+
+
+Definition at line 88 of file sprite.\-cpp.
+
+\hypertarget{class_sprite_a827cd586d97dfc614761a545d3384932}{\index{Sprite@{Sprite}!Get\-Width@{Get\-Width}}
+\index{Get\-Width@{Get\-Width}!Sprite@{Sprite}}
+\subsubsection[{Get\-Width}]{\setlength{\rightskip}{0pt plus 5cm}{\bf int} Sprite\-::\-Get\-Width (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_sprite_a827cd586d97dfc614761a545d3384932}
+
+
+Definition at line 84 of file sprite.\-cpp.
+
+\hypertarget{class_sprite_aff3af34673a6245acc8b0324a5b80664}{\index{Sprite@{Sprite}!Is\-Open@{Is\-Open}}
+\index{Is\-Open@{Is\-Open}!Sprite@{Sprite}}
+\subsubsection[{Is\-Open}]{\setlength{\rightskip}{0pt plus 5cm}bool Sprite\-::\-Is\-Open (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_sprite_aff3af34673a6245acc8b0324a5b80664}
+
+
+Definition at line 105 of file sprite.\-cpp.
+
+\hypertarget{class_sprite_ab13293c64ee9585faba8b10cb7aa0f93}{\index{Sprite@{Sprite}!is_looped@{is_looped}}
+\index{is_looped@{is_looped}!Sprite@{Sprite}}
+\subsubsection[{is_looped}]{\setlength{\rightskip}{0pt plus 5cm}bool Sprite\-::\-is_looped (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_sprite_ab13293c64ee9585faba8b10cb7aa0f93}
+
+
+Definition at line 108 of file sprite.\-cpp.
+
+\hypertarget{class_sprite_a8b96f1f8672d51322c707e434c47acc7}{\index{Sprite@{Sprite}!Open@{Open}}
+\index{Open@{Open}!Sprite@{Sprite}}
+\subsubsection[{Open}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} Sprite\-::\-Open (
+\begin{DoxyParamCaption}
+\item[{const {\bf string} \&}]{file, }
+\item[{{\bf int}}]{f\-Count\-X = {\ttfamily 1}, }
+\item[{{\bf int}}]{f\-Count\-Y = {\ttfamily 1}, }
+\item[{float}]{f\-Time = {\ttfamily 1.0f}, }
+\item[{{\bf int}}]{f\-Count = {\ttfamily -\/1}}
+\end{DoxyParamCaption}
+)}}\label{class_sprite_a8b96f1f8672d51322c707e434c47acc7}
+
+
+Definition at line 20 of file sprite.\-cpp.
+
+\hypertarget{class_sprite_a01797197466499614f6d3662c9689bc9}{\index{Sprite@{Sprite}!render@{render}}
+\index{render@{render}!Sprite@{Sprite}}
+\subsubsection[{render}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} Sprite\-::\-render (
+\begin{DoxyParamCaption}
+\item[{float}]{x, }
+\item[{float}]{y, }
+\item[{float}]{angle = {\ttfamily 0.0f}, }
+\item[{float}]{ext\-Scale = {\ttfamily 1.0f}}
+\end{DoxyParamCaption}
+)}}\label{class_sprite_a01797197466499614f6d3662c9689bc9}
+
+
+Definition at line 40 of file sprite.\-cpp.
+
+\hypertarget{class_sprite_a73fabb950e4027366ab85761bf00d684}{\index{Sprite@{Sprite}!render@{render}}
+\index{render@{render}!Sprite@{Sprite}}
+\subsubsection[{render}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} Sprite\-::\-render (
+\begin{DoxyParamCaption}
+\item[{const {\bf Vec2} \&}]{v, }
+\item[{float}]{angle = {\ttfamily 0.0f}, }
+\item[{float}]{ext\-Scale = {\ttfamily 1.0f}}
+\end{DoxyParamCaption}
+)}}\label{class_sprite_a73fabb950e4027366ab85761bf00d684}
+
+
+Definition at line 57 of file sprite.\-cpp.
+
+\hypertarget{class_sprite_a1a951d57cb30c46fa5436338380c6b0e}{\index{Sprite@{Sprite}!Set\-Blend@{Set\-Blend}}
+\index{Set\-Blend@{Set\-Blend}!Sprite@{Sprite}}
+\subsubsection[{Set\-Blend}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} Sprite\-::\-Set\-Blend (
+\begin{DoxyParamCaption}
+\item[{bool}]{b}
+\end{DoxyParamCaption}
+)}}\label{class_sprite_a1a951d57cb30c46fa5436338380c6b0e}
+
+
+Definition at line 160 of file sprite.\-cpp.
+
+\hypertarget{class_sprite_a3ad46a400f83d41eaba2c2df77e0cf7c}{\index{Sprite@{Sprite}!Set\-Clip@{Set\-Clip}}
+\index{Set\-Clip@{Set\-Clip}!Sprite@{Sprite}}
+\subsubsection[{Set\-Clip}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} Sprite\-::\-Set\-Clip (
+\begin{DoxyParamCaption}
+\item[{{\bf int}}]{x, }
+\item[{{\bf int}}]{y, }
+\item[{{\bf int}}]{w, }
+\item[{{\bf int}}]{h}
+\end{DoxyParamCaption}
+)}}\label{class_sprite_a3ad46a400f83d41eaba2c2df77e0cf7c}
+
+
+Definition at line 33 of file sprite.\-cpp.
+
+\hypertarget{class_sprite_a8b70148a86dcdc914256c17a06b91a88}{\index{Sprite@{Sprite}!Set\-Flip\-H@{Set\-Flip\-H}}
+\index{Set\-Flip\-H@{Set\-Flip\-H}!Sprite@{Sprite}}
+\subsubsection[{Set\-Flip\-H}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} Sprite\-::\-Set\-Flip\-H (
+\begin{DoxyParamCaption}
+\item[{bool}]{f}
+\end{DoxyParamCaption}
+)}}\label{class_sprite_a8b70148a86dcdc914256c17a06b91a88}
+
+
+Definition at line 152 of file sprite.\-cpp.
+
+\hypertarget{class_sprite_a954d3c6e67aa11d026b200ff723bcf4c}{\index{Sprite@{Sprite}!Set\-Flip\-V@{Set\-Flip\-V}}
+\index{Set\-Flip\-V@{Set\-Flip\-V}!Sprite@{Sprite}}
+\subsubsection[{Set\-Flip\-V}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} Sprite\-::\-Set\-Flip\-V (
+\begin{DoxyParamCaption}
+\item[{bool}]{f}
+\end{DoxyParamCaption}
+)}}\label{class_sprite_a954d3c6e67aa11d026b200ff723bcf4c}
+
+
+Definition at line 156 of file sprite.\-cpp.
+
+\hypertarget{class_sprite_a351dd54dac6cadbbdec48f9e1d8a36c0}{\index{Sprite@{Sprite}!Set\-Frame@{Set\-Frame}}
+\index{Set\-Frame@{Set\-Frame}!Sprite@{Sprite}}
+\subsubsection[{Set\-Frame}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} Sprite\-::\-Set\-Frame (
+\begin{DoxyParamCaption}
+\item[{{\bf int}}]{frame}
+\end{DoxyParamCaption}
+)}}\label{class_sprite_a351dd54dac6cadbbdec48f9e1d8a36c0}
+
+
+Definition at line 70 of file sprite.\-cpp.
+
+\hypertarget{class_sprite_ab801fc0fe155c4d7c61ca36d9e0c5532}{\index{Sprite@{Sprite}!Set\-Frame\-Count@{Set\-Frame\-Count}}
+\index{Set\-Frame\-Count@{Set\-Frame\-Count}!Sprite@{Sprite}}
+\subsubsection[{Set\-Frame\-Count}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} Sprite\-::\-Set\-Frame\-Count (
+\begin{DoxyParamCaption}
+\item[{{\bf int}}]{f\-Count\-X, }
+\item[{{\bf int}}]{f\-Count\-Y = {\ttfamily 1}, }
+\item[{{\bf int}}]{f\-Count = {\ttfamily -\/1}}
+\end{DoxyParamCaption}
+)}}\label{class_sprite_ab801fc0fe155c4d7c61ca36d9e0c5532}
+
+
+Definition at line 74 of file sprite.\-cpp.
+
+\hypertarget{class_sprite_aafefc524417e38d2862ea1e937e450d8}{\index{Sprite@{Sprite}!Set\-Frame\-Time@{Set\-Frame\-Time}}
+\index{Set\-Frame\-Time@{Set\-Frame\-Time}!Sprite@{Sprite}}
+\subsubsection[{Set\-Frame\-Time}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} Sprite\-::\-Set\-Frame\-Time (
+\begin{DoxyParamCaption}
+\item[{float}]{f\-Time}
+\end{DoxyParamCaption}
+)}}\label{class_sprite_aafefc524417e38d2862ea1e937e450d8}
+
+
+Definition at line 80 of file sprite.\-cpp.
+
+\hypertarget{class_sprite_a54d18a18383575b04f397f5bec3113d0}{\index{Sprite@{Sprite}!Set\-Scale@{Set\-Scale}}
+\index{Set\-Scale@{Set\-Scale}!Sprite@{Sprite}}
+\subsubsection[{Set\-Scale}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} Sprite\-::\-Set\-Scale (
+\begin{DoxyParamCaption}
+\item[{float}]{scale}
+\end{DoxyParamCaption}
+)}}\label{class_sprite_a54d18a18383575b04f397f5bec3113d0}
+
+
+Definition at line 112 of file sprite.\-cpp.
+
+\hypertarget{class_sprite_a0b1937c62fb3663bea962def877b466c}{\index{Sprite@{Sprite}!Set\-Scale\-To\-Fit@{Set\-Scale\-To\-Fit}}
+\index{Set\-Scale\-To\-Fit@{Set\-Scale\-To\-Fit}!Sprite@{Sprite}}
+\subsubsection[{Set\-Scale\-To\-Fit}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} Sprite\-::\-Set\-Scale\-To\-Fit (
+\begin{DoxyParamCaption}
+\item[{float}]{w, }
+\item[{float}]{h}
+\end{DoxyParamCaption}
+)}}\label{class_sprite_a0b1937c62fb3663bea962def877b466c}
+
+
+Definition at line 124 of file sprite.\-cpp.
+
+\hypertarget{class_sprite_a8449123f589f0992743bbad38ffbe840}{\index{Sprite@{Sprite}!Set\-Scale\-To\-Fit@{Set\-Scale\-To\-Fit}}
+\index{Set\-Scale\-To\-Fit@{Set\-Scale\-To\-Fit}!Sprite@{Sprite}}
+\subsubsection[{Set\-Scale\-To\-Fit}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} Sprite\-::\-Set\-Scale\-To\-Fit (
+\begin{DoxyParamCaption}
+\item[{{\bf Vec2}}]{v}
+\end{DoxyParamCaption}
+)}}\label{class_sprite_a8449123f589f0992743bbad38ffbe840}
+
+
+Definition at line 131 of file sprite.\-cpp.
+
+\hypertarget{class_sprite_aad7bb29fc017ac2197dffec177c17e15}{\index{Sprite@{Sprite}!Set\-Scale\-X@{Set\-Scale\-X}}
+\index{Set\-Scale\-X@{Set\-Scale\-X}!Sprite@{Sprite}}
+\subsubsection[{Set\-Scale\-X}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} Sprite\-::\-Set\-Scale\-X (
+\begin{DoxyParamCaption}
+\item[{float}]{scale}
+\end{DoxyParamCaption}
+)}}\label{class_sprite_aad7bb29fc017ac2197dffec177c17e15}
+
+
+Definition at line 116 of file sprite.\-cpp.
+
+\hypertarget{class_sprite_a2853ee7687dc906b9be791d197a1b1b6}{\index{Sprite@{Sprite}!Set\-Scale\-Y@{Set\-Scale\-Y}}
+\index{Set\-Scale\-Y@{Set\-Scale\-Y}!Sprite@{Sprite}}
+\subsubsection[{Set\-Scale\-Y}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} Sprite\-::\-Set\-Scale\-Y (
+\begin{DoxyParamCaption}
+\item[{float}]{scale}
+\end{DoxyParamCaption}
+)}}\label{class_sprite_a2853ee7687dc906b9be791d197a1b1b6}
+
+
+Definition at line 120 of file sprite.\-cpp.
+
+\hypertarget{class_sprite_af111df3d34efc8c52675b36e122e9ebe}{\index{Sprite@{Sprite}!Stretch\-To\-Fit@{Stretch\-To\-Fit}}
+\index{Stretch\-To\-Fit@{Stretch\-To\-Fit}!Sprite@{Sprite}}
+\subsubsection[{Stretch\-To\-Fit}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} Sprite\-::\-Stretch\-To\-Fit (
+\begin{DoxyParamCaption}
+\item[{float}]{w, }
+\item[{float}]{h}
+\end{DoxyParamCaption}
+)}}\label{class_sprite_af111df3d34efc8c52675b36e122e9ebe}
+
+
+Definition at line 135 of file sprite.\-cpp.
+
+\hypertarget{class_sprite_ad76a6625cce7b19ac1d121c24272dcbf}{\index{Sprite@{Sprite}!Stretch\-To\-Fit@{Stretch\-To\-Fit}}
+\index{Stretch\-To\-Fit@{Stretch\-To\-Fit}!Sprite@{Sprite}}
+\subsubsection[{Stretch\-To\-Fit}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} Sprite\-::\-Stretch\-To\-Fit (
+\begin{DoxyParamCaption}
+\item[{{\bf Vec2}}]{v}
+\end{DoxyParamCaption}
+)}}\label{class_sprite_ad76a6625cce7b19ac1d121c24272dcbf}
+
+
+Definition at line 140 of file sprite.\-cpp.
+
+\hypertarget{class_sprite_a7234e69f8dacddac5652848606122eb1}{\index{Sprite@{Sprite}!update@{update}}
+\index{update@{update}!Sprite@{Sprite}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} Sprite\-::\-update (
+\begin{DoxyParamCaption}
+\item[{float}]{time}
+\end{DoxyParamCaption}
+)}}\label{class_sprite_a7234e69f8dacddac5652848606122eb1}
+
+
+Definition at line 61 of file sprite.\-cpp.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_sprite_a6990b015c0cdf5cece69b14e4de286a4}{\index{Sprite@{Sprite}!looped@{looped}}
+\index{looped@{looped}!Sprite@{Sprite}}
+\subsubsection[{looped}]{\setlength{\rightskip}{0pt plus 5cm}bool Sprite\-::looped =false}}\label{class_sprite_a6990b015c0cdf5cece69b14e4de286a4}
+
+
+Definition at line 25 of file sprite.\-hpp.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/home/andre/\-Desktop/tecprog/\-Mayumi\-No\-Tabi/\-Mayumi\-No\-Tabi/include/\hyperlink{sprite_8hpp}{sprite.\-hpp}\item 
+\hyperlink{sprite_8cpp}{sprite.\-cpp}\end{DoxyCompactItemize}

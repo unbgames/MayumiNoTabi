@@ -3,15 +3,15 @@
 InputManager::InputManager() {}
 InputManager::~InputManager() {}
 
-void InputManager::Update(float time) {
+void InputManager::update(float time) {
 	int x,y;
 	SDL_GetMouseState(&x,&y);
 	mouseMotion = (mouse.x!=x || mouse.y!=y);
 	mouse.x = (float)x;
 	mouse.y = (float)y;
 	quitRequested=false;
-	
-	cursorBlinker.Update(time);
+
+	cursorBlinker.add_time(time);
 
 	SDL_Event event;
 	while (SDL_PollEvent(&event)) {
@@ -42,7 +42,7 @@ void InputManager::Update(float time) {
 			keyState[event.key.keysym.sym]=false;
 			keyUpdate[event.key.keysym.sym]=updateCounter;
 		}
-		
+
 		if (text != nullptr) {
 			if (event.type==SDL_TEXTINPUT) {
 				string input(event.text.text);
@@ -50,7 +50,7 @@ void InputManager::Update(float time) {
 				cursor += input.size();
 			}
 			else if (event.type==SDL_KEYDOWN) {
-				cursorBlinker.Restart();
+				cursorBlinker.restart_time();
 				if (event.key.keysym.sym == SDLK_BACKSPACE && text->size() && cursor) {
 					text->erase(--cursor,1);
 					if (cursor>text->size())
@@ -107,7 +107,7 @@ void InputManager::StartTextInput(string* t) {
 	SDL_StartTextInput();
 	text = t;
 	cursor = text->size();
-	cursorBlinker.Restart();
+	cursorBlinker.restart_time();
 }
 void InputManager::StopTextInput(string* t) {
 	if (text != t) return;
@@ -118,7 +118,7 @@ uint InputManager::GetTextCursor() {
 	return cursor;
 }
 bool InputManager::TextCursorBlink() {
-	return !((int)(cursorBlinker.Get()/0.5)%2);
+	return !((int)(cursorBlinker.get_time()/0.5)%2);
 }
 
 bool InputManager::QuitRequested() {

@@ -1,0 +1,187 @@
+\hypertarget{gui_8cpp}{\section{gui.\-cpp File Reference}
+\label{gui_8cpp}\index{gui.\-cpp@{gui.\-cpp}}
+}
+{\ttfamily \#include $<$gui.\-hpp$>$}\\*
+{\ttfamily \#include $<$game.\-hpp$>$}\\*
+{\ttfamily \#include $<$gui\-Manager.\-hpp$>$}\\*
+{\ttfamily \#include $<$input\-Manager.\-hpp$>$}\\*
+{\ttfamily \#include $<$state.\-hpp$>$}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{gui_8cpp_a06d4b1d48749e9ebe59a895513ee6a40}{G\-U\-I}~G\-A\-M\-E\-S\-T\-A\-T\-E.\-gui
+\item 
+\#define \hyperlink{gui_8cpp_aa42af7352ced8208542b6c15011c4d26}{C\-L\-I\-P\-\_\-\-R\-E\-C\-T}(\hyperlink{_s_d_l__opengl_8h_a42ce7cdc612e53abee15043f80220d97}{r}, \hyperlink{_s_d_l__opengl__glext_8h_af593500c283bf1a787a6f947f503a5c2}{m})~(\hyperlink{_s_d_l__opengl_8h_a42ce7cdc612e53abee15043f80220d97}{r}).\hyperlink{_s_d_l__opengl_8h_ad0e63d0edcdbd3d79554076bf309fd47}{x}+=(\hyperlink{_s_d_l__opengl__glext_8h_af593500c283bf1a787a6f947f503a5c2}{m});(\hyperlink{_s_d_l__opengl_8h_a42ce7cdc612e53abee15043f80220d97}{r}).\hyperlink{_s_d_l__opengl_8h_a1675d9d7bb68e1657ff028643b4037e3}{y}+=(\hyperlink{_s_d_l__opengl__glext_8h_af593500c283bf1a787a6f947f503a5c2}{m});(\hyperlink{_s_d_l__opengl_8h_a42ce7cdc612e53abee15043f80220d97}{r}).\hyperlink{_s_d_l__opengl__glext_8h_a6ee8f168a7ab6785a9bb57c6715dad99}{w}-\/=(\hyperlink{_s_d_l__opengl__glext_8h_af593500c283bf1a787a6f947f503a5c2}{m})$\ast$2;(\hyperlink{_s_d_l__opengl_8h_a42ce7cdc612e53abee15043f80220d97}{r}).\hyperlink{_s_d_l__opengl__glext_8h_afa0fb1b5e976920c0abeff2dca3ed774}{h}-\/=(\hyperlink{_s_d_l__opengl__glext_8h_af593500c283bf1a787a6f947f503a5c2}{m})$\ast$2
+\item 
+\#define \hyperlink{gui_8cpp_a566cf4649f4c06f548990c1140a87eb4}{D\-E\-F\-A\-U\-L\-T\-\_\-\-M\-A\-R\-G\-I\-N}~3
+\item 
+\#define \hyperlink{gui_8cpp_a93493eb8fae5549bd5be67f3449245e0}{D\-E\-F\-A\-U\-L\-T\-\_\-\-W\-I\-D\-T\-H}~24
+\item 
+\#define \hyperlink{gui_8cpp_a1879f9e5604a01f0983829846001ab23}{D\-E\-F\-A\-U\-L\-T\-\_\-\-H\-E\-I\-G\-H\-T}~24
+\item 
+\#define \hyperlink{gui_8cpp_acde9ec8712f62632c6a8fcacfe6800c4}{D\-E\-F\-A\-U\-L\-T\-\_\-\-F\-O\-N\-T\-\_\-\-S\-I\-Z\-E}~14
+\item 
+\#define \hyperlink{gui_8cpp_a560957674bfdf318a7fc792a9a2f8bbe}{D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-E\-X\-T\-B\-O\-X\-\_\-\-W\-I\-D\-T\-H}~72
+\item 
+\#define \hyperlink{gui_8cpp_a3e3de17ffba92625743467a1954a9caa}{D\-I\-V\-I\-S\-O\-R\-\_\-\-W\-I\-D\-T\-H}~5
+\item 
+\#define \hyperlink{gui_8cpp_a1ebc507af747f5594ea2251c0d5b23e4}{B\-A\-S\-E\-\_\-\-C\-O\-L\-O\-R}~63,63,63,255
+\item 
+\#define \hyperlink{gui_8cpp_aeaadee906b3cebfc77069525702cbabf}{B\-O\-X\-\_\-\-C\-O\-L\-O\-R}~255,255,255,255
+\item 
+\#define \hyperlink{gui_8cpp_ad1efc09669cd002c0864e2ddc6f5f953}{L\-A\-B\-E\-L\-\_\-\-C\-O\-L\-O\-R}~191,191,191,255
+\item 
+\#define \hyperlink{gui_8cpp_a0a76a3f0370d7bf997c7277e2592699a}{H\-I\-G\-H\-L\-I\-G\-H\-T\-\_\-\-C\-O\-L\-O\-R}~127,127,127,255
+\item 
+\#define \hyperlink{gui_8cpp_ad7f8ef933c836db317e118468a4ecc05}{P\-R\-E\-S\-S\-\_\-\-C\-O\-L\-O\-R}~47,47,47,255
+\item 
+\#define \hyperlink{gui_8cpp_a19736b4c86eeb93bb035d5a8623f4e47}{S\-H\-A\-D\-O\-W\-\_\-\-C\-O\-L\-O\-R}~0,0,0,95
+\item 
+\#define \hyperlink{gui_8cpp_a319b20c18cce4b1ac55177251d7b1011}{I\-C\-O\-N\-\_\-\-X}~\char`\"{}img/editor/icon\-\_\-x.\-png\char`\"{}
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{gui_8cpp_a41ab4b8b4e6b05e8489555b1bbc7f845}{array}
+\item 
+\hyperlink{gui_8cpp_a22f45a3cb4f074e609f58ebaeef0ecf9}{label} \{l,\hyperlink{gui_8cpp_acde9ec8712f62632c6a8fcacfe6800c4}{D\-E\-F\-A\-U\-L\-T\-\_\-\-F\-O\-N\-T\-\_\-\-S\-I\-Z\-E}\}
+\item 
+\hyperlink{gui_8cpp_a95d736e4a788461516b0282f12a168ab}{close\-Button} \{\hyperlink{gui_8hpp_a7e07db847dd9c2c27685b966aa3e95fc}{G\-U\-I\-\_\-\-C\-L\-O\-S\-E},\hyperlink{gui_8cpp_a319b20c18cce4b1ac55177251d7b1011}{I\-C\-O\-N\-\_\-\-X}\}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{gui_8cpp_a1ebc507af747f5594ea2251c0d5b23e4}{\index{gui.\-cpp@{gui.\-cpp}!B\-A\-S\-E\-\_\-\-C\-O\-L\-O\-R@{B\-A\-S\-E\-\_\-\-C\-O\-L\-O\-R}}
+\index{B\-A\-S\-E\-\_\-\-C\-O\-L\-O\-R@{B\-A\-S\-E\-\_\-\-C\-O\-L\-O\-R}!gui.cpp@{gui.\-cpp}}
+\subsubsection[{B\-A\-S\-E\-\_\-\-C\-O\-L\-O\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\-A\-S\-E\-\_\-\-C\-O\-L\-O\-R~63,63,63,255}}\label{gui_8cpp_a1ebc507af747f5594ea2251c0d5b23e4}
+
+
+Definition at line 19 of file gui.\-cpp.
+
+\hypertarget{gui_8cpp_aeaadee906b3cebfc77069525702cbabf}{\index{gui.\-cpp@{gui.\-cpp}!B\-O\-X\-\_\-\-C\-O\-L\-O\-R@{B\-O\-X\-\_\-\-C\-O\-L\-O\-R}}
+\index{B\-O\-X\-\_\-\-C\-O\-L\-O\-R@{B\-O\-X\-\_\-\-C\-O\-L\-O\-R}!gui.cpp@{gui.\-cpp}}
+\subsubsection[{B\-O\-X\-\_\-\-C\-O\-L\-O\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\-O\-X\-\_\-\-C\-O\-L\-O\-R~255,255,255,255}}\label{gui_8cpp_aeaadee906b3cebfc77069525702cbabf}
+
+
+Definition at line 20 of file gui.\-cpp.
+
+\hypertarget{gui_8cpp_aa42af7352ced8208542b6c15011c4d26}{\index{gui.\-cpp@{gui.\-cpp}!C\-L\-I\-P\-\_\-\-R\-E\-C\-T@{C\-L\-I\-P\-\_\-\-R\-E\-C\-T}}
+\index{C\-L\-I\-P\-\_\-\-R\-E\-C\-T@{C\-L\-I\-P\-\_\-\-R\-E\-C\-T}!gui.cpp@{gui.\-cpp}}
+\subsubsection[{C\-L\-I\-P\-\_\-\-R\-E\-C\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\-L\-I\-P\-\_\-\-R\-E\-C\-T(
+\begin{DoxyParamCaption}
+\item[{}]{{\bf r}, }
+\item[{}]{{\bf m}}
+\end{DoxyParamCaption}
+)~({\bf r}).{\bf x}+=({\bf m});({\bf r}).{\bf y}+=({\bf m});({\bf r}).{\bf w}-\/=({\bf m})$\ast$2;({\bf r}).{\bf h}-\/=({\bf m})$\ast$2}}\label{gui_8cpp_aa42af7352ced8208542b6c15011c4d26}
+
+
+Definition at line 10 of file gui.\-cpp.
+
+\hypertarget{gui_8cpp_acde9ec8712f62632c6a8fcacfe6800c4}{\index{gui.\-cpp@{gui.\-cpp}!D\-E\-F\-A\-U\-L\-T\-\_\-\-F\-O\-N\-T\-\_\-\-S\-I\-Z\-E@{D\-E\-F\-A\-U\-L\-T\-\_\-\-F\-O\-N\-T\-\_\-\-S\-I\-Z\-E}}
+\index{D\-E\-F\-A\-U\-L\-T\-\_\-\-F\-O\-N\-T\-\_\-\-S\-I\-Z\-E@{D\-E\-F\-A\-U\-L\-T\-\_\-\-F\-O\-N\-T\-\_\-\-S\-I\-Z\-E}!gui.cpp@{gui.\-cpp}}
+\subsubsection[{D\-E\-F\-A\-U\-L\-T\-\_\-\-F\-O\-N\-T\-\_\-\-S\-I\-Z\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\-E\-F\-A\-U\-L\-T\-\_\-\-F\-O\-N\-T\-\_\-\-S\-I\-Z\-E~14}}\label{gui_8cpp_acde9ec8712f62632c6a8fcacfe6800c4}
+
+
+Definition at line 15 of file gui.\-cpp.
+
+\hypertarget{gui_8cpp_a1879f9e5604a01f0983829846001ab23}{\index{gui.\-cpp@{gui.\-cpp}!D\-E\-F\-A\-U\-L\-T\-\_\-\-H\-E\-I\-G\-H\-T@{D\-E\-F\-A\-U\-L\-T\-\_\-\-H\-E\-I\-G\-H\-T}}
+\index{D\-E\-F\-A\-U\-L\-T\-\_\-\-H\-E\-I\-G\-H\-T@{D\-E\-F\-A\-U\-L\-T\-\_\-\-H\-E\-I\-G\-H\-T}!gui.cpp@{gui.\-cpp}}
+\subsubsection[{D\-E\-F\-A\-U\-L\-T\-\_\-\-H\-E\-I\-G\-H\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\-E\-F\-A\-U\-L\-T\-\_\-\-H\-E\-I\-G\-H\-T~24}}\label{gui_8cpp_a1879f9e5604a01f0983829846001ab23}
+
+
+Definition at line 14 of file gui.\-cpp.
+
+\hypertarget{gui_8cpp_a566cf4649f4c06f548990c1140a87eb4}{\index{gui.\-cpp@{gui.\-cpp}!D\-E\-F\-A\-U\-L\-T\-\_\-\-M\-A\-R\-G\-I\-N@{D\-E\-F\-A\-U\-L\-T\-\_\-\-M\-A\-R\-G\-I\-N}}
+\index{D\-E\-F\-A\-U\-L\-T\-\_\-\-M\-A\-R\-G\-I\-N@{D\-E\-F\-A\-U\-L\-T\-\_\-\-M\-A\-R\-G\-I\-N}!gui.cpp@{gui.\-cpp}}
+\subsubsection[{D\-E\-F\-A\-U\-L\-T\-\_\-\-M\-A\-R\-G\-I\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\-E\-F\-A\-U\-L\-T\-\_\-\-M\-A\-R\-G\-I\-N~3}}\label{gui_8cpp_a566cf4649f4c06f548990c1140a87eb4}
+
+
+Definition at line 12 of file gui.\-cpp.
+
+\hypertarget{gui_8cpp_a560957674bfdf318a7fc792a9a2f8bbe}{\index{gui.\-cpp@{gui.\-cpp}!D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-E\-X\-T\-B\-O\-X\-\_\-\-W\-I\-D\-T\-H@{D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-E\-X\-T\-B\-O\-X\-\_\-\-W\-I\-D\-T\-H}}
+\index{D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-E\-X\-T\-B\-O\-X\-\_\-\-W\-I\-D\-T\-H@{D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-E\-X\-T\-B\-O\-X\-\_\-\-W\-I\-D\-T\-H}!gui.cpp@{gui.\-cpp}}
+\subsubsection[{D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-E\-X\-T\-B\-O\-X\-\_\-\-W\-I\-D\-T\-H}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\-E\-F\-A\-U\-L\-T\-\_\-\-T\-E\-X\-T\-B\-O\-X\-\_\-\-W\-I\-D\-T\-H~72}}\label{gui_8cpp_a560957674bfdf318a7fc792a9a2f8bbe}
+
+
+Definition at line 16 of file gui.\-cpp.
+
+\hypertarget{gui_8cpp_a93493eb8fae5549bd5be67f3449245e0}{\index{gui.\-cpp@{gui.\-cpp}!D\-E\-F\-A\-U\-L\-T\-\_\-\-W\-I\-D\-T\-H@{D\-E\-F\-A\-U\-L\-T\-\_\-\-W\-I\-D\-T\-H}}
+\index{D\-E\-F\-A\-U\-L\-T\-\_\-\-W\-I\-D\-T\-H@{D\-E\-F\-A\-U\-L\-T\-\_\-\-W\-I\-D\-T\-H}!gui.cpp@{gui.\-cpp}}
+\subsubsection[{D\-E\-F\-A\-U\-L\-T\-\_\-\-W\-I\-D\-T\-H}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\-E\-F\-A\-U\-L\-T\-\_\-\-W\-I\-D\-T\-H~24}}\label{gui_8cpp_a93493eb8fae5549bd5be67f3449245e0}
+
+
+Definition at line 13 of file gui.\-cpp.
+
+\hypertarget{gui_8cpp_a3e3de17ffba92625743467a1954a9caa}{\index{gui.\-cpp@{gui.\-cpp}!D\-I\-V\-I\-S\-O\-R\-\_\-\-W\-I\-D\-T\-H@{D\-I\-V\-I\-S\-O\-R\-\_\-\-W\-I\-D\-T\-H}}
+\index{D\-I\-V\-I\-S\-O\-R\-\_\-\-W\-I\-D\-T\-H@{D\-I\-V\-I\-S\-O\-R\-\_\-\-W\-I\-D\-T\-H}!gui.cpp@{gui.\-cpp}}
+\subsubsection[{D\-I\-V\-I\-S\-O\-R\-\_\-\-W\-I\-D\-T\-H}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\-I\-V\-I\-S\-O\-R\-\_\-\-W\-I\-D\-T\-H~5}}\label{gui_8cpp_a3e3de17ffba92625743467a1954a9caa}
+
+
+Definition at line 17 of file gui.\-cpp.
+
+\hypertarget{gui_8cpp_a06d4b1d48749e9ebe59a895513ee6a40}{\index{gui.\-cpp@{gui.\-cpp}!G\-U\-I@{G\-U\-I}}
+\index{G\-U\-I@{G\-U\-I}!gui.cpp@{gui.\-cpp}}
+\subsubsection[{G\-U\-I}]{\setlength{\rightskip}{0pt plus 5cm}\#define G\-U\-I~G\-A\-M\-E\-S\-T\-A\-T\-E.\-gui}}\label{gui_8cpp_a06d4b1d48749e9ebe59a895513ee6a40}
+
+
+Definition at line 8 of file gui.\-cpp.
+
+\hypertarget{gui_8cpp_a0a76a3f0370d7bf997c7277e2592699a}{\index{gui.\-cpp@{gui.\-cpp}!H\-I\-G\-H\-L\-I\-G\-H\-T\-\_\-\-C\-O\-L\-O\-R@{H\-I\-G\-H\-L\-I\-G\-H\-T\-\_\-\-C\-O\-L\-O\-R}}
+\index{H\-I\-G\-H\-L\-I\-G\-H\-T\-\_\-\-C\-O\-L\-O\-R@{H\-I\-G\-H\-L\-I\-G\-H\-T\-\_\-\-C\-O\-L\-O\-R}!gui.cpp@{gui.\-cpp}}
+\subsubsection[{H\-I\-G\-H\-L\-I\-G\-H\-T\-\_\-\-C\-O\-L\-O\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define H\-I\-G\-H\-L\-I\-G\-H\-T\-\_\-\-C\-O\-L\-O\-R~127,127,127,255}}\label{gui_8cpp_a0a76a3f0370d7bf997c7277e2592699a}
+
+
+Definition at line 22 of file gui.\-cpp.
+
+\hypertarget{gui_8cpp_a319b20c18cce4b1ac55177251d7b1011}{\index{gui.\-cpp@{gui.\-cpp}!I\-C\-O\-N\-\_\-\-X@{I\-C\-O\-N\-\_\-\-X}}
+\index{I\-C\-O\-N\-\_\-\-X@{I\-C\-O\-N\-\_\-\-X}!gui.cpp@{gui.\-cpp}}
+\subsubsection[{I\-C\-O\-N\-\_\-\-X}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\-C\-O\-N\-\_\-\-X~\char`\"{}img/editor/icon\-\_\-x.\-png\char`\"{}}}\label{gui_8cpp_a319b20c18cce4b1ac55177251d7b1011}
+
+
+Definition at line 26 of file gui.\-cpp.
+
+\hypertarget{gui_8cpp_ad1efc09669cd002c0864e2ddc6f5f953}{\index{gui.\-cpp@{gui.\-cpp}!L\-A\-B\-E\-L\-\_\-\-C\-O\-L\-O\-R@{L\-A\-B\-E\-L\-\_\-\-C\-O\-L\-O\-R}}
+\index{L\-A\-B\-E\-L\-\_\-\-C\-O\-L\-O\-R@{L\-A\-B\-E\-L\-\_\-\-C\-O\-L\-O\-R}!gui.cpp@{gui.\-cpp}}
+\subsubsection[{L\-A\-B\-E\-L\-\_\-\-C\-O\-L\-O\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\-A\-B\-E\-L\-\_\-\-C\-O\-L\-O\-R~191,191,191,255}}\label{gui_8cpp_ad1efc09669cd002c0864e2ddc6f5f953}
+
+
+Definition at line 21 of file gui.\-cpp.
+
+\hypertarget{gui_8cpp_ad7f8ef933c836db317e118468a4ecc05}{\index{gui.\-cpp@{gui.\-cpp}!P\-R\-E\-S\-S\-\_\-\-C\-O\-L\-O\-R@{P\-R\-E\-S\-S\-\_\-\-C\-O\-L\-O\-R}}
+\index{P\-R\-E\-S\-S\-\_\-\-C\-O\-L\-O\-R@{P\-R\-E\-S\-S\-\_\-\-C\-O\-L\-O\-R}!gui.cpp@{gui.\-cpp}}
+\subsubsection[{P\-R\-E\-S\-S\-\_\-\-C\-O\-L\-O\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-R\-E\-S\-S\-\_\-\-C\-O\-L\-O\-R~47,47,47,255}}\label{gui_8cpp_ad7f8ef933c836db317e118468a4ecc05}
+
+
+Definition at line 23 of file gui.\-cpp.
+
+\hypertarget{gui_8cpp_a19736b4c86eeb93bb035d5a8623f4e47}{\index{gui.\-cpp@{gui.\-cpp}!S\-H\-A\-D\-O\-W\-\_\-\-C\-O\-L\-O\-R@{S\-H\-A\-D\-O\-W\-\_\-\-C\-O\-L\-O\-R}}
+\index{S\-H\-A\-D\-O\-W\-\_\-\-C\-O\-L\-O\-R@{S\-H\-A\-D\-O\-W\-\_\-\-C\-O\-L\-O\-R}!gui.cpp@{gui.\-cpp}}
+\subsubsection[{S\-H\-A\-D\-O\-W\-\_\-\-C\-O\-L\-O\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-H\-A\-D\-O\-W\-\_\-\-C\-O\-L\-O\-R~0,0,0,95}}\label{gui_8cpp_a19736b4c86eeb93bb035d5a8623f4e47}
+
+
+Definition at line 24 of file gui.\-cpp.
+
+
+
+\subsection{Variable Documentation}
+\hypertarget{gui_8cpp_a41ab4b8b4e6b05e8489555b1bbc7f845}{\index{gui.\-cpp@{gui.\-cpp}!array@{array}}
+\index{array@{array}!gui.cpp@{gui.\-cpp}}
+\subsubsection[{array}]{\setlength{\rightskip}{0pt plus 5cm}{\bf array}}}\label{gui_8cpp_a41ab4b8b4e6b05e8489555b1bbc7f845}
+
+
+Definition at line 327 of file gui.\-cpp.
+
+\hypertarget{gui_8cpp_a95d736e4a788461516b0282f12a168ab}{\index{gui.\-cpp@{gui.\-cpp}!close\-Button@{close\-Button}}
+\index{close\-Button@{close\-Button}!gui.cpp@{gui.\-cpp}}
+\subsubsection[{close\-Button}]{\setlength{\rightskip}{0pt plus 5cm}close\-Button \{{\bf G\-U\-I\-\_\-\-C\-L\-O\-S\-E},{\bf I\-C\-O\-N\-\_\-\-X}\}}}\label{gui_8cpp_a95d736e4a788461516b0282f12a168ab}
+
+
+Definition at line 451 of file gui.\-cpp.
+
+\hypertarget{gui_8cpp_a22f45a3cb4f074e609f58ebaeef0ecf9}{\index{gui.\-cpp@{gui.\-cpp}!label@{label}}
+\index{label@{label}!gui.cpp@{gui.\-cpp}}
+\subsubsection[{label}]{\setlength{\rightskip}{0pt plus 5cm}{\bf label} \{l,{\bf D\-E\-F\-A\-U\-L\-T\-\_\-\-F\-O\-N\-T\-\_\-\-S\-I\-Z\-E}\}}}\label{gui_8cpp_a22f45a3cb4f074e609f58ebaeef0ecf9}
+
+
+Definition at line 451 of file gui.\-cpp.
+

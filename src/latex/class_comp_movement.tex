@@ -1,0 +1,175 @@
+\hypertarget{class_comp_movement}{\section{Comp\-Movement Class Reference}
+\label{class_comp_movement}\index{Comp\-Movement@{Comp\-Movement}}
+}
+
+
+{\ttfamily \#include $<$component\-Movement.\-hpp$>$}
+
+Inheritance diagram for Comp\-Movement\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_comp_movement}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{class_comp_movement_a5be67228360a37b9032bd70d44856c83}{move\-Type} \{ \hyperlink{class_comp_movement_a5be67228360a37b9032bd70d44856c83a1cd5577a817502a6c18ee1ee928da3d8}{t\-\_\-horizontal}, 
+\hyperlink{class_comp_movement_a5be67228360a37b9032bd70d44856c83afca205ba3717252b8b426a3f3ac5f63c}{t\-\_\-bullet}, 
+\hyperlink{class_comp_movement_a5be67228360a37b9032bd70d44856c83a6bf36969f9174e7f135d45c16d57f0da}{t\-\_\-count}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_comp_movement_a1979cc3ed3109370762d40c7a3f2786f}{Comp\-Movement} (const \hyperlink{class_vec2}{Vec2} \&\hyperlink{_s_d_l__opengl_8h_a4af680a6c683f88ed67b76f207f2e6e4}{s}=\hyperlink{class_vec2}{Vec2}\{\}, \hyperlink{class_comp_movement_a5be67228360a37b9032bd70d44856c83}{move\-Type} \hyperlink{_s_d_l__opengl_8h_a7d65d00ca3b0630d9b5c52df855b19f5}{t}=\hyperlink{class_comp_movement_a5be67228360a37b9032bd70d44856c83a1cd5577a817502a6c18ee1ee928da3d8}{t\-\_\-horizontal})
+\item 
+\hyperlink{class_comp_movement_aede23cf3ec622ac7089cd2fa672129da}{$\sim$\-Comp\-Movement} ()
+\item 
+\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_comp_movement_a9d20396d3bf2646bb8e0d2fffc0cccd0}{update} (float time)
+\item 
+\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_comp_movement_ad387deb1874044cca15dd58a014e3544}{render} ()
+\item 
+\hyperlink{class_component_ad6d161b6acf7b843b55bb9feac7af71a}{Component\-::type} \hyperlink{class_comp_movement_a922f5115a34e151e9414141ac8f0c324}{Get\-Type} () const 
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_comp_movement_a5be67228360a37b9032bd70d44856c83}{move\-Type} \hyperlink{class_comp_movement_a3ce2f7a3d0feb7684213440ec2f971a9}{m\-Type}
+\item 
+\hyperlink{class_vec2}{Vec2} \hyperlink{class_comp_movement_acbead672c47587a0221fae8ecd97258e}{speed}
+\item 
+\hyperlink{class_vec2}{Vec2} \hyperlink{class_comp_movement_a3c73427a019d8457e239bacaaf30882f}{move}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 12 of file component\-Movement.\-hpp.
+
+
+
+\subsection{Member Enumeration Documentation}
+\hypertarget{class_comp_movement_a5be67228360a37b9032bd70d44856c83}{\index{Comp\-Movement@{Comp\-Movement}!move\-Type@{move\-Type}}
+\index{move\-Type@{move\-Type}!CompMovement@{Comp\-Movement}}
+\subsubsection[{move\-Type}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Comp\-Movement\-::move\-Type}}}\label{class_comp_movement_a5be67228360a37b9032bd70d44856c83}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{t\-\_\-horizontal@{t\-\_\-horizontal}!Comp\-Movement@{Comp\-Movement}}\index{Comp\-Movement@{Comp\-Movement}!t\-\_\-horizontal@{t\-\_\-horizontal}}\item[{\em 
+\hypertarget{class_comp_movement_a5be67228360a37b9032bd70d44856c83a1cd5577a817502a6c18ee1ee928da3d8}{t\-\_\-horizontal}\label{class_comp_movement_a5be67228360a37b9032bd70d44856c83a1cd5577a817502a6c18ee1ee928da3d8}
+}]\index{t\-\_\-bullet@{t\-\_\-bullet}!Comp\-Movement@{Comp\-Movement}}\index{Comp\-Movement@{Comp\-Movement}!t\-\_\-bullet@{t\-\_\-bullet}}\item[{\em 
+\hypertarget{class_comp_movement_a5be67228360a37b9032bd70d44856c83afca205ba3717252b8b426a3f3ac5f63c}{t\-\_\-bullet}\label{class_comp_movement_a5be67228360a37b9032bd70d44856c83afca205ba3717252b8b426a3f3ac5f63c}
+}]\index{t\-\_\-count@{t\-\_\-count}!Comp\-Movement@{Comp\-Movement}}\index{Comp\-Movement@{Comp\-Movement}!t\-\_\-count@{t\-\_\-count}}\item[{\em 
+\hypertarget{class_comp_movement_a5be67228360a37b9032bd70d44856c83a6bf36969f9174e7f135d45c16d57f0da}{t\-\_\-count}\label{class_comp_movement_a5be67228360a37b9032bd70d44856c83a6bf36969f9174e7f135d45c16d57f0da}
+}]\end{description}
+\end{Desc}
+
+
+Definition at line 16 of file component\-Movement.\-hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_comp_movement_a1979cc3ed3109370762d40c7a3f2786f}{\index{Comp\-Movement@{Comp\-Movement}!Comp\-Movement@{Comp\-Movement}}
+\index{Comp\-Movement@{Comp\-Movement}!CompMovement@{Comp\-Movement}}
+\subsubsection[{Comp\-Movement}]{\setlength{\rightskip}{0pt plus 5cm}Comp\-Movement\-::\-Comp\-Movement (
+\begin{DoxyParamCaption}
+\item[{const {\bf Vec2} \&}]{s = {\ttfamily {\bf Vec2}\{\}}, }
+\item[{{\bf move\-Type}}]{t = {\ttfamily {\bf t\-\_\-horizontal}}}
+\end{DoxyParamCaption}
+)}}\label{class_comp_movement_a1979cc3ed3109370762d40c7a3f2786f}
+
+
+Definition at line 7 of file component\-Movement.\-cpp.
+
+\hypertarget{class_comp_movement_aede23cf3ec622ac7089cd2fa672129da}{\index{Comp\-Movement@{Comp\-Movement}!$\sim$\-Comp\-Movement@{$\sim$\-Comp\-Movement}}
+\index{$\sim$\-Comp\-Movement@{$\sim$\-Comp\-Movement}!CompMovement@{Comp\-Movement}}
+\subsubsection[{$\sim$\-Comp\-Movement}]{\setlength{\rightskip}{0pt plus 5cm}Comp\-Movement\-::$\sim$\-Comp\-Movement (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_comp_movement_aede23cf3ec622ac7089cd2fa672129da}
+
+
+Definition at line 8 of file component\-Movement.\-cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_comp_movement_a922f5115a34e151e9414141ac8f0c324}{\index{Comp\-Movement@{Comp\-Movement}!Get\-Type@{Get\-Type}}
+\index{Get\-Type@{Get\-Type}!CompMovement@{Comp\-Movement}}
+\subsubsection[{Get\-Type}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Component\-::type} Comp\-Movement\-::\-Get\-Type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_comp_movement_a922f5115a34e151e9414141ac8f0c324}
+
+
+Implements \hyperlink{class_component_a1440354c23703096a6439d45ab85e4fd}{Component}.
+
+
+
+Definition at line 17 of file component\-Movement.\-cpp.
+
+\hypertarget{class_comp_movement_ad387deb1874044cca15dd58a014e3544}{\index{Comp\-Movement@{Comp\-Movement}!render@{render}}
+\index{render@{render}!CompMovement@{Comp\-Movement}}
+\subsubsection[{render}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} Comp\-Movement\-::\-render (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_comp_movement_ad387deb1874044cca15dd58a014e3544}
+
+
+Implements \hyperlink{class_component_a0c67ccdaf754b96520e3428284a74a7f}{Component}.
+
+
+
+Definition at line 16 of file component\-Movement.\-cpp.
+
+\hypertarget{class_comp_movement_a9d20396d3bf2646bb8e0d2fffc0cccd0}{\index{Comp\-Movement@{Comp\-Movement}!update@{update}}
+\index{update@{update}!CompMovement@{Comp\-Movement}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} Comp\-Movement\-::\-update (
+\begin{DoxyParamCaption}
+\item[{float}]{time}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_comp_movement_a9d20396d3bf2646bb8e0d2fffc0cccd0}
+
+
+Implements \hyperlink{class_component_a20c791684d452b36fcce40ac9038c735}{Component}.
+
+
+
+Definition at line 11 of file component\-Movement.\-cpp.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_comp_movement_a3c73427a019d8457e239bacaaf30882f}{\index{Comp\-Movement@{Comp\-Movement}!move@{move}}
+\index{move@{move}!CompMovement@{Comp\-Movement}}
+\subsubsection[{move}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vec2} Comp\-Movement\-::move}}\label{class_comp_movement_a3c73427a019d8457e239bacaaf30882f}
+
+
+Definition at line 21 of file component\-Movement.\-hpp.
+
+\hypertarget{class_comp_movement_a3ce2f7a3d0feb7684213440ec2f971a9}{\index{Comp\-Movement@{Comp\-Movement}!m\-Type@{m\-Type}}
+\index{m\-Type@{m\-Type}!CompMovement@{Comp\-Movement}}
+\subsubsection[{m\-Type}]{\setlength{\rightskip}{0pt plus 5cm}{\bf move\-Type} Comp\-Movement\-::m\-Type}}\label{class_comp_movement_a3ce2f7a3d0feb7684213440ec2f971a9}
+
+
+Definition at line 18 of file component\-Movement.\-hpp.
+
+\hypertarget{class_comp_movement_acbead672c47587a0221fae8ecd97258e}{\index{Comp\-Movement@{Comp\-Movement}!speed@{speed}}
+\index{speed@{speed}!CompMovement@{Comp\-Movement}}
+\subsubsection[{speed}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vec2} Comp\-Movement\-::speed}}\label{class_comp_movement_acbead672c47587a0221fae8ecd97258e}
+
+
+Definition at line 20 of file component\-Movement.\-hpp.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/home/andre/\-Desktop/tecprog/\-Mayumi\-No\-Tabi/\-Mayumi\-No\-Tabi/include/\hyperlink{component_movement_8hpp}{component\-Movement.\-hpp}\item 
+\hyperlink{component_movement_8cpp}{component\-Movement.\-cpp}\end{DoxyCompactItemize}

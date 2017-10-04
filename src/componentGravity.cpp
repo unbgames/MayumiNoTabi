@@ -9,12 +9,12 @@ CompGravity::CompGravity(float g):gravity{g}{}
 CompGravity::~CompGravity() {}
 
 
-void CompGravity::Update(float time) {
+void CompGravity::update(float time) {
 	if (GO(entity)->HasComponent(Component::type::t_movement)) {
 		COMPMOVEp(GO(entity))->speed.y+=gravity*time;
 	}
 }
-void CompGravity::Render() {}
-Component::type CompGravity::GetType() const{
+void CompGravity::render() {}
+Component::type CompGravity::get_type() const{
 	return Component::type::t_gravity;
 }

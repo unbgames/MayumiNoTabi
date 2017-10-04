@@ -42,8 +42,8 @@ CompStaticRender::~CompStaticRender() {
 	@warning Method that requires review of comment
 */
 
-void CompStaticRender::Update(float time) {
-	sp.Update(time);
+void CompStaticRender::update(float time) {
+	sp.update(time);
 }
 
 /*!
@@ -53,7 +53,7 @@ void CompStaticRender::Update(float time) {
 	@warning Method that requires review of comment
 */
 
-void CompStaticRender::Render() {
+void CompStaticRender::render() {
 
 	Vec2 position = position;
 	position = GO(entity)->Box().corner() + position.rotate(GO(entity)->rotation);
@@ -69,12 +69,12 @@ void CompStaticRender::Render() {
 }
 
 /*!
-	@fn Component::type CompStaticRender::GetType()const
+	@fn Component::type CompStaticRender::get_type()const
 	@brief Method that render the type element movement
 	@return The method returns the type of movement of the static element
 	@warning Method that requires review of comment
 */
 
-Component::type CompStaticRender::GetType()const {
+Component::type CompStaticRender::get_type()const{
 	return Component::type::t_static_render;
 }

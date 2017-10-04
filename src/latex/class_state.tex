@@ -1,0 +1,356 @@
+\hypertarget{class_state}{\section{State Class Reference}
+\label{class_state}\index{State@{State}}
+}
+
+
+{\ttfamily \#include $<$state.\-hpp$>$}
+
+Inheritance diagram for State\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_state}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_state_ab91bb1dd5aa6260ab2a456581daf9ec2}{State} ()
+\item 
+virtual \hyperlink{class_state_a9ddc1df6f998184d6477b48fab90281c}{$\sim$\-State} ()
+\item 
+virtual \hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_state_a6445efe57dd006dec3d5041272d4688c}{update} (float time)=0
+\item 
+virtual \hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_state_a34e26f04dda59f19396ae4b84c5379b6}{render} ()=0
+\item 
+virtual \hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_state_a7a2ee658bbed3ce76534b0f361227918}{Begin} ()=0
+\item 
+virtual \hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_state_a1257ea9c7d84b2e31b27909d7cf69cf6}{End} ()
+\item 
+virtual \hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_state_a5fc730ec6c771f86c5a6100878dc306f}{Pause} ()=0
+\item 
+virtual \hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_state_a546fd634ce33cb867c5e8dfadb5e3ade}{Resume} ()=0
+\item 
+virtual \hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_state_a4c9b03c8e989f36b475d6d625c0df4d0}{Load\-Assets} ()=0
+\item 
+virtual \hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_state_a7a3468e6f6a0eb911ae28363a5347be0}{Load\-G\-U\-I} ()=0
+\item 
+virtual \hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_state_ab1917931460de33c206f4733996e43c8}{Add\-Object} (\hyperlink{common_8hpp_a69aa29b598b851b0640aa225a9e5d61d}{uint} uid, \hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int} \hyperlink{_s_d_l__opengl__glext_8h_ae7bc0cdc2d90da1b600d6cc916c2772e}{layer}=0, \hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int} area=0)
+\item 
+virtual \hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_state_a682fd5c0e402a6d7f8f480aa7356d047}{Clear\-Objects} ()
+\item 
+\hyperlink{class_game_object}{Game\-Object} $\ast$ \hyperlink{class_state_ab70325f4e708fd6375520c750a02e10b}{Get\-Last\-Object} ()
+\item 
+\hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_state_ac73857c4657768f19d2114ef4041549c}{Add\-Sound} (\hyperlink{_s_d_l__opengl__glext_8h_ae84541b4f3d8e1ea24ec0f466a8c568b}{string} file, \hyperlink{_s_d_l__thread_8h_a6a64f9be4433e4de6e2f2f548cf3c08e}{int} times)
+\item 
+virtual bool \hyperlink{class_state_a3ce3e5d9230192eaab672349e5937a09}{Pop\-Requested} ()
+\item 
+virtual bool \hyperlink{class_state_a75cebfa3285922a359d5f946c138d129}{Quit\-Requested} ()
+\item 
+set$<$ \hyperlink{common_8hpp_a69aa29b598b851b0640aa225a9e5d61d}{uint} $>$ \hyperlink{class_state_aa43c296bed2a9cf771cde8b0877c0c86}{Get\-Entities\-In\-Range} (const float \&\hyperlink{_s_d_l__opengl__glext_8h_a49825216c96caaeb09237b36651181c5}{x1}, const float \&\hyperlink{_s_d_l__opengl__glext_8h_a7b907a03236685c534d89d604cff23c8}{x2})
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_g_u_i_manager}{G\-U\-I\-Manager} \hyperlink{class_state_aca632a80920808dc1aad399ec560f84f}{gui}
+\item 
+set$<$ \hyperlink{common_8hpp_a69aa29b598b851b0640aa225a9e5d61d}{uint} $>$ \hyperlink{class_state_a19fc3c4e3d962de483ca940be49cd113}{entities\-\_\-}
+\item 
+map$<$ \hyperlink{common_8hpp_a45680061f7e655744e42cdfa30b44fa8}{ii}, set$<$ \hyperlink{common_8hpp_a69aa29b598b851b0640aa225a9e5d61d}{uint} $>$ $>$ \hyperlink{class_state_a18dfb560751c969cf8d6583b55fa2885}{group}
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_state_a23287331ba19c3a06e49b5c77bc7bfc5}{update\-Array} (float time)
+\item 
+virtual \hyperlink{_s_d_l__opengles2__gl2ext_8h_ae5d8fa23ad07c48bb609509eae494c95}{void} \hyperlink{class_state_aaaad11346a36120afd9c4049f0fa1798}{render\-Array} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_state_a9d7c1082cc6592646acec05a6e46f145}{pop\-Requested} =false
+\item 
+bool \hyperlink{class_state_aa96884ddc05e8f23841298af662ae733}{quit\-Requested} =false
+\item 
+\hyperlink{common_8hpp_a69aa29b598b851b0640aa225a9e5d61d}{uint} \hyperlink{class_state_a58985523afb5266a35c726b50b0df75c}{last\-G\-O} =-\/1
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 11 of file state.\-hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_state_ab91bb1dd5aa6260ab2a456581daf9ec2}{\index{State@{State}!State@{State}}
+\index{State@{State}!State@{State}}
+\subsubsection[{State}]{\setlength{\rightskip}{0pt plus 5cm}State\-::\-State (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_state_ab91bb1dd5aa6260ab2a456581daf9ec2}
+
+
+Definition at line 3 of file state.\-cpp.
+
+\hypertarget{class_state_a9ddc1df6f998184d6477b48fab90281c}{\index{State@{State}!$\sim$\-State@{$\sim$\-State}}
+\index{$\sim$\-State@{$\sim$\-State}!State@{State}}
+\subsubsection[{$\sim$\-State}]{\setlength{\rightskip}{0pt plus 5cm}virtual State\-::$\sim$\-State (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_state_a9ddc1df6f998184d6477b48fab90281c}
+
+
+Definition at line 27 of file state.\-hpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_state_ab1917931460de33c206f4733996e43c8}{\index{State@{State}!Add\-Object@{Add\-Object}}
+\index{Add\-Object@{Add\-Object}!State@{State}}
+\subsubsection[{Add\-Object}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} State\-::\-Add\-Object (
+\begin{DoxyParamCaption}
+\item[{{\bf uint}}]{uid, }
+\item[{{\bf int}}]{layer = {\ttfamily 0}, }
+\item[{{\bf int}}]{area = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_state_ab1917931460de33c206f4733996e43c8}
+
+
+Definition at line 20 of file state.\-cpp.
+
+\hypertarget{class_state_ac73857c4657768f19d2114ef4041549c}{\index{State@{State}!Add\-Sound@{Add\-Sound}}
+\index{Add\-Sound@{Add\-Sound}!State@{State}}
+\subsubsection[{Add\-Sound}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} State\-::\-Add\-Sound (
+\begin{DoxyParamCaption}
+\item[{{\bf string}}]{file, }
+\item[{{\bf int}}]{times}
+\end{DoxyParamCaption}
+)}}\label{class_state_ac73857c4657768f19d2114ef4041549c}
+\hypertarget{class_state_a7a2ee658bbed3ce76534b0f361227918}{\index{State@{State}!Begin@{Begin}}
+\index{Begin@{Begin}!State@{State}}
+\subsubsection[{Begin}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf void} State\-::\-Begin (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_state_a7a2ee658bbed3ce76534b0f361227918}
+
+
+Implemented in \hyperlink{class_state_editor_a677d6795d38aabde9c507fefb08853f3}{State\-Editor}, \hyperlink{class_state_stage_a544c8819debc2743421875dc31b3f86f}{State\-Stage}, and \hyperlink{class_state_title_aaee854dfe8461f07f560976cfa4f0338}{State\-Title}.
+
+\hypertarget{class_state_a682fd5c0e402a6d7f8f480aa7356d047}{\index{State@{State}!Clear\-Objects@{Clear\-Objects}}
+\index{Clear\-Objects@{Clear\-Objects}!State@{State}}
+\subsubsection[{Clear\-Objects}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} State\-::\-Clear\-Objects (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_state_a682fd5c0e402a6d7f8f480aa7356d047}
+
+
+Definition at line 29 of file state.\-cpp.
+
+\hypertarget{class_state_a1257ea9c7d84b2e31b27909d7cf69cf6}{\index{State@{State}!End@{End}}
+\index{End@{End}!State@{State}}
+\subsubsection[{End}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} State\-::\-End (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_state_a1257ea9c7d84b2e31b27909d7cf69cf6}
+
+
+Definition at line 16 of file state.\-cpp.
+
+\hypertarget{class_state_aa43c296bed2a9cf771cde8b0877c0c86}{\index{State@{State}!Get\-Entities\-In\-Range@{Get\-Entities\-In\-Range}}
+\index{Get\-Entities\-In\-Range@{Get\-Entities\-In\-Range}!State@{State}}
+\subsubsection[{Get\-Entities\-In\-Range}]{\setlength{\rightskip}{0pt plus 5cm}set$<$ {\bf uint} $>$ State\-::\-Get\-Entities\-In\-Range (
+\begin{DoxyParamCaption}
+\item[{const float \&}]{x1, }
+\item[{const float \&}]{x2}
+\end{DoxyParamCaption}
+)}}\label{class_state_aa43c296bed2a9cf771cde8b0877c0c86}
+
+
+Definition at line 5 of file state.\-cpp.
+
+\hypertarget{class_state_ab70325f4e708fd6375520c750a02e10b}{\index{State@{State}!Get\-Last\-Object@{Get\-Last\-Object}}
+\index{Get\-Last\-Object@{Get\-Last\-Object}!State@{State}}
+\subsubsection[{Get\-Last\-Object}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Game\-Object} $\ast$ State\-::\-Get\-Last\-Object (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_state_ab70325f4e708fd6375520c750a02e10b}
+
+
+Definition at line 37 of file state.\-cpp.
+
+\hypertarget{class_state_a4c9b03c8e989f36b475d6d625c0df4d0}{\index{State@{State}!Load\-Assets@{Load\-Assets}}
+\index{Load\-Assets@{Load\-Assets}!State@{State}}
+\subsubsection[{Load\-Assets}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf void} State\-::\-Load\-Assets (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_state_a4c9b03c8e989f36b475d6d625c0df4d0}
+
+
+Implemented in \hyperlink{class_state_editor_a98d3c7a143dbc80aa453d3d4a13873de}{State\-Editor}, \hyperlink{class_state_stage_ae0fc7ce84564739a118facc3337d035f}{State\-Stage}, and \hyperlink{class_state_title_a5784cb5fe5b9873d1ed2daf6c8875e1c}{State\-Title}.
+
+\hypertarget{class_state_a7a3468e6f6a0eb911ae28363a5347be0}{\index{State@{State}!Load\-G\-U\-I@{Load\-G\-U\-I}}
+\index{Load\-G\-U\-I@{Load\-G\-U\-I}!State@{State}}
+\subsubsection[{Load\-G\-U\-I}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf void} State\-::\-Load\-G\-U\-I (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_state_a7a3468e6f6a0eb911ae28363a5347be0}
+
+
+Implemented in \hyperlink{class_state_editor_abcde29227330049f5428d08b3f4da63c}{State\-Editor}, \hyperlink{class_state_stage_a21efc84369e3a1f378ce56187fd63691}{State\-Stage}, and \hyperlink{class_state_title_ad4547b2fa21aa4767ce943259c122f08}{State\-Title}.
+
+\hypertarget{class_state_a5fc730ec6c771f86c5a6100878dc306f}{\index{State@{State}!Pause@{Pause}}
+\index{Pause@{Pause}!State@{State}}
+\subsubsection[{Pause}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf void} State\-::\-Pause (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_state_a5fc730ec6c771f86c5a6100878dc306f}
+
+
+Implemented in \hyperlink{class_state_editor_a2d65105b815216bf9d81e02d9edef729}{State\-Editor}, \hyperlink{class_state_stage_a34ce42b989207bc65e7d8edbd86a8fb6}{State\-Stage}, and \hyperlink{class_state_title_ac1a402cdf5fbd2a7035ee0367fb2c79f}{State\-Title}.
+
+\hypertarget{class_state_a3ce3e5d9230192eaab672349e5937a09}{\index{State@{State}!Pop\-Requested@{Pop\-Requested}}
+\index{Pop\-Requested@{Pop\-Requested}!State@{State}}
+\subsubsection[{Pop\-Requested}]{\setlength{\rightskip}{0pt plus 5cm}bool State\-::\-Pop\-Requested (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_state_a3ce3e5d9230192eaab672349e5937a09}
+
+
+Reimplemented in \hyperlink{class_state_editor_a4089bbc03de0300a823ce01d70178edc}{State\-Editor}.
+
+
+
+Definition at line 42 of file state.\-cpp.
+
+\hypertarget{class_state_a75cebfa3285922a359d5f946c138d129}{\index{State@{State}!Quit\-Requested@{Quit\-Requested}}
+\index{Quit\-Requested@{Quit\-Requested}!State@{State}}
+\subsubsection[{Quit\-Requested}]{\setlength{\rightskip}{0pt plus 5cm}bool State\-::\-Quit\-Requested (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_state_a75cebfa3285922a359d5f946c138d129}
+
+
+Reimplemented in \hyperlink{class_state_editor_afaec9a4eb834d1051019078d8c55b95b}{State\-Editor}.
+
+
+
+Definition at line 45 of file state.\-cpp.
+
+\hypertarget{class_state_a34e26f04dda59f19396ae4b84c5379b6}{\index{State@{State}!render@{render}}
+\index{render@{render}!State@{State}}
+\subsubsection[{render}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf void} State\-::\-render (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_state_a34e26f04dda59f19396ae4b84c5379b6}
+
+
+Implemented in \hyperlink{class_state_editor_a9246837b2af58c5fe769b8b0f0bbf5b9}{State\-Editor}, \hyperlink{class_state_stage_a4dac7e9dbec93f8d5ecfa1088796590c}{State\-Stage}, and \hyperlink{class_state_title_a4a967bd487216860a8d0ca6a34a334c2}{State\-Title}.
+
+\hypertarget{class_state_aaaad11346a36120afd9c4049f0fa1798}{\index{State@{State}!render\-Array@{render\-Array}}
+\index{render\-Array@{render\-Array}!State@{State}}
+\subsubsection[{render\-Array}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} State\-::\-render\-Array (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_state_aaaad11346a36120afd9c4049f0fa1798}
+
+
+Definition at line 64 of file state.\-cpp.
+
+\hypertarget{class_state_a546fd634ce33cb867c5e8dfadb5e3ade}{\index{State@{State}!Resume@{Resume}}
+\index{Resume@{Resume}!State@{State}}
+\subsubsection[{Resume}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf void} State\-::\-Resume (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_state_a546fd634ce33cb867c5e8dfadb5e3ade}
+
+
+Implemented in \hyperlink{class_state_editor_af29ad722e62abb7f2268749c28de6221}{State\-Editor}, \hyperlink{class_state_stage_ae396effb4e08200f70f4901f1b204b58}{State\-Stage}, and \hyperlink{class_state_title_acb25d1aed1f0c5474a4d71da45026ca5}{State\-Title}.
+
+\hypertarget{class_state_a6445efe57dd006dec3d5041272d4688c}{\index{State@{State}!update@{update}}
+\index{update@{update}!State@{State}}
+\subsubsection[{update}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf void} State\-::\-update (
+\begin{DoxyParamCaption}
+\item[{float}]{time}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_state_a6445efe57dd006dec3d5041272d4688c}
+
+
+Implemented in \hyperlink{class_state_editor_a9446b67f8a03ec57ba9d7226a2d1d3f2}{State\-Editor}, \hyperlink{class_state_stage_a80984c55012d74f3eb0b0318d8f6511a}{State\-Stage}, and \hyperlink{class_state_title_a407820de3e95376a459db406ebde34f2}{State\-Title}.
+
+\hypertarget{class_state_a23287331ba19c3a06e49b5c77bc7bfc5}{\index{State@{State}!update\-Array@{update\-Array}}
+\index{update\-Array@{update\-Array}!State@{State}}
+\subsubsection[{update\-Array}]{\setlength{\rightskip}{0pt plus 5cm}{\bf void} State\-::\-update\-Array (
+\begin{DoxyParamCaption}
+\item[{float}]{time}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_state_a23287331ba19c3a06e49b5c77bc7bfc5}
+
+
+Definition at line 49 of file state.\-cpp.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_state_a19fc3c4e3d962de483ca940be49cd113}{\index{State@{State}!entities\-\_\-@{entities\-\_\-}}
+\index{entities\-\_\-@{entities\-\_\-}!State@{State}}
+\subsubsection[{entities\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}set$<${\bf uint}$>$ State\-::entities\-\_\-}}\label{class_state_a19fc3c4e3d962de483ca940be49cd113}
+
+
+Definition at line 23 of file state.\-hpp.
+
+\hypertarget{class_state_a18dfb560751c969cf8d6583b55fa2885}{\index{State@{State}!group@{group}}
+\index{group@{group}!State@{State}}
+\subsubsection[{group}]{\setlength{\rightskip}{0pt plus 5cm}map$<${\bf ii},set$<${\bf uint}$>$ $>$ State\-::group}}\label{class_state_a18dfb560751c969cf8d6583b55fa2885}
+
+
+Definition at line 24 of file state.\-hpp.
+
+\hypertarget{class_state_aca632a80920808dc1aad399ec560f84f}{\index{State@{State}!gui@{gui}}
+\index{gui@{gui}!State@{State}}
+\subsubsection[{gui}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\-U\-I\-Manager} State\-::gui}}\label{class_state_aca632a80920808dc1aad399ec560f84f}
+
+
+Definition at line 21 of file state.\-hpp.
+
+\hypertarget{class_state_a58985523afb5266a35c726b50b0df75c}{\index{State@{State}!last\-G\-O@{last\-G\-O}}
+\index{last\-G\-O@{last\-G\-O}!State@{State}}
+\subsubsection[{last\-G\-O}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint} State\-::last\-G\-O =-\/1\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_state_a58985523afb5266a35c726b50b0df75c}
+
+
+Definition at line 16 of file state.\-hpp.
+
+\hypertarget{class_state_a9d7c1082cc6592646acec05a6e46f145}{\index{State@{State}!pop\-Requested@{pop\-Requested}}
+\index{pop\-Requested@{pop\-Requested}!State@{State}}
+\subsubsection[{pop\-Requested}]{\setlength{\rightskip}{0pt plus 5cm}bool State\-::pop\-Requested =false\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_state_a9d7c1082cc6592646acec05a6e46f145}
+
+
+Definition at line 14 of file state.\-hpp.
+
+\hypertarget{class_state_aa96884ddc05e8f23841298af662ae733}{\index{State@{State}!quit\-Requested@{quit\-Requested}}
+\index{quit\-Requested@{quit\-Requested}!State@{State}}
+\subsubsection[{quit\-Requested}]{\setlength{\rightskip}{0pt plus 5cm}bool State\-::quit\-Requested =false\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_state_aa96884ddc05e8f23841298af662ae733}
+
+
+Definition at line 15 of file state.\-hpp.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/home/andre/\-Desktop/tecprog/\-Mayumi\-No\-Tabi/\-Mayumi\-No\-Tabi/include/\hyperlink{state_8hpp}{state.\-hpp}\item 
+\hyperlink{state_8cpp}{state.\-cpp}\end{DoxyCompactItemize}

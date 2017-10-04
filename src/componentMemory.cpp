@@ -8,10 +8,10 @@
 CompMemory::CompMemory() {}
 CompMemory::~CompMemory() {}
 
-void CompMemory::Update(float time) {
-	for (auto& t:timers)t.second.Update(time);
+void CompMemory::update(float time) {
+	for (auto& t:timers)t.second.add_time(time);
 }
-void CompMemory::Render() {}
-Component::type CompMemory::GetType() const{
+void CompMemory::render() {}
+Component::type CompMemory::get_type() const{
 	return Component::type::t_memory;
 }
