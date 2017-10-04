@@ -5,10 +5,10 @@
 //#include <inputManager.hpp>
 
 CompText::CompText(const Text &t,Hotspot h,Vec2 p):txt{t},pos{p}{
-	txt.SetHotspot(h);
+	txt.set_hotspot(h);
 }
 CompText::CompText(string text,int size,SDL_Color c,Hotspot h,Vec2 p):txt{text,size,c},pos{p}{
-	txt.SetHotspot(h);
+	txt.set_hotspot(h);
 }
 CompText::~CompText() {}
 
@@ -18,8 +18,8 @@ void CompText::update(float time) {
 }
 void CompText::render() {
 	Vec2 p = pos + GO(entity)->Box().corner();
-	txt.SetPos(p);
-	
+	txt.set_box_positionos(p);
+
 	if (GO(entity)->anchored) txt.render();
 	else txt.render(CAMERA);
 }

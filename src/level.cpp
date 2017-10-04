@@ -21,7 +21,7 @@ Level::Level() : background{Sprite(DEFAULT_BACKGROUND)}, tileSet{TileSet(DEFAULT
 	}
 }
 
-Level::Level(string file) : tileSet{TileSet()}, tileMap{TileMap(DEFAULT_MAP_WIDTH, DEFAULT_MAP_HEIGHT, &tileSet)} {	
+Level::Level(string file) : tileSet{TileSet()}, tileMap{TileMap(DEFAULT_MAP_WIDTH, DEFAULT_MAP_HEIGHT, &tileSet)} {
 	Load(file);
 }
 
@@ -30,37 +30,37 @@ Level::~Level() {
 
 void Level::Load(const string& file) {
 	ifstream in;
-	
+
 	in.open(LEVEL_PATH + file + ".txt");
 	if (!in.is_open()) {
 		cerr << "Erro ao abrir o arquivo \"" << file << "\", o programa ira encerrar agora" << endl;
 		exit(EXIT_FAILURE);
 	}
-	
+
 	string parameters;
 	//Loading the background:
 	getline(in,backgroundFilename);
 	if (!backgroundFilename.empty()) background.Open(backgroundFilename);
 	in.ignore(1);
 	background.StretchToFit(WINSIZE);
-	
+
 	//Loading the tileset:
 	int tileWidth, tileHeight;
 	getline(in, tileSetFilename);
 	getline(in, parameters);
 	sscanf(parameters.c_str(), " %d,%d", &tileWidth, &tileHeight);
-	tileSet.Load(tileWidth, tileHeight, tileSetFilename);
+	tileSet.load(tileWidth, tileHeight, tileSetFilename);
 	in.ignore(1);
-	
+
 	//Loading the tilemap:
-	tileMap.Load(in);
-	
+	tileMap.load(in);
+
 	//Loading the collision layer:
-	int mapWidth = tileMap.GetWidth();
-	int mapHeight = tileMap.GetHeight();
+	int mapWidth = tileMap.get_width();
+	int mapHeight = tileMap.get_height();
 	collisionLayer.clear();
 	collisionLayer.resize(mapWidth*mapHeight);
-	
+
 	int t,g;
 	collisionGroups.clear();
 	collisionGroups.reserve(mapWidth*mapHeight);
@@ -92,27 +92,27 @@ void Level::Load(const string& file) {
 string Level::Save(const string& file) {
 	stringstream out;
 	ofstream output;
-	if (file != "") { 
+	if (file != "") {
 		output.open(LEVEL_PATH + file + ".txt");
 		if (!output.is_open()) {
 			cerr << "Erro ao abrir o arquivo \"" << file << "\", o programa ira encerrar agora" << endl;
 			exit(EXIT_FAILURE);
 		}
 	}
-	
+
 	//Saving the background:
 	out<<backgroundFilename<<endl<<endl;
-	
+
 	//Saving the tileset:
 	out<<tileSetFilename<<endl;
-	out<<tileSet.GetWidth()<<","<<tileSet.GetHeight()<<endl<<endl;
-	
+	out<<tileSet.get_width()<<","<<tileSet.get_height()<<endl<<endl;
+
 	//Saving the tilemap:
-	tileMap.Save(out);
-	
+	tileMap.save(out);
+
 	//Saving the collision layer:
-	int mapWidth = tileMap.GetWidth();
-	int mapHeight = tileMap.GetHeight();
+	int mapWidth = tileMap.get_width();
+	int mapHeight = tileMap.get_height();
 	FOR(y,mapHeight) {
 		FOR(x,mapWidth) {
 			char s[200];
@@ -123,7 +123,7 @@ string Level::Save(const string& file) {
 		out << endl;
 	}
 	out << endl;
-	
+
 	if (file == "")
 		return out.str();
 	output<<out.str();
@@ -131,7 +131,7 @@ string Level::Save(const string& file) {
 	return "";
 }
 
-void Level::LoadObjects(bool collisors) {	
+void Level::LoadObjects(bool collisors) {
 	//Creating the objects:
 	char objType[50];
 	Vec2 objPos;
@@ -143,14 +143,14 @@ void Level::LoadObjects(bool collisors) {
 		uid = GameObject::Create(objType, objPos);
 		GAMESTATE.AddObject(uid,layer);
 	}
-	
+
 	//Setting the collision boxes:
 	if (!collisors) return;
-	
-	int tileWidth = tileSet.GetWidth();
-	int tileHeight = tileSet.GetHeight();
-	int mapWidth = tileMap.GetWidth();
-	int mapHeight = tileMap.GetHeight();
+
+	int tileWidth = tileSet.get_width();
+	int tileHeight = tileSet.get_height();
+	int mapWidth = tileMap.get_width();
+	int mapHeight = tileMap.get_height();
 	map<int,pair<Rect,int>> mp;
 	FOR(y,mapHeight) {
 		FOR(x,mapWidth) {
@@ -188,8 +188,8 @@ void Level::LoadObjects(bool collisors) {
 
 void Level::SaveObjects(const vector<pair<ii,ii>>& grouped) {
 	//Saving the collision groups:
-	int mapWidth = tileMap.GetWidth();
-	int mapHeight = tileMap.GetHeight();
+	int mapWidth = tileMap.get_width();
+	int mapHeight = tileMap.get_height();
 	int id=1;
 	map<ii,int> ids;
 	FOR(y,mapHeight) {

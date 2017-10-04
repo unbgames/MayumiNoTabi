@@ -12,8 +12,8 @@ CompHP::~CompHP() {}
 
 
 void CompHP::Damage(int dmg) {
-	if (dmgCoolDown.Get()>cooldown) {
-		dmgCoolDown.Restart();
+	if (dmgCoolDown.get_time()>cooldown) {
+		dmgCoolDown.restart_time();
 		current-=dmg;
 		if (showDMG) {
 			//TODO: renderiza dano
@@ -25,7 +25,7 @@ void CompHP::Damage(int dmg) {
 
 void CompHP::update(float time) {
 	if (current<=0)GO(entity)->dead=true;
-	dmgCoolDown.update(time);
+	dmgCoolDown.add_time(time);
 }
 void CompHP::render() {
 	if (SETTINGS.showHP && showHP && current>0) {

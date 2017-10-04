@@ -2,12 +2,12 @@
 
 Timer::Timer() {}
 
-void Timer::update(float dTime) {
-	time+=dTime;
+void Timer::add_time(float additional_time) {
+	time+=additional_time;
 }
-void Timer::Restart() {
+void Timer::restart_time() {
 	time=0;
 }
-float Timer::Get() {
+float Timer::get_time() {
 	return time;
 }

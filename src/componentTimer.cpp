@@ -10,8 +10,8 @@ CompTimer::~CompTimer() {}
 
 
 void CompTimer::update(float time) {
-	t.update(time);
-	if (t.Get()>limit) {
+	t.add_time(time);
+	if (t.get_time()>limit) {
 		GO(entity)->dead=true;
 	}
 }
@@ -28,5 +28,3 @@ void CompTimer::own(GameObject* go) {
 Component::type CompTimer::get_type() const{
 	return Component::type::t_timer;
 }
-
-
