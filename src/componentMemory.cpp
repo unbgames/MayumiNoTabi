@@ -1,17 +1,59 @@
+/*
+*  File: componentMemory.cpp
+*
+*  Description:  Implements componentMemory class
+*/
+
 #include <componentMemory.hpp>
-//#include <compLib.hpp>
-//#include <game.hpp>
-//#include <camera.hpp>
-//#include <inputManager.hpp>
 
+/*!
+  * @fn CompMemory::CompMemory()
+	* @brief No params constructor method
+  * @param No params
+*/
 
-CompMemory::CompMemory() {}
-CompMemory::~CompMemory() {}
+CompMemory::CompMemory() {
+
+}
+
+/*!
+  * @fn CompMemory::~CompMemory()
+	* @brief No params destructor method
+  * @param No params
+*/
+
+CompMemory::~CompMemory() {
+
+}
+
+/*!
+  * @fn CompMemory::Update(float time)
+	* @brief Updates memory according to the time param
+  * @param No params
+*/
 
 void CompMemory::update(float time) {
-	for (auto& t:timers)t.second.add_time(time);
+	//! TODO: Refactorate decision strucuture
+	for(auto& t:timers)t.second.add_time(time);
 }
-void CompMemory::render() {}
-Component::type CompMemory::get_type() const{
+
+/*!
+  * @fn CompMemory::Render()
+	* @brief Renders memory, obviously not necessary
+  * @param No params
+*/
+
+void CompMemory::render() {
+
+}
+
+/*!
+  * @fn Component::type CompMemory::get_type()
+	* @brief Returns if the component is if the 'memory' type
+  * @param No params
+	* @return Component::type::t_memory
+*/
+
+Component::type CompMemory::get_type() const {
 	return Component::type::t_memory;
 }
