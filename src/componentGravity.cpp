@@ -35,7 +35,7 @@ CompGravity::~CompGravity() {
 	* @param float time
 */
 
-void CompGravity::Update(float time) {
+void CompGravity::update(float time) {
 	//! Verifies if element has a type that characterizes movement in Y axis
 	if(GO(entity)->HasComponent(Component::type::t_movement)) {
 		COMPMOVEp(GO(entity))->speed.y+=gravity*time;
@@ -48,17 +48,17 @@ void CompGravity::Update(float time) {
 	* @param No params
 */
 
-void CompGravity::Render() {
+void CompGravity::render() {
 
 }
 
 /*!
-	* @fn Component::type CompGravity::GetType()
+	* @fn Component::type CompGravity::get_type() const{
   * @brief Returns if the component is if the 'gravity' type
 	* @param No params
 	* @return Component::type::t_gravity
 */
 
-Component::type CompGravity::GetType() const {
+Component::type CompGravity::get_type() const{
 	return Component::type::t_gravity;
 }

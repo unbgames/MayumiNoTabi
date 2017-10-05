@@ -30,7 +30,7 @@ GUIManager::~GUIManager() {
  *  @brief Updates general user interface
  *  @return The method returns no param
  */
-void GUIManage::Update() {
+void GUIManage::update() {
 
     //! TODO: Insert else to do nothing
     //! Remove last element if requested
@@ -74,20 +74,20 @@ void GUIManage::Update() {
 
         selectedButton = nullptr;
 
-        selectedButtonCopy->Update();
+        selectedButtonCopy->update();
         selectedButton = selectedButtonCopy;
         currentButtonState = selectedButton->IsPressed();
     }
     
-    elements.back()->Update();  
+    elements.back()->update();  
 }
 
 /*!
- *  @fn void GUIManager::Render()
+ *  @fn void GUIManager::render()
  *  @brief Renders general user interface
  *  @return The method returns no param
  */
-void GUIManager::Render() {
+void GUIManager::render() {
     
     //! Iterates trough elements of interface to render it
     for (auto& it:elements){

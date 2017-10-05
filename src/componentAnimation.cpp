@@ -31,56 +31,56 @@ CompAnim::CompAnim() {
    This is a constructor method of CompAnim class
   */
 
-  CompAnim::CompAnim(string file, CompCollider* tempColl) {
+  CompAnim::CompAnim(string filename, CompCollider* temporary_collider) {
 
   // TODO: separate variable declarations and comment them all 
-	string name, imgFile, func, animFile, type;
+	string name, img_file, function_name, /* animFile, unused */ type;
 
-	int fCount,fCountX,fCountY,collCount,funcCount;
+	int f_count, f_counter_x, f_counter_y, collider_counter, function_counter;
 
-	float fTime,x,y,w,h,r;
+	float f_time, x_axis, y_axis, width, height, r;
 
-	ifstream in(ANIMATION_PATH + file + ".txt");
+	ifstream in(ANIMATION_PATH + filename + ".txt");
 
 	// Treats possible file opening error
 	if (!in.is_open()) {
-		cerr << "Erro ao abrir arquivo de animação '" << file << "'" << endl;
+		cerr << "Erro ao abrir arquivo de animação '" << filename << "'" << endl;
 	}
 	else {
-		in >> imgFile >> fCount >> fCountX >> fCountY >> fTime;
+		in >> img_file >> f_count >> f_counter_x >> f_counter_y >> f_time;
 
-		sp.Open(imgFile,fCountX,fCountY,fTime,fCount);
+		sp.Open(img_file, f_counter_x, f_counter_y, f_time, f_count);
 
-		colliders.resize(fCount,nullptr);
+		colliders.resize(f_count, nullptr);
 
-		FOR(i,fCount) {
-			in >> collCount;
+		FOR(i, f_count) {
+			in >> collider_counter;
 
-			if (collCount) {
+			if (collider_counter) {
 				colliders[i] = new CompCollider{};
 				colliders[i]->entity = entity;
 
-				FOR(j, collCount) {
+				FOR(j, collider_counter) {
 					//TODO: use rotation
 					//TODO: different collider types for each coll
-					in >> x >> y >> w >> h >> r;
+					in >> x_axis >> y_axis >> width >> height >> r;
 
-					colliders[i]->colls.emplace_back(entity, tempColl->colls[0].cType,
-																						Rect{x,y,w,h});
+					colliders[i]->colls.emplace_back(entity, temporary_collider->colls[0].cType,
+																						Rect{x_axis, y_axis, width, height});
 
-					colliders[i]->colls[j].useDefault = tempColl->colls[0].useDefault;
+					colliders[i]->colls[j].useDefault = temporary_collider->colls[0].useDefault;
 
-					colliders[i]->colls[j].active = tempColl->colls[0].active;
+					colliders[i]->colls[j].active = temporary_collider->colls[0].active;
 				}
 			}
 
-			in >> funcCount;
+			in >> function_counter;
 
 			FOR(funcI, funcCount) {
-				in >> func;
+				in >> function_name;
 
-				if (txtFuncsF.count(func)) {
-					frameFunc[i].push_back(txtFuncsF[func](in));
+				if (txtFuncsF.count(function_name)) {
+					frameFunc[i].push_back(txtFuncsF[function_name](in));
 				}
 			}
 		}
@@ -113,27 +113,27 @@ CompAnim::~CompAnim() {
 }
 
 /*!
-	@fn       int CompAnim::GetFrameCount()const
+	@fn       int CompAnim::get_frame_count()const
 	@brief    Returns current frame count as a integer
 	@param    none
 	@return   int value of frame count
 	@warning  none
 */
-// Returns current frame count as a integer
-int CompAnim::GetFrameCount()const {
-	return sp.GetFrameCount();
+
+int CompAnim::get_frame_count()const {
+	return sp.get_frame_count();
 }
 
 /*!
-	@fn       int CompAnim::GetCurFrame()const
+	@fn       int CompAnim::get_current_frame()const
 	@brief    Returns current frame as a integer
 	@param    none
 	@return   int with the number of the current frame
 	@warning  none
 */
 
-int CompAnim::GetCurFrame()const {
-	return sp.GetCurFrame();
+int CompAnim::get_current_frame()const {
+	return sp.get_current_frame();
 }
 
 /*!
@@ -144,11 +144,11 @@ int CompAnim::GetCurFrame()const {
 	@warning  TOD: some of the decision structure must be rewritten
 */
 
-void CompAnim::SetCurFrame(int frame,		// range: unknown
-													 bool force) {// true to force current frame
+void CompAnim::set_current_frame(int frame,		// range: unknown
+      													 bool force) {// true to force current frame
 
 	// Set frame as current if it isn't already
-	if (frame != GetCurFrame()) {
+	if (frame != get_current_frame()) {
 		sp.SetFrame(frame);
 
 		for (auto &foo:frameFunc[frame]) {
@@ -238,20 +238,20 @@ void CompAnim::Render() {
 }
 
 /*!
-	@fn       void CompAnim::Own(GameObject* go)
+	@fn       void CompAnim::own(GameObject* go)
 	@brief    Sets ownage of a animation to a game object
 	@param    GameObject* go
 	@return   void
 	@warning  none
 */
 
-void CompAnim::Own(GameObject* go) {
+void CompAnim::own(GameObject* go) {
 	entity = go->uid;
 
 	// Iterates through the colliders and defines its ownage if they're not null
 	for (CompCollider *coll:colliders) {
 		if (coll != nullptr) {
-			coll->Own(go);
+			coll->own(go);
 		}
 	}
 

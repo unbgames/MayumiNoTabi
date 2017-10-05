@@ -11,26 +11,26 @@
 #include <gameObject.hpp>
 
 /*!
-	@fn       void Component::Own(GameObject *go)
-	@brief    Assigns a object as property (like a ownage thing) of a component
-	@param    GameObject *go
-	@return   void
-	@warning  none
+  @fn       void Component::own(GameObject *go)
+  @brief    Assigns a object as property (like a ownage thing) of a component
+  @param    GameObject *go
+  @return   void
+  @warning  none
 */
 
-void Component::Own(GameObject *go) {
+void Component::own(GameObject *go) {
     entity = go->uid;
 }
 
 /*!
-	@fn       bool Component::Die(float time)
-	@brief    Sets the death of a component
-	@param    float time
-	@return   boolean value
-	@warning  none
+  @fn       bool Component::kills_component(float time)
+  @brief    Sets the death of a component
+  @param    float time
+  @return   boolean value
+  @warning  none
 */
 
-bool Component::Die(float time) {
+bool Component::kills_component(float time) {
     UNUSED(time);
 
     return true;
