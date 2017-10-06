@@ -1,10 +1,10 @@
 /*!
- *  \file File componentText.cpp
- *  \brief Implementation of the class of text components present in the game
+ *  @file File componentText.cpp
+ *  @brief Implementation of the class of text components present in the game
  *
  *  The class implemented here provides to the game the messeges elements
  *
- *  \sa componentText.hpp
+ *  @sa componentText.hpp
  */
 
 #include <componentText.hpp>
