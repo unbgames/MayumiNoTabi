@@ -4,74 +4,74 @@
 #include <game.hpp>
 #include <resources.hpp>
 
-Text::Text(const string& txt,int fSize,SDL_Color c,Style st,string file,int x,int y):fontName{file}{
-	SetColor(c);
-	SetText(txt);
-	SetStyle(st);
-	SetFontSize(fSize);
-	box.x=x;
-	box.y=y;
+Text::Text(const string& text,int fSize,SDL_Color color,Style  font_style,string file_path,int box_position_x,int box_position_y):font_name{file_path}{
+	SetColor(color);
+	SetText(text);
+	SetStyle(style);
+	Setfont_size(fSize);
+	box.x=box_position_x;
+	box.y=box_position_y;
 }
 
 Text::~Text() {
-	for (auto& i : lineArray)
-		if (i.texture)SDL_DestroyTexture(i.texture);
+	for (auto& line : line_array)
+		if (line.texture)SDL_DestroyTexture(line.texture);
 }
 
-void Text::Render(Vec2 camera, Rect* clipRect) {
-	Vec2 pos = box.hotspot(hotspot);
+void Text::render(Vec2 camera, Rect* clipRect) {
+	Vec2 position = box.hotspot(hotspot);
 
-	int x = pos.x-(camera.x*CAMERAZOOM);
-	int y = pos.y-(camera.y*CAMERAZOOM);
+	int position_x = position.x-(camera.x*CAMERAZOOM);
+	int position_y = position.y-(camera.y*CAMERAZOOM);
 
 	if (clipRect) {
 		Vec2 clipRectEnd(clipRect->x+clipRect->w-1, clipRect->y+clipRect->h-1);
-		for (auto& i : lineArray) {
+		for (auto& i : line_array) {
 			if (clipRectEnd.y < i.box.y)
-				break;	
+				break;
 			Vec2 lineBoxEnd(i.box.x2()-1, i.box.y2()-1);
 			if (lineBoxEnd.y < clipRect->y)
 				continue;
-			
+
 			SDL_Rect clip;
 			SDL_Rect dest;
 			if (clipRect->x > i.box.x) {
 				clip.x = clipRect->x - i.box.x;
-				dest.x = x + clipRect->x;
+				dest.x = position_x + clipRect->x;
 			}
 			else {
 				clip.x = 0;
-				dest.x = x + i.box.x;
+				dest.x = position_x + i.box.x;
 			}
 			if (clipRect->y > i.box.y) {
 				clip.y = clipRect->y - i.box.y;
-				dest.y = y + clipRect->y;
+				dest.y = position_y + clipRect->y;
 			}
 			else {
 				clip.y = 0;
-				dest.y = y + i.box.y;
+				dest.y = position_y + i.box.y;
 			}
 			if (clipRectEnd.x < lineBoxEnd.x) {
 				clip.w = dest.w = clipRectEnd.x - i.box.x - clip.x +1;
 			}
 			else {
-				clip.w = dest.w = lineBoxEnd.x - i.box.x - clip.x +1;	
+				clip.w = dest.w = lineBoxEnd.x - i.box.x - clip.x +1;
 			}
 			if (clipRectEnd.y < lineBoxEnd.y) {
 				clip.h = dest.h = clipRectEnd.y - i.box.y - clip.y +1;
 			}
 			else {
-				clip.h = dest.h = lineBoxEnd.y - i.box.y - clip.y +1;	
+				clip.h = dest.h = lineBoxEnd.y - i.box.y - clip.y +1;
 			}
-			
+
 			SDL_RenderCopy(GAMERENDER,i.texture,&clip,&dest);
 		}
 	}
 	else {
-		for (auto& i : lineArray) {
+		for (auto& i : line_array) {
 			SDL_Rect dest;
-			dest.x=x+i.box.x;
-			dest.y=y+i.box.y;
+			dest.x=position_x+i.box.x;
+			dest.y=position_y+i.box.y;
 			dest.w=i.box.w;
 			dest.h=i.box.h;
 			SDL_RenderCopy(GAMERENDER,i.texture,nullptr,&dest);
@@ -79,95 +79,95 @@ void Text::Render(Vec2 camera, Rect* clipRect) {
 	}
 }
 
-void Text::SetPos(int x,int y) {
-	box.x=x;
-	box.y=y;
+void Text::set_box_position(int position_x,int position_y) {
+	box.x=position_x;
+	box.y=position_y;
 }
 
-void Text::SetPos(Vec2 v) {
-	SetPos(v.x, v.y);
+void Text::set_box_position(Vec2 position) {
+	set_box_position(position.x, position.y);
 }
 
-void Text::SetText(string txt) {
-	if (txt=="") txt = " ";
-	stringstream text(txt);
-	lineArray.clear();
-	for (TextLine line;getline(text, line.text);) {
+void Text::set_text(string text) {
+	if (text=="") text = " ";
+	stringstream new_text(text);
+	line_array.clear();
+	for (TextLine line;getline(new_text, line.text);) {
 		if (line.text=="") {
 			line.text = " ";
 		}
-		lineArray.push_back(line);
+		line_array.push_back(line);
 	}
-	
+
 	RemakeTexture();
 }
 
-void Text::SetLine(int line, string txt) {
-	if (line>=0 && line<(int)lineArray.size()) {
-		lineArray[line].text = txt;	
+void Text::set_line(int line, string text) {
+	if (line>=0 && line<(int)line_array.size()) {
+		line_array[line].text = text;
 		RemakeTexture();
 	}
 }
 
-void Text::SetColor(SDL_Color c) {
-	color.r=c.r;
-	color.g=c.g;
-	color.b=c.b;
-	color.a=c.a;
+void Text::set_color(SDL_Color color) {
+	this.color.r=color.r;
+	this.color.g=color.g;
+	this.color.b=color.b;
+	this.color.a=color.a;
 	RemakeTexture();
 }
 
-void Text::SetStyle(Style st) {
-	style=st;
+void Text::set_style(Style style) {
+	this.style=style;
 	RemakeTexture();
 }
 
-void Text::SetFontSize(int fSize) {
-	fontSize=fSize;
-	font = Resources::GetFont(fontName,fontSize);
+void Text::set_font_size(int fSize) {
+	font_size=fSize;
+	font = Resources::GetFont(font_name,font_size);
 	RemakeTexture();
 }
 
-void Text::SetAlignment(Align al) {
-	alignment = al;
+void Text::set_alignment(Align alignment) {
+	this.alignment = alignment;
 	RemakeTexture();
 }
 
-void Text::SetHotspot(Hotspot h) {
-	hotspot = h;
+void Text::set_hotspot(Hotspot hotspot) {
+	this.hotspot = hotspot;
 }
 
-Rect Text::GetBox()const {
+Rect Text::get_box()const {
 	return box;
 }
 
-void Text::RemakeTexture() {
+void Text::remake_texture() {
 	if (font.get()) {
 		SDL_Surface *surface=nullptr;
 		box.w = box.h = 0;
-		for (auto& i : lineArray) {
-			if (i.texture)SDL_DestroyTexture(i.texture);
-			if (style==Style::SOLID)surface=TTF_RenderText_Solid(font.get(),i.text.c_str(),color);
-			else if (style==Style::SHADED)surface=TTF_RenderText_Shaded(font.get(),i.text.c_str(),color,SDL_COLOR_BLACK);
-			else if (style==Style::BLENDED)surface=TTF_RenderText_Blended(font.get(),i.text.c_str(),color);
-			i.texture = SDL_CreateTextureFromSurface(GAMERENDER,surface);
-			
-			i.box.w=surface->w;
-			i.box.h=surface->h;
-			if (i.box.w>box.w) box.w=i.box.w;
-			i.box.y=box.h;
-			box.h+=i.box.h;
+		for (auto& line : line_array) {
+			if (line.texture)SDL_DestroyTexture(line.texture);
+			if (style==Style::SOLID)surface=TTF_RenderText_Solid(font.get(),line.text.c_str(),color);
+			else if (style==Style::SHADED)surface=TTF_RenderText_Shaded(font.get(),line.text.c_str(),color,SDL_COLOR_BLACK);
+			else if (style==Style::BLENDED)surface=TTF_RenderText_Blended(font.get(),line.text.c_str(),color);
+			line.texture = SDL_CreateTextureFromSurface(GAMERENDER,surface);
+
+			line.box.w=surface->w;
+			line.box.h=surface->h;
+			if (line.box.w>box.w) box.w=line.box.w;
+			line.box.y=box.h;
+			box.h+=line.box.h;
 			//cout<<"\""<<i.text<<"\" "<<i.box.x<<","<<i.box.y<<" "<<i.box.w<<","<<i.box.h<<endl;
 		}
 		SDL_FreeSurface(surface);
-		
+
 		if (alignment == Align::CENTERED) {
-			for (auto& i : lineArray)
-				i.box.x=(box.w-i.box.w)/2;
+			for (auto& line : line_array)
+				line.box.x=(box.w-line.box.w)/2;
 		}
 		else if (alignment == Align::RIGHT) {
-			for (auto& i : lineArray)
-				i.box.x=(box.w-i.box.w);
+			for (auto& line : line_array)
+				line.box.x=(box.w-line.box.w);
 		}
 	}
 }

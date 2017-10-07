@@ -87,6 +87,7 @@ GameObject::~GameObject() {
 }
 
 
+
 /*!
 	@fn void GameObject::Update(float time)
 	@brief Method that updates the view status of an object
@@ -95,14 +96,14 @@ GameObject::~GameObject() {
 	@warning Method that requires review of comment
 */
 
-void GameObject::Update(float time) {
+void GameObject::update(float time) {
+
 	if (IsDead()) {
 		remove = true;
 		// for (auto i=Component::type::t_first+1;i!=Component::type::t_count;i++) {
 		FOR(i,Component::type::t_count) {
 			//! If there is a component
 			if (HasComponent(i)) {
-				//!
 				if (components[i]->Die(time)) {
 					RemoveComponent((Component::type)i);
 				}
@@ -164,10 +165,31 @@ void GameObject::Update(float time) {
 */
 
 void GameObject::Render() {
+
+				if (components[i]->kills_component(time))RemoveComponent((Component::type)i);
+				else remove=false;
+			}
+		}
+	}
+	//reset move
+	if (HasComponent(Component::type::t_movement))COMPMOVEp(this)->move=0.0f;
+	//process input control and ai first
+	if (HasComponent(Component::type::t_input_control))COMPINPUTCONTp(this)->update(time);
+	if (HasComponent(Component::type::t_ai))COMPAIp(this)->update(time);
+	//then set move
+	if (HasComponent(Component::type::t_movement))COMPMOVEp(this)->move+=COMPMOVEp(this)->speed*time;
+	//and then do the rest
+	FOR2(i,Component::type::t__+1,Component::type::t_count) {
+		if (HasComponent(i))components[i]->update(time);
+	}
+}
+
+void GameObject::render() {
+
 	FOR(i,Component::type::t_count) {
 		//! Render a component
 		if (HasComponent(i)) {
-			components[i]->Render();
+			components[i]->render();
 		}
 	}
 }
@@ -181,6 +203,7 @@ void GameObject::Render() {
 */
 
 void GameObject::AddComponent(Component* component) {
+
 	auto t = component->GetType();
 	//! If the component is read, then it's add with the others components
 	if (HasComponent(t)) {
@@ -192,6 +215,7 @@ void GameObject::AddComponent(Component* component) {
 	}
 	components[t] = component;
 	component->Own(this);
+
 }
 
 /*!
@@ -203,6 +227,7 @@ void GameObject::AddComponent(Component* component) {
 */
 
 void GameObject::ReplaceComponent(Component* component) {
+
 	auto t=component->GetType();
 	//! if the component doesn't have a type, then it is deleted.
 	if (!HasComponent(t)) {
@@ -214,6 +239,7 @@ void GameObject::ReplaceComponent(Component* component) {
 	}
 	components[t] = component;
 	component->Own(this);
+
 }
 
 /*!
@@ -246,7 +272,7 @@ void GameObject::RemoveComponent(Component::type t) {
 
 void GameObject::SetComponent(Component::type t,Component* component) {
 	components[t]=component;
-	component->Own(this);
+	component->own(this);
 }
 
 /*!
@@ -429,6 +455,7 @@ Rect GameObject::FullBox() const{
 template<int atkDist,int seeDist,
          int id> void HostileAIfunc(CompAI* ai,float time) {
 	Sound music;
+
 	CompAnimControl *ac = COMPANIMCONTp(GO(ai->entity)); // ac - Animation Control
 	CompMemory *mem = COMPMEMORYp(GO(ai->entity)); // mem - among component memory
 
@@ -464,7 +491,7 @@ template<int atkDist,int seeDist,
 	}
 	else if (target==nullptr) {
 		state=CompAI::state::idling;
-		ac->ChangeCur("idle");
+		ac->change_current("idle");
 		cd.Restart();
 		return;
 	}
@@ -495,7 +522,7 @@ template<int atkDist,int seeDist,
                 }
 			} else {
                 state=CompAI::state::walking;
-                ac->ChangeCur("walk");
+                ac->change_current("walk");
                 if (id == 1) { // Mike
                     music.Open("audio/mike-arrastando-clava.wav");
                     music.Play(1);
@@ -512,8 +539,10 @@ template<int atkDist,int seeDist,
 		if (al.Get() > 10 && cd.Get() > 5) {
 			state=CompAI::state::looking;
 			movement->speed.x = 0;
+
 			ac->ChangeCur("idle"); // Control is idle
 			cd.Restart(); // Restart the timer
+
 			return;
 		}
 		else {
@@ -521,9 +550,11 @@ template<int atkDist,int seeDist,
 
 			//TODO: make line of sight component
 			if (dist > (seeDist*2) || (!alerted && dist > seeDist)) {
+
 				state = CompAI::state::looking;
 				movement->speed.x = 0; // the object is idle
 				ac->ChangeCur("idle");
+				
 				cd.Restart();
 				return;
 			}
@@ -546,7 +577,7 @@ template<int atkDist,int seeDist,
                     music.Play(1);
                 }
 				movement->speed.x=0;
-				ac->ChangeCur("idle");
+				ac->change_current("idle");
 				cd.Restart();
 				return;
 			}
@@ -566,22 +597,25 @@ template<int atkDist,int seeDist,
 		if (!alerted && attacked>3) {
 			state = CompAI::state::idling;
 			attacked=0;
-			ac->ChangeCur("idle");
+			ac->change_current("idle");
 			cd.Restart();
 			return;
 		}
+
 		//! If the object wasn't attacked
 		else if (ac->GetCurName() != "attack") {
 			float dist = GO(ai->entity)->Box().distEdge(target->Box()).x;
 			//!
 			if (dist > atkDist) {
+
 				state = CompAI::state::looking;
 				attacked = 0;
 				ac->ChangeCur("idle");
+
 				cd.Restart();
 				return;
 			}
-			else ac->ChangeCur("attack",false);
+			else ac->change_current("attack",false);
 		}
 		else{
 			if (target->Box().x > GO(ai->entity)->Box().x && !GO(ai->entity)->flipped) {
@@ -625,7 +659,7 @@ void PassiveAIfunc(CompAI* ai,float time) {
 			state = CompAI::state::walking;  // The object is in movie
 			music.Open("audio/banshee-vozes-1.wav");
             music.Play(1);
-			ac->ChangeCur("walk");
+			ac->change_current("walk");
 		}
 		else {
 			//! Nothing to do
@@ -648,7 +682,7 @@ void PassiveAIfunc(CompAI* ai,float time) {
 			next = (next+1) % posCount;
 			ac->ChangeCur("idle");
 		}
-		else{
+		else {
 			movement->speed = dist.unit() * 100.0f;
 			GO(ai->entity)->flipped = (movement->speed.x > 0);
 		}
@@ -669,7 +703,9 @@ template<int atkDist,int seeDist,int stCD,int atkCount,int stompCount>
                                void PumbaAiFunc(CompAI* ai,float time) {
 	Sound music;
 	Music music2;
+  
 	CompAnimControl *ac = COMPANIMCONTp(GO(ai->entity)); // Component Control
+
 	CompMemory *mem = COMPMEMORYp(GO(ai->entity));
 	CompHP *hp = COMPHPp(GO(ai->entity)); // Power of boar
 
@@ -683,7 +719,7 @@ template<int atkDist,int seeDist,int stCD,int atkCount,int stompCount>
 
 	// bool enraged = hp->current < hp->total/2;
 	// if (enraged && !mem->ints["enraged"]) {
-	// 	CompCollider *coll = COMPANIMCONTp(GO(ai->entity))->GetCur().colliders[0];
+	// 	CompCollider *coll = COMPANIMCONTPOINTER(GO(ai->entity))->get_current().colliders[0];
 	// 	CompAnimControl *animControl = new CompAnimControl{"porco_rage",coll};
 	// 	GO(ai->entity)->RemoveComponent(Component::type::t_animation_control);
 	// 	GO(ai->entity)->AddComponent(animControl);
@@ -691,9 +727,11 @@ template<int atkDist,int seeDist,int stCD,int atkCount,int stompCount>
 
 	string &curAnim = ac->GetCurName(); // Current animation
 	//! If the name of animation starts with _r
+
 	if (curAnim.substr(curAnim.size()-2)=="_r") {
 		//! If the entity cant't flipped
 		if (!GO(ai->entity)->flipped) {
+
 			int frame = ac->GetCur().GetCurFrame();
 			curAnim = curAnim.substr(0,curAnim.size()-2);
 			ac->GetCur().SetCurFrame(frame);
@@ -701,9 +739,9 @@ template<int atkDist,int seeDist,int stCD,int atkCount,int stompCount>
 	}
 	//! If the entity cans flipped
 	else if (GO(ai->entity)->flipped) {
-		int frame = ac->GetCur().GetCurFrame();
-		curAnim = curAnim + "_r";
-		ac->GetCur().SetCurFrame(frame);
+		int frame = ac->get_current().get_current_frame();
+		curAnim=curAnim+"_r";
+		ac->get_current().set_current_frame(frame);
 	}
 
 	if (mem->ints["hit"]) {
@@ -730,10 +768,11 @@ template<int atkDist,int seeDist,int stCD,int atkCount,int stompCount>
 			//! Nothing to do
 		}
 	}
+
 	//! If the game ends
-	else if (target == nullptr) {
-		state = CompAI::state::idling;
-		ac->ChangeCur("idle");
+	else if (target==nullptr) {
+		state=CompAI::state::idling;
+		ac->change_current("idle");
 		cd.Restart();
 		return;
 	}
@@ -752,7 +791,7 @@ template<int atkDist,int seeDist,int stCD,int atkCount,int stompCount>
 			//!
 			if (dist < 2*atkDist && stompCD.Get()>stCD) {
 				state=CompAI::state::stomping;
-				ac->ChangeCur("stomp");
+				ac->change_current("stomp");
 				music.Open("audio/porco-pisada.wav");
 				music.Play(1);
 			}
@@ -761,10 +800,10 @@ template<int atkDist,int seeDist,int stCD,int atkCount,int stompCount>
 				state = CompAI::state::attacking;
 			}
 			else {
-        state = CompAI::state::walking; // The object walks
-        ac->ChangeCur("walk");
-        music.Open("audio/porco-walking-grunhido.wav");
-        music.Play(1);
+         state=CompAI::state::walking; // The object walks
+         ac->change_current("walk");
+         music.Open("audio/porco-walking-grunhido.wav");
+         music.Play(1);
 			}
 			cd.Restart(); // Restart the timer
 			return;
@@ -777,7 +816,7 @@ template<int atkDist,int seeDist,int stCD,int atkCount,int stompCount>
 		if (al.Get() > 10 && cd.Get() > 5) {
 			state = CompAI::state::looking;
 			move->speed.x = 0;
-			ac->ChangeCur("idle");
+			ac->change_current("idle");
 			cd.Restart();
 			return;
 		}
@@ -788,10 +827,11 @@ template<int atkDist,int seeDist,int stCD,int atkCount,int stompCount>
 			if (dist > (seeDist*2) || (!alerted && dist > seeDist)) {
 				state=CompAI::state::looking;
 				move->speed.x = 0;
-				ac->ChangeCur("idle");
+				ac->change_current("idle");
 				cd.Restart();
 				return;
 			}
+
 			else if (dist < 2*atkDist+abs(move->speed.x)*time &&
 								cd.Get()<1.5 && stompCD.Get() > stCD) {
 				//! If the object not matched the target yet
@@ -804,7 +844,8 @@ template<int atkDist,int seeDist,int stCD,int atkCount,int stompCount>
 
 				state = CompAI::state::stomping; // Object is in stomp
 				move->speed.x = 0;
-				ac->ChangeCur("stomp");
+				ac->change_current("stomp");
+
 				music.Open("audio/porco-pisada.wav");
 				music.Play(1);
 				cd.Restart();
@@ -822,10 +863,10 @@ template<int atkDist,int seeDist,int stCD,int atkCount,int stompCount>
           state = CompAI::state::attacking;
           music.Open("audio/porco-investida-1.wav");
           music.Play(1);
-          ac->ChangeCur("idle");
+          ac->change_current("idle");
 				}
 				else {
-					state = CompAI::state::charging, ac->ChangeCur("charge",false); // State of charging
+					state = CompAI::state::charging, ac->change_current("charge",false); // State of charging
 				}
 				move->speed.x = 0; // The object is idle
 				cd.Restart(); // Timer is restart
@@ -841,27 +882,29 @@ template<int atkDist,int seeDist,int stCD,int atkCount,int stompCount>
 			}
 		}
 	}
+
 	//! The object is in attack.
 	else if (state == CompAI::state::attacking) {
 		if (!alerted && attacked > 3) {
 			state = CompAI::state::idling;
 			attacked = 0;
-			ac->ChangeCur("idle");
+			ac->change_current("idle");
+
 			cd.Restart();
 			return;
 		}
-		else if (ac->GetCurName() != "attack" && ac->GetCurName() != "attack_r") {
+		else if (ac->get_current_name() != "attack" && ac->get_current_name() != "attack_r") {
 			float dist = GO(ai->entity)->Box().distEdge(target->Box()).x;
 			if (dist > atkDist) {
 				state = CompAI::state::looking; // State of object is looking
 				music.Open("audio/porco-grunhido-3.wav");
                 music.Play(1);
-				attacked = 0;
-				ac->ChangeCur("idle");
+				attacked=0;
+				ac->change_current("idle");
 				cd.Restart();
 				return;
 			}
-			else ac->ChangeCur("attack",false);
+			else ac->change_current("attack",false);
 		}
 		else{
 			if (target->Box().x > GO(ai->entity)->Box().x && !GO(ai->entity)->flipped) {
@@ -883,26 +926,27 @@ template<int atkDist,int seeDist,int stCD,int atkCount,int stompCount>
 			state = CompAI::state::attacking;
 			music.Open("audio/porco-investida-1.wav");
             music.Play(1);
-			attacked = 0;
-			ac->ChangeCur("idle");
+			attacked=0;
+			ac->change_current("idle");
 			cd.Restart();
 			return; // @warning Refactor this
 		}
-		else if (ac->GetCurName() != "stomp" && ac->GetCurName() != "stomp_r") {
+		else if (ac->get_current_name() != "stomp" && ac->get_current_name() != "stomp_r") {
 			float dist = GO(ai->entity)->Box().distEdge(target->Box()).x;
 			//! Distance of character is bigger than the double
 			if (dist > atkDist*2) {
-				state = CompAI::state::looking; // Character is observing
-				attacked = 0;
-				ac->ChangeCur("idle");
+
+				state=CompAI::state::looking; // Character is observing
+				attacked=0;
+				ac->change_current("idle");
 				music.Open("audio/porco-grunhido-3.wav");
                 music.Play(1);
 				cd.Restart();
 				return;
 			}
 			else {
-				ac->ChangeCur("stomp",false);
-			}
+        ac->change_current("stomp",false);
+      }
 		}
 		else {
 			if (target->Box().x > GO(ai->entity)->Box().x && !GO(ai->entity)->flipped) {
@@ -918,11 +962,12 @@ template<int atkDist,int seeDist,int stCD,int atkCount,int stompCount>
 			//! Nothing to do
 		}
 	}
-	else if (state == CompAI::state::charging) {
-		if (ac->GetCurName() != "charge" && ac->GetCurName() != "charge_r") {
+	else if (state==CompAI::state::charging) {
+		if (ac->get_current_name() != "charge" && ac->get_current_name() != "charge_r") {
 			state=CompAI::state::looking;
-			attacked = 0;
-			ac->ChangeCur("idle");
+			attacked=0;
+			ac->change_current("idle");
+
 			cd.Restart();
 			return;
 		}
@@ -937,7 +982,7 @@ template<int atkDist,int seeDist,int stCD,int atkCount,int stompCount>
 			cd.Restart();
 			state = CompAI::state::idling;
 			move->speed = move->move = 0.0f;
-			ac->ChangeCur("idle");
+			ac->change_current("idle");
 		}
 		else {
 			float dist = GO(ai->entity)->Box().distEdge(target->Box()).x;
@@ -945,8 +990,8 @@ template<int atkDist,int seeDist,int stCD,int atkCount,int stompCount>
 			//! If distance between character and boar doesn't complete in display
 			if (dist > seeDist) {
 				cd.Restart();
-				state = CompAI::state::looking; //! Character is looking
-				ac->ChangeCur("idle");
+				state=CompAI::state::looking; //! Character is looking
+				ac->change_current("idle");
 				music.Open("audio/porco-grunhido-3.wav");
                 music.Play(1);
 			}
@@ -958,7 +1003,7 @@ template<int atkDist,int seeDist,int stCD,int atkCount,int stompCount>
 
 				state = CompAI::state::stomping;
 				cd.Restart();
-				ac->ChangeCur("stomp");
+				ac->change_current("stomp");
 				music.Open("audio/porco-pisada.wav");
 				music.Play(1);
 			}
@@ -976,10 +1021,12 @@ template<int atkDist,int seeDist,int stCD,int atkCount,int stompCount>
                     state = CompAI::state::attacking;
                     music.Open("audio/porco-grunhido-3.wav");
                     music.Play(1);
-                    ac->ChangeCur("idle");
+
+                    ac->change_current("idle");
 				} else {
 					 state = CompAI::state::charging, ac->ChangeCur("charge");
 				}
+
 			}
 			else if (GO(ai->entity)->pos.x < target->pos.x) {
 				GO(ai->entity)->flipped=true;
@@ -995,8 +1042,10 @@ template<int atkDist,int seeDist,int stCD,int atkCount,int stompCount>
 		if (GO(ai->entity)->Box().distEdge(target->Box()).x > atkDist) {
 			attacked = 0;
 			cd.Restart();
+
 			state = CompAI::state::looking;
-			ac->ChangeCur("idle");
+			ac->change_current("idle");
+
 			music.Open("audio/porco-grunhido-3.wav");
             music.Play(1);
 			return;
@@ -1017,8 +1066,8 @@ template<int atkDist,int seeDist,int stCD,int atkCount,int stompCount>
 			if (attacked >= atkCount) {
 				attacked = 0;
 				cd.Restart();
-				state = CompAI::state::idling;
-				ac->ChangeCur("idle");
+				state=CompAI::state::idling;
+				ac->change_current("idle");
 			}
 		}
 	}
@@ -1028,7 +1077,8 @@ template<int atkDist,int seeDist,int stCD,int atkCount,int stompCount>
 			cd.Restart();
 			stompCD.Restart();
 			state = CompAI::state::looking; //! Object is looking
-			ac->ChangeCur("idle");
+			ac->change_current("idle");
+
 			music.Open("audio/porco-grunhido-3.wav");
             music.Play(1);
 		}
@@ -1038,7 +1088,7 @@ template<int atkDist,int seeDist,int stCD,int atkCount,int stompCount>
 			attacked = 0;
 			cd.Restart();
 			state=CompAI::state::idling;
-			ac->ChangeCur("idle");
+			ac->change_current("idle");
 		}
 	}
 }
@@ -1055,11 +1105,11 @@ template<int atkDist,int seeDist,int stCD,int atkCount,int stompCount>
 void PlayerControlFunc(GameObject* go, float time) {
 	UNUSED(time);
 
-	CompAnimControl *ac = COMPANIMCONTp(go);
+	CompAnimControl *ac = COMPANIMCONTPOINTER(go);
 	CompMemory *mem = COMPMEMORYp(go);
 	CompMovement *mv = COMPMOVEp(go);
 
-	const string &curAnim = ac->GetCurName();
+	const string &curAnim = ac->get_current_name();
 	int &arrowReady = mem->ints["arrowReady"];
 	Vec2 &speed = mv->speed;
 
@@ -1077,13 +1127,14 @@ void PlayerControlFunc(GameObject* go, float time) {
 		//! Nothing to do
 	}
 
+
 	if (arrowReady && INPUT.IsKeyDown(KEY(a)) && curAnim == "idle") {
 		ac->ChangeCur("fire", false);
 	}
 	else if (arrowReady && INPUT.IsKeyDown(KEY(s)) && curAnim == "idle") {
-		ac->ChangeCur("fire2",false);
+		ac->change_current("fire2",false);
 	}
-	//else if (              INPUT.KeyPress (KEY(s)) && curAnim == "idle")ac->ChangeCur("kick", false);
+	//else if (              INPUT.KeyPress (KEY(s)) && curAnim == "idle")ac->change_current("kick", false);
 	else {
 		if (!mem->ints["onAir"]) {
 			mem->ints["doubleJump"] = 0;
@@ -1096,7 +1147,7 @@ void PlayerControlFunc(GameObject* go, float time) {
 			else speed.y = -750.0f;
 			mem->ints["doubleJump"] = mem->ints["onAir"];
 			mem->ints["onAir"] = 1;
-			//ac->ChangeCur("jump");
+			//ac->change_current("jump");
 		}
 
 		if (INPUT.IsKeyDown(KEY_LEFT) && !INPUT.IsKeyDown(KEY_RIGHT))
@@ -1108,13 +1159,13 @@ void PlayerControlFunc(GameObject* go, float time) {
 
 
 	if (equals(speed.x,0)) {
-		if (curAnim == "walk")ac->ChangeCur("idle");
+		if (curAnim == "walk")ac->change_current("idle");
 	}
 	else{
-		if (curAnim == "idle")ac->ChangeCur("walk");
+		if (curAnim == "idle")ac->change_current("walk");
 		if ((speed.x < 0 && go->flipped) || (speed.x>0 && !go->flipped)) {
 			go->flipped = !go->flipped;
-			// ac->ChangeCur("flipped",false);
+			// ac->change_current("flipped",false);
 		}
 	}
 }
@@ -1182,7 +1233,7 @@ uint GameObject::MakePlayer(const Vec2 &pos) {
 	coll.colls[0].useDefault[CompCollider::collType::t_any]=PlayerBlockCollision;
 
 	CompAnimControl* animControl = new CompAnimControl{"player",&coll};
-	Vec2 size{(float)animControl->GetCur().sp.GetWidth(),(float)animControl->GetCur().sp.GetHeight()};
+	Vec2 size{(float)animControl->get_current().sp.GetWidth(),(float)animControl->get_current().sp.GetHeight()};
 	player->AddComponent(animControl);
 
 
@@ -1282,7 +1333,7 @@ uint GameObject::MakeMike(const Vec2 &pos) {
 	coll.colls[0].useDefault[CompCollider::collType::t_monster]=EmptyCollision;
 
 	CompAnimControl* animControl = new CompAnimControl{"mike",&coll};
-	Vec2 size{(float)animControl->GetCur().sp.GetWidth(),(float)animControl->GetCur().sp.GetHeight()};
+	Vec2 size{(float)animControl->get_current().sp.GetWidth(),(float)animControl->get_current().sp.GetHeight()};
 	mike->AddComponent(animControl);
 
 	mike->AddComponent(new CompMovement{});
@@ -1320,7 +1371,7 @@ uint GameObject::MakeBanshee(const Vec2 &pos,const Vec2 &pos2) {
 	coll.colls[0].useDefault[CompCollider::collType::t_monster]=EmptyCollision;
 
 	CompAnimControl* animControl = new CompAnimControl{"banshee",&coll};
-	Vec2 size{(float)animControl->GetCur().sp.GetWidth(),(float)animControl->GetCur().sp.GetHeight()};
+	Vec2 size{(float)animControl->get_current().sp.GetWidth(),(float)animControl->get_current().sp.GetHeight()};
 	banshee->AddComponent(animControl);
 
 	banshee->AddComponent(new CompMovement{});
@@ -1362,7 +1413,7 @@ uint GameObject::MakeMask(const Vec2 &pos) {
 	coll.colls[0].useDefault[CompCollider::collType::t_monster]=EmptyCollision;
 
 	CompAnimControl* animControl = new CompAnimControl{"mascara",&coll};
-	Vec2 size{(float)animControl->GetCur().sp.GetWidth(),(float)animControl->GetCur().sp.GetHeight()};
+	Vec2 size{(float)animControl->get_current().sp.GetWidth(),(float)animControl->get_current().sp.GetHeight()};
 	mask->AddComponent(animControl);
 
 	mask->AddComponent(new CompMovement{});
@@ -1396,7 +1447,7 @@ uint GameObject::MakePorco(const Vec2 &pos) {
 	coll.colls[0].useDefault[CompCollider::collType::t_monster]=EmptyCollision;
 
 	CompAnimControl* animControl = new CompAnimControl{"porco",&coll};
-	Vec2 size{(float)animControl->GetCur().sp.GetWidth(),(float)animControl->GetCur().sp.GetHeight()};
+	Vec2 size{(float)animControl->get_current().sp.GetWidth(),(float)animControl->get_current().sp.GetHeight()};
 	pumba->AddComponent(animControl);
 
 	pumba->AddComponent(new CompMovement{});
