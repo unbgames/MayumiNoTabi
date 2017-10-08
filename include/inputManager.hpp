@@ -21,8 +21,8 @@
 #define MBUTTON_RIGHT   SDL_BUTTON_RIGHT
 #define MBUTTON_MIDDLE  SDL_BUTTON_MIDDLE
 
-#define INPUT InputManager::GetInstance()
-#define MOUSE INPUT.GetMouse()
+#define INPUT InputManager::get_input_manager_instance()
+#define MOUSE INPUT.get_mouse_position()
 
 class InputManager{
     bitset<6> mouse_current_state;//vetor de 6 booleanos //bitset ocupa o menor numero de bytes possivel(char para < 8 bits)
@@ -32,7 +32,7 @@ class InputManager{
     int update_counter=0;
     Vec2 mouse_position;
     bool mouse_is_moving;
-    
+
     string* text=nullptr;
     uint text_cursor;
     Timer text_cursor_blinker;
@@ -57,12 +57,12 @@ public:
     Vec2 get_mouse_position();
     int get_mouse_x_position();
     int get_mouse_y_position();
-    
+
     void start_text_input(string* t);
     void stop_text_input(string* t);
     uint get_text_cursor_position();
     bool text_cursor_blink();
- 
+
 
     bool get_quit_requested();
 

@@ -50,20 +50,20 @@ GUI_Button::GUI_Button(uint a,const Vec2& pos):GUI_Element(pos),action{a}{
 }
 
 void GUI_Button::Update() {
-	if (GUI.IsButtonSelected(this)) return;
-	else if (GUI.IsButtonDown()) return;
+	if (gui.gui_button_is_selected(this)) return;
+	else if (gui.gui_button_is_down()) return;
 	
 	Rect button = box;
 	CLIP_RECT(button, DEFAULT_MARGIN);
-	hover=button.contains(INPUT.GetMouse());
+	hover=button.contains(INPUT.get_mouse_position());
 	if (hover) {
-		GUI.SelectButton(this);
-		if (INPUT.MousePress(MBUTTON_LEFT)) {
+		gui.select_gui_button(this);
+		if (INPUT.mouse_button_pressed(MBUTTON_LEFT)) {
 			press = true;
 			return;
 		}
 	}
-	if (press && INPUT.MouseRelease(MBUTTON_LEFT)) {
+	if (press && INPUT.mouse_button_released(MBUTTON_LEFT)) {
 		press = false;
 	}
 }
@@ -102,17 +102,17 @@ GUI_CheckButton::GUI_CheckButton(bool& v,const Vec2& pos):GUI_Button(GUI_NONE,po
 }
 
 void GUI_CheckButton::Update() {
-	if (GUI.IsButtonSelected(this)) return;
-	else if (GUI.IsButtonDown()) return;
+	if (gui.gui_button_is_selected(this)) return;
+	else if (gui.gui_button_is_down()) return;
 	
 	Rect button = box;
 	CLIP_RECT(button, DEFAULT_MARGIN*2);
-	hover=button.contains(INPUT.GetMouse());
+	hover=button.contains(INPUT.get_mouse_position());
 	if (hover) {
-		GUI.SelectButton(this);
-		if (INPUT.MousePress(MBUTTON_LEFT))	press = true;
+		gui.select_gui_button(this);
+		if (INPUT.mouse_button_pressed(MBUTTON_LEFT))	press = true;
 	}
-	if (press && INPUT.MouseRelease(MBUTTON_LEFT)) {
+	if (press && INPUT.mouse_button_released(MBUTTON_LEFT)) {
 		if (hover) {
 			value = !value;
 		}
@@ -170,25 +170,25 @@ GUI_InputBox::GUI_InputBox(const Vec2& pos,Size s):GUI_Button(GUI_NONE,pos),text
 	text.SetAlignment(Text::Align::LEFT);
 }
 GUI_InputBox::~GUI_InputBox() {
-		INPUT.StopTextInput(&input);
+		INPUT.stop_text_input(&input);
 }
 
 void GUI_InputBox::Update() {
-	if (GUI.IsButtonSelected(this)) return;
-	else if (GUI.IsButtonDown()) return;
+	if (gui.gui_button_is_selected(this)) return;
+	else if (gui.gui_button_is_down()) return;
 	
 	Rect button = box;
 	CLIP_RECT(button, DEFAULT_MARGIN);
-	hover=button.contains(INPUT.GetMouse());
+	hover=button.contains(INPUT.get_mouse_position());
 	bool closed = false;
 	if (hover)
-		GUI.SelectButton(this);
+		gui.select_gui_button(this);
 		
-	if (INPUT.MousePress(MBUTTON_LEFT)) {
+	if (INPUT.mouse_button_pressed(MBUTTON_LEFT)) {
 		if (!press) {
 			if (hover) {
 				press = true;
-				INPUT.StartTextInput(&input);
+				INPUT.start_text_input(&input);
 			}
 		}
 		else if (!hover) {
@@ -197,9 +197,9 @@ void GUI_InputBox::Update() {
 	}
 	if (!press) return;
 	
-	if (closed || INPUT.KeyPress(KEY_ENTER)) {
+	if (closed || INPUT.key_pressed(KEY_ENTER)) {
 		press = false;
-		INPUT.StopTextInput(&input);
+		INPUT.stop_text_input(&input);
 		while (input[0] == ' ')
 			input.erase(0,1);
 		while (input[input.size()-1] == ' ')
@@ -208,9 +208,9 @@ void GUI_InputBox::Update() {
 			SetValue();
 		input.clear();
 	}
-	else if (INPUT.KeyPress(KEY_ESC)) {
+	else if (INPUT.key_pressed(KEY_ESC)) {
 		press = false;
-		INPUT.StopTextInput(&input);
+		INPUT.stop_text_input(&input);
 		input.clear();
 	}
 }
@@ -243,7 +243,7 @@ void GUI_InputBox::Render() {
 		else offset = 0;
 		
 		Vec2 cursor(rect.x-offset,rect.y+2);
-		int c = INPUT.GetTextCursor();
+		int c = INPUT.get_text_cursor_position();
 		if (c>0) {
 			text.SetText(input.substr(0,c));
 			cursor.x+=(text.GetBox().w-1);
@@ -258,7 +258,7 @@ void GUI_InputBox::Render() {
 			cursor.x = rect.x;
 		}
 		
-		if (INPUT.TextCursorBlink())
+		if (INPUT.text_cursor_blink())
 			DRAW_LINE(cursor.x,cursor.y,cursor.x,cursor.y+DEFAULT_FONT_SIZE);
 		
 		text.SetText(input);
@@ -331,7 +331,7 @@ GUI_Array::~GUI_Array() {
 }
 
 void GUI_Array::Update() {
-	Vec2 mouse = INPUT.GetMouse();
+	Vec2 mouse = INPUT.get_mouse_position();
 	for (auto it=array.rbegin();it!=array.rend();it++) {
 		GUI_Element& element = **it;
 		if (&element && element.GetBox().contains(mouse) && element.IsVisible()) {
@@ -458,26 +458,26 @@ GUI_Window::GUI_Window(vector<GUI_Element*>& v,int i,const string& l,const Vec2&
 	
 	label.SetHotspot(LEFT);
 	
-	GUI.SelectWindow(this);
+	GUI.select_gui_window(this);
 }
 
 void GUI_Window::Update() {
 	if (pop) {
-		GUI.RequestPop(this);
+		GUI.request_gui_element_pop(this);
 		return;
 	}
 	
-	bool hover=box.contains(INPUT.GetMouse());
+	bool hover=box.contains(INPUT.get_mouse_position());
 	if (!hover) { 
-		if (INPUT.MousePress(MBUTTON_LEFT))
-			GUI.SelectWindow(nullptr);
+		if (INPUT.mouse_button_pressed(MBUTTON_LEFT))
+			GUI.select_gui_window(nullptr);
 		return;
 	}
 	
-	if (INPUT.MousePress(MBUTTON_LEFT))
-		GUI.SelectWindow(this);
+	if (INPUT.mouse_button_pressed(MBUTTON_LEFT))
+		GUI.select_gui_window(this);
 	closeButton.Update();
-	if (GUI.ButtonClick(GUI_CLOSE)||GUI.ButtonClick(GUI_CONFIRM)||GUI.ButtonClick(GUI_DENY))
+	if (GUI.gui_button_was_clicked(GUI_CLOSE)||GUI.gui_button_was_clicked(GUI_CONFIRM)||GUI.gui_button_was_clicked(GUI_DENY))
 		pop = true;
 	array.Update();
 }

@@ -20,7 +20,7 @@ Sprite::~Sprite() {}
 void Sprite::Open(const string& file,int fCountX,int fCountY,float fTime,int fCount) {
 	if (fCount==-1)fCount=fCountX*fCountY;
 
-	texture = Resources::GetImage(file);
+	texture = Resources::game_get_image(file);
 	if (SDL_QueryTexture(texture.get(),nullptr,nullptr,&width,&height)) {
 		cerr << "Erro ao carregar as dimensões da textura \"" << file << "\", o programa ira encerrar agora" << endl;
 		exit(EXIT_FAILURE);

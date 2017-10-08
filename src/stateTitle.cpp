@@ -28,13 +28,13 @@ void StateTitle::Begin() {
 }
 
 void StateTitle::Update(float time) {
-	if (INPUT.QuitRequested() || INPUT.KeyPress(KEY_ESC)) quitRequested=true;
+	if (INPUT.get_quit_requested() || INPUT.key_pressed(KEY_ESC)) quit_requested=true;
 
-	if (INPUT.KeyPress(KEY_SPACE)) {
+	if (INPUT.key_pressed(KEY_SPACE)) {
 		bt2.SetFrame(1);
 		GAMEINST.Push(new StateStage{"level_0"});
 	}
-	if (INPUT.KeyPress(KEY(e))) {
+	if (INPUT.key_pressed(KEY(e))) {
 		bt1.SetFrame(1);
 		GAMEINST.Push(new StateEditor{});
 	}

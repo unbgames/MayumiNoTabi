@@ -82,7 +82,7 @@ void Camera::Update(float time) {
   Vec2 center = pos + (WINSIZE/2/zoom); //!< Newvalue for center
 
       // Zooms in if z key is pressed
-      if (INPUT.IsKeyDown(KEY(z)))
+      if (INPUT.key_is_down(KEY(z)))
   {
     zoom += 0.5 * time;
     zoom = min(zoom,MAX_ZOOM);
@@ -91,7 +91,7 @@ void Camera::Update(float time) {
   }
 
   // Zooms out if x key is pressed
-  if (INPUT.IsKeyDown(KEY(x))) {
+  if (INPUT.key_is_down(KEY(x))) {
     zoom -= 0.5 * time;
     zoom = max(zoom,MIN_ZOOM);
 
@@ -111,25 +111,25 @@ void Camera::Update(float time) {
 
     // defines camera speed according to the arrow key that has been pressed.
     // (left)
-    if (INPUT.IsKeyDown(KEY_LEFT)) {
+    if (INPUT.key_is_down(KEY_LEFT)) {
       speed.x -= CAMERA_SPEED;
     }
 
     // defines camera speed according to the arrow key that has been pressed.
     // (right)
-    if (INPUT.IsKeyDown(KEY_RIGHT)){
+    if (INPUT.key_is_down(KEY_RIGHT)){
       speed.x += CAMERA_SPEED;
     }
 
     // defines camera speed according to the arrow key that has been pressed.
     // (up)
-    if (INPUT.IsKeyDown(KEY_UP)) {
+    if (INPUT.key_is_down(KEY_UP)) {
       speed.y -= CAMERA_SPEED;
     }
 
     // defines camera speed according to the arrow key that has been pressed.
     // (down)
-    if (INPUT.IsKeyDown(KEY_DOWN)) {
+    if (INPUT.key_is_down(KEY_DOWN)) {
       speed.y += CAMERA_SPEED;
     }
 

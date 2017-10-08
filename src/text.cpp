@@ -124,7 +124,7 @@ void Text::SetStyle(Style st) {
 
 void Text::SetFontSize(int fSize) {
 	fontSize=fSize;
-	font = Resources::GetFont(fontName,fontSize);
+	font = Resources::game_get_font(fontName,fontSize);
 	RemakeTexture();
 }
 

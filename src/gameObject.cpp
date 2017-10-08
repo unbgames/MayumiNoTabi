@@ -211,18 +211,18 @@ template<int atkDist,int seeDist, int id> void HostileAIfunc(CompAI* ai,float ti
 			if (dist < atkDist) {
                 state=CompAI::state::attacking;
                 if (id == 1) { // Mike
-                    music.Open("audio/mike-hit-chao.wav");
-                    music.Play(1);
+                    music.open_music_file("audio/mike-hit-chao.wav");
+                    music.play_music(1);
                 } else { // Mask
-                    music.Open("audio/alma-firebal.wav");
-                    music.Play(1);
+                    music.open_music_file("audio/alma-firebal.wav");
+                    music.play_music(1);
                 }
 			} else {
                 state=CompAI::state::walking;
                 ac->ChangeCur("walk");
                 if (id == 1) { // Mike
-                    music.Open("audio/mike-arrastando-clava.wav");
-                    music.Play(1);
+                    music.open_music_file("audio/mike-arrastando-clava.wav");
+                    music.play_music(1);
                 }
 			}
 			cd.Restart();
@@ -232,7 +232,7 @@ template<int atkDist,int seeDist, int id> void HostileAIfunc(CompAI* ai,float ti
 	else if (state == CompAI::state::walking) {
 		CompMovement *movement = COMPMOVEp(GO(ai->entity));
 		if (id == 1) // Mike
-			music.Open("audio/mike-arrastando-clava.wav");
+			music.open_music_file("audio/mike-arrastando-clava.wav");
 		if (al.Get() > 10 && cd.Get() > 5) {
 			state=CompAI::state::looking;
 			movement->speed.x = 0;
@@ -257,11 +257,11 @@ template<int atkDist,int seeDist, int id> void HostileAIfunc(CompAI* ai,float ti
 
 				state=CompAI::state::attacking;
 				if (id == 1) { // Mike
-                    music.Open("audio/mike-hit-chao.wav");
-                    music.Play(1);
+                    music.open_music_file("audio/mike-hit-chao.wav");
+                    music.play_music(1);
                 } else { // Mask
-                    music.Open("audio/alma-firebal.wav");
-                    music.Play(1);
+                    music.open_music_file("audio/alma-firebal.wav");
+                    music.play_music(1);
                 }
 				movement->speed.x=0;
 				ac->ChangeCur("idle");
@@ -317,8 +317,8 @@ void PassiveAIfunc(CompAI* ai,float time) {
 	if (state==CompAI::state::idling) {
 		if (cd.Get()>0.5f) {
 			state=CompAI::state::walking;
-			music.Open("audio/banshee-vozes-1.wav");
-            music.Play(1);
+			music.open_music_file("audio/banshee-vozes-1.wav");
+            music.play_music(1);
 			ac->ChangeCur("walk");
 		}
 	}
@@ -389,8 +389,8 @@ template<int atkDist,int seeDist,int stCD,int atkCount,int stompCount> void Pumb
 	if (state==CompAI::state::idling) {
 		if ((alerted || cd.Get() > 3) && target != nullptr) {
 			state=CompAI::state::looking;
-			music.Open("audio/porco-grunhido-3.wav");
-			music.Play(1);
+			music.open_music_file("audio/porco-grunhido-3.wav");
+			music.play_music(1);
 			cd.Restart();
 			return;
 		}
@@ -413,15 +413,15 @@ template<int atkDist,int seeDist,int stCD,int atkCount,int stompCount> void Pumb
 			if (dist < 2*atkDist && stompCD.Get()>stCD) {
 				state=CompAI::state::stomping;
 				ac->ChangeCur("stomp");
-				music.Open("audio/porco-pisada.wav");
-				music.Play(1);
+				music.open_music_file("audio/porco-pisada.wav");
+				music.play_music(1);
 			}
 			else if (dist < atkDist)state=CompAI::state::attacking;
 			else {
                 state=CompAI::state::walking;
                 ac->ChangeCur("walk");
-                music.Open("audio/porco-walking-grunhido.wav");
-                music.Play(1);
+                music.open_music_file("audio/porco-walking-grunhido.wav");
+                music.play_music(1);
 			}
 			cd.Restart();
 			return;
@@ -454,8 +454,8 @@ template<int atkDist,int seeDist,int stCD,int atkCount,int stompCount> void Pumb
 				state=CompAI::state::stomping;
 				move->speed.x=0;
 				ac->ChangeCur("stomp");
-				music.Open("audio/porco-pisada.wav");
-				music.Play(1);
+				music.open_music_file("audio/porco-pisada.wav");
+				music.play_music(1);
 				cd.Restart();
 			}
 			else if (dist < atkDist+abs(move->speed.x)*time) {
@@ -464,8 +464,8 @@ template<int atkDist,int seeDist,int stCD,int atkCount,int stompCount> void Pumb
 
 				if (cd.Get()<1.5) {
                     state=CompAI::state::attacking;
-                    music.Open("audio/porco-investida-1.wav");
-                    music.Play(1);
+                    music.open_music_file("audio/porco-investida-1.wav");
+                    music.play_music(1);
                     ac->ChangeCur("idle");
 				} else            state=CompAI::state::charging, ac->ChangeCur("charge",false);
 				move->speed.x=0;
@@ -494,8 +494,8 @@ template<int atkDist,int seeDist,int stCD,int atkCount,int stompCount> void Pumb
 			float dist = GO(ai->entity)->Box().distEdge(target->Box()).x;
 			if (dist > atkDist) {
 				state=CompAI::state::looking;
-				music.Open("audio/porco-grunhido-3.wav");
-                music.Play(1);
+				music.open_music_file("audio/porco-grunhido-3.wav");
+                music.play_music(1);
 				attacked=0;
 				ac->ChangeCur("idle");
 				cd.Restart();
@@ -511,8 +511,8 @@ template<int atkDist,int seeDist,int stCD,int atkCount,int stompCount> void Pumb
 	else if (state==CompAI::state::stomping) {
 		if (attacked>stompCount) {
 			state=CompAI::state::attacking;
-			music.Open("audio/porco-investida-1.wav");
-            music.Play(1);
+			music.open_music_file("audio/porco-investida-1.wav");
+            music.play_music(1);
 			attacked=0;
 			ac->ChangeCur("idle");
 			cd.Restart();
@@ -524,8 +524,8 @@ template<int atkDist,int seeDist,int stCD,int atkCount,int stompCount> void Pumb
 				state=CompAI::state::looking;
 				attacked=0;
 				ac->ChangeCur("idle");
-				music.Open("audio/porco-grunhido-3.wav");
-                music.Play(1);
+				music.open_music_file("audio/porco-grunhido-3.wav");
+                music.play_music(1);
 				cd.Restart();
 				return;
 			}
@@ -563,8 +563,8 @@ template<int atkDist,int seeDist,int stCD,int atkCount,int stompCount> void Pumb
 				cd.Restart();
 				state=CompAI::state::looking;
 				ac->ChangeCur("idle");
-				music.Open("audio/porco-grunhido-3.wav");
-                music.Play(1);
+				music.open_music_file("audio/porco-grunhido-3.wav");
+                music.play_music(1);
 			}
 			else if (dist < 2*atkDist+abs(move->speed.x)*time && cd.Get()<1.5 && stompCD.Get() > stCD) {
 				move->speed.x=0;
@@ -574,8 +574,8 @@ template<int atkDist,int seeDist,int stCD,int atkCount,int stompCount> void Pumb
 				state=CompAI::state::stomping;
 				cd.Restart();
 				ac->ChangeCur("stomp");
-				music.Open("audio/porco-pisada.wav");
-				music.Play(1);
+				music.open_music_file("audio/porco-pisada.wav");
+				music.play_music(1);
 			}
 			else if (dist <   atkDist+abs(move->speed.x)*time) {
 				move->speed.x=0;
@@ -585,8 +585,8 @@ template<int atkDist,int seeDist,int stCD,int atkCount,int stompCount> void Pumb
 				cd.Restart();
 				if (cd.Get()<1.5) {
                     state=CompAI::state::attacking;
-                    music.Open("audio/porco-grunhido-3.wav");
-                    music.Play(1);
+                    music.open_music_file("audio/porco-grunhido-3.wav");
+                    music.play_music(1);
                     ac->ChangeCur("idle");
 				} else            state=CompAI::state::charging, ac->ChangeCur("charge");
 			}
@@ -606,8 +606,8 @@ template<int atkDist,int seeDist,int stCD,int atkCount,int stompCount> void Pumb
 			cd.Restart();
 			state=CompAI::state::looking;
 			ac->ChangeCur("idle");
-			music.Open("audio/porco-grunhido-3.wav");
-            music.Play(1);
+			music.open_music_file("audio/porco-grunhido-3.wav");
+            music.play_music(1);
 			return;
 		}
 		else{
@@ -628,8 +628,8 @@ template<int atkDist,int seeDist,int stCD,int atkCount,int stompCount> void Pumb
 			stompCD.Restart();
 			state=CompAI::state::looking;
 			ac->ChangeCur("idle");
-			music.Open("audio/porco-grunhido-3.wav");
-            music.Play(1);
+			music.open_music_file("audio/porco-grunhido-3.wav");
+            music.play_music(1);
 		}
 	}
 	else if (state==CompAI::state::charging) {
@@ -661,12 +661,12 @@ void PlayerControlFunc(GameObject* go, float time) {
 	// if (mem->timers["stunned"].Get() < 0.5)return;
 
 	if (curAnim == "kick" || curAnim == "fire" || curAnim == "fire2")return;
-	if     (arrowReady && INPUT.IsKeyDown(KEY(a)) && curAnim == "idle")ac->ChangeCur("fire", false);
-	else if (arrowReady && INPUT.IsKeyDown(KEY(s)) && curAnim == "idle")ac->ChangeCur("fire2",false);
-	//else if (              INPUT.KeyPress (KEY(s)) && curAnim == "idle")ac->ChangeCur("kick", false);
+	if     (arrowReady && INPUT.key_is_down(KEY(a)) && curAnim == "idle")ac->ChangeCur("fire", false);
+	else if (arrowReady && INPUT.key_is_down(KEY(s)) && curAnim == "idle")ac->ChangeCur("fire2",false);
+	//else if (              INPUT.key_pressed (KEY(s)) && curAnim == "idle")ac->ChangeCur("kick", false);
 	else{
 		if (!mem->ints["onAir"])mem->ints["doubleJump"]=0;
-		if (INPUT.KeyPress(KEY_UP) && !mem->ints["doubleJump"]) {
+		if (INPUT.key_pressed(KEY_UP) && !mem->ints["doubleJump"]) {
 			if (!mem->ints["onAir"])speed.y=-1000.0f;
 			else speed.y=-750.0f;
 			mem->ints["doubleJump"]=mem->ints["onAir"];
@@ -674,9 +674,9 @@ void PlayerControlFunc(GameObject* go, float time) {
 			//ac->ChangeCur("jump");
 		}
 
-		if (INPUT.IsKeyDown(KEY_LEFT) && !INPUT.IsKeyDown(KEY_RIGHT))
+		if (INPUT.key_is_down(KEY_LEFT) && !INPUT.key_is_down(KEY_RIGHT))
 			speed.x=-400.0f;
-		else if (INPUT.IsKeyDown(KEY_RIGHT) && !INPUT.IsKeyDown(KEY_LEFT))
+		else if (INPUT.key_is_down(KEY_RIGHT) && !INPUT.key_is_down(KEY_LEFT))
 			speed.x= 400.0f;
 		else speed.x=0.0f;
 	}
@@ -774,7 +774,7 @@ uint GameObject::Create(const string& blueprint, const Vec2& pos, const Vec2& au
 	obj->size = size;
 
 	return obj->uid;
-	/*vector<string> components = Resources::GetBlueprint(blueprint);
+	/*vector<string> components = Resources::game_get_blueprint(blueprint);
 	stringstream comp;
 	string compType;
 	for (auto& i:components) {

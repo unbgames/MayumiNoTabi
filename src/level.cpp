@@ -314,7 +314,7 @@ void Level::save_level_objects(const vector<pair<ii,ii>>& grouped) {
 bool Level::operator==(Level& level) {
     
     //! TODO: Insert else to do nothing
-    if (Save() == level.Save()){ 
+    if (Save() == level.save_level_to_file()){ 
         return true;
     }
     return false;
