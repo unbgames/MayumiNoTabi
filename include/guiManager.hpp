@@ -28,6 +28,7 @@ public:
 	
 	void update_gui_elements();
 	void render_gui_elements();
+
 	
 	void push_gui_element(GUI_Element* element);
 	void request_gui_element_pop(GUI_Element* element);

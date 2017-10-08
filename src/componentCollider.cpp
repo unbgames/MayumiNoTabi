@@ -52,13 +52,12 @@ void CompCollider::CollisionCheck(CompCollider *other) {
 	for(Coll &collA:colls)for(Coll &collB:other->colls)collA.CollisionCheck(collB);
 
 /*!
-  * @fn CompCollider::CollisionCheck(CompCollider *other)
-	* @brief Verifies if an collision has happened
+  * @fn CompCollider::update(float time)
+	* @brief Updates the collision
   * @param float time
 */
 
-void CompCollider::Update(float time) {
-
+void CompCollider::update(float time) {
 	UNUSED(time);
 	//! Iterates throughout the collisons to update its range of verification
 	for(Coll &coll:colls) {
@@ -83,11 +82,12 @@ void CompCollider::Update(float time) {
 * @param No params
 */
 
-void CompCollider::Render() {
-	if(SETTINGS.showCollision)
+void CompCollider::render() {
+	if (SETTINGS.showCollision)
+		
 		//! Iterates throughout the Collision objects in order to update the rendering
-		for(Coll coll:colls){
-			//! TODO: Refactorate decision structures
+			for (Coll coll:colls) {
+      //! TODO: Refactorate decision structures
 			if     (coll.cType==CompCollider::collType::t_player) SET_COLOR4(255,0,0,100);
 			else if (coll.cType==CompCollider::collType::t_monster)SET_COLOR4(0,255,0,100);
 			else if (coll.cType==CompCollider::collType::t_bullet) SET_COLOR4(0,0,255,100);
@@ -99,17 +99,18 @@ void CompCollider::Render() {
 };
 
 /*!
-  * @fn CompCollider::Own()
+  * @fn CompCollider::own()
 	* @brief Verifies if an Object has an collision associated to it
 	* @param GameObject *go
 */
 
-void CompCollider::Own(GameObject *go) {
+void CompCollider::own(GameObject *go) {
 	entity = go->uid;
   //! Verifies if the element is empty or not
 	if(go != nullptr) {
 		//! Verifies the size of the collisions
 		if(colls.size()) {
+
 			Rect r{};
 			//! Verifies if the element size is equal to the collisions size
 			for(Coll coll:colls)r = r.sum(Rect{coll.pos,coll.size});
@@ -129,7 +130,7 @@ void CompCollider::Own(GameObject *go) {
 	* @param float time
 */
 
-bool CompCollider::Die(float time) {
+bool CompCollider::kills_component(float time) {
 	UNUSED(time);
   //! Checks if the component has a type associated to it
 	if(GO(entity)->HasComponent(Component::type::t_animation))return true;
@@ -138,12 +139,12 @@ bool CompCollider::Die(float time) {
 }
 
 /*!
-  * @fn Component::type CompCollider::GetType()
+  * @fn Component::type CompCollider::get_type() const{
 	* @brief Returns the component assigned type
   * @param No params
 */
 
-Component::type CompCollider::GetType() const {
+Component::type CompCollider::get_type() const{
 	return Component::type::t_collider;
 }
 

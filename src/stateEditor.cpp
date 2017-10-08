@@ -61,6 +61,7 @@ void StateEditor::LoadAssets() {}
 
 void StateEditor::Begin() {
 	LoadGUI();
+  
 	level.load_level_from_file(fileName);
 	level.load_level_objects(false);
 
@@ -69,14 +70,14 @@ void StateEditor::Begin() {
 	SETTINGS.showHP = false;
 	SETTINGS.showCollision = false;
 
-	helpText.SetPos(0,0);
-	statusText.SetPos(WINSIZE-Vec2(0,0));
-	statusText.SetAlignment(Text::Align::RIGHT);
-	statusText.SetHotspot(Hotspot::BOTTOM_RIGHT);
+	helpText.set_box_position(0,0);
+	statusText.set_box_position(WINSIZE-Vec2(0,0));
+	statusText.set_alignment(Text::Align::RIGHT);
+	statusText.set_hotspot(Hotspot::BOTTOM_RIGHT);
 }
 
-void StateEditor::Update(float time) {
-	Camera::Update(time);
+void StateEditor::update(float time) {
+	Camera::update(time);
 	gui.update_gui_elements();
 	if (INPUT.get_quit_requested() || gui.gui_button_was_clicked(EXIT_GAME)) {
 		quit_requested = true;
@@ -92,6 +93,7 @@ void StateEditor::Update(float time) {
 		}
 
 		int tileCount = level.level_tile_set.GetTileCount();
+    
 		//Select next tile
 		if (INPUT.key_pressed(KEY(a))) tileIndex = (tileIndex + tileCount-1)%tileCount;
 		//Select previous tile
@@ -130,15 +132,15 @@ void StateEditor::Update(float time) {
 		//Toggle instructions menu
 		if (INPUT.key_pressed(KEY(h))) {
 			showHelp = (!showHelp);
-			if (showHelp) helpText.SetText(HELP_TEXT);
-			else helpText.SetText(HELP_TEXT_OPEN);
+			if (showHelp) helpText.set_text(HELP_TEXT);
+			else helpText.Set_text(HELP_TEXT_OPEN);
 		}
 		//Toggle collision boxes
 		if (INPUT.key_pressed(KEY(c)) || gui.gui_button_was_clicked(SHOW_COLLISION)) showCollision = (!showCollision);
 
 		//Save level
 		if (INPUT.key_pressed(KEY(s)) || gui.gui_button_was_clicked(SAVE_LEVEL)) SaveLevel();
-
+    
 		//Resize level
 		if (gui.gui_button_was_clicked(Action::RESIZE_LEVEL)) {
 			CreateWindow(RESIZE_LEVEL);
@@ -176,15 +178,15 @@ void StateEditor::Update(float time) {
 	}
 
 	//UpdateArray(time);
-
-	statusText.SetText("Mouse:("+to_string(INPUT.get_mouse_positionX())+","+to_string(INPUT.get_mouse_positionY())+")  Zoom:"+FloatToStr(100*CAMERAZOOM)+"%");
+	statusText.Set_text("Mouse:("+to_string(INPUT.get_mouse_positionX())+","+to_string(INPUT.get_mouse_positionY())+")  Zoom:"+convert_float_to_str(100*CAMERAZOOM)+"%");
 }
-void StateEditor::Render() {
+void StateEditor::render() {
 	RenderBackground();
 
 	//Tirei background daqui
-	//level.background.Render(RENDERPOSX(0), RENDERPOSY(0), 0, CAMERAZOOM);
-	level.level_tile_map.Render();
+	//level.background.render(RENDERPOSX(0), RENDERPOSY(0), 0, CAMERAZOOM);
+	level.level_tile_map.render();
+  
 	RenderArray();
 	if (showGrid) RenderGrid(gridWidth, gridHeight);
 	RenderBorder();
@@ -192,8 +194,8 @@ void StateEditor::Render() {
 	RenderCursor();
 
 	gui.render_gui_elements();
-	//helpText.Render();
-	statusText.Render();
+	//helpText.render();
+	statusText.render();
 }
 
 void StateEditor::Pause() {}
@@ -238,14 +240,15 @@ void StateEditor::RenderBorder() {
 	SDL_Rect rect;
 	rect.x = RENDERPOSX(0);
 	rect.y = RENDERPOSY(0);
+  
 	rect.w = (level.level_tile_map.GetWidth()*level.level_tile_set.GetWidth()*CAMERAZOOM);
 	rect.h = (level.level_tile_map.GetHeight()*level.level_tile_set.GetHeight()*CAMERAZOOM);
-
 	DRAW_RECT(&rect);
 }
 
 void StateEditor::RenderCursor() {
 	Vec2 cursor = GetCurrentTile();
+
 	int tileWidth = level.level_tile_set.GetWidth();
 	int tileHeight = level.level_tile_set.GetHeight();
 	int mapWidth = level.level_tile_map.GetWidth();
@@ -253,7 +256,7 @@ void StateEditor::RenderCursor() {
 
 	Rect canvas(0, 0, mapWidth-1, mapHeight-1);
 	if (canvas.contains(cursor)) {
-		level.level_tile_set.Render(tileIndex, RENDERPOSX(cursor.x*tileWidth), RENDERPOSY(cursor.y*tileHeight), CAMERAZOOM);
+		level.level_tile_set.render(tileIndex, RENDERPOSX(cursor.x*tileWidth), RENDERPOSY(cursor.y*tileHeight), CAMERAZOOM);
 
 		SET_COLOR(TILE_CURSOR_COLOR);
 
@@ -274,6 +277,7 @@ void StateEditor::RenderCollision() {
 	int mapHeight = level.level_tile_map.GetHeight();
 	int tileWidth = level.level_tile_set.GetWidth();
 	int tileHeight = level.level_tile_set.GetHeight();
+  
 	SDL_Rect rect;
 	rect.w = (tileWidth*CAMERAZOOM)+1;
 	rect.h = (tileHeight*CAMERAZOOM)+1;
@@ -291,6 +295,7 @@ void StateEditor::RenderCollision() {
 void StateEditor::Exit() {
 	Level savedLevel(fileName);
 	RecomputeCollisionRectangles();
+
 	level.save_level_objects(grouped);
 
 	if (level == savedLevel)

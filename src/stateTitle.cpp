@@ -27,23 +27,23 @@ void StateTitle::Begin() {
 	AddObject(text->uid);
 }
 
-void StateTitle::Update(float time) {
+void StateTitle::update(float time) {
 	if (INPUT.get_quit_requested() || INPUT.key_pressed(KEY_ESC)) quit_requested=true;
 
 	if (INPUT.key_pressed(KEY_SPACE)) {
-		bt2.SetFrame(1);
+		bt2.set_frame(1);
 		GAMEINST.Push(new StateStage{"level_0"});
 	}
 	if (INPUT.key_pressed(KEY(e))) {
-		bt1.SetFrame(1);
+		bt1.set_frame(1);
 		GAMEINST.Push(new StateEditor{});
 	}
 	UpdateArray(time);
 }
-void StateTitle::Render() {
-	bg.Render(0,0);
-	bt1.Render(500,300);
-	bt2.Render(100,300);
+void StateTitle::render() {
+	bg.render(0,0);
+	bt1.render(500,300);
+	bt2.render(100,300);
 	// RenderArray();
 }
 

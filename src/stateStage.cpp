@@ -27,7 +27,7 @@ void StateStage::Begin() {
 }
 
 void StateStage::Update(float time) {
-	Camera::Update(time);
+	Camera::update(time);
 	if (INPUT.get_quit_requested())quit_requested=true;
 	if (INPUT.key_pressed(KEY_ESC))popRequested=true;
 	
@@ -43,19 +43,20 @@ void StateStage::Update(float time) {
 
 	UpdateArray(time);
 }
-void StateStage::Render() {
-	level.background.Render(0, 0);
-	// floresta_bg1.Render(RENDERPOS(Vec2(0,0)));
-	// floresta_bg2.Render(RENDERPOS(Vec2(4433,0)));
-	// floresta_bg3.Render(RENDERPOS(Vec2(8465,0)));
-	floresta_bg2.Render(RENDERPOS(Vec2(0,0)));
-	floresta_bg2.Render(RENDERPOS(Vec2(4032*1,0)));
-	floresta_bg2.Render(RENDERPOS(Vec2(4032*2,0)));
-	floresta_bg2.Render(RENDERPOS(Vec2(4032*3,0)));
-	floresta_bg2.Render(RENDERPOS(Vec2(4032*4,0)));
-	floresta_bg2.Render(RENDERPOS(Vec2(4032*5,0)));
-	floresta_bg3.Render(RENDERPOS(Vec2(4032*6,0)));
-	level.level_tile_map.Render();
+
+void StateStage::render() {
+	level.background.render(0, 0);
+	// floresta_bg1.render(RENDERPOS(Vec2(0,0)));
+	// floresta_bg2.render(RENDERPOS(Vec2(4433,0)));
+	// floresta_bg3.render(RENDERPOS(Vec2(8465,0)));
+	floresta_bg2.render(RENDERPOS(Vec2(0,0)));
+	floresta_bg2.render(RENDERPOS(Vec2(4032*1,0)));
+	floresta_bg2.render(RENDERPOS(Vec2(4032*2,0)));
+	floresta_bg2.render(RENDERPOS(Vec2(4032*3,0)));
+	floresta_bg2.render(RENDERPOS(Vec2(4032*4,0)));
+	floresta_bg2.render(RENDERPOS(Vec2(4032*5,0)));
+	floresta_bg3.render(RENDERPOS(Vec2(4032*6,0)));
+	level.level_tile_map.render();
 	RenderArray();
 }
 

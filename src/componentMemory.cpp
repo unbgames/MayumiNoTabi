@@ -32,9 +32,9 @@ CompMemory::~CompMemory() {
   * @param No params
 */
 
-void CompMemory::Update(float time) {
+void CompMemory::update(float time) {
 	//! TODO: Refactorate decision strucuture
-	for(auto& t:timers)t.second.Update(time);
+	for(auto& t:timers)t.second.add_time(time);
 }
 
 /*!
@@ -43,17 +43,17 @@ void CompMemory::Update(float time) {
   * @param No params
 */
 
-void CompMemory::Render() {
+void CompMemory::render() {
 
 }
 
 /*!
-  * @fn Component::type CompMemory::GetType()
+  * @fn Component::type CompMemory::get_type()
 	* @brief Returns if the component is if the 'memory' type
   * @param No params
 	* @return Component::type::t_memory
 */
 
-Component::type CompMemory::GetType() const {
+Component::type CompMemory::get_type() const {
 	return Component::type::t_memory;
 }

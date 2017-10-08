@@ -99,8 +99,8 @@ void Level::load_level_from_file(const string& file) {
     level_tile_map.Load(file_input);
     
     //! Loading the collision layer
-    int level_map_width = level_tile_map.GetWidth();
-    int level_map_height = level_tile_map.GetHeight();
+    int level_map_width = level_tile_map.get_width();
+    int level_map_height = level_tile_map.get_height();
 
     level_collision_layer.clear();
     level_collision_layer.resize(level_map_width*level_map_height);
@@ -171,14 +171,14 @@ string Level::save_level_to_file(const string& file) {
     
     //! Saving the tileset:
     level_stream_out<<level_tile_set_filename<<endl;
-    level_stream_out<<level_tile_set.GetWidth()<<","<<level_tile_set.GetHeight()<<endl<<endl;
+    level_stream_out<<level_tile_set.get_width()<<","<<level_tile_set.get_height()<<endl<<endl;
     
     //! Saving the tilemap:
     level_tile_map.Save(level_stream_out);
     
     //! Saving the collision layer:
-    int level_map_width = level_tile_map.GetWidth();
-    int level_map_height = level_tile_map.GetHeight();
+    int level_map_width = level_tile_map.get_width();
+    int level_map_height = level_tile_map.get_height();
     FOR(y,level_map_height) {
         FOR(x,level_map_width) {
             char s[200];
@@ -231,11 +231,12 @@ void Level::load_level_objects(bool collisors) {
     if (!collisors) { 
         return;
     }
-    
-    int level_tile_width = level_tile_set.GetWidth(); //! <Tile level width
-    int level_tile_height = level_tile_set.GetHeight(); //! <Tile level Height
-    int level_map_width = level_tile_map.GetWidth(); //! <Map width
-    int level_map_height = level_tile_map.GetHeight(); //! <Map height
+
+  
+    int level_tile_width = level_tile_set.get_width(); //! <Tile level width
+    int level_tile_height = level_tile_set.get_height(); //! <Tile level Height
+    int level_map_width = level_tile_map.get_width(); //! <Map width
+    int level_map_height = level_tile_map.get_height(); //! <Map height
     map<int,pair<Rect,int>> mp;
 
     //! TODO: Understand this paragraph
@@ -287,8 +288,9 @@ void Level::load_level_objects(bool collisors) {
 void Level::save_level_objects(const vector<pair<ii,ii>>& grouped) {
     
     //! Saving the collision groups:
-    int level_map_width = level_tile_map.GetWidth(); //! <Level map width
-    int level_map_height = level_tile_map.GetHeight(); //! <Level map height 
+    int level_map_width = level_tile_map.get_width(); //! <Level map width
+    int level_map_height = level_tile_map.get_height(); //! <Level map height 
+
     int id=1;
     map<ii,int> ids;
     FOR(y,level_map_height) {

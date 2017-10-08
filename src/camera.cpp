@@ -21,180 +21,183 @@
 #define MIN_ZOOM 0.2f			// unit:
 
 // uint is actually the short for unsigned int
-uint Camera::focus = 0; //!<  Global variable defining camera focus value
+uint Camera::camera_focus = 0; //!<  Global variable defining camera focus value
 
-Vec2 Camera::pos;         //!<  Global variable defining camera pos
-Vec2 Camera::speed;       //!<  Global variable defining camera speed
-Vec2 Camera::sz{100, 50}; //!<  Global variable defining camera size
+Vec2 Camera::camera_position;         //!<  Global variable defining camera pos
+Vec2 Camera::camera_speed;       //!<  Global variable defining camera speed
+Vec2 Camera::camera_size{100, 50}; //!<  Global variable defining camera size
 
-float Camera::zoom = 1.0f; //!< Global variable defining camera zoom
+float Camera::camera_zoom = 1.0f; //!< Global variable defining camera zoom
 
-bool Camera::lock = false;      //!< Global variable defining camera lock
-bool Camera::following = false; //!< Global variable defining camera follow stat
+bool Camera::camera_is_locked = false; //!< Global variable defining camera lock
+bool Camera::camera_is_following = false; //!< Global variable defining camera
+                                       //!< behavior
 
 /*!
-  @fn       void Camera::Follow(uint newFocus)
+  @fn       void Camera::follow(uint new_focus)
   @brief    Method that defines the camera's focus to follow
-  @param    uint newFocus
+  @param    uint new_focus
   @return   void
   @warning  none
 */
 
-void Camera::Follow(uint newFocus) { // Range: bigger than 0
-  following = true;
-  focus = newFocus;
+void Camera::follow(uint new_focus) { // Range: bigger than 0
+  camera_is_following = true;
+  camera_focus = new_focus;
 }
 
 /*!
-  @fn       void Camera::Unfollow()
+  @fn       void Camera::unfollow()
   @brief    Method that defines the camera's focus not to follow
   @param    none
   @return   void
   @warning  none
 */
 
-void Camera::Unfollow() {
-  following = false;
+void Camera::unfollow() {
+  camera_is_following = false;
 }
 
 /*!
-  @fn       uint CompTimer::GetFocus()
+  @fn       uint CompTimer::get_camera_focus()
   @brief    Method that returns the camera's focus value
   @param    none
   @return   unsigned int focus value
   @warning  none
 */
 
-uint Camera::GetFocus() {
-  return focus;
+uint Camera::get_camera_focus() {
+  return camera_focus;
 }
 
 
 /*!
-  @fn       void Camera::Update(float time)
+  @fn       void Camera::update_camera(float time)
   @brief    Updates the camera
   @param    float time
   @return   void
   @warning  TODO in decision structure
 */
 
-void Camera::Update(float time) {
-  Vec2 center = pos + (WINSIZE/2/zoom); //!< Newvalue for center
+void Camera::update_camera(float time) {
+  Vec2 center = camera_position + (WINSIZE/2/camera_zoom); //!< Newvalue for center
 
       // Zooms in if z key is pressed
       if (INPUT.key_is_down(KEY(z)))
   {
-    zoom += 0.5 * time;
-    zoom = min(zoom,MAX_ZOOM);
+    camera_zoom += 0.5 * time;
+    camera_zoom = min(camera_zoom, MAX_ZOOM);
 
-    //cout<<"zoom: "<<zoom<<endl;
+    //cout<<"camera_zoom: "<<camera_zoom<<endl;
   }
 
   // Zooms out if x key is pressed
-  if (INPUT.key_is_down(KEY(x))) {
-    zoom -= 0.5 * time;
-    zoom = max(zoom,MIN_ZOOM);
 
-    //cout<<"zoom: "<<zoom<<endl;
+  if (INPUT.key_is_down(KEY(x))) {
+    camera_zoom -= 0.5 * time;
+    camera_zoom = max(camera_zoom, MIN_ZOOM);
+
+    //cout<<"camera_zoom: "<<camera_zoom<<endl;
   }
 
   // Centers screen
-  CenterTo(center);
+  center_camera_to(center);
 
   // TODO: add else(do nothing)
   // Defines camera position in either follow or static or do nothing
-  if (following) {
-    CenterTo(GO(focus)->Box().center());
+  if (camera_is_following) {
+    center_camera_to(GO(camera_focus)->Box().center());
   }
-  else if (!lock) {
-    speed = Vec2(0,0);
+  else if (!camera_is_locked) {
+    camera_speed = Vec2(0,0);
 
     // defines camera speed according to the arrow key that has been pressed.
     // (left)
     if (INPUT.key_is_down(KEY_LEFT)) {
-      speed.x -= CAMERA_SPEED;
+      camera_speed.x -= CAMERA_SPEED;
     }
 
     // defines camera speed according to the arrow key that has been pressed.
     // (right)
     if (INPUT.key_is_down(KEY_RIGHT)){
-      speed.x += CAMERA_SPEED;
+      camera_speed.x += CAMERA_SPEED;
     }
 
     // defines camera speed according to the arrow key that has been pressed.
     // (up)
     if (INPUT.key_is_down(KEY_UP)) {
-      speed.y -= CAMERA_SPEED;
+      camera_speed.y -= CAMERA_SPEED;
     }
 
     // defines camera speed according to the arrow key that has been pressed.
     // (down)
     if (INPUT.key_is_down(KEY_DOWN)) {
-      speed.y += CAMERA_SPEED;
+      camera_speed.y += CAMERA_SPEED;
     }
 
     // TODO: math refactoring
-    speed /= zoom;
-    speed *= time;
-    pos += speed;
+    camera_speed /= camera_zoom;
+    camera_speed *= time;
+    camera_position += camera_speed;
 
-    // if (speed != Vec2(0,0)) {
+    // if (camera_speed != Vec2(0,0)) {
     // 	cout << "camera x= " << pos.x << "\t y= " << pos.y << endl;
     // }
   }
 }
 
 /*!
-  @fn       void Camera::CenterTo(const Vec2& v)
+  @fn       void Camera::CenterTo(const Vec2& vector)
   @brief    Centers camera to a pre-stablished position
-  @param    const Vec2& v
+  @param    const Vec2& vector
   @return   void
   @warning  TODO: some math must be simplified
 */
 
-void Camera::CenterTo(const Vec2& v) {
+void Camera::center_camera_to(const Vec2& vec2_vector) {
   // TODO: break down math
-  Vec2 target = v - (WINSIZE/2/zoom); //!< Updates the camer target
+  Vec2 target = vec2_vector - (WINSIZE/2/camera_zoom); //!< Updates the camera 
+                                                       //!< target
 
-  pos.x = max(pos.x, target.x - sz.x);
-  pos.x = min(pos.x, target.x + sz.x);
+  camera_position.x = max(camera_position.x, target.x - camera_size.x);
+  camera_position.x = min(camera_position.x, target.x + camera_size.x);
 
-  pos.y = max(pos.y, target.y - sz.y);
-  pos.y = min(pos.y, target.y + sz.y);
+  camera_position.y = max(camera_position.y, target.y - camera_size.y);
+  camera_position.y = min(camera_position.y, target.y + camera_size.y);
 }
 
 /*!
-  @fn       Vec2 Camera::RenderPos(const Vec2& v)
+  @fn       Vec2 Camera::render_camera_pos(const Vec2& vec2_vector)
   @brief    Renders camera's position
-  @param    const Vec2& v
+  @param    const Vec2& vec2_vector
   @return   Rendered camera position
   @warning  TODO: fix return to no longer be an math expression
 */
 
-Vec2 Camera::RenderPos(const Vec2& v) {
-  return (v - CAMERA) * CAMERAZOOM;
+Vec2 Camera::render_camera_pos(const Vec2& vec2_vector) {
+  return (vec2_vector - CAMERA) * CAMERAZOOM;
 }
 
 /*!
-  @fn       float Camera::RenderPosX(const float& x)
+  @fn       float Camera::render_camera_pos_x(const float& x_axis_pos)
   @brief    Method that renders x axis position
-  @param    const float& x
+  @param    const float& x_axis_pos
   @return   Rendered position on x axis for camera
   @warning  TODO: fix return to no longer be an math expression
 */
 
-float Camera::RenderPosX(const float& x) {
-  return (x - CAMERA.x) * CAMERAZOOM;
+float Camera::render_camera_pos_x(const float& x_axis_pos) {
+  return (x_axis_pos - CAMERA.x) * CAMERAZOOM;
 }
 
 /*!
-  @fn       float Camera::RenderPosY(const float& y)
+  @fn       float Camera::render_camera_pos_y(const float& y_axis_pos)
   @brief    Method that renders y axis position
-  @param    const float& y
+  @param    const float& y_axis_pos
   @return   Rendered position on y axis for camera
   @warning  TODO: fix return to no longer be an math expression
 */
 
-float Camera::RenderPosY(const float& y) {
-  return (y - CAMERA.y) * CAMERAZOOM;
+float Camera::render_camera_pos_y(const float& y_axis_pos) {
+  return (y_axis_pos - CAMERA.y) * CAMERAZOOM;
 }

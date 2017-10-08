@@ -40,7 +40,7 @@ void InputManager::input_event_handler(float time) {
     mouse_position.y = (float)y_position;
     quit_requested=false;
     
-    text_cursor_blinker.Update(time);
+    text_cursor_blinker.add_time(time);
 
     SDL_Event event;
     
@@ -248,7 +248,7 @@ void InputManager::start_text_input(string* t) {
     SDL_StartTextInput();
     text = t;
     text_cursor = text->size();
-    text_cursor_blinker.Restart();
+    text_cursor_blinker.restart_time();
 }
 
 /*!
@@ -284,7 +284,7 @@ uint InputManager::get_text_cursor_position() {
  *  @warning Simplify method return
  */
 bool InputManager::text_cursor_blink() {
-    return !((int)(text_cursor_blinker.Get()/0.5)%2);
+    return !((int)(text_cursor_blinker.get_time()/0.5)%2);
 }
 
 /*!

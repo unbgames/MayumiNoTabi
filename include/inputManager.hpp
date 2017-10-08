@@ -43,6 +43,7 @@ class InputManager{
     InputManager();
     ~InputManager();
 public:
+
     void input_event_handler(float time);
 
     bool key_pressed(int key);
@@ -67,6 +68,7 @@ public:
     bool get_quit_requested();
 
     static InputManager& get_input_manager_instance();
+
 };
 
 #endif//INPUTMANAGERHPP
