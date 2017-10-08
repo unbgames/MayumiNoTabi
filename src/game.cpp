@@ -140,9 +140,9 @@ Game::~Game() {
 		stateStack.pop();
 	}
 	if (storedState)delete storedState;
-	Resources::ClearImages();
-	Resources::ClearMusics();
-	Resources::ClearFonts();
+	Resources::game_clear_images();
+	Resources::game_clear_musics();
+	Resources::game_clear_fonts();
 	TTF_Quit();
 	Mix_CloseAudio();
 	Mix_Quit();
@@ -216,14 +216,15 @@ void Game::Run() {
 	}
 	while (!stateStack.empty()) {
 		CalculateDeltaTime();
-		INPUT.update(deltatime);
+
+		INPUT.input_event_handler(deltatime);
 		//if (INPUT.KeyPress(KEY_F(11))) SwitchWindowMode();
 		GetCurrentState().update(deltatime);
 		GetCurrentState().render();
 
 		SDL_RenderPresent(renderer);
 
-		if (GetCurrentState().QuitRequested()) {
+		if (GetCurrentState().get_quit_requested()) {
 				break;
 		}
 
@@ -231,13 +232,15 @@ void Game::Run() {
 			GetCurrentState().Pause();
 			GetCurrentState().End();
 			stateStack.pop();
-			Resources::ClearImages();
-			Resources::ClearMusics();
-			Resources::ClearFonts();
+
+			Resources::game_clear_images();
+			Resources::game_clear_musics();
+			Resources::game_clear_fonts();
 
 			if (stateStack.size()) {
 				GetCurrentState().Resume();
 			}
+
 		}
 
 		if (storedState) {
