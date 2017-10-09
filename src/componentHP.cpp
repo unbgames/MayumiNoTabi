@@ -32,7 +32,7 @@ CompHP::~CompHP() {
   * @param int damage
 */
 
-void CompHP::Damage(int damage) {
+void CompHP::damage(int damage) {
 	//! Verifies if current damage value bigger than the current value
 	if(damageCoolDown.Get()>cooldown){
 		damageCoolDown.Restart();
@@ -47,7 +47,7 @@ void CompHP::Damage(int damage) {
 }
 
 /*!
-  * @fn CompHP::Update(float time)
+  * @fn CompHP::update(float time)
   * @brief Updates HP value according to time param
   * @param float time
 */

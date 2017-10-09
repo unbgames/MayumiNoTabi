@@ -28,7 +28,7 @@ CompInputControl::~CompInputControl() {
 }
 
 /*!
-  * @fn CompInputControl::Update(float time)
+  * @fn CompInputControl::update(float time)
   * @brief Updates input control according to the time param
   * @param float time
 */
@@ -38,7 +38,7 @@ void CompInputControl::update(float time) {
 }
 
 /*!
-  * @fn CompInputControl::Render()
+  * @fn CompInputControl::render()
   * @brief Renders input control, obviously not necessary
   * @param No params
 */

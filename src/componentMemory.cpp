@@ -27,7 +27,7 @@ CompMemory::~CompMemory() {
 }
 
 /*!
-  * @fn CompMemory::Update(float time)
+  * @fn CompMemory::update(float time)
 	* @brief Updates memory according to the time param
   * @param No params
 */

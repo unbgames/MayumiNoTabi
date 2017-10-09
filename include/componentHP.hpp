@@ -12,7 +12,7 @@ class CompHP : public Component{
 	//private members
 public:
 	//public members
-	int total,current;
+	int total, current;
 	bool showHP,showDMG;
 	float cooldown;
 	Timer damageCoolDown;
@@ -22,7 +22,7 @@ public:
 	CompHP(int tot,int cur,bool showHP=false,bool showDMG=false,float dmgCD=0.0f);
 	~CompHP();
 
-	void Damage(int damage);
+	void damage(int damage);
 
 	void update(float time);
 	void render();
