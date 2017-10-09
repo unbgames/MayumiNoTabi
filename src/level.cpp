@@ -29,6 +29,7 @@ Level::Level() : background_sprite{Sprite(DEFAULT_BACKGROUND)},
 
     level_collision_layer.clear();
     level_collision_layer.resize(DEFAULT_MAP_WIDTH*DEFAULT_MAP_HEIGHT);
+
     FOR(y,DEFAULT_MAP_HEIGHT) {
         FOR(x,DEFAULT_MAP_WIDTH) {
             level_collision_layer[(y*DEFAULT_MAP_WIDTH)+x] = EMPTY_TILE;
@@ -62,7 +63,7 @@ Level::~Level() {
  *  @return The method returns no param
  */
 void Level::load_level_from_file(const string& file) {
-    ifstream file_input;//! <Receive input from level file
+    ifstream file_input = NULL;//! <Receive input from level file
     
     file_input.open(LEVEL_PATH + file + ".txt");
 
@@ -73,7 +74,7 @@ void Level::load_level_from_file(const string& file) {
         exit(EXIT_FAILURE);
     }
     
-    string file_parameters; //! <Store parameters readed from level file
+    string file_parameters = ""; //! <Store parameters readed from level file
 
     //! Loading the background
     getline(file_input,background_file_name);
@@ -83,10 +84,12 @@ void Level::load_level_from_file(const string& file) {
     if (!background_file_name.empty()) { 
         background_sprite.Open(background_file_name);
     }
+
     file_input.ignore(1);
     background_sprite.StretchToFit(WINSIZE);
     
-    int level_tile_width, level_tile_height; //! <Tile level width and height
+    int level_tile_width = 0;//! <Tile level width 
+    int level_tile_height = 0; //! <Tile level height
 
     //! Loading the tileset
     getline(file_input, level_tile_set_filename);
@@ -105,14 +108,18 @@ void Level::load_level_from_file(const string& file) {
     level_collision_layer.clear();
     level_collision_layer.resize(level_map_width*level_map_height);
     
-    int t,g;
+    int t = 0;
+    int g = 0;
+
     level_collision_groups.clear();
     level_collision_groups.reserve(level_map_width*level_map_height);
+
     FOR(y,level_map_height) {
         FOR(x,level_map_width) {
             file_input >> t;
             file_input.ignore(1);
             level_collision_layer[(y*level_map_width)+x] = t-1;
+
             if (t == EMPTY_TILE) {
                 level_collision_groups[(y*level_map_width)+x] = 0;
             }
@@ -150,8 +157,8 @@ void Level::load_level_from_file(const string& file) {
  *  @return string 
  */
 string Level::save_level_to_file(const string& file) {
-    stringstream level_stream_out;//! <To get the level output
-    ofstream file_output;//! <To write level output on a file
+    stringstream level_stream_out = NULL;//! <To get the level output
+    ofstream file_output = NULL;//! <To write level output on a file
 
     //! Open file with a valid name
     //! TODO: Insert else to do nothing
@@ -179,11 +186,14 @@ string Level::save_level_to_file(const string& file) {
     //! Saving the collision layer:
     int level_map_width = level_tile_map.get_width();
     int level_map_height = level_tile_map.get_height();
+
     FOR(y,level_map_height) {
         FOR(x,level_map_width) {
-            char s[200];
+            char s[200] = {0};
+
             sprintf(s,"%02d-%03d, ",level_collision_layer[(y*level_map_width)+x]+1,level_collision_groups[(y*level_map_width)+x]);
             string str(s);
+
             level_stream_out << str;
         }
         level_stream_out << endl;
@@ -194,7 +204,8 @@ string Level::save_level_to_file(const string& file) {
     if (file == "") {
         return level_stream_out.str();
     }
-    file_output<<out.str();
+
+    file_output << out.str();
     file_output.close();
 
     return "";
@@ -208,10 +219,10 @@ string Level::save_level_to_file(const string& file) {
  */
 void Level::load_level_objects(bool collisors) {    
     
-    char object_type[50]; //! <Object type
-    Vec2 object_position; //! <Object position
-    int layer; //! <Level layer
-    uint uid;
+    char object_type[50] = {0}; //! <Object type
+    Vec2 object_position() :x(0), y(0) {}; //! <Object position
+    int layer = 0; //! <Level layer
+    uint uid = 0;
 
     //! Creating the objects
     for(auto& i:level_object_list) {
@@ -221,6 +232,7 @@ void Level::load_level_objects(bool collisors) {
         if (i.empty()) {
              continue;
         }
+
         sscanf(i.c_str(), " %s %f %f %d", object_type, &object_position.x, &objPos.y, &layer);
         uid = GameObject::Create(object_type, object_position);
         GAMESTATE.AddObject(uid,layer);
@@ -244,12 +256,14 @@ void Level::load_level_objects(bool collisors) {
         FOR(x,level_map_width) {
             int t = level_collision_layer[(y*level_map_width)+x]+1;
             int g = level_collision_groups[(y*level_map_width)+x];
+
             if (t) {
                 if (!mp.count(g)) {
                     //! Default vals to make min and max work
                     mp[g]=make_pair(Rect{(float)level_map_width+1,(float)level_map_height+1,
                                 (float)-1,(float)-1},t);
                 }
+
                 mp[g].first.x=min(mp[g].first.x,(float)x);
                 mp[g].first.y=min(mp[g].first.y,(float)y);
                 mp[g].first.w=max(mp[g].first.w,(float)x);
@@ -293,6 +307,7 @@ void Level::save_level_objects(const vector<pair<ii,ii>>& grouped) {
 
     int id=1;
     map<ii,int> ids;
+
     FOR(y,level_map_height) {
         FOR(x,level_map_width) {
             if (level_collision_layer[(y*level_map_width)+x]==EMPTY_TILE) {
@@ -319,5 +334,6 @@ bool Level::operator==(Level& level) {
     if (Save() == level.save_level_to_file()){ 
         return true;
     }
+
     return false;
 }

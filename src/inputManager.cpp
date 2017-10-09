@@ -31,13 +31,15 @@ InputManager::~InputManager() {
  *  @warning Method maybe need refactoring
  */
 void InputManager::input_event_handler(float time) {
-    int x_position,y_position; //! <Horizontal axis position, Vertical axis position
+    int x_position = 0;//! <Horizontal axis position
+    int y_position = 0; //! <Vertical axis position
 
     //! Get mouse position 
     SDL_GetMouseState(&x_position,&y_position);
     mouse_is_moving = (mouse_position.x!=x_position || mouse_position.y!=y_position);
     mouse_position.x = (float)x_position;
     mouse_position.y = (float)y_position;
+    
     quit_requested=false;
     
     text_cursor_blinker.add_time(time);
@@ -264,6 +266,7 @@ void InputManager::stop_text_input(string* t) {
     if (text != t) {
         return;
     }
+    
     text = nullptr;
     SDL_StopTextInput();
 }
@@ -303,5 +306,6 @@ bool InputManager::get_quit_requested() {
  */
 InputManager& InputManager::get_input_manager_instance() {
     static InputManager uniqueInst;
+
     return uniqueInst;
 }
