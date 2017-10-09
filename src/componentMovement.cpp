@@ -16,8 +16,6 @@
 #include <componentMovement.hpp>
 
 
-//#include <camera.hpp>
-//#include <inputManager.hpp>
 
 //! A constructor.
     /*!
@@ -39,7 +37,7 @@ CompMovement::~CompMovement() {
 /*!
 	@fn void CompMovement::Update(float time)
 	@brief Method that update element movement
-	@param time
+	@param float time
 	@return The execution of this method returns no value
 	@warning Method that requires review of comment
 */
@@ -54,14 +52,16 @@ void CompMovement::update(float time) {
 }
 
 /*!
-	@fn void CompMovement::Render()
+	@fn void CompMovement::render()
 	@brief Method that render the new element movement
 	@return The execution of this method returns no value
 	@warning Method that requires review of comment
 */
+
 void CompMovement::render() {
 	// Method body its empty
 }
+
 
 /*!
 	@fn Component::type CompMovement::GetType()const
@@ -70,5 +70,5 @@ void CompMovement::render() {
 	@warning Method that requires review of comment
 */
 Component::type CompMovement::get_type()const{
-	return Component::type::t_movement;
+  return Component::type::t_movement;
 }
