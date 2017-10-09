@@ -1,12 +1,11 @@
 /*!
- *  \file File componentTimer.cpp
- *  \brief Implementation of the class of game time
+ *  @file File componentTimer.cpp
+ *  @brief Implementation of the class of game time
  *
  *  The class implemented here provides to the game the time limit
  *
- *  \sa componentTimer.hpp
+ *  @sa componentTimer.hpp
  */
-
 
 #include <>
 //#include <compLib.hpp>
@@ -18,6 +17,7 @@
     /*!
     This is a constructor method of componentTimer class
     */
+
 CompTimer::CompTimer(float limit):limit{limit}{}
 
 //! A destructor.
