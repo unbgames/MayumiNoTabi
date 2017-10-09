@@ -22,7 +22,9 @@
     */
 CompStaticRender::CompStaticRender(const Sprite &sprite,
 	                                 const Vec2 &position,
-																	 const bool camerascaling):sprite{sprite},position{position}, cameraScaling{camerascaling}{
+																	 const bool camerascaling):sprite{sprite},position{position},
+																	 cameraScaling{camerascaling}{
+		// Method body its empty
 }
 
 //! A destructor.
@@ -30,6 +32,7 @@ CompStaticRender::CompStaticRender(const Sprite &sprite,
       This is a destructor method of componentStaticRender class
     */
 CompStaticRender::~CompStaticRender() {
+	// Method body its empty
 }
 
 /*!
