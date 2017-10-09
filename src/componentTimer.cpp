@@ -42,7 +42,9 @@ CompTimer::~CompTimer() {
 */
 
 void CompTimer::update(float time) {
+
 	t.add_time(time);
+
 	if (t.get_time()>limit) {
 		GO(entity)->dead=true;
 	}

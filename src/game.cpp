@@ -154,6 +154,7 @@ Game::Game(string title, int width, int height):frameStart{0},deltatime{0},windo
 	}
 
 	storedState = nullptr;
+
 	SDL_SetRenderDrawBlendMode(GAMERENDER, SDL_BLENDMODE_BLEND);
 
 };

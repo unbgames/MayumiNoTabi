@@ -7,24 +7,28 @@
  *
  *  Auxiliary documentation
  *  @sa componentStaticRender.hpp
+ *
+ *  @warning Method that requires review of comment
  */
 
 #include <game.hpp>
 #include <gameObject.hpp>
 #include <camera.hpp>
 #include <componentStaticRender.hpp>
-
 //#include <inputManager.hpp>
+
 
 
 //! A constructor.
     /*!
     This is a constructor method of componentStaticRender class
     */
+
 CompStaticRender::CompStaticRender(const Sprite &sprite,
 	                                 const Vec2 &position,
 																	 const bool camerascaling):sprite{sprite},position{position},
-																	 cameraScaling{camerascaling}{
+																	 cameraScaling{camerascalin}{
+
 		// Method body its empty
 }
 
