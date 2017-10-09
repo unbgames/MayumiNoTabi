@@ -52,11 +52,11 @@ void CompHP::Damage(int damage) {
   * @param float time
 */
 
-void CompHP::Update(float time) {
+void CompHP::update(float time) {
 	//! Verifies if element is in the 'dead' state
 	//! TODO: Refactorate decision structures
 	if(current<=0)GO(entity)->dead=true;
-	damageCoolDown.Update(time);
+	dmgCoolDown.add_time(time);
 }
 
 /*!
@@ -65,7 +65,7 @@ void CompHP::Update(float time) {
   * @param No params
 */
 
-void CompHP::Render() {
+void CompHP::render() {
 	//! Shows HP on screen if it's set player and bigget than zero
 	//! TODO: Refactorate decision structures
 	if(SETTINGS.showHP && showHP && current>0){
@@ -95,6 +95,6 @@ void CompHP::Render() {
   * @param No params
 */
 
-Component::type CompHP::GetType() const {
+Component::type CompHP::get_type() const {
 	return Component::type::t_hp;
 }

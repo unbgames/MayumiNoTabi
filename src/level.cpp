@@ -62,7 +62,7 @@ Level::~Level() {
  *  @return The method returns no param
  */
 void Level::Load(const string& file) {
-    ifstream in;//! <Receive input from level file
+  ifstream in;//! <Receive input from level file
     
     in.open(LEVEL_PATH + file + ".txt");
 
@@ -99,8 +99,8 @@ void Level::Load(const string& file) {
     tileMap.Load(in);
     
     //! Loading the collision layer
-    int mapWidth = tileMap.GetWidth();
-    int mapHeight = tileMap.GetHeight();
+    int mapWidth = tileMap.get_width();
+    int mapHeight = tileMap.get_height();
     collisionLayer.clear();
     collisionLayer.resize(mapWidth*mapHeight);
     
@@ -170,14 +170,14 @@ string Level::Save(const string& file) {
     
     //! Saving the tileset:
     out<<tileSetFilename<<endl;
-    out<<tileSet.GetWidth()<<","<<tileSet.GetHeight()<<endl<<endl;
+    out<<tileSet.get_width()<<","<<tileSet.get_height()<<endl<<endl;
     
     //! Saving the tilemap:
     tileMap.Save(out);
     
     //! Saving the collision layer:
-    int mapWidth = tileMap.GetWidth();
-    int mapHeight = tileMap.GetHeight();
+    int mapWidth = tileMap.get_width();
+    int mapHeight = tileMap.get_height();
     FOR(y,mapHeight) {
         FOR(x,mapWidth) {
             char s[200];
@@ -231,10 +231,10 @@ void Level::LoadObjects(bool collisors) {
         return;
     }
     
-    int tileWidth = tileSet.GetWidth(); //! <Tile level width
-    int tileHeight = tileSet.GetHeight(); //! <Tile level Height
-    int mapWidth = tileMap.GetWidth(); //! <Map width
-    int mapHeight = tileMap.GetHeight(); //! <Map height
+    int tileWidth = tileSet.get_width(); //! <Tile level width
+    int tileHeight = tileSet.get_height(); //! <Tile level Height
+    int mapWidth = tileMap.get_width(); //! <Map width
+    int mapHeight = tileMap.get height(); //! <Map height
     map<int,pair<Rect,int>> mp;
 
     //! TODO: Understand this paragraph
@@ -286,8 +286,8 @@ void Level::LoadObjects(bool collisors) {
 void Level::SaveObjects(const vector<pair<ii,ii>>& grouped) {
     
     //! Saving the collision groups:
-    int mapWidth = tileMap.GetWidth(); //! <Level map width
-    int mapHeight = tileMap.GetHeight(); //! <Level map height 
+    int mapWidth = tileMap.get_width(); //! <Level map width
+    int mapHeight = tileMap.get_height(); //! <Level map height 
     int id=1;
     map<ii,int> ids;
     FOR(y,mapHeight) {

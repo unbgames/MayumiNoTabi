@@ -1,39 +1,61 @@
+/*!
+ *  \file File componentMovement.cpp
+ *  \brief Implementation of the class of component movements present in the game
+ *
+ *  The class implemented here provides to the game the speed and type
+ *  of movement that a given element can perform
+ *
+ *  \sa componentMovement.hpp
+ */
+
 #include <componentMovement.hpp>
 #include <gameObject.hpp>
 #include <game.hpp>
 
-CompMovement::CompMovement(const Vec2& s,moveType t):mType{t},speed{s}{}
+
+//! A constructor.
+    /*!
+    This is a constructor method of componentMovement class
+    */
+CompMovement::CompMovement(const Vec2& sprite,moveType movetype):mType{movetype},speed{s}{}
+
+//! A destructor.
+    /*!
+      This is a destructor method of componentMovement class
+    */
+
 CompMovement::~CompMovement() {}
 
 /*!
-  * @fn void CompMovement::Update(float time)
-  * @brief Checks if has occurred a movement update
-  * @param float time
+	@fn void CompMovement::Update(float time)
+	@brief Method that update element movement
+	@param float time
+	@return The execution of this method returns no value
+	@warning Method that requires review of comment
 */
 
-void CompMovement::Update(float time) {
+void CompMovement::update(float time) {
 	UNUSED(time);
-	GO(entity)->pos+=move;
-	if (mType==moveType::t_bullet)GO(entity)->rotation=speed.angle();
+	GO(entity)->position+=move;
+	if (mType==moveType::type_bullet)GO(entity)->rotation=speed.angle();
 }
 
 /*!
-* @fn void CompMovement::Render()
-* @brief Renderizes on screen the component movement
-* @param No params
+	@fn void CompMovement::render()
+	@brief Method that render the new element movement
+	@return The execution of this method returns no value
+	@warning Method that requires review of comment
 */
 
-void CompMovement::Render() {
-
-}
+void CompMovement::render() {}
 
 /*!
-* @fn Component::type CompMovement::GetType()const
-* @briefs Obtain the type of movement of the component
-* @return Component::type::t_movement
-* @param No params
+	@fn Component::type CompMovement::GetType()const
+	@brief Method that sets the type of movement
+	@return Component class object
+	@warning Method that requires review of comment
 */
 
-Component::type CompMovement::GetType()const{
-	return Component::type::t_movement;
+Component::type CompMovement::get_type()const{
+  return Component::type::t_movement;
 }

@@ -28,8 +28,8 @@ public:
 
 		Rect Box() const;
 
-		void CollisionCheck(const Coll &otherComponent);
-		Vec2 Collides(const Coll &otherComponent,const Vec2& move,const Vec2& moved=Vec2{}) const;
+		void collision_check(const Coll &other_component);
+		Vec2 collides(const Coll &other_component,const Vec2& move,const Vec2& moved=Vec2{}) const;
 	};
 	vector<Coll> colls;
 
@@ -38,13 +38,13 @@ public:
 	CompCollider(collType type,const Rect &rectangle=Rect{0.0f,0.0f,1.0f,1.0f});
 	CompCollider(collType type,const Vec2 &position,const Vec2 &sz=Vec2{1.0f,1.0f});
 	//functions
-	void CollisionCheck(CompCollider *otherComponent);
+	void collision_check(CompCollider *other_component);
 
-	void Update(float time);
-	void Render();
-	void Own(GameObject *object);
-	bool Die(float time);//return true to remove this component
-	Component::type GetType() const;
+	void update(float time);
+	void render();
+	void own(GameObject *object);
+	bool kills_component(float time);//return true to remove this component
+	Component::type get_type() const;
 };
 
 #endif//COMPONENTCOLLIDERHPP

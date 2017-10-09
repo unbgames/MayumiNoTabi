@@ -30,7 +30,7 @@ InputManager::~InputManager() {
  *  @return The method returns no param
  *  @warning Method maybe need refactoring
  */
-void InputManager::Update(float time) {
+void InputManager::update(float time) {
     int x,y; //! <Horizontal axis position, Vertical axis position
 
     //! Get mouse position 
@@ -40,7 +40,7 @@ void InputManager::Update(float time) {
     mouse.y = (float)y;
     quitRequested=false;
     
-    cursorBlinker.Update(time);
+    cursorBlinker.add_time(time);
 
     SDL_Event event;
     
@@ -248,7 +248,7 @@ void InputManager::StartTextInput(string* t) {
     SDL_StartTextInput();
     text = t;
     cursor = text->size();
-    cursorBlinker.Restart();
+    cursorBlinker.restart_time();
 }
 
 /*!
@@ -284,7 +284,7 @@ uint InputManager::GetTextCursor() {
  *  @warning Simplify method return
  */
 bool InputManager::TextCursorBlink() {
-    return !((int)(cursorBlinker.Get()/0.5)%2);
+    return !((int)(cursorBlinker.get_time()/0.5)%2);
 }
 
 /*!

@@ -33,7 +33,7 @@ CompInputControl::~CompInputControl() {
   * @param float time
 */
 
-void CompInputControl::Update(float time) {
+void CompInputControl::update(float time) {
 	func(GO(entity),time);
 }
 
@@ -43,7 +43,7 @@ void CompInputControl::Update(float time) {
   * @param No params
 */
 
-void CompInputControl::Render() {
+void CompInputControl::render() {
 }
 
 /*!
@@ -52,6 +52,6 @@ void CompInputControl::Render() {
   * @param float time
 */
 
-Component::type CompInputControl::GetType() const {
+Component::type CompInputControl::get_type() const {
 	return Component::type::t_input_control;
 }
