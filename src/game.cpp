@@ -141,10 +141,12 @@ Game::Game(string title, int width, int height):frameStart{0},deltatime{0},windo
 */
 
 Game::~Game() {
+
 	while (stateStack.size()) {
 		delete stateStack.top().get();
 		stateStack.pop();
 	}
+
 	if (storedState) {
 		delete storedState;
 	}
@@ -152,10 +154,14 @@ Game::~Game() {
 	Resources::ClearImages();
 	Resources::ClearMusics();
 	Resources::ClearFonts();
+
 	TTF_Quit();
+
 	Mix_CloseAudio();
 	Mix_Quit();
+
 	IMAGE_Quit();
+
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
 	SDL_Quit();
@@ -205,7 +211,11 @@ SDL_Renderer* Game::GetRenderer() {
 */
 
 void Game::Push(State* state) {
-	if (storedState)delete storedState;
+
+	if (storedState){
+		delete storedState;
+	}
+
 	storedState=state;
 }
 
@@ -220,10 +230,13 @@ void Game::Push(State* state) {
 void Game::Run() {
 
 	if (storedState) {
+
 		stateStack.push(unique_ptr<State>(storedState));
 		storedState=nullptr;
+
 		GetCurrentState().Begin();
 	}
+
 	while (!stateStack.empty()) {
 		CalculateDeltaTime();
 
@@ -231,6 +244,7 @@ void Game::Run() {
 
 		INPUT.input_event_handler(deltatime);
 		//if (INPUT.KeyPress(KEY_F(11))) SwitchWindowMode();
+
 		GetCurrentState().update(deltatime);
 		GetCurrentState().render();
 
@@ -241,7 +255,7 @@ void Game::Run() {
 		}
 
 		/* If the user press Pause button the system change the status to paused
-			or press End button stop the game and reset   
+			or press End button stop the game and reset
 			*/
 		if (GetCurrentState().PopRequested()) {
 			GetCurrentState().Pause();
@@ -286,7 +300,10 @@ float Game::GetDeltaTime() {
 */
 
 void Game::CalculateDeltaTime() {
+
 	unsigned int tmp = frameStart;
+
+	//Define the response time of a frame
 	frameStart = SDL_GetTicks();
 	deltatime = max((frameStart - tmp) / 1000.0, 0.001);
 }
