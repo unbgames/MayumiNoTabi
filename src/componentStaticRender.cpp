@@ -9,10 +9,11 @@
  *  @sa componentStaticRender.hpp
  */
 
-#include <componentStaticRender.hpp>
+#include <game.hpp>
 #include <gameObject.hpp>
 #include <camera.hpp>
-#include <game.hpp>
+#include <componentStaticRender.hpp>
+
 //#include <inputManager.hpp>
 
 

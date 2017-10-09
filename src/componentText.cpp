@@ -7,10 +7,13 @@
  *  @sa componentText.hpp
  */
 
-#include <componentText.hpp>
+
+#include <game.hpp>
 #include <gameObject.hpp>
 #include <camera.hpp>
-#include <game.hpp>
+#include <componentText.hpp>
+
+
 //#include <inputManager.hpp>
 
 //! A constructor.

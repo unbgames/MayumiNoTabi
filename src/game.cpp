@@ -49,6 +49,7 @@ Game::Game(string title, int width, int height):frameStart{0},deltatime{0},windo
 
 	instance = this;
 
+	// Check all SDL outputs and if can't be initialize display a error messege
 	bool success = SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_TIMER) == 0;
 
 	if (!success) {
@@ -226,6 +227,8 @@ void Game::Run() {
 	while (!stateStack.empty()) {
 		CalculateDeltaTime();
 
+		// Update the state of the game elements and set it
+
 		INPUT.input_event_handler(deltatime);
 		//if (INPUT.KeyPress(KEY_F(11))) SwitchWindowMode();
 		GetCurrentState().update(deltatime);
@@ -237,6 +240,9 @@ void Game::Run() {
 				break;
 		}
 
+		/* If the user press Pause button the system change the status to paused
+			or press End button stop the game and reset   
+			*/
 		if (GetCurrentState().PopRequested()) {
 			GetCurrentState().Pause();
 			GetCurrentState().End();

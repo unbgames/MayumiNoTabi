@@ -8,9 +8,10 @@
  *  @sa componentMovement.hpp
  */
 
-#include <componentMovement.hpp>
-#include <gameObject.hpp>
 #include <game.hpp>
+#include <gameObject.hpp>
+#include <componentMovement.hpp>
+
 
 //#include <camera.hpp>
 //#include <inputManager.hpp>
