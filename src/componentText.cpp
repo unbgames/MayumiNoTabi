@@ -5,6 +5,7 @@
  *  The class implemented here provides to the game the messeges elements
  *
  *  @sa componentText.hpp
+ *  @warning All variables are initialized
  */
 
 
@@ -12,9 +13,9 @@
 #include <gameObject.hpp>
 #include <camera.hpp>
 #include <componentText.hpp>
-
-
 //#include <inputManager.hpp>
+
+
 
 //! A constructor.
     /*!
