@@ -21,7 +21,6 @@
 #include <vector>
 
 #include <game.hpp>
-
 #include <gameException.hpp>
 #include <inputManager.hpp>
 #include <resources.hpp>
@@ -39,7 +38,7 @@ Game* Game::instance = NULL;
 	@warning Method that requires review of comment
 */
 
-Game::Game(string title,int width,int height):frameStart{0},deltatime{0},windowSize{(float)width,(float)height} {
+Game::Game(string title, int width, int height):frameStart{0},deltatime{0},windowSize{(float)width,(float)height} {
 
 	srand(time(NULL));
 
@@ -48,7 +47,7 @@ Game::Game(string title,int width,int height):frameStart{0},deltatime{0},windowS
 		exit(EXIT_FAILURE);
 	}
 
-	instance=this;
+	instance = this;
 
 	bool success = SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_TIMER) == 0;
 
@@ -119,13 +118,19 @@ Game::Game(string title,int width,int height):frameStart{0},deltatime{0},windowS
 
 	window = SDL_CreateWindow(title.c_str(),SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,width,height,SDL_WINDOW_FULLSCREEN);
 
-	if (!window)throw GameException("Window nao foi carregada)!");
+	if (!window){
+		throw GameException("Window nao foi carregada)!");
+	}
 
 	renderer = SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED);
-	if (!renderer)throw GameException("Erro ao instanciar renderizador da SDL!");
+
+	if (!renderer){
+		throw GameException("Erro ao instanciar renderizador da SDL!");
+	}
 
 	storedState = nullptr;
 	SDL_SetRenderDrawBlendMode(GAMERENDER, SDL_BLENDMODE_BLEND);
+
 };
 
 /*!
@@ -139,7 +144,10 @@ Game::~Game() {
 		delete stateStack.top().get();
 		stateStack.pop();
 	}
-	if (storedState)delete storedState;
+	if (storedState) {
+		delete storedState;
+	}
+
 	Resources::ClearImages();
 	Resources::ClearMusics();
 	Resources::ClearFonts();
@@ -150,6 +158,7 @@ Game::~Game() {
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
 	SDL_Quit();
+
 }
 
 /*!
@@ -249,6 +258,7 @@ void Game::Run() {
 
 		SDL_Delay(17);
 	}
+
 	while (stateStack.size()) {
 		GetCurrentState().End();
 		stateStack.pop();
