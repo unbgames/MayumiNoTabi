@@ -7,7 +7,14 @@
 #include <componentInputControl.hpp>
 #include <game.hpp>
 
+/*!
+  * @fn CompInputControl::CompInputControl()
+  * @brief No params constructor method
+  * @param No params
+*/
+
 CompInputControl::CompInputControl(function<void(GameObject*,float)> f):func{f} {
+
 }
 
 /*!

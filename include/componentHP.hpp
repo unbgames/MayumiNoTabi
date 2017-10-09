@@ -15,14 +15,14 @@ public:
 	int total,current;
 	bool showHP,showDMG;
 	float cooldown;
-	Timer dmgCoolDown;
+	Timer damageCoolDown;
 
 
 	CompHP(int tot=100,bool showHP=false,bool showDMG=false,float dmgCD=0.0f);
 	CompHP(int tot,int cur,bool showHP=false,bool showDMG=false,float dmgCD=0.0f);
 	~CompHP();
 
-	void Damage(int dmg);
+	void Damage(int damage);
 
 	void update(float time);
 	void render();

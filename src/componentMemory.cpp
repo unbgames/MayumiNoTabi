@@ -32,6 +32,7 @@ CompMemory::~CompMemory() {
   * @param No params
 */
 
+
 void CompMemory::update(float time) {
 	//! TODO: Refactorate decision strucuture
 	for(auto& t:timers)t.second.add_time(time);
@@ -52,6 +53,7 @@ void CompMemory::render() {
 	* @brief Returns if the component is if the 'memory' type
   * @param No params
 	* @return Component::type::t_memory
+	* @brief Obtain the component type
 */
 
 Component::type CompMemory::get_type() const {
