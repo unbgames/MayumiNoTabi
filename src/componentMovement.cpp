@@ -40,9 +40,13 @@ CompMovement::~CompMovement() {
 	@warning Method that requires review of comment
 */
 void CompMovement::update(float time) {
+
 	UNUSED(time);
 	GO(entity)->position += move;
-	if (mType == moveType::type_bullet)GO(entity)->rotation = speed.angle();
+
+	if (mType == moveType::type_bullet){
+		GO(entity)->rotation = speed.angle();
+	}
 }
 
 /*!
