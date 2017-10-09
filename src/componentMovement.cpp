@@ -5,7 +5,10 @@
  *  The class implemented here provides to the game the speed and type
  *  of movement that a given element can perform
  *
+ *  Auxiliary documentation
  *  @sa componentMovement.hpp
+ *
+ *  @warning All variables are initialized
  */
 
 #include <game.hpp>

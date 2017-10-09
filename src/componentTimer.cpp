@@ -4,7 +4,10 @@
  *
  *  The class implemented here provides to the game the time limit
  *
+ *  Auxiliary documentation
  *  @sa componentTimer.hpp
+ *
+ *  @warning All variables are initialized
  */
 
 
