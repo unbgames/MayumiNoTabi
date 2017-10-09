@@ -35,6 +35,7 @@ CompMovement::~CompMovement() {}
 */
 
 void CompMovement::update(float time) {
+
 	UNUSED(time);
 	GO(entity)->position+=move;
 	if (mType==moveType::type_bullet)GO(entity)->rotation=speed.angle();
@@ -47,7 +48,9 @@ void CompMovement::update(float time) {
 	@warning Method that requires review of comment
 */
 
-void CompMovement::render() {}
+void CompMovement::render() {
+
+}
 
 /*!
 	@fn Component::type CompMovement::GetType()const

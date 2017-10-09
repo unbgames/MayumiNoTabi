@@ -64,6 +64,7 @@ void CompCollider::update(float time) {
 	//! Iterates throughout the collisons to update its range of verification
 	for(Coll &coll:colls) {
 		if(coll.active) {
+
 			int lowerRange = coll.Box().x-10; //!< Creates variable that sets the lower range of the game box
 			int upperRange = coll.Box().x2()+10; //!< Creates variable that sets the upper range of the game box
 			set<uint> ent = GAMESTATE.GetEntitiesInRange(lowerRange,upperRange);
@@ -79,16 +80,17 @@ void CompCollider::update(float time) {
 }
 
 /*!
-* @fn CompCollider::render()
-* @brief Render graphics in order to display collisions
-* @param No params
+ * @fn CompCollider::render()
+ * @brief Render graphics in order to display collisions
+ * @param No params
 */
 
 void CompCollider::render() {
 	if (SETTINGS.showCollision)
-		
+
 		//! Iterates throughout the Collision objects in order to update the rendering
 			for (Coll coll:colls) {
+
       //! TODO: Refactorate decision structures
 			if     (coll.cType==CompCollider::collType::t_player) SET_COLOR4(255,0,0,100);
 			else if (coll.cType==CompCollider::collType::t_monster)SET_COLOR4(0,255,0,100);
@@ -96,6 +98,7 @@ void CompCollider::render() {
 			else if (coll.cType==CompCollider::collType::t_ground) SET_COLOR4(255,255,0,100);
 			else SET_COLOR4(255,255,255,100);
 			SDL_Rect rectangle = (coll.Box().renderBox().sdlRect()); //!< Creates an rectangle entity to be fulfilled
+
 			FILL_RECT(&rectangle);
 		}
 };
@@ -226,7 +229,8 @@ void CompCollider::Coll::collision_check(const CompCollider::Coll &other_compone
 */
 
 Vec2 CompCollider::Coll::collides(const Coll &other_component,const Vec2 &move,const Vec2 &moved) const {
-	const int precision = 100;
+	const int precision = 100; //!< TODO: Refactorate this magic number
+
 	Rect rectangle = Box()+moved; //!< Updates the current value of the rectangle
 	Rect another_rectangle = other_component.Box(); //!< Updates the value of another rectangle
 	Vec2 moveSafe,move100=move/precision,moveTry;
