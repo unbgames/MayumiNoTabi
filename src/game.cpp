@@ -5,6 +5,8 @@
  *  The class implemented provides the flow of the game
  *
  *  @sa game.hpp
+ *
+ *  @warning All variables are initialized
  */
 
 

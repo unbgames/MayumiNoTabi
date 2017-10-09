@@ -8,7 +8,7 @@
  *  Auxiliary documentation
  *  @sa componentStaticRender.hpp
  *
- *  @warning Method that requires review of comment
+ *  @warning All variables are initialized
  */
 
 #include <game.hpp>
