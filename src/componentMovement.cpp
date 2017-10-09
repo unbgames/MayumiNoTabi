@@ -28,7 +28,7 @@ CompMovement::CompMovement(const Vec2& sprite,moveType movetype):mType{movetype}
       This is a destructor method of componentMovement class
     */
 CompMovement::~CompMovement() {
-
+	// Method body its empty
 }
 
 /*!
@@ -40,8 +40,8 @@ CompMovement::~CompMovement() {
 */
 void CompMovement::update(float time) {
 	UNUSED(time);
-	GO(entity)->position+=move;
-	if (mType==moveType::type_bullet)GO(entity)->rotation=speed.angle();
+	GO(entity)->position += move;
+	if (mType == moveType::type_bullet)GO(entity)->rotation = speed.angle();
 }
 
 /*!
@@ -51,7 +51,7 @@ void CompMovement::update(float time) {
 	@warning Method that requires review of comment
 */
 void CompMovement::render() {
-
+	// Method body its empty
 }
 
 /*!
