@@ -1,12 +1,12 @@
 /*!
- *  \file File componentStaticRender.cpp
- *  \brief Implementation of the class of static components in the game
+ *  @file File componentStaticRender.cpp
+ *  @brief Implementation of the class of static components in the game
  *
  *  The class implemented here provides to the game the position of the static elements
  *
  *
  *  Auxiliary documentation
- *  \sa componentStaticRender.hpp
+ *  @sa componentStaticRender.hpp
  */
 
 #include <componentStaticRender.hpp>
@@ -20,7 +20,6 @@
     /*!
     This is a constructor method of componentStaticRender class
     */
-
 CompStaticRender::CompStaticRender(const Sprite &sprite,
 	                                 const Vec2 &position,
 																	 const bool camerascaling):sprite{sprite},position{position}, cameraScaling{camerascaling}{
@@ -30,7 +29,6 @@ CompStaticRender::CompStaticRender(const Sprite &sprite,
     /*!
       This is a destructor method of componentStaticRender class
     */
-
 CompStaticRender::~CompStaticRender() {
 }
 
@@ -41,7 +39,6 @@ CompStaticRender::~CompStaticRender() {
 	@return The execution of this method returns no value
 	@warning Method that requires review of comment
 */
-
 void CompStaticRender::update(float time) {
 	sp.update(time);
 }
@@ -52,7 +49,6 @@ void CompStaticRender::update(float time) {
 	@return The execution of this method returns no value
 	@warning Method that requires review of comment
 */
-
 void CompStaticRender::render() {
 
 	Vec2 position = position;
@@ -74,7 +70,6 @@ void CompStaticRender::render() {
 	@return The method returns the type of movement of the static element
 	@warning Method that requires review of comment
 */
-
 Component::type CompStaticRender::get_type()const{
 	return Component::type::t_static_render;
 }
