@@ -19,8 +19,9 @@
     /*!
     This is a constructor method of componentMovement class
     */
-CompMovement::CompMovement(const Vec2& sprite,moveType movetype):mType{movetype},speed{s}{
-
+CompMovement::CompMovement(const Vec2& sprite,moveType movetype):
+	mType{movetype},speed{s}{
+		// Method body its empty
 }
 
 //! A destructor.

@@ -74,7 +74,6 @@ void CompText::render() {
 	@return the type of the text messege
 	@warning Method that requires review of comment
 */
-
 Component::type CompText::get_type()const{
 	return Component::type::t_text;
 }
