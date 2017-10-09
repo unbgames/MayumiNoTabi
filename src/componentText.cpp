@@ -35,7 +35,7 @@ CompText::CompText(string text, int size, SDL_Color c, Hotspot h, Vec2 p):txt{te
       This is a destructor method of componentText class
     */
 CompText::~CompText() {
-
+	// Method body its empty
 }
 
 /*!
