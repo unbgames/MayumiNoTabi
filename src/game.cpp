@@ -38,12 +38,15 @@ Game* Game::instance = NULL;
 	@warning Method that requires review of comment
 */
 
-Game::Game(string title, int width, int height):frameStart{0},deltatime{0},windowSize{(float)width,(float)height} {
+Game::Game(string title, int width, int height):frameStart{0},deltatime{0},windowSize{
+																												(float)width,(float)height} {
 
 	srand(time(NULL));
 
 	if (instance) {
+
 		cerr << "Erro, mais de uma instancia de 'Game' instanciada, o programa ira encerrar agora" << endl;
+
 		exit(EXIT_FAILURE);
 	}
 
@@ -53,8 +56,10 @@ Game::Game(string title, int width, int height):frameStart{0},deltatime{0},windo
 	bool success = SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_TIMER) == 0;
 
 	if (!success) {
+
 		string error_msg(error_messege = SDL_GetError());
 		error_messege = "Could not initialize SDL:\n" + error_messege;
+
 		throw GameException(error_messege);
 	}
 
@@ -63,6 +68,7 @@ Game::Game(string title, int width, int height):frameStart{0},deltatime{0},windo
 	map<int, string> code_name_map = {{IMAGE_INIT_TIF, "tif"},
 									  {IMAGE_INIT_JPG, "jpg"},
 									  {IMAGE_INIT_PNG, "png"}};
+
 	vector<int> image_formats{IMAGE_INIT_TIF, IMAGE_INIT_JPG, IMAGE_INIT_PNG};
 
 	// Initialize image module or between all desired formats
@@ -82,12 +88,15 @@ Game::Game(string title, int width, int height):frameStart{0},deltatime{0},windo
 	 */
 
 	if (image_settings != res) {
+
 		string error_messege_main = SDL_GetError();
 		string error_messege = "Could not initiazlie image libary for type:";
+
 		for (auto format : image_formats)
 			if ((format & res) == 0) {
 				error_messege += code_name_map[format];
 			}
+
 		error_messege += "\n";
 		error_messege = error_messege_main + error_messege;
 
@@ -102,22 +111,37 @@ Game::Game(string title, int width, int height):frameStart{0},deltatime{0},windo
 	 */
 
 	if (res != audio_modules) {
-		if ((MIX_INIT_OGG & res ) == 0 )cerr << "OGG flag not in res!" << endl;
-		if ((MIX_INIT_MP3 & res ) == 0 )cerr << "MP3 flag not in res!" << endl;
+
+		if ((MIX_INIT_OGG & res ) == 0 ){
+			cerr << "OGG flag not in res!" << endl;
+		}
+
+		if ((MIX_INIT_MP3 & res ) == 0 ){
+			cerr << "MP3 flag not in res!" << endl;
+		}
+
 		throw GameException("Problem when initiating SDL audio!");
+
 	}
 
 	res = Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024);
 
-	if (res != 0)throw GameException("Problem when initiating SDL audio!");
+	if (res != 0){
+		throw GameException("Problem when initiating SDL audio!");
+	}
 
 	res = TTF_Init();
-	if (res != 0)cerr << "Could not initialize TTF module!" << endl;
+
+	if (res != 0){
+		cerr << "Could not initialize TTF module!" << endl;
+	}
 
 	// Creating the window that will contain the game interface
 
 
-	window = SDL_CreateWindow(title.c_str(),SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,width,height,SDL_WINDOW_FULLSCREEN);
+	window = SDL_CreateWindow(title.c_str(),
+														SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
+														width, height, SDL_WINDOW_FULLSCREEN);
 
 	if (!window){
 		throw GameException("Window nao foi carregada)!");
