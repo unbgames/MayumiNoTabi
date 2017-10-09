@@ -1,11 +1,11 @@
 /*!
- *  \file File componentMovement.cpp
- *  \brief Implementation of the class of component movements present in the game
+ *  @file File componentMovement.cpp
+ *  @brief Implementation of the class of component movements present in the game
  *
  *  The class implemented here provides to the game the speed and type
  *  of movement that a given element can perform
  *
- *  \sa componentMovement.hpp
+ *  @sa componentMovement.hpp
  */
 
 #include <componentMovement.hpp>
@@ -19,14 +19,17 @@
     /*!
     This is a constructor method of componentMovement class
     */
-CompMovement::CompMovement(const Vec2& sprite,moveType movetype):mType{movetype},speed{s}{}
+CompMovement::CompMovement(const Vec2& sprite,moveType movetype):mType{movetype},speed{s}{
+
+}
 
 //! A destructor.
     /*!
       This is a destructor method of componentMovement class
     */
+CompMovement::~CompMovement() {
 
-CompMovement::~CompMovement() {}
+}
 
 /*!
 	@fn void CompMovement::Update(float time)
@@ -35,7 +38,6 @@ CompMovement::~CompMovement() {}
 	@return The execution of this method returns no value
 	@warning Method that requires review of comment
 */
-
 void CompMovement::update(float time) {
 	UNUSED(time);
 	GO(entity)->position+=move;
@@ -48,8 +50,9 @@ void CompMovement::update(float time) {
 	@return The execution of this method returns no value
 	@warning Method that requires review of comment
 */
+void CompMovement::render() {
 
-void CompMovement::render() {}
+}
 
 /*!
 	@fn Component::type CompMovement::GetType()const
@@ -57,7 +60,6 @@ void CompMovement::render() {}
 	@return Component class object
 	@warning Method that requires review of comment
 */
-
 Component::type CompMovement::get_type()const{
 	return Component::type::t_movement;
 }
