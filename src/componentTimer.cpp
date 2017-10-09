@@ -7,25 +7,30 @@
  *  @sa componentTimer.hpp
  */
 
-#include <>
+
 //#include <compLib.hpp>
-#include <gameObject.hpp>
 //#include <camera.hpp>
 //#include <inputManager.hpp>
+
+#include <gameObject.hpp>
 
 //! A constructor.
     /*!
     This is a constructor method of componentTimer class
     */
 
-CompTimer::CompTimer(float limit):limit{limit}{}
+CompTimer::CompTimer(float limit):limit{limit}{
+	// Method body its empty
+}
 
 //! A destructor.
     /*!
       This is a destructor method of componentText class
     */
 
-CompTimer::~CompTimer() {}
+CompTimer::~CompTimer() {
+	// Method body its empty
+}
 
 /*!
 	@fn CompTimer::update(float time)
@@ -50,7 +55,9 @@ void CompTimer::update(float time) {
 	@warning Method that requires review of comment
 */
 
-void CompTimer::render() {}
+void CompTimer::render() {
+	// Method body its empty
+}
 
 /*!
 	@fn void CompTimer::own(GameObject* go)
