@@ -91,7 +91,8 @@ void Camera::update_camera(float time) {
   }
 
   // Zooms out if x key is pressed
-  if (INPUT.IsKeyDown(KEY(x))) {
+
+  if (INPUT.key_is_down(KEY(x))) {
     camera_zoom -= 0.5 * time;
     camera_zoom = max(camera_zoom, MIN_ZOOM);
 
@@ -111,25 +112,25 @@ void Camera::update_camera(float time) {
 
     // defines camera speed according to the arrow key that has been pressed.
     // (left)
-    if (INPUT.IsKeyDown(KEY_LEFT)) {
+    if (INPUT.key_is_down(KEY_LEFT)) {
       camera_speed.x -= CAMERA_SPEED;
     }
 
     // defines camera speed according to the arrow key that has been pressed.
     // (right)
-    if (INPUT.IsKeyDown(KEY_RIGHT)){
+    if (INPUT.key_is_down(KEY_RIGHT)){
       camera_speed.x += CAMERA_SPEED;
     }
 
     // defines camera speed according to the arrow key that has been pressed.
     // (up)
-    if (INPUT.IsKeyDown(KEY_UP)) {
+    if (INPUT.key_is_down(KEY_UP)) {
       camera_speed.y -= CAMERA_SPEED;
     }
 
     // defines camera speed according to the arrow key that has been pressed.
     // (down)
-    if (INPUT.IsKeyDown(KEY_DOWN)) {
+    if (INPUT.key_is_down(KEY_DOWN)) {
       camera_speed.y += CAMERA_SPEED;
     }
 
