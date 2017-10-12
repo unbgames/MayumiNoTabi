@@ -33,13 +33,16 @@ shared_ptr<SDL_Texture> Resources::game_get_image(const string& file) {
     //! Exit game if texture does not load 
     //! TODO: Insert else to do nothing
     if (!texture) {
-        cerr << "Erro ao carregar textura \"" << file << "\":" << endl;
         string error=SDL_GetError();
+
+        cerr << "Erro ao carregar textura \"" << file << "\":" << endl;
         cerr << error << endl << "o programa ira encerrar agora" << endl;
+
         exit(EXIT_FAILURE);
     }
 
     auto func = [](SDL_Texture* texture) {SDL_DestroyTexture(texture);};
+
     return game_image_table[file] = shared_ptr<SDL_Texture>(texture,func);
 }
 
@@ -81,13 +84,16 @@ shared_ptr<Mix_Music> Resources::game_get_music(const string& file) {
     //! Exit if there's an error with the music load
     //! TODO: Insert else to do nothing
     if (!music) {
-        cerr << "Erro ao carregar musica \"" << file << "\":" << endl;
         string error=SDL_GetError();
+
+        cerr << "Erro ao carregar musica \"" << file << "\":" << endl;
         cerr << error << endl << "o programa ira encerrar agora" << endl;
+
         exit(EXIT_FAILURE);
     }
 
     auto func = [](Mix_Music* music) {Mix_FreeMusic(music);};
+
     return game_music_table[file] = shared_ptr<Mix_Music>(music,func);
 }
 
@@ -129,13 +135,16 @@ shared_ptr<Mix_Chunk> Resources::game_get_sound(const string& file) {
     //! Exit if there's an error with the sound load
     //! TODO: Insert else to do nothing
     if (!sound) {
-        cerr << "Erro ao carregar som \"" << file << "\":" << endl;
         string error=SDL_GetError();
+
+        cerr << "Erro ao carregar som \"" << file << "\":" << endl;
         cerr << error << endl << "o programa ira encerrar agora" << endl;
+
         exit(EXIT_FAILURE);
     }
 
     auto func = [](Mix_Chunk* sound) {Mix_FreeChunk(sound);};
+
     return game_sound_table[file] = shared_ptr<Mix_Chunk>(sound,func);
 }
 
@@ -180,13 +189,16 @@ shared_ptr<TTF_Font> Resources::game_get_font(const string& file,int ptsize) {
     //! Exit if there's an error with the font load
     //! TODO: Insert else to do nothing
     if (!font) {
-        cerr << "Erro ao carregar fonte \"" << file << "\":" << endl;
         string error=SDL_GetError();
+
+        cerr << "Erro ao carregar fonte \"" << file << "\":" << endl;
         cerr << error << endl << "o programa ira encerrar agora" << endl;
+
         exit(EXIT_FAILURE);
     }
 
     auto func = [](TTF_Font* font) {TTF_CloseFont(font);};
+
     return game_font_table[key] = shared_ptr<TTF_Font>(font,func);
 }
     
