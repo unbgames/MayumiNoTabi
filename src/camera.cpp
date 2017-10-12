@@ -23,8 +23,8 @@
 // uint is actually the short for unsigned int
 uint Camera::camera_focus = 0; //!<  Global variable defining camera focus value
 
-Vec2 Camera::camera_position;         //!<  Global variable defining camera pos
-Vec2 Camera::camera_speed;       //!<  Global variable defining camera speed
+Vec2 Camera::camera_position = 0;    //!<  Global variable defining camera pos
+Vec2 Camera::camera_speed = 0;       //!<  Global variable defining camera speed
 Vec2 Camera::camera_size{100, 50}; //!<  Global variable defining camera size
 
 float Camera::camera_zoom = 1.0f; //!< Global variable defining camera zoom
@@ -83,8 +83,7 @@ void Camera::update_camera(float time) {
   Vec2 center = camera_position + (WINSIZE/2/camera_zoom); //!< Newvalue for center
 
       // Zooms in if z key is pressed
-      if (INPUT.key_is_down(KEY(z)))
-  {
+  if (INPUT.IsKeyDown(KEY(z))) {
     camera_zoom += 0.5 * time;
     camera_zoom = min(camera_zoom, MAX_ZOOM);
 
@@ -158,12 +157,13 @@ void Camera::center_camera_to(const Vec2& vec2_vector) {
   // TODO: break down math
   Vec2 target = vec2_vector - (WINSIZE/2/camera_zoom); //!< Updates the camera 
                                                        //!< target
-
-  camera_position.x = max(camera_position.x, target.x - camera_size.x);
+  // Minimum values
   camera_position.x = min(camera_position.x, target.x + camera_size.x);
-
-  camera_position.y = max(camera_position.y, target.y - camera_size.y);
   camera_position.y = min(camera_position.y, target.y + camera_size.y);
+
+  // maximum vaues
+  camera_position.x = max(camera_position.x, target.x - camera_size.x);
+  camera_position.y = max(camera_position.y, target.y - camera_size.y);
 }
 
 /*!
