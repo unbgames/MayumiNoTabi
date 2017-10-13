@@ -83,7 +83,10 @@ CompAnim::CompAnim() {
 					colliders[i]->colls[j].useDefault = temporary_collider->colls[0].useDefault;
 					colliders[i]->colls[j].active = temporary_collider->colls[0].active;
 				}
-			}
+      }
+      else {
+        // Do nothing
+      }
 
 			in >> function_counter;
 
@@ -92,7 +95,10 @@ CompAnim::CompAnim() {
 
 				if (txtFuncsF.count(function_name)) {
 					frameFunc[i].push_back(txtFuncsF[function_name](in));
-				}
+        }
+        else {
+          // Do nothing
+        }
 			}
 		}
 
@@ -102,7 +108,10 @@ CompAnim::CompAnim() {
 	// Changes called value to false if frameFunc has no elements in it
 	if (frameFunc.count(0)) {
 		called = false;
-	}
+  }
+  else {
+    // Do nothing
+  }
 }
 
 //! A destructor.
@@ -117,7 +126,10 @@ CompAnim::~CompAnim() {
 		// Ignores deletion if current collider equals current frame
 		if (i == GetCurFrame()) {
 			continue;
-		}
+    }
+    else {
+      // Do nothing
+    }
 
 		delete colliders[i];
 	}
@@ -152,7 +164,7 @@ int CompAnim::get_current_frame()const {
 	@brief    Sets the current frame
 	@param    int frame, bool force
 	@return   void
-	@warning  TOD: some of the decision structure must be rewritten
+	@warning  TODO: some of the decision structure must be rewritten
 */
 
 void CompAnim::set_current_frame(int frame,		// range: unknown
@@ -168,9 +180,11 @@ void CompAnim::set_current_frame(int frame,		// range: unknown
 
 		called = true;
 		force = true;
-	}
+  }
+  else {
+    // Do nothing
+  }
 
-	// TODO: else (do nothing)
 	// Sets current frame by force
 	if (force) {
 
@@ -180,8 +194,14 @@ void CompAnim::set_current_frame(int frame,		// range: unknown
 		}
 		else if (GO(entity)->HasComponent(Component::type::t_collider)) {
 			GO(entity)->components[Component::type::t_collider] = nullptr;
-		}
-	}
+    }
+    else {
+      // Do nothing
+    }
+  }
+  else {
+    // Do nothing
+  }
 }
 
 /*!
@@ -263,7 +283,10 @@ void CompAnim::own(GameObject* go) {
 	for (CompCollider *coll:colliders) {
 		if (coll != nullptr) {
 			coll->own(go);
-		}
+    }
+    else {
+      // Do nothing
+    }
 	}
 
   int frame = get_current_frame();

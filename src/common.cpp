@@ -82,11 +82,17 @@ bool equals(const float &a, const float &b) {
 float close_distance(const float &from, const float &to, const float &change) {
 	if (abs(from - to) < change) {
 		return to;
-	}
+  }
+  else {
+    // Do nothing
+  }
 
 	if (from > to) {
 		return from - change;
-	}
+  }
+  else {
+    // Do nothing
+  }
 
 	return from + change;
 }

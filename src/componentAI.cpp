@@ -42,7 +42,7 @@ CompAI::~CompAI() {
 */
 
 void CompAI::update(float time) {
-  foo(this,time);  // Maybe I should leave it's name like this
+  foo(this, time);  // Maybe I should leave it's name like this
 }
 
 /*!
