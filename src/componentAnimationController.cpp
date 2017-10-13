@@ -74,6 +74,9 @@ void CompAnimControl::change_current(string animation_name,
       if (repeat) {
         prev = cur;
       }
+      else {
+        // Do nothing
+      }
 
       repeat = repeat_animation;
       cur = animation_name;
@@ -81,6 +84,9 @@ void CompAnimControl::change_current(string animation_name,
       get_current().set_current_frame(0);
       get_current().sp.looped = false;
       get_current().own(GO(entity));
+    }
+    else {
+      // Do nothing
     }
   }
   else {
@@ -131,17 +137,15 @@ string& CompAnimControl::get_current_name() {
   @brief    Updates the animation according to time
   @param    float value resembling time
   @return   void
-  @warning  TODO: alternative flux in condition structures
+  @warning  none
 */
 
 void CompAnimControl::update(float time) {
 
-  // TODO: else (do nothing)
   // Checks if current animation is in the 'library'
   if (animations.count(cur)) {
     get_current().update(time);
 
-    // TODO: else (do nothing)
     // Checks if current animation is a looped type or set to repeat
     if (!repeat and get_current().is_looped()) {
 
@@ -156,6 +160,12 @@ void CompAnimControl::update(float time) {
         get_current().update(time);
       }
     }
+    else {
+      // Do nothing
+    }
+  }
+  else {
+    // Do nothing
   }
 }
 
@@ -164,7 +174,7 @@ void CompAnimControl::update(float time) {
   @brief    Renders current animation
   @param    none
   @return   void
-  @warning  TODO: alternative flux in condition structures
+  @warning  none
 */
 
 void CompAnimControl::render() {
@@ -173,6 +183,9 @@ void CompAnimControl::render() {
   // Tries to find the current animation on animations vector, render if found
   if (animations.count(cur)) {
     get_current().render();
+  }
+  else {
+    // Do nothing
   }
 }
 
@@ -205,19 +218,23 @@ void CompAnimControl::own(GameObject *game_object) {
 bool CompAnimControl::kills_component(float time) { // range: unknown
   UNUSED(time);
 
-  // TODO: else (do nothing)
   // Checks if die animation isn't in animations
   if (!animations.count("die")) {
     return true;
+  }
+  else {
+    // Do nothing
   }
 
   // Checks if player is dying
   if (dying) {
 
-    // TODO: else (do nothing)
     // Makes method return true if current animation isn't player's death
     if (cur != "die") {
       return true;
+    }
+    else {
+      // Do nothing
     }
   }
   else {
