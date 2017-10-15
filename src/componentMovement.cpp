@@ -15,13 +15,29 @@
 #include <gameObject.hpp>
 #include <componentMovement.hpp>
 
+//! Functions to be called by the methods in order to perform actions
+
+void chooseTypeComponentMovement(float time){
+
+	UNUSED(time);
+	GO(entity)->position += move;
+
+	if (mType == moveType::type_bullet){
+		GO(entity)->rotation = speed.angle();
+	}
+	else {
+		//Nothing to do
+	}
+}
 
 
 //! A constructor.
     /*!
     This is a constructor method of componentMovement class
     */
+
 CompMovement::CompMovement(const Vec2& sprite,moveType movetype):
+
 	mType{movetype},speed{s}{
 		// Method body its empty
 }
@@ -30,6 +46,7 @@ CompMovement::CompMovement(const Vec2& sprite,moveType movetype):
     /*!
       This is a destructor method of componentMovement class
     */
+
 CompMovement::~CompMovement() {
 	// Method body its empty
 }
@@ -41,17 +58,11 @@ CompMovement::~CompMovement() {
 	@return The execution of this method returns no value
 	@warning Method that requires review of comment
 */
+
 void CompMovement::update(float time) {
 
-	UNUSED(time);
-	GO(entity)->position += move;
+	chooseTypeComponentMovement(time);
 
-	if (mType == moveType::type_bullet){
-		GO(entity)->rotation = speed.angle();
-	}
-	else {
-		//Nothing to do
-	}
 }
 
 /*!
