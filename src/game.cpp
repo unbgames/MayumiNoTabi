@@ -52,7 +52,7 @@ Game::Game(string title, int width, int height):frameStart{0},deltatime{0},windo
 		exit(EXIT_FAILURE);
 	}
 	else {
-		//Nothing to do 
+		//Nothing to do
 	}
 
 	instance = this;
@@ -66,6 +66,9 @@ Game::Game(string title, int width, int height):frameStart{0},deltatime{0},windo
 		error_messege = "Could not initialize SDL:\n" + error_messege;
 
 		throw GameException(error_messege);
+	}
+	else {
+		//Nothing to do
 	}
 
 	// Initialize image module and check if process went OK
@@ -97,18 +100,26 @@ Game::Game(string title, int width, int height):frameStart{0},deltatime{0},windo
 		string error_messege_main = SDL_GetError();
 		string error_messege = "Could not initiazlie image libary for type:";
 
-		for (auto format : image_formats)
+		for (auto format : image_formats) {
 			if ((format & res) == 0) {
 				error_messege += code_name_map[format];
 			}
+			else {
+				//Nothing to do
+			}
+		}
 
 		error_messege += "\n";
 		error_messege = error_messege_main + error_messege;
 
 		throw GameException(error_messege);
 	}
+	else {
+		//Nothing to do
+	}
 
 	int audio_modules = MIX_INIT_OGG;
+
 	res = Mix_Init(audio_modules);
 
 	/* Check the possibility initiation of SDL audio and return a error messege
@@ -117,15 +128,18 @@ Game::Game(string title, int width, int height):frameStart{0},deltatime{0},windo
 
 	if (res != audio_modules) {
 
+		throw GameException("Problem when initiating SDL audio!");
+
 		if ((MIX_INIT_OGG & res ) == 0 ){
 			cerr << "OGG flag not in res!" << endl;
+		}
+		else {
+			//Nothing to do
 		}
 
 		if ((MIX_INIT_MP3 & res ) == 0 ){
 			cerr << "MP3 flag not in res!" << endl;
 		}
-
-		throw GameException("Problem when initiating SDL audio!");
 
 	}
 
