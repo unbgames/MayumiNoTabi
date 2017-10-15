@@ -69,7 +69,7 @@ void CompText::render() {
 	if (GO(entity)->anchored) {
 		txt.Render();
 	}
-		else {
+	else {
 		txt.Render(CAMERA);
 	}
 }

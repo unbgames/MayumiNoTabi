@@ -49,6 +49,9 @@ void CompMovement::update(float time) {
 	if (mType == moveType::type_bullet){
 		GO(entity)->rotation = speed.angle();
 	}
+	else {
+		//Nothing to do
+	}
 }
 
 /*!
