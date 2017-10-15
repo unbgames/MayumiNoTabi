@@ -51,6 +51,9 @@ void CompTimer::update(float time) {
 	if (t.get_time()>limit) {
 		GO(entity)->dead=true;
 	}
+	else {
+		//Nothing to do
+	}
 }
 
 /*!

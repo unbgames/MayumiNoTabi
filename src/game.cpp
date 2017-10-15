@@ -51,6 +51,9 @@ Game::Game(string title, int width, int height):frameStart{0},deltatime{0},windo
 
 		exit(EXIT_FAILURE);
 	}
+	else {
+		//Nothing to do 
+	}
 
 	instance = this;
 
