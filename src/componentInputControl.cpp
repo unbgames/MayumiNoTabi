@@ -4,12 +4,12 @@
 //#include <inputManager.hpp>
 
 CompInputControl::CompInputControl(function<void(GameObject*,float)> f):func{f}{}
-CompInputControl::~CompInputControl(){}
+CompInputControl::~CompInputControl() {}
 
-void CompInputControl::Update(float time){
+void CompInputControl::Update(float time) {
 	func(GO(entity),time);
 }
-void CompInputControl::Render(){}
+void CompInputControl::Render() {}
 Component::type CompInputControl::GetType()const{
 	return Component::type::t_input_control;
 }

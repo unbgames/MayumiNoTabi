@@ -5,7 +5,7 @@
 
 Game game(NOMEPROJETO,1024,768);
 
-int main(){
+int main() {
 	GAMEINST.Push(new StateTitle);
 	GAMEINST.Run();
 	return 0;

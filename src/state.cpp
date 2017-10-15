@@ -1,23 +1,23 @@
 #include <state.hpp>
 
-State::State(){}
+State::State() {}
 
-set<uint> State::GetEntitiesInRange(const float &x1,const float &x2){
+set<uint> State::GetEntitiesInRange(const float &x1,const float &x2) {
 	//TODO: change this to just iterate trought the areas
 	set<uint> s;
-	for(uint uid:entities_){
-		if(GO(uid)==nullptr)continue;
+	for (uint uid:entities_) {
+		if (GO(uid)==nullptr)continue;
 		Rect box = GO(uid)->Box();
-		if(box.x<=x2 || box.x2()>=x1)s.insert(uid);
+		if (box.x<=x2 || box.x2()>=x1)s.insert(uid);
 	}
 	return s;
 }
 
-void State::End(){
+void State::End() {
 	ClearObjects();
 }
 
-void State::AddObject(uint uid, int layer, int area){
+void State::AddObject(uint uid, int layer, int area) {
 	ii key(layer,area);
 
 	group[key].insert(uid);
@@ -26,45 +26,45 @@ void State::AddObject(uint uid, int layer, int area){
 	lastGO = uid;
 }
 
-void State::ClearObjects(){
-	for(uint uid:entities_){
-		if(!isGO(uid))continue;
+void State::ClearObjects() {
+	for (uint uid:entities_) {
+		if (!isGO(uid))continue;
 		GameObject::entities.erase(uid);
 	}
 	group.clear();
 }
 
-GameObject* State::GetLastObject(){
+GameObject* State::GetLastObject() {
 	return GO(lastGO);
 }
 
 
-bool State::PopRequested(){
+bool State::PopRequested() {
 	return popRequested;
 }
-bool State::QuitRequested(){
+bool State::QuitRequested() {
 	return quitRequested;
 }
 
-void State::UpdateArray(float time){
-	for(uint uid:entities_){
-		if(!isGO(uid))continue;
-		if(GO(uid)==nullptr){
+void State::UpdateArray(float time) {
+	for (uint uid:entities_) {
+		if (!isGO(uid))continue;
+		if (GO(uid)==nullptr) {
 			GameObject::entities.erase(uid);
 			continue;
 		}
 		GO(uid)->Update(time);
-		if(GO(uid)->Remove()){
+		if (GO(uid)->Remove()) {
 			// cout << "Removing go " << uid << endl;
 			GameObject::entities.erase(uid);
 			entities_.erase(uid);
 		}
 	}
 }
-void State::RenderArray(){
-	for(uint uid:entities_){
-		if(!isGO(uid))continue;
-		if(GO(uid)==nullptr){
+void State::RenderArray() {
+	for (uint uid:entities_) {
+		if (!isGO(uid))continue;
+		if (GO(uid)==nullptr) {
 			GameObject::entities.erase(uid);
 			continue;
 		}

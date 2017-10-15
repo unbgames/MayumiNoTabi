@@ -1,10 +1,22 @@
+/*
+ *  File: component.cpp
+ *
+ *  Description:  Implements Component class
+ */
+
 #include <component.hpp>
 #include <gameObject.hpp>
 
-void Component::Own(GameObject *go){
+// Assigns a object as property (like a ownage) of a component
+// Recieves a game object as param
+void Component::Own(GameObject *go) {
 	entity = go->uid;
 }
-bool Component::Die(float time){
+
+// Kills a component
+// Recieves a float number resembling time as a param
+bool Component::Die(float time) {
 	UNUSED(time);
+
 	return true;
 }
