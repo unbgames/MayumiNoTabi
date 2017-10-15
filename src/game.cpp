@@ -133,12 +133,11 @@ Game::Game(string title, int width, int height):frameStart{0},deltatime{0},windo
 		if ((MIX_INIT_OGG & res ) == 0 ){
 			cerr << "OGG flag not in res!" << endl;
 		}
+		else if ((MIX_INIT_MP3 & res ) == 0 ) {
+			cerr << "MP3 flag not in res!" << endl;
+		}
 		else {
 			//Nothing to do
-		}
-
-		if ((MIX_INIT_MP3 & res ) == 0 ){
-			cerr << "MP3 flag not in res!" << endl;
 		}
 
 	}
@@ -148,11 +147,17 @@ Game::Game(string title, int width, int height):frameStart{0},deltatime{0},windo
 	if (res != 0){
 		throw GameException("Problem when initiating SDL audio!");
 	}
+	else {
+		//Nothing to do
+	}
 
 	res = TTF_Init();
 
 	if (res != 0){
 		cerr << "Could not initialize TTF module!" << endl;
+	}
+	else {
+		//Nothing to do
 	}
 
 	// Creating the window that will contain the game interface
@@ -165,11 +170,17 @@ Game::Game(string title, int width, int height):frameStart{0},deltatime{0},windo
 	if (!window){
 		throw GameException("Window nao foi carregada)!");
 	}
+	else {
+		//Nothing to do
+	}
 
 	renderer = SDL_CreateRenderer(window,-1,SDL_RENDERER_ACCELERATED);
 
 	if (!renderer){
 		throw GameException("Erro ao instanciar renderizador da SDL!");
+	}
+	else {
+		//Nothing to do
 	}
 
 	storedState = nullptr;
@@ -193,6 +204,9 @@ Game::~Game() {
 
 	if (storedState) {
 		delete storedState;
+	}
+	else{
+		//Nothing to do
 	}
 
 	Resources::ClearImages();
@@ -259,6 +273,9 @@ void Game::Push(State* state) {
 	if (storedState){
 		delete storedState;
 	}
+	else{
+		//Nothing to do
+	}
 
 	storedState=state;
 }
@@ -280,6 +297,9 @@ void Game::Run() {
 
 		GetCurrentState().Begin();
 	}
+	else {
+		//Nothing to do
+	}
 
 	while (!stateStack.empty()) {
 		CalculateDeltaTime();
@@ -294,14 +314,14 @@ void Game::Run() {
 
 		SDL_RenderPresent(renderer);
 
-		if (GetCurrentState().get_quit_requested()) {
-				break;
-		}
-
 		/* If the user press Pause button the system change the status to paused
 			or press End button stop the game and reset
 			*/
-		if (GetCurrentState().PopRequested()) {
+
+		if (GetCurrentState().get_quit_requested()) {
+				break;
+		}
+		else if (GetCurrentState().PopRequested()) {
 			GetCurrentState().Pause();
 			GetCurrentState().End();
 			stateStack.pop();
@@ -315,12 +335,18 @@ void Game::Run() {
 			}
 
 		}
+		else {
+			//Nothing to do
+		}
 
 		if (storedState) {
 			GetCurrentState().Pause();
 			stateStack.push(unique_ptr<State>(storedState));
 			storedState=nullptr;
 			GetCurrentState().Begin();
+		}
+		else {
+			//Nothing to do
 		}
 
 		SDL_Delay(17);
