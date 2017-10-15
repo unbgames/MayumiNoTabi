@@ -89,6 +89,9 @@ void Camera::update_camera(float time) {
 
     //cout<<"camera_zoom: "<<camera_zoom<<endl;
   }
+  else {
+    // Do nothing
+  }
 
   // Zooms out if x key is pressed
   if (INPUT.IsKeyDown(KEY(x))) {
@@ -96,6 +99,9 @@ void Camera::update_camera(float time) {
     camera_zoom = max(camera_zoom, MIN_ZOOM);
 
     //cout<<"camera_zoom: "<<camera_zoom<<endl;
+  }
+  else {
+    // Do nothing
   }
 
   // Centers screen
@@ -114,11 +120,17 @@ void Camera::update_camera(float time) {
     if (INPUT.IsKeyDown(KEY_LEFT)) {
       camera_speed.x -= CAMERA_SPEED;
     }
+    else {
+      // Do nothing
+    }
 
     // defines camera speed according to the arrow key that has been pressed.
     // (right)
     if (INPUT.IsKeyDown(KEY_RIGHT)){
       camera_speed.x += CAMERA_SPEED;
+    }
+    else {
+      // Do nothing
     }
 
     // defines camera speed according to the arrow key that has been pressed.
@@ -126,11 +138,17 @@ void Camera::update_camera(float time) {
     if (INPUT.IsKeyDown(KEY_UP)) {
       camera_speed.y -= CAMERA_SPEED;
     }
+    else {
+      // Do nothing
+    }
 
     // defines camera speed according to the arrow key that has been pressed.
     // (down)
     if (INPUT.IsKeyDown(KEY_DOWN)) {
       camera_speed.y += CAMERA_SPEED;
+    }
+    else {
+      // Do nothing
     }
 
     // TODO: math refactoring
