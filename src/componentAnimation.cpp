@@ -31,7 +31,7 @@ CompAnim::CompAnim() {
    This is a constructor method of CompAnim class
   */
 
-  CompAnim::CompAnim(string filename, CompCollider* temporary_collider) {
+CompAnim::CompAnim(string filename, CompCollider* temporary_collider) {
 
   string name = "";
   string img_file = "";
@@ -160,11 +160,11 @@ int CompAnim::get_current_frame()const {
 }
 
 /*!
-	@fn       void CompAnim::SetCurFrame(int frame, bool force)
+	@fn       void CompAnim::set_current_frame(int frame, bool force)
 	@brief    Sets the current frame
 	@param    int frame, bool force
 	@return   void
-	@warning  TODO: some of the decision structure must be rewritten
+	@warning  none
 */
 
 void CompAnim::set_current_frame(int frame,		// range: unknown
@@ -186,14 +186,28 @@ void CompAnim::set_current_frame(int frame,		// range: unknown
   }
 
 	// Sets current frame by force
-	if (force) {
+	set_current_frame_by_force(frame, force);
+}
 
-		// proceeds if frame exists or sets as null
-		if (colliders[frame] != nullptr) {
-			GO(entity)->SetComponent(Component::type::t_collider,colliders[frame]);
-		}
-		else if (GO(entity)->HasComponent(Component::type::t_collider)) {
-			GO(entity)->components[Component::type::t_collider] = nullptr;
+/*!
+	@fn       void CompAnim::set_current_frame_by_force(int frame, bool force)
+	@brief    Sets the current frame by force
+	@param    int frame, bool force
+	@return   void
+	@warning  none
+*/
+
+void CompAnim::set_current_frame_by_force(int frame,
+                                          bool force) {
+  // Sets current frame by force
+  if (force) {
+
+    // proceeds if frame exists or sets as null
+    if (colliders[frame] != nullptr) {
+      GO(entity)->SetComponent(Component::type::t_collider, colliders[frame]);
+    }
+    else if (GO(entity)->HasComponent(Component::type::t_collider)) {
+      GO(entity)->components[Component::type::t_collider] = nullptr;
     }
     else {
       // Do nothing
@@ -226,29 +240,69 @@ bool CompAnim::Looped()const {
 
 void CompAnim::Update(float time) {
 	int frame1 = get_current_frame(); //!< Used later for comparrison with next frame
+  int frame2 = get_current_frame(); //!< Assigns the new frame to this variable for
+                                    //!< comparing with the previous one
 
 	// Checks if the animation has not been called and calls it
-	if (!called) {
-
-		// Iterates through frame
-		for (auto &foo:frameFunc[frame1]) {
-			foo(GO(entity));
-		}
-
-		called = true;
-	}
+  checks_animation_call(frame1);
 
 	sp.Update(time);
 
-  int frame2 = get_current_frame(); //!< Assigns the new frame to this variable for
-                              //!< comparing with the previous one
+  set_new_frame(frame1, frame2);
+}
 
+/*!
+	@fn       void CompAnim::checks_animation_call(int frame)
+	@brief    checks if the animation has been called
+	@param    int frame
+	@return   void
+	@warning  none
+*/
+
+void CompAnim::checks_animation_call(int frame) {
+  if (!called) {
+
+    // Iterates through frame
+    for (auto &foo : frameFunc[frame]) {
+      foo(GO(entity));
+    }
+
+    called = true;
+  }
+}
+
+/*!
+	@fn       void CompAnim::compare_frames(int frame1, int frame2)
+	@brief    compares the frames
+	@param    int frame1, int frame2
+	@return   bool
+	@warning  none
+*/
+
+bool CompAnim::compare_frames(int frame1, int frame2) {
+  if (frame1 != frame2) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+/*!
+	@fn       void CompAnim::set_new_frame(int frame1, int frame2)
+	@brief    sets the new frame if it is not already set
+	@param    int frame1, int frame2
+	@return   void
+	@warning  none
+*/
+
+void set_new_frame(int frame1, int frame2) {
   // Checks if current frames is the same as the next one, if they're not the
-	// next frame is set
-	if (frame1 != frame2) {
-		called = false;
-		set_current_frame(frame2, true);
-	}
+  // next frame is set
+  if (compare_frames(frame1, frame2)) {
+    called = false;
+    set_current_frame(frame2, true);
+  }
 }
 
 /*!
