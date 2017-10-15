@@ -29,7 +29,7 @@
 #include <state.hpp>
 
 
-Game* Game::instance = NULL;
+Game* Game::instance = 0;
 
 /*!
 	@fn Game::Game(string title,int width,int height):frameStart{0},dt{0},winSize{(float)width,(float)height}
@@ -40,10 +40,7 @@ Game* Game::instance = NULL;
 	@warning Method that requires review of comment
 */
 
-Game::Game(string title, int width, int height):frameStart{0},deltatime{0},windowSize{
-																												(float)width,(float)height} {
-
-	srand(time(NULL));
+void checkInstance(){
 
 	if (instance) {
 
@@ -52,12 +49,15 @@ Game::Game(string title, int width, int height):frameStart{0},deltatime{0},windo
 		exit(EXIT_FAILURE);
 	}
 	else {
-		//Nothing to do
+
+		instance = this;
+
 	}
 
-	instance = this;
+}
 
-	// Check all SDL outputs and if can't be initialize display a error messege
+void checkSDLOutputs(){
+
 	bool success = SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_TIMER) == 0;
 
 	if (!success) {
@@ -70,29 +70,12 @@ Game::Game(string title, int width, int height):frameStart{0},deltatime{0},windo
 	else {
 		//Nothing to do
 	}
+}
 
-	// Initialize image module and check if process went OK
+void initializeImageLibrary(int image_settings, int res){
 
-	map<int, string> code_name_map = {{IMAGE_INIT_TIF, "tif"},
-									  {IMAGE_INIT_JPG, "jpg"},
-									  {IMAGE_INIT_PNG, "png"}};
-
-	vector<int> image_formats{IMAGE_INIT_TIF, IMAGE_INIT_JPG, IMAGE_INIT_PNG};
-
-	// Initialize image module or between all desired formats
-
-	int image_settings = accumulate(image_formats.begin(),
-									image_formats.end(),
-									0,
-									[](const int &a, const int &b) {
-										return a | b;
-									}
-	);
-
-	int res = IMAGE_Init(image_settings);
-
-	/* Check the possibility initialize image library and return the error messege
-	   for ever type
+	/* Check the possibility initiation of SDL audio and return a error messege
+		 if its necessary
 	 */
 
 	if (image_settings != res) {
@@ -118,13 +101,31 @@ Game::Game(string title, int width, int height):frameStart{0},deltatime{0},windo
 		//Nothing to do
 	}
 
-	int audio_modules = MIX_INIT_OGG;
+}
 
-	res = Mix_Init(audio_modules);
+void initializeImageModule(int res) {
 
-	/* Check the possibility initiation of SDL audio and return a error messege
-		 if its necessary
-	 */
+	map<int, string> code_name_map = {{IMAGE_INIT_TIF, "tif"},
+									  {IMAGE_INIT_JPG, "jpg"},
+									  {IMAGE_INIT_PNG, "png"}};
+
+	vector<int> image_formats{IMAGE_INIT_TIF, IMAGE_INIT_JPG, IMAGE_INIT_PNG};
+
+	// Initialize image module or between all desired formats
+
+	int image_settings = accumulate(image_formats.begin(),
+									image_formats.end(),
+									0,
+									[](const int &a, const int &b) {
+										return a | b;
+									}
+	);
+
+	initializeImageLibrary(image_settings, res);
+
+}
+
+void initializeAudioModule(int res, int audio_modules){
 
 	if (res != audio_modules) {
 
@@ -142,7 +143,9 @@ Game::Game(string title, int width, int height):frameStart{0},deltatime{0},windo
 
 	}
 
-	res = Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024);
+}
+
+void installSDLAudio(int res){
 
 	if (res != 0){
 		throw GameException("Problem when initiating SDL audio!");
@@ -150,8 +153,9 @@ Game::Game(string title, int width, int height):frameStart{0},deltatime{0},windo
 	else {
 		//Nothing to do
 	}
+}
 
-	res = TTF_Init();
+void initializeTTFModule(int res){
 
 	if (res != 0){
 		cerr << "Could not initialize TTF module!" << endl;
@@ -159,10 +163,31 @@ Game::Game(string title, int width, int height):frameStart{0},deltatime{0},windo
 	else {
 		//Nothing to do
 	}
+}
 
-	// Creating the window that will contain the game interface
+void initializeModules(int res){
+	// Initialize image module and check if process went OK
 
+ 		initializeImageModule()
 
+	// Initialize audio module
+		int audio_modules = MIX_INIT_OGG;
+		res = Mix_Init(audio_modules);
+
+	/* Check the possibility initiation of SDL audio and return a error messege
+		 if its necessary
+	 */
+
+		initializeAudioModule(res, audio_modules);
+		res = Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024);
+		installSDLAudio(res);
+
+		// Initialize TTF module
+	 	res = TTF_Init();
+	 	initializeTTFModule(int res);
+}
+
+void windowCreate(){
 	window = SDL_CreateWindow(title.c_str(),
 														SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
 														width, height, SDL_WINDOW_FULLSCREEN);
@@ -184,9 +209,80 @@ Game::Game(string title, int width, int height):frameStart{0},deltatime{0},windo
 	}
 
 	storedState = nullptr;
+}
 
-	SDL_SetRenderDrawBlendMode(GAMERENDER, SDL_BLENDMODE_BLEND);
+void checkStoredState(){
 
+	if (storedState) {
+		delete storedState;
+	}
+	else{
+		//Nothing to do
+	}
+}
+
+void checkStackState(){
+
+	while (stateStack.size()) {
+		delete stateStack.top().get();
+		stateStack.pop();
+	}
+
+	checkStoredState();
+
+}
+
+void pauseOrEndGame(){
+	if (GetCurrentState().get_quit_requested()) {
+			break;
+	}
+	else if (GetCurrentState().PopRequested()) {
+		GetCurrentState().Pause();
+		GetCurrentState().End();
+		stateStack.pop();
+
+		Resources::game_clear_images();
+		Resources::game_clear_musics();
+		Resources::game_clear_fonts();
+
+		if (stateStack.size()) {
+			GetCurrentState().Resume();
+		}
+
+	}
+	else {
+		//Nothing to do
+	}
+
+	if (storedState) {
+		GetCurrentState().Pause();
+		stateStack.push(unique_ptr<State>(storedState));
+		storedState=nullptr;
+		GetCurrentState().Begin();
+	}
+	else {
+		//Nothing to do
+	}
+}
+
+Game::Game(string title, int width, int height):frameStart{0},deltatime{0},windowSize{
+																												(float)width,(float)height} {
+	  srand(time(NULL));
+
+	// Check if a instance was create
+		checkInstance();
+
+	// Check all SDL outputs and if can't be initialize display a error messege
+  	checkSDLOutputs();
+
+		int res = IMAGE_Init(image_settings);
+	// Initialize Audio, Image and TTF modules
+		initializeModules(res);
+
+	// Creating the window that will contain the game interface
+		windowCreate();
+
+		SDL_SetRenderDrawBlendMode(GAMERENDER, SDL_BLENDMODE_BLEND);
 };
 
 /*!
@@ -197,17 +293,7 @@ Game::Game(string title, int width, int height):frameStart{0},deltatime{0},windo
 
 Game::~Game() {
 
-	while (stateStack.size()) {
-		delete stateStack.top().get();
-		stateStack.pop();
-	}
-
-	if (storedState) {
-		delete storedState;
-	}
-	else{
-		//Nothing to do
-	}
+	checkStackState();
 
 	Resources::ClearImages();
 	Resources::ClearMusics();
@@ -270,12 +356,7 @@ SDL_Renderer* Game::GetRenderer() {
 
 void Game::Push(State* state) {
 
-	if (storedState){
-		delete storedState;
-	}
-	else{
-		//Nothing to do
-	}
+	checkStoredState();
 
 	storedState=state;
 }
@@ -317,37 +398,7 @@ void Game::Run() {
 		/* If the user press Pause button the system change the status to paused
 			or press End button stop the game and reset
 			*/
-
-		if (GetCurrentState().get_quit_requested()) {
-				break;
-		}
-		else if (GetCurrentState().PopRequested()) {
-			GetCurrentState().Pause();
-			GetCurrentState().End();
-			stateStack.pop();
-
-			Resources::game_clear_images();
-			Resources::game_clear_musics();
-			Resources::game_clear_fonts();
-
-			if (stateStack.size()) {
-				GetCurrentState().Resume();
-			}
-
-		}
-		else {
-			//Nothing to do
-		}
-
-		if (storedState) {
-			GetCurrentState().Pause();
-			stateStack.push(unique_ptr<State>(storedState));
-			storedState=nullptr;
-			GetCurrentState().Begin();
-		}
-		else {
-			//Nothing to do
-		}
+			pauseOrEndGame();
 
 		SDL_Delay(17);
 	}
