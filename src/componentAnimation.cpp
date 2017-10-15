@@ -269,6 +269,9 @@ void CompAnim::checks_animation_call(int frame) {
 
     called = true;
   }
+  else {
+    // Do nothing
+  }
 }
 
 /*!
@@ -302,6 +305,9 @@ void set_new_frame(int frame1, int frame2) {
   if (compare_frames(frame1, frame2)) {
     called = false;
     set_current_frame(frame2, true);
+  }
+  else {
+    // Do nothing
   }
 }
 
