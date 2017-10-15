@@ -6,15 +6,15 @@
 //#include <inputManager.hpp>
 
 CompGravity::CompGravity(float g):gravity{g}{}
-CompGravity::~CompGravity(){}
+CompGravity::~CompGravity() {}
 
 
-void CompGravity::Update(float time){
-	if(GO(entity)->HasComponent(Component::type::t_movement)){
+void CompGravity::Update(float time) {
+	if (GO(entity)->HasComponent(Component::type::t_movement)) {
 		COMPMOVEp(GO(entity))->speed.y+=gravity*time;
 	}
 }
-void CompGravity::Render(){}
+void CompGravity::Render() {}
 Component::type CompGravity::GetType() const{
 	return Component::type::t_gravity;
 }

@@ -7,24 +7,24 @@
 #include <txtFuncs.hpp>
 //#include <inputManager.hpp>
 
-CompAnim::CompAnim(){}
-CompAnim::CompAnim(string file,CompCollider* tempColl){
+CompAnim::CompAnim() {}
+CompAnim::CompAnim(string file,CompCollider* tempColl) {
 	string name,imgFile,func,animFile,type;
 	int fCount,fCountX,fCountY,collCount,funcCount;
 	float fTime,x,y,w,h,r;
 
 	ifstream in(ANIMATION_PATH + file + ".txt");
-	if(!in.is_open())cerr << "Erro ao abrir arquivo de animação '" << file << "'" << endl;
+	if (!in.is_open())cerr << "Erro ao abrir arquivo de animação '" << file << "'" << endl;
 	else{
 		in >> imgFile >> fCount >> fCountX >> fCountY >> fTime;
 		sp.Open(imgFile,fCountX,fCountY,fTime,fCount);
 		colliders.resize(fCount,nullptr);
-		FOR(i,fCount){
+		FOR(i,fCount) {
 			in >> collCount;
-			if(collCount){
+			if (collCount) {
 				colliders[i]=new CompCollider{};
 				colliders[i]->entity = entity;
-				FOR(j,collCount){
+				FOR(j,collCount) {
 					//TODO: use rotation
 					//TODO: different collider types for each coll
 					in >> x >> y >> w >> h >> r;
@@ -35,18 +35,18 @@ CompAnim::CompAnim(string file,CompCollider* tempColl){
 			}
 
 			in >> funcCount;
-			FOR(funcI,funcCount){
+			FOR(funcI,funcCount) {
 				in >> func;
-				if(txtFuncsF.count(func))frameFunc[i].push_back(txtFuncsF[func](in));
+				if (txtFuncsF.count(func))frameFunc[i].push_back(txtFuncsF[func](in));
 			}
 		}
 		in.close();
 	}
-	if(frameFunc.count(0))called=false;
+	if (frameFunc.count(0))called=false;
 }
-CompAnim::~CompAnim(){
-	FOR(i,colliders.size()){
-		if(i==GetCurFrame())continue;
+CompAnim::~CompAnim() {
+	FOR(i,colliders.size()) {
+		if (i==GetCurFrame())continue;
 		delete colliders[i];
 	}
 }
@@ -58,18 +58,18 @@ int CompAnim::GetFrameCount()const{
 int CompAnim::GetCurFrame()const{
 	return sp.GetCurFrame();
 }
-void CompAnim::SetCurFrame(int frame,bool force){
-	if(frame != GetCurFrame()){
+void CompAnim::SetCurFrame(int frame,bool force) {
+	if (frame != GetCurFrame()) {
 		sp.SetFrame(frame);
-		for(auto &foo:frameFunc[frame])foo(GO(entity));
+		for (auto &foo:frameFunc[frame])foo(GO(entity));
 		called=true;
 		force=true;
 	}
-	if(force){
-		if(colliders[frame] != nullptr){
+	if (force) {
+		if (colliders[frame] != nullptr) {
 			GO(entity)->SetComponent(Component::type::t_collider,colliders[frame]);
 		}
-		else if(GO(entity)->HasComponent(Component::type::t_collider)){
+		else if (GO(entity)->HasComponent(Component::type::t_collider)) {
 			GO(entity)->components[Component::type::t_collider]=nullptr;
 		}
 	}
@@ -79,29 +79,29 @@ bool CompAnim::Looped()const{
 	return sp.Looped();
 }
 
-void CompAnim::Update(float time){
+void CompAnim::Update(float time) {
 	int frame1=GetCurFrame();
-	if(!called){
-		for(auto &foo:frameFunc[frame1])foo(GO(entity));
+	if (!called) {
+		for (auto &foo:frameFunc[frame1])foo(GO(entity));
 		called=true;
 	}
 	sp.Update(time);
 	int frame2=GetCurFrame();
-	if(frame1 != frame2){
+	if (frame1 != frame2) {
 		called=false;
 		SetCurFrame(frame2,true);
 	}
 }
-void CompAnim::Render(){
+void CompAnim::Render() {
 	Vec2 pos=GO(entity)->FullBox().corner().renderPos();
 
 	sp.SetFlipH(GO(entity)->flipped);
 	sp.Render(pos,GO(entity)->rotation,Camera::zoom);
 }
-void CompAnim::Own(GameObject *go){
+void CompAnim::Own(GameObject *go) {
 	entity=go->uid;
-	for(CompCollider *coll:colliders){
-		if(coll != nullptr){
+	for (CompCollider *coll:colliders) {
+		if (coll != nullptr) {
 			coll->Own(go);
 		}
 	}
