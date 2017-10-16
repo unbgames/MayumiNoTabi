@@ -44,20 +44,30 @@ CompCollider::CompCollider(collType type,const Vec2 &position,const Vec2 &sz) {
 */
 
 void CompCollider::collision_check(CompCollider *other_component) {
-	//! TODO: simplify decision structure
+	//! Verifies if the the element is in the 'dead' state
+	checks_dead(other_component);
+
+	//! If the element is not 'dead' it checks if the collision are enabled
+	for(Coll &collA:colls) 	{
+		for(Coll &collB:otherComponent->colls) {
+			collA.CollisionCheck(collB);
+		}
+	}
+}
+
+/*!
+  * @fn void CompCollider::checks_dead(CompCollider *other_component)
+	* @brief Verifies if an component is dead
+  * @param CompCollider *other_component
+*/
+
+void CompCollider::checks_dead(CompCollider *other_component) {
 	//! Verifies if the the element is in the 'dead' state
 	if(GO(entity)->dead || GO(other_component->entity)->dead) {
 		return;
 	}
 	else {
 		// Nothing to Do
-	}
-
-	//! If the element is 'dead' it checks checks if the collision are enabled
-	for(Coll &collA:colls) 	{
-		for(Coll &collB:otherComponent->colls) {
-			collA.CollisionCheck(collB);
-		}
 	}
 }
 
@@ -102,9 +112,8 @@ void CompCollider::update(float time) {
 void CompCollider::render() {
 	if (SETTINGS.showCollision) {
 		//! Iterates throughout the Collision objects in order to update the rendering
+		//! TODO: Improve decision structures
 			for (Coll coll:colls) {
-
-      	//! TODO: Refactorate decision structures
 				if (coll.cType == CompCollider::collType::t_player) {
 					SET_COLOR4(255,0,0,100);
 				}
@@ -139,11 +148,7 @@ void CompCollider::own(GameObject *object) {
 	if(object != nullptr) {
 		//! Verifies the size of the collisions
 		if(colls.size()) {
-      Rect rectangle{};
-			//! Verifies if the element size is equal to the collisions size
-			for(Coll coll:colls)rectangle = rectangle.sum(Rect{coll.position,coll.size});
-			object->curPos = rectangle.corner(); //!< Updates the value of the current position of the object
-			object->curSize = rectangle.size(); //!< Updates the value of the current size of the object
+			equal_size(object);
 		}
 		else { //! If collision has no size it gives 'zero' values to it
 			object->curPos = Vec2{}; //!< Updates the value of the current position of the object
@@ -153,6 +158,23 @@ void CompCollider::own(GameObject *object) {
 	else {
 		// Nothing to Do
 	}
+}
+
+/*!
+  * @fn void CompCollider::equal_size(GameObject *object)
+	* @brief Verifies if an Object has an an equal size of the rectangle
+	* @param GameObject *object
+*/
+
+void CompCollider::equal_size(GameObject *object) {
+
+	  Rect rectangle{};
+		//! Verifies if the element size is equal to the collisions size
+		for(Coll coll:colls) {
+			rectangle = rectangle.sum(Rect{coll.position,coll.size});
+		}
+		object->curPos = rectangle.corner(); //!< Updates the value of the current position of the object
+		object->curSize = rectangle.size(); //!< Updates the value of the current size of the object
 }
 
 /*!
@@ -170,6 +192,7 @@ bool CompCollider::kills_component(float time) {
 	else {
 		// Nothing to Do
 	}
+
 	if(GO(entity)->HasComponent(Component::type::t_animation_control)) {
 		return true;
 	}
@@ -240,8 +263,8 @@ void CompCollider::Coll::collision_check(const CompCollider::Coll &other_compone
 
 		CompMovement *compMove = COMPMOVEp(GO(entity));
 
-		Vec2 &speed=compMove->speed;
-		Vec2 &totMove=compMove->move;
+		Vec2 &speed = compMove->speed;
+		Vec2 &totMove = compMove->move;
 		Vec2 move;
 
 		//! TODO : Comment this structure
@@ -251,27 +274,36 @@ void CompCollider::Coll::collision_check(const CompCollider::Coll &other_compone
 		else {
 			// Nothing to Do
 		}
+		collides_axis(other_component);
+		totMove = move;
+	}
+	else {
+		// Nothing to Do
+	}
+}
 
-		move.x = collides(otherComponent,{totMove.x,0.0f},move).x;
+/*!
+	* @fn void CompCollider::Coll::collides_axis(const CompCollider::Coll &other_component)
+	* @brief Checks the collisions in x axis and y axis
+	* @param CompCollider::Coll &otherComponent
+*/
 
-		//! Verifies if object in x axis has collided
-		if(move.x != totMove.x) {
-			speed.x=0.0f;
-		}
-		else {
-			// Nothing to Do
-		}
+void CompCollider::Coll::collides_axis(const CompCollider::Coll &other_component) {
 
-		move.y = collides(other_component,{0.0f,totMove.y},move).y;
+	move.x = collides(otherComponent,{totMove.x,0.0f},move).x;
+	//! Verifies if object in x axis has collided
+	if(move.x != totMove.x) {
+		speed.x = 0.0f;
+	}
+	else {
+		// Nothing to Do
+	}
 
-		//! Verifies if object in y axis has collided
-		if(move.y != totMove.y) {
-			speed.y=0.0f;
-		}
-		else {
-			// Nothing to Do
-		}
-		totMove=move;
+	move.y = collides(other_component,{0.0f,totMove.y},move).y;
+
+	//! Verifies if object in y axis has collided
+	if(move.y != totMove.y) {
+		speed.y = 0.0f;
 	}
 	else {
 		// Nothing to Do
@@ -289,7 +321,7 @@ Vec2 CompCollider::Coll::collides(const Coll &other_component,const Vec2 &move,c
 
 	Rect rectangle = Box()+moved; //!< Updates the current value of the rectangle
 	Rect another_rectangle = other_component.Box(); //!< Updates the value of another rectangle
-	Vec2 moveSafe,move100=move/precision,moveTry;
+	Vec2 moveSafe,move100 = move/precision,moveTry;
 
 	//! Iterates throughout the 'rangeable' variables to identify collision
 	for(counter,precision+1) {

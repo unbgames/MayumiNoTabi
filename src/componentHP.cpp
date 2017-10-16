@@ -45,8 +45,7 @@ void CompHP::damage(int damage) {
     }
 
     //! Checks if element has 'memory' type and increases 'hit' value
-    //! TODO: Refactorate decision structure
-		if(GO(entity)->HasComponent(Component::type::t_memory)) {
+    if(GO(entity)->HasComponent(Component::type::t_memory)) {
       COMPMEMORYp(GO(entity))->ints["hit"]++;
     }
     else {
@@ -66,9 +65,8 @@ void CompHP::damage(int damage) {
 
 void CompHP::update(float time) {
 	//! Verifies if element is in the 'dead' state
-	//! TODO: Refactorate decision structures
-	if(current<=0) {
-    GO(entity)->dead=true;
+	if(current <= 0) {
+    GO(entity)->dead = true;
   }
   else {
     // Nothing to Do
@@ -96,12 +94,12 @@ void CompHP::render() {
 		SDL_RenderDrawRect(GAMERENDER,&rect);
 
 		SDL_SetRenderDrawColor(GAMERENDER, 255, 0, 0, 255);
-		rect.w*=current;
-		rect.w/=total;
-		rect.x++;
-		rect.y++;
-		rect.w-=2;
-		rect.h-=2;
+		rect.w *= current;
+		rect.w /= total;
+		rect.x ++;
+		rect.y ++;
+		rect.w -= 2;
+		rect.h -= 2;
 		SDL_RenderFillRect(GAMERENDER,&rect);
 	}
   else {

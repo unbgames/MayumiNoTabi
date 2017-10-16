@@ -18,8 +18,8 @@ public:
 	Timer damageCoolDown;
 
 
-	CompHP(int tot=100,bool showHP=false,bool showDMG=false,float dmgCD=0.0f);
-	CompHP(int tot,int cur,bool showHP=false,bool showDMG=false,float dmgCD=0.0f);
+	CompHP(int tot = 100,bool showHP = false,bool showDMG = false,float dmgCD = 0.0f);
+	CompHP(int tot,int cur,bool showHP = false,bool showDMG = false,float dmgCD = 0.0f);
 	~CompHP();
 
 	void damage(int damage);

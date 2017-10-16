@@ -52,17 +52,15 @@ CompMovement::~CompMovement() {
 }
 
 /*!
-	@fn void CompMovement::Update(float time)
+	@fn void CompMovement::update(float time)
 	@brief Method that update element movement
-	@param float time
 	@return The execution of this method returns no value
 	@warning Method that requires review of comment
+	@param float time
 */
 
 void CompMovement::update(float time) {
-
 	chooseTypeComponentMovement(time);
-
 }
 
 /*!
@@ -83,6 +81,7 @@ void CompMovement::render() {
 	@return Component class object
 	@warning Method that requires review of comment
 */
+
 Component::type CompMovement::get_type()const{
   return Component::type::t_movement;
 }
