@@ -40,10 +40,22 @@ void CompHP::damage(int damage) {
 		//! TODO: Renderizes damage value
 		if(showDMG){
 		}
-		//! Checks if element has 'memory' type and increases 'hit' value
+    else {
+      // Nothing to Do
+    }
+
+    //! Checks if element has 'memory' type and increases 'hit' value
     //! TODO: Refactorate decision structure
-		if(GO(entity)->HasComponent(Component::type::t_memory))COMPMEMORYp(GO(entity))->ints["hit"]++;
+		if(GO(entity)->HasComponent(Component::type::t_memory)) {
+      COMPMEMORYp(GO(entity))->ints["hit"]++;
+    }
+    else {
+    	// Nothing to Do
+    }
 	}
+  else {
+    // Nothing to Do
+  }
 }
 
 /*!
@@ -55,7 +67,12 @@ void CompHP::damage(int damage) {
 void CompHP::update(float time) {
 	//! Verifies if element is in the 'dead' state
 	//! TODO: Refactorate decision structures
-	if(current<=0)GO(entity)->dead=true;
+	if(current<=0) {
+    GO(entity)->dead=true;
+  }
+  else {
+    // Nothing to Do
+  }
 	dmgCoolDown.add_time(time);
 }
 
@@ -68,7 +85,7 @@ void CompHP::update(float time) {
 void CompHP::render() {
 	//! Shows HP on screen if it's set player and bigget than zero
 	//! TODO: Refactorate decision structures
-	if(SETTINGS.showHP && showHP && current>0){
+	if(SETTINGS.showHP && showHP && current>0) {
 		Rect box{0,-GO(entity)->Box().w/5.0f - GO(entity)->Box().w/10.0f,GO(entity)->Box().w,GO(entity)->Box().w/5.0f};
 		box+=GO(entity)->Box().corner();
 
@@ -87,6 +104,9 @@ void CompHP::render() {
 		rect.h-=2;
 		SDL_RenderFillRect(GAMERENDER,&rect);
 	}
+  else {
+    // Nothing to Do
+  }
 }
 
 /*!
