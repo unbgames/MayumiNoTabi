@@ -76,18 +76,38 @@ uint Camera::get_camera_focus() {
   @brief    Updates the camera
   @param    float time
   @return   void
-  @warning  TODO in decision structure
+  @warning  none
 */
 
 void Camera::update_camera(float time) {
   Vec2 center = camera_position + (WINSIZE/2/camera_zoom); //!< Newvalue for center
 
-      // Zooms in if z key is pressed
+  update_camera_zoom(time);
+
+  // Centers screen
+  center_camera_to(center);
+
+  update_camera_speed(time);
+}
+
+/*!
+  @fn       void Camera::update_camera_zoom(float time)
+  @brief    Updates the camera's zoom
+  @param    float time
+  @return   void
+  @warning  none
+*/
+
+void Camera::update_camera_zoom(float time) {
+  // Zooms in if z key is pressed
   if (INPUT.IsKeyDown(KEY(z))) {
     camera_zoom += 0.5 * time;
     camera_zoom = min(camera_zoom, MAX_ZOOM);
 
     //cout<<"camera_zoom: "<<camera_zoom<<endl;
+  }
+  else {
+    // Do nothing
   }
 
   // Zooms out if x key is pressed
@@ -98,28 +118,43 @@ void Camera::update_camera(float time) {
 
     //cout<<"camera_zoom: "<<camera_zoom<<endl;
   }
+  else {
+    // Do nothing
+  }
+}
 
-  // Centers screen
-  center_camera_to(center);
+/*!
+  @fn       void Camera::update_camera_speed(float time)
+  @brief    Updates the camera's speed
+  @param    float time
+  @return   void
+  @warning  none
+*/
 
-  // TODO: add else(do nothing)
+void Camera::update_camera_speed(float time) {
   // Defines camera position in either follow or static or do nothing
   if (camera_is_following) {
     center_camera_to(GO(camera_focus)->Box().center());
   }
   else if (!camera_is_locked) {
-    camera_speed = Vec2(0,0);
+    camera_speed = Vec2(0, 0);
 
     // defines camera speed according to the arrow key that has been pressed.
     // (left)
     if (INPUT.key_is_down(KEY_LEFT)) {
       camera_speed.x -= CAMERA_SPEED;
     }
+    else {
+      // Do nothing
+    }
 
     // defines camera speed according to the arrow key that has been pressed.
     // (right)
-    if (INPUT.key_is_down(KEY_RIGHT)){
+    if (INPUT.IsKeyDown(KEY_RIGHT)) {
       camera_speed.x += CAMERA_SPEED;
+    }
+    else {
+      // Do nothing
     }
 
     // defines camera speed according to the arrow key that has been pressed.
@@ -127,11 +162,17 @@ void Camera::update_camera(float time) {
     if (INPUT.key_is_down(KEY_UP)) {
       camera_speed.y -= CAMERA_SPEED;
     }
+    else {
+      // Do nothing
+    }
 
     // defines camera speed according to the arrow key that has been pressed.
     // (down)
     if (INPUT.key_is_down(KEY_DOWN)) {
       camera_speed.y += CAMERA_SPEED;
+    }
+    else {
+      // Do nothing
     }
 
     // TODO: math refactoring
