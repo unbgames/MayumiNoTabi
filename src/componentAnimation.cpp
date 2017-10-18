@@ -32,6 +32,8 @@ CompAnim::CompAnim() {
   */
 
 CompAnim::CompAnim(string filename, CompCollider* temporary_collider) {
+  assert(filename != "");
+  assert(temporary_collider != NULL);
 
   string name = "";
   string img_file = "";
@@ -120,7 +122,9 @@ CompAnim::CompAnim(string filename, CompCollider* temporary_collider) {
   */
 
 CompAnim::~CompAnim() {
-	// Iterates through coliders
+  // Iterates through coliders
+  assert(colliders != NULL);
+
 	FOR(i, colliders.size()) {
 
 		// Ignores deletion if current collider equals current frame
@@ -200,7 +204,7 @@ void CompAnim::set_current_frame(int frame,		// range: unknown
 void CompAnim::set_current_frame_by_force(int frame,
                                           bool force) {
   // Sets current frame by force
-  if (force) {
+  if (force == true) {
 
     // proceeds if frame exists or sets as null
     if (colliders[frame] != nullptr) {
@@ -260,6 +264,8 @@ void CompAnim::Update(float time) {
 */
 
 void CompAnim::checks_animation_call(int frame) {
+  assert(frame > 0);
+
   if (!called) {
 
     // Iterates through frame
@@ -283,6 +289,8 @@ void CompAnim::checks_animation_call(int frame) {
 */
 
 bool CompAnim::compare_frames(int frame1, int frame2) {
+  assert(frame1 < 0 or frame2 < 0);
+
   if (frame1 != frame2) {
     return true;
   }
@@ -300,6 +308,8 @@ bool CompAnim::compare_frames(int frame1, int frame2) {
 */
 
 void set_new_frame(int frame1, int frame2) {
+  assert(frame1 < 0 or frame2 < 0);
+
   // Checks if current frames is the same as the next one, if they're not the
   // next frame is set
   if (compare_frames(frame1, frame2)) {
@@ -324,6 +334,8 @@ void CompAnim::Render() {
   Vec2 pos = GO(entity)->FullBox().corner().renderPos(); //!< Used to save the
                                                          //!< position to render
 
+  assert(pos != NULL);
+
   sp.SetFlipH(GO(entity)->flipped);
 	sp.Render(pos, GO(entity)->rotation, Camera::zoom);
 }
@@ -337,6 +349,8 @@ void CompAnim::Render() {
 */
 
 void CompAnim::own(GameObject* go) {
+  assert(go != NULL);
+
 	entity = go->uid;
 
 	// Iterates through the colliders and defines its ownage if they're not null
