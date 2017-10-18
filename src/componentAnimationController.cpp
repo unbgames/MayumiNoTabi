@@ -19,6 +19,8 @@
   */
 
 CompAnimControl::CompAnimControl(string filename, CompCollider* collider) {
+  assert(collider != NULL);
+  assert(filename != "");
 
   string name = "";
   string animation_filename = "";
@@ -63,7 +65,10 @@ CompAnimControl::~CompAnimControl() {
 
 void CompAnimControl::change_current(string animation_name,
                             bool repeat_animation) {// repeats animation if true
-  // Checks if animation has been found
+  
+  assert(animation_name != "");
+
+  // Checks if animations vector has anything
   if (animations.count(animation_name)) {
 
     // TODO: add else (do nothing)
@@ -178,8 +183,6 @@ void CompAnimControl::update(float time) {
 */
 
 void CompAnimControl::render() {
-
-  // TODO: else (do nothing)
   // Tries to find the current animation on animations vector, render if found
   if (animations.count(cur)) {
     get_current().render();
@@ -198,6 +201,8 @@ void CompAnimControl::render() {
 */
 
 void CompAnimControl::own(GameObject *game_object) {
+  assert(game_object != NULL);
+  
   entity = go->uid;
 
   for (auto &anim:animations) {
