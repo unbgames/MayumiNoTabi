@@ -19,7 +19,9 @@
 */
 
 void Component::own(GameObject *go) {
-    entity = go->uid;
+  assert(go != NULL);
+  
+  entity = go->uid;
 }
 
 /*!
