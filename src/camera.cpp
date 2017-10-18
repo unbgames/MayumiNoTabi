@@ -15,6 +15,8 @@
 #include <gameObject.hpp>
 #include <inputManager.hpp>
 
+#include <assert.h>
+
 // Macros declaration
 #define CAMERA_SPEED 500	// unit:
 #define MAX_ZOOM 1.0f		 	// unit:
@@ -42,6 +44,8 @@ bool Camera::camera_is_following = false; //!< Global variable defining camera
 */
 
 void Camera::follow(uint new_focus) { // Range: bigger than 0
+  assert(new_focus >= 0);
+
   camera_is_following = true;
   camera_focus = new_focus;
 }
@@ -81,6 +85,8 @@ uint Camera::get_camera_focus() {
 
 void Camera::update_camera(float time) {
   Vec2 center = camera_position + (WINSIZE/2/camera_zoom); //!< Newvalue for center
+
+  assert(center != NULL);
 
   update_camera_zoom(time);
 
@@ -216,6 +222,7 @@ void Camera::center_camera_to(const Vec2& vec2_vector) {
 */
 
 Vec2 Camera::render_camera_pos(const Vec2& vec2_vector) {
+  assert(vec2_vector != NULL);
   return (vec2_vector - CAMERA) * CAMERAZOOM;
 }
 
