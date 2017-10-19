@@ -11,6 +11,9 @@
 #include <gameObject.hpp>
 #include <camera.hpp>
 #include <game.hpp>
+
+#include <assert.h>
+
 //#include <inputManager.hpp>
 
 //! A constructor.

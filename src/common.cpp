@@ -8,6 +8,7 @@
  */
 
 #include <common.hpp>
+#include <assert.h>
 
 int debug_count = 0; //!< Global variable used as debug counter
 

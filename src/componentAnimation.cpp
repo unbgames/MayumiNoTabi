@@ -14,6 +14,9 @@
 #include <game.hpp>
 #include <stateStage.hpp>
 #include <txtFuncs.hpp>
+
+#include <assert.h>
+
 // #include <inputManager.hpp>
 
 //! A constructor.
