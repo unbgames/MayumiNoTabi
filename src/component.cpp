@@ -10,6 +10,8 @@
 #include <component.hpp>
 #include <gameObject.hpp>
 
+#include <assert.h>
+
 /*!
   @fn       void Component::own(GameObject *go)
   @brief    Assigns a object as property (like a ownage thing) of a component

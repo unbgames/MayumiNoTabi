@@ -10,6 +10,8 @@
 #include <componentAI.hpp>
 #include <game.hpp>
 
+#include <assert.h>
+
 //#include <camera.hpp>
 //#include <inputManager.hpp>
 
