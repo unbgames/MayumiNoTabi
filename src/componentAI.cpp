@@ -16,14 +16,15 @@
 //#include <inputManager.hpp>
 
 // TODO: Refactorate
-
 //! A constructor.
   /*!
   This is a constructor method of the componentAI class
   */
 
 CompAI::CompAI(aiFunc func):foo{func} { // aiFunc=function<void(CompAI*,float)>;
-
+  LOG_METHOD_START("CompAI::CompAI");
+  LOG_MSG("no code in this method...")
+  LOG_METHOD_CLOSE("CompAI::CompAI", "don't know at all");
 }
 
 //! A destructor.
@@ -32,7 +33,9 @@ CompAI::CompAI(aiFunc func):foo{func} { // aiFunc=function<void(CompAI*,float)>;
   */
 
 CompAI::~CompAI() {
-
+  LOG_METHOD_START("CompAI::~CompAI");
+  LOG_MSG("no code in this method...")
+  LOG_METHOD_CLOSE("CompAI::~CompAI", "don't know at all");
 }
 
 /*!
@@ -44,7 +47,12 @@ CompAI::~CompAI() {
 */
 
 void CompAI::update(float time) {
+  LOG_METHOD_START("CompAI::update");
+  LOG_VARIABLE("time", time);
+
   foo(this, time);  // Maybe I should leave it's name like this
+  
+  LOG_METHOD_CLOSE("CompAI::update", "void");
 }
 
 /*!
@@ -56,6 +64,9 @@ void CompAI::update(float time) {
 */
 
 void CompAI::render_component_ai() {
+  LOG_METHOD_START("CompAI::render_component_ai");
+  LOG_MSG("no code in this method...")
+  LOG_METHOD_CLOSE("CompAI::render_component_ai", "void");
 }
 
 /*!
@@ -67,5 +78,8 @@ void CompAI::render_component_ai() {
 */
 
 Component::type CompAI::get_type()const {
+  LOG_METHOD_START("CompAI::get_type");
+
+  LOG_METHOD_CLOSE("CompAI::get_type", Component::type::t_ai);
   return Component::type::t_ai;
 }
