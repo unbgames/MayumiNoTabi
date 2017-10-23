@@ -22,6 +22,10 @@
   */
 
 CompAnimControl::CompAnimControl(string filename, CompCollider* collider) {
+  LOG_METHOD_START("CompAnimControl::CompAnimControl");
+  LOG_VARIABLE("filename", filename);
+  LOG_VARIABLE("collider", collider.to_string());
+
   assert(collider != NULL);
   assert(filename != "");
 
@@ -47,6 +51,8 @@ CompAnimControl::CompAnimControl(string filename, CompCollider* collider) {
 
     in.close();
   }
+
+  LOG_METHOD_CLOSE("CompAnimControl::CompAnimControl", "constructor");
 }
 
 //! A destructor.
@@ -55,7 +61,8 @@ CompAnimControl::CompAnimControl(string filename, CompCollider* collider) {
   */
 
 CompAnimControl::~CompAnimControl() {
-
+  LOG_METHOD_START("CompAnimControl::~CompAnimControl");
+  LOG_METHOD_CLOSE("CompAnimControl::~CompAnimControl", "destructor");
 }
 
 /*!
@@ -69,6 +76,9 @@ CompAnimControl::~CompAnimControl() {
 void CompAnimControl::change_current(string animation_name,
                             bool repeat_animation) {// repeats animation if true
   
+  LOG_METHOD_START("CompAnimControl::change_current");
+  LOG_VARIABLE("animation_name", animation_name);
+  LOG_VARIABLE("repeat_animation", repeat_animation);
   assert(animation_name != "");
 
   // Checks if animations vector has anything
@@ -102,6 +112,8 @@ void CompAnimControl::change_current(string animation_name,
     cerr << animation_name;
     cerr << "' entity uid = " << entity << endl;
   }
+
+  LOG_METHOD_CLOSE("CompAnimControl::change_current", "void");
 }
 
 /*!
@@ -113,6 +125,9 @@ void CompAnimControl::change_current(string animation_name,
 */
 
 CompAnim& CompAnimControl::get_current() {
+  LOG_METHOD_START("CompAnimControl::get_current");
+  LOG_METHOD_CLOSE("CompAnimControl::get_current", "pointer to current animation");
+
   return *animations[cur];
 }
 
@@ -125,7 +140,10 @@ CompAnim& CompAnimControl::get_current() {
 */
 
 const string& CompAnimControl::get_current_name()const {
-  return cur;
+  LOG_METHOD_START("CompAnimControl::get_current_name");
+  LOG_METHOD_CLOSE("CompAnimControl::get_current_name", current);
+
+  return current;
 }
 
 /*!
@@ -137,7 +155,10 @@ const string& CompAnimControl::get_current_name()const {
 */
 
 string& CompAnimControl::get_current_name() {
-  return cur;
+  LOG_METHOD_START("CompAnimControl::get_current_name");
+  LOG_METHOD_CLOSE("CompAnimControl::get_current_name", current);
+
+  return current;
 }
 
 /*!
@@ -149,6 +170,8 @@ string& CompAnimControl::get_current_name() {
 */
 
 void CompAnimControl::update(float time) {
+  LOG_METHOD_START("CompAnimControl::update");
+  LOG_VARIABLE("time", time);
 
   // Checks if current animation is in the 'library'
   if (animations.count(cur)) {
@@ -175,6 +198,7 @@ void CompAnimControl::update(float time) {
   else {
     // Do nothing
   }
+  LOG_METHOD_CLOSE("CompAnimControl::update", "void");
 }
 
 /*!
@@ -186,6 +210,8 @@ void CompAnimControl::update(float time) {
 */
 
 void CompAnimControl::render() {
+  LOG_METHOD_START("CompAnimControl::render");
+  
   // Tries to find the current animation on animations vector, render if found
   if (animations.count(cur)) {
     get_current().render();
@@ -193,6 +219,7 @@ void CompAnimControl::render() {
   else {
     // Do nothing
   }
+  LOG_METHOD_CLOSE("CompAnimControl::render", "void");
 }
 
 /*!
@@ -204,15 +231,19 @@ void CompAnimControl::render() {
 */
 
 void CompAnimControl::own(GameObject *game_object) {
+  LOG_METHOD_START("CompAnimControl::own");
+  LOG_VARIABLE("game_object", game_object.to_string());
+  
   assert(game_object != NULL);
   
   entity = go->uid;
-
+  
   for (auto &anim:animations) {
     anim.second->own(go);
   }
-
+  
   get_current().own(go);
+  LOG_METHOD_CLOSE("CompAnimControl::own", "void");
 }
 
 /*!
@@ -224,6 +255,8 @@ void CompAnimControl::own(GameObject *game_object) {
 */
 
 bool CompAnimControl::kills_component(float time) { // range: unknown
+  LOG_METHOD_START("CompAnimControl::kills_component");
+  LOG_VARIABLE("time", time);
   UNUSED(time);
 
   // Checks if die animation isn't in animations
@@ -239,6 +272,7 @@ bool CompAnimControl::kills_component(float time) { // range: unknown
 
     // Makes method return true if current animation isn't player's death
     if (cur != "die") {
+      LOG_METHOD_CLOSE("CompAnimControl::kills_component", "true");
       return true;
     }
     else {
@@ -249,7 +283,8 @@ bool CompAnimControl::kills_component(float time) { // range: unknown
     change_current("die", false);
     dying = true;
   }
-
+  
+  LOG_METHOD_CLOSE("CompAnimControl::kills_component", "false");
   return false;
 }
 
@@ -262,5 +297,8 @@ bool CompAnimControl::kills_component(float time) { // range: unknown
 */
 
 Component::type CompAnimControl::get_type()const {
+  LOG_METHOD_START("CompAnimControl::get_type");
+  LOG_METHOD_CLOSE("CompAnimControl::get_type", Component::type::t_animation_control.to_string());
+
   return Component::type::t_animation_control;
 }
