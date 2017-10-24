@@ -21,9 +21,14 @@
 */
 
 void Component::own(GameObject *go) {
+  LOG_METHOD_START("Component::own");
+  LOG_VARIABLE("go", go.to_string);
+
   assert(go != NULL);
   
   entity = go->uid;
+  
+  LOG_METHOD_CLOSE('Componet::own', 'void');
 }
 
 /*!
@@ -35,7 +40,11 @@ void Component::own(GameObject *go) {
 */
 
 bool Component::kills_component(float time) {
-    UNUSED(time);
+  LOG_METHOD_START("Component::kills_component");
+  LOG_VARIABLE("time", time);
 
-    return true;
+  UNUSED(time);
+
+  LOG_METHOD_CLOSE("Component::kills_component", "true (hardcoded)");
+  return true;
 }
