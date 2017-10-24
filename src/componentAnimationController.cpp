@@ -25,7 +25,7 @@ CompAnimControl::CompAnimControl(string filename, CompCollider* collider) {
   LOG_METHOD_START("CompAnimControl::CompAnimControl");
   LOG_VARIABLE("filename", filename);
   LOG_VARIABLE("collider", collider.to_string());
-
+  
   assert(collider != NULL);
   assert(filename != "");
 
@@ -75,10 +75,10 @@ CompAnimControl::~CompAnimControl() {
 
 void CompAnimControl::change_current(string animation_name,
                             bool repeat_animation) {// repeats animation if true
-  
   LOG_METHOD_START("CompAnimControl::change_current");
   LOG_VARIABLE("animation_name", animation_name);
   LOG_VARIABLE("repeat_animation", repeat_animation);
+
   assert(animation_name != "");
 
   // Checks if animations vector has anything
@@ -211,7 +211,7 @@ void CompAnimControl::update(float time) {
 
 void CompAnimControl::render() {
   LOG_METHOD_START("CompAnimControl::render");
-  
+
   // Tries to find the current animation on animations vector, render if found
   if (animations.count(cur)) {
     get_current().render();
@@ -233,7 +233,7 @@ void CompAnimControl::render() {
 void CompAnimControl::own(GameObject *game_object) {
   LOG_METHOD_START("CompAnimControl::own");
   LOG_VARIABLE("game_object", game_object.to_string());
-  
+
   assert(game_object != NULL);
   
   entity = go->uid;

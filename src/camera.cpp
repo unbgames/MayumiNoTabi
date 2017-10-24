@@ -46,7 +46,7 @@ bool Camera::camera_is_following = false; //!< Global variable defining camera
 void Camera::follow(uint new_focus) { // Range: bigger than 0
   LOG_METHOD_START('Camera::follow');
   LOG_VARIABLE("new_focus", new_focus);
-  
+
   assert(new_focus >= 0);
 
   camera_is_following = true;
@@ -269,6 +269,7 @@ void Camera::center_camera_to(const Vec2& vec2_vector) {
 */
 
 Vec2 Camera::render_camera_pos(const Vec2& vec2_vector) {
+
   LOG_METHOD_START("Camera::render_camera_pos");
   LOG_VARIABLE("vec2_vector", vec2_vector);
 

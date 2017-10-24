@@ -372,7 +372,7 @@ void set_new_frame(int frame1, int frame2) {
   LOG_VARIABLE("frame2", frame2);
 
   assert(frame1 < 0 or frame2 < 0);
-  
+
   // Checks if current frames is the same as the next one, if they're not the
   // next frame is set
   if (compare_frames(frame1, frame2)) {
@@ -402,7 +402,7 @@ void CompAnim::Render() {
   //!< position to render
   
   assert(pos != NULL);
-  
+
   sp.SetFlipH(GO(entity)->flipped);
 	sp.Render(pos, GO(entity)->rotation, Camera::zoom);
 

@@ -83,8 +83,6 @@ using uint=unsigned int;
 #define RAND(x) (rand()%(x))
 #define RANDR(low,high) ((low) + (rand()%((high)-(low))))
 
-extern int debugCount;
-
 #define SET_COLOR(color) SDL_SetRenderDrawColor(GAMERENDER,color)
 #define SET_COLOR4(r,g,b,a) SDL_SetRenderDrawColor(GAMERENDER,(r),(g),(b),(a))
 #define CLEAR_SCREEN() SDL_RenderClear(GAMERENDER)
