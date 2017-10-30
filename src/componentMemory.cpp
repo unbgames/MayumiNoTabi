@@ -35,7 +35,9 @@ CompMemory::~CompMemory() {
 
 void CompMemory::update(float time) {
 	//! TODO: Refactorate decision strucuture
-	for(auto& t:timers)t.second.add_time(time);
+	for(auto& t:timers) {
+		t.second.add_time(time);
+	}
 }
 
 /*!
