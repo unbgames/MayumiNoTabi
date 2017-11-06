@@ -1,13 +1,13 @@
 #include <timer.hpp>
 
-Timer::Timer(){}
+Timer::Timer() {}
 
-void Timer::Update(float dTime){
-	time+=dTime;
+void Timer::add_time(float additional_time) {
+	time+=additional_time;
 }
-void Timer::Restart(){
+void Timer::restart_time() {
 	time=0;
 }
-float Timer::Get(){
+float Timer::get_time() {
 	return time;
 }

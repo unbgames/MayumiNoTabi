@@ -62,10 +62,17 @@ using std::make_pair;
 using ii=pair<int,int>;
 using uint=unsigned int;
 
-#define FOR(  cont,    max) for(int (cont)=0 	       ,_max_=(max);(cont)< _max_;(cont)++)
-#define FOR2( cont,min,max) for(int (cont)=(int)(min)  ,_max_=(max);(cont)< _max_;(cont)++)
-#define FORR( cont,    max) for(int (cont)=(int)(max-1)            ;(cont)>=0;    (cont)--)
-#define FOR2R(cont,min,max) for(int (cont)=(int)(max-1),_min_=(min);(cont)>=_min_;(cont)--)
+// Debugging log
+#define LOG_METHOD_START(complete_name_of_the_method) std::cout << "--> " << complete_name_of_the_method << std::endl;
+#define LOG_METHOD_CLOSE(complete_name_of_the_method, return_value) std::cout << "<-- " << complete_name_of_the_method << " returned:" << return_value << std::endl;
+#define LOG_VARIABLE(var_name, var_value) std::cout << var_name << ": " << var_value << std::endl;
+#define LOG_MSG(message) std::cout << message << std::endl;
+
+
+#define FOR(  cont,    max) for (int (cont)=0 	       ,_max_=(max);(cont)< _max_;(cont)++)
+#define FOR2( cont,min,max) for (int (cont)=(int)(min)  ,_max_=(max);(cont)< _max_;(cont)++)
+#define FORR( cont,    max) for (int (cont)=(int)(max-1)            ;(cont)>=0;    (cont)--)
+#define FOR2R(cont,min,max) for (int (cont)=(int)(max-1),_min_=(min);(cont)>=_min_;(cont)--)
 #define ABS(x) (((x)<0)?-(x):(x))
 #define BETWEEN(x,a,b) ((x>=a) && (x<b))
 #define DEBUG(x) cerr << #x << " = " << x << endl;
@@ -76,8 +83,6 @@ using uint=unsigned int;
 #define RAND(x) (rand()%(x))
 #define RANDR(low,high) ((low) + (rand()%((high)-(low))))
 
-extern int debugCount;
-
 #define SET_COLOR(color) SDL_SetRenderDrawColor(GAMERENDER,color)
 #define SET_COLOR4(r,g,b,a) SDL_SetRenderDrawColor(GAMERENDER,(r),(g),(b),(a))
 #define CLEAR_SCREEN() SDL_RenderClear(GAMERENDER)
@@ -85,11 +90,11 @@ extern int debugCount;
 #define FILL_RECT(r) SDL_RenderFillRect(GAMERENDER, (r))
 #define DRAW_LINE(x0,y0,x,y) SDL_RenderDrawLine(GAMERENDER,(x0),(y0),(x),(y))
 
-#define SDL_COLOR_BLACK MakeColor(0,0,0)
-#define SDL_COLOR_RED   MakeColor(255,0,0)
-#define SDL_COLOR_GREEN MakeColor(0,255,0)
-#define SDL_COLOR_BLUE  MakeColor(0,0,255)
-#define SDL_COLOR_WHITE MakeColor(255,255,255)
+#define SDL_COLOR_BLACK generate_color(0,0,0)
+#define SDL_COLOR_RED   generate_color(255,0,0)
+#define SDL_COLOR_GREEN generate_color(0,255,0)
+#define SDL_COLOR_BLUE  generate_color(0,0,255)
+#define SDL_COLOR_WHITE generate_color(255,255,255)
 
 #define PRECISION 0.0001
 #define PLAYER_JUMP 8.1//m/s
@@ -108,14 +113,26 @@ extern int debugCount;
 #define RENDERCOLLISION
 
 
-typedef enum {TOP_LEFT,TOP,TOP_RIGHT,LEFT,CENTER,RIGHT,BOTTOM_LEFT,BOTTOM,BOTTOM_RIGHT} Hotspot;
-extern pair<float,float> HotspotPos[];
+typedef enum {
+  TOP_LEFT,
+  TOP,
+  TOP_RIGHT,
+  LEFT,
+  CENTER,
+  RIGHT,
+  BOTTOM_LEFT,
+  BOTTOM,
+  BOTTOM_RIGHT
+} Hotspot;
 
-SDL_Color MakeColor(int r,int g,int b,int a=255);
+extern pair<float,float> hotspot_positions[];
+
+SDL_Color generate_color(int red, int green, int blue, int alpha = 255);
 
 bool equals(const float &a,const float &b);
-float closeDist(const float &from,const float &to,const float &change);
 
-string FloatToStr(float f);
+float close_distance(const float &from, const float &to, const float &change);
 
-#endif//COMMONHPP
+string convert_float_to_str(float float_number);
+
+#endif

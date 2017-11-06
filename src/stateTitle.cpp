@@ -15,39 +15,39 @@ StateTitle::StateTitle():State::State(),bg{Sprite(BACKGROUND)},bt1{"img/botao-ed
 	
 	bg.StretchToFit(WINSIZE);
 }
-StateTitle::~StateTitle(){}
+StateTitle::~StateTitle() {}
 
-void StateTitle::LoadAssets(){}
-void StateTitle::LoadGUI(){}
+void StateTitle::LoadAssets() {}
+void StateTitle::LoadGUI() {}
 
-void StateTitle::Begin(){
+void StateTitle::Begin() {
 	//Create gameObjects here
 	GameObject* text = new GameObject{Rect{(WINSIZE.x/2),(WINSIZE.y/2),0,0}};
 	text->AddComponent(new CompText{INSTRUCTION_TEXT,36,SDL_COLOR_WHITE,Hotspot::CENTER});
 	AddObject(text->uid);
 }
 
-void StateTitle::Update(float time){
-	if(INPUT.QuitRequested() || INPUT.KeyPress(KEY_ESC)) quitRequested=true;
+void StateTitle::update(float time) {
+	if (INPUT.get_quit_requested() || INPUT.key_pressed(KEY_ESC)) quit_requested=true;
 
-	if(INPUT.KeyPress(KEY_SPACE)){
-		bt2.SetFrame(1);
+	if (INPUT.key_pressed(KEY_SPACE)) {
+		bt2.set_frame(1);
 		GAMEINST.Push(new StateStage{"level_0"});
 	}
-	if(INPUT.KeyPress(KEY(e))){
-		bt1.SetFrame(1);
+	if (INPUT.key_pressed(KEY(e))) {
+		bt1.set_frame(1);
 		GAMEINST.Push(new StateEditor{});
 	}
 	UpdateArray(time);
 }
-void StateTitle::Render(){
-	bg.Render(0,0);
-	bt1.Render(500,300);
-	bt2.Render(100,300);
+void StateTitle::render() {
+	bg.render(0,0);
+	bt1.render(500,300);
+	bt2.render(100,300);
 	// RenderArray();
 }
 
-void StateTitle::Pause(){}
-void StateTitle::Resume(){
+void StateTitle::Pause() {}
+void StateTitle::Resume() {
 	CAMERA.x=CAMERA.y=0;
 }

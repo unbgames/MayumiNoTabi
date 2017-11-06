@@ -19,8 +19,8 @@
 	FUNC(Remove,T),\
 }
 
-void CallFunc(const string func,const string str,GameObject* go){
-	if(!txtFuncsS.count(func)){
+void CallFunc(const string func,const string str,GameObject* go) {
+	if (!txtFuncsS.count(func)) {
 		cerr << "CallFunc chamada com função inválida '" << func << "'" << endl;
 		return;
 	}
@@ -34,57 +34,57 @@ void CallFunc(const string func,const string str,GameObject* go){
 
 
 
-// template<class T> txtFuncType1 AddParticle(T& in){}
-template<class T> txtFuncType1 AddSprite(T& in){
+// template<class T> txtFuncType1 AddParticle(T& in) {}
+template<class T> txtFuncType1 AddSprite(T& in) {
 	Vec2 pos;
 	float limit;
 	in >> pos.x >> pos.y >> limit;
-	return [pos,limit](GameObject* self){
+	return [pos,limit](GameObject* self) {
 		GameObject *spr = new GameObject{pos};
 		spr->flipped=true;
 		spr->rotation=self->rotation;
 		Sprite sp;
-		if     (self->HasComponent(Component::type::t_animation))        sp = COMPANIMp(self)->sp;
-		else if(self->HasComponent(Component::type::t_animation_control))sp = COMPANIMCONTp(self)->GetCur().sp;
-		else if(self->HasComponent(Component::type::t_static_render))    sp = COMPSTATICRENDERp(self)->sp;
+		if     (self->HasComponent(Component::type::t_animation))        sp = COMPANIMPOINTER(self)->sp;
+		else if (self->HasComponent(Component::type::t_animation_control))sp = COMPANIMCONTPOINTER(self)->get_current().sp;
+		else if (self->HasComponent(Component::type::t_static_render))    sp = COMPSTATICRENDERp(self)->sp;
 		sp.SetFrameTime(-1.0f);
-		if(limit != -1)spr->AddComponent(new CompTimer{limit});
+		if (limit != -1)spr->AddComponent(new CompTimer{limit});
 		spr->AddComponent(new CompStaticRender{sp,Vec2{}});
 		GAMESTATE.AddObject(spr->uid);
 	};
 }
-template<class T> txtFuncType1 AddSprite2(T& in){
+template<class T> txtFuncType1 AddSprite2(T& in) {
 	Vec2 pos;
 	float limit;
 	string file;
 	in >> file >> pos.x >> pos.y >> limit;
-	return [file,pos,limit](GameObject* self){
+	return [file,pos,limit](GameObject* self) {
 		GameObject *spr = new GameObject{pos};
 		spr->flipped=true;
 		spr->rotation=self->rotation;
 		Sprite sp(file);
 		sp.SetFrameTime(-1.0f);
-		if(limit != -1)spr->AddComponent(new CompTimer{limit});
+		if (limit != -1)spr->AddComponent(new CompTimer{limit});
 		spr->AddComponent(new CompStaticRender{sp,Vec2{}});
 		GAMESTATE.AddObject(spr->uid);
 	};
 }
-template<class T> txtFuncType1 AddVar(T& in){
+template<class T> txtFuncType1 AddVar(T& in) {
 	string type,name;
 	in >> type >> name;
-	if(type=="int"){
+	if (type=="int") {
 		int val;
 		in >> val;
-		return [name,val](GameObject* self){
-			if(!self->HasComponent(Component::type::t_memory))self->AddComponent(new CompMemory{});
+		return [name,val](GameObject* self) {
+			if (!self->HasComponent(Component::type::t_memory))self->AddComponent(new CompMemory{});
 			COMPMEMORYp(self)->ints[name]+=val;
 		};
 	}
-	if(type=="float"){
+	if (type=="float") {
 		float val;
 		in >> val;
-		return [name,val](GameObject* self){
-			if(!self->HasComponent(Component::type::t_memory))self->AddComponent(new CompMemory{});
+		return [name,val](GameObject* self) {
+			if (!self->HasComponent(Component::type::t_memory))self->AddComponent(new CompMemory{});
 			COMPMEMORYp(self)->floats[name]+=val;
 		};
 	}
@@ -92,36 +92,36 @@ template<class T> txtFuncType1 AddVar(T& in){
 	cerr << "AddVar called with invalid type '" << type << "'" << endl;
 	return txtFuncType1{};
 }
-template<class T> txtFuncType1 ChangeVar(T& in){
+template<class T> txtFuncType1 ChangeVar(T& in) {
 	string type,name;
 	in >> type >> name;
-	if(type=="string"){
+	if (type=="string") {
 		string val;
 		in >> val;
-		return [name,val](GameObject* self){
-			if(!self->HasComponent(Component::type::t_memory))self->AddComponent(new CompMemory{});
+		return [name,val](GameObject* self) {
+			if (!self->HasComponent(Component::type::t_memory))self->AddComponent(new CompMemory{});
 			COMPMEMORYp(self)->strings[name]=val;
 		};
 	}
-	if(type=="int"){
+	if (type=="int") {
 		int val;
 		in >> val;
-		return [name,val](GameObject* self){
-			if(!self->HasComponent(Component::type::t_memory))self->AddComponent(new CompMemory{});
+		return [name,val](GameObject* self) {
+			if (!self->HasComponent(Component::type::t_memory))self->AddComponent(new CompMemory{});
 			COMPMEMORYp(self)->ints[name]=val;
 		};
 	}
-	if(type=="float"){
+	if (type=="float") {
 		float val;
 		in >> val;
-		return [name,val](GameObject* self){
-			if(!self->HasComponent(Component::type::t_memory))self->AddComponent(new CompMemory{});
+		return [name,val](GameObject* self) {
+			if (!self->HasComponent(Component::type::t_memory))self->AddComponent(new CompMemory{});
 			COMPMEMORYp(self)->floats[name]=val;
 		};
 	}
-	if(type=="timer"){
-		return [name](GameObject* self){
-			if(!self->HasComponent(Component::type::t_memory))self->AddComponent(new CompMemory{});
+	if (type=="timer") {
+		return [name](GameObject* self) {
+			if (!self->HasComponent(Component::type::t_memory))self->AddComponent(new CompMemory{});
 			COMPMEMORYp(self)->timers[name].Restart();
 		};
 	}
@@ -129,27 +129,27 @@ template<class T> txtFuncType1 ChangeVar(T& in){
 	cerr << "ChangeVar called with invalid type '" << type << "'" << endl;
 	return txtFuncType1{};
 }
-template<class T> txtFuncType1 Damage(T& in){
+template<class T> txtFuncType1 Damage(T& in) {
 	int dmgLow,dmgHigh;
 	in >> dmgLow >> dmgHigh;
 	dmgHigh=max(dmgHigh,dmgLow+1);
-	return [dmgLow,dmgHigh](GameObject* self){
+	return [dmgLow,dmgHigh](GameObject* self) {
 		int dmg = dmgLow + (rand()%(dmgHigh-dmgLow));
-		if(self->HasComponent(Component::type::t_hp))COMPHPp(self)->Damage(dmg);
+		if (self->HasComponent(Component::type::t_hp))COMPHPp(self)->Damage(dmg);
 	};
 }
-template<class T> txtFuncType1 DamageArea(T& in){
+template<class T> txtFuncType1 DamageArea(T& in) {
 	bool dmgSelf;
 	int dmgLow,dmgHigh;
 	float x,y,w,h,r;
 	in >> x >> y >> w >> h >> r >> dmgLow >> dmgHigh >> dmgSelf;
 	Rect rect{x,y,w,h};
 	dmgHigh=max(dmgHigh,dmgLow+1);
-	return [rect,r,dmgLow,dmgHigh,dmgSelf](GameObject* self){
+	return [rect,r,dmgLow,dmgHigh,dmgSelf](GameObject* self) {
 		Rect area = self->Box();
 		area.w *= rect.w;
 		area.h *= rect.h;
-		if(self->flipped)area.x += self->Box().w * rect.x;
+		if (self->flipped)area.x += self->Box().w * rect.x;
 		else area.x -= (self->Box().w * rect.x) + (area.w - self->Box().w);
 		area.y += self->Box().h * rect.y;
 
@@ -158,29 +158,29 @@ template<class T> txtFuncType1 DamageArea(T& in){
 		FILL_RECT(&r);
 
 		set<uint> gos = GAMESTATE.GetEntitiesInRange(rect.x,rect.x2());
-		for(uint go:gos){
-			if(dmgSelf || GO(go)->team != self->team){
+		for (uint go:gos) {
+			if (dmgSelf || GO(go)->team != self->team) {
 				//TODO: change collision to work with rotation
-				if(GO(go)->HasComponent(Component::type::t_hp) && area.collides(GO(go)->Box())){
+				if (GO(go)->HasComponent(Component::type::t_hp) && area.collides(GO(go)->Box())) {
 					COMPHPp(GO(go))->Damage(dmgLow+(rand()%(dmgHigh-dmgLow)));
 				}
 			}
 		}
 	};
 }
-template<class T> txtFuncType1 DamageAreaFixed(T& in){
+template<class T> txtFuncType1 DamageAreaFixed(T& in) {
 	bool dmgSelf;
 	int dmgLow,dmgHigh;
 	float x,y,w,h,r;
 	in >> x >> y >> w >> h >> r >> dmgLow >> dmgHigh >> dmgSelf;
 	Rect rect{x,y,w,h};
 	dmgHigh=max(dmgHigh,dmgLow+1);
-	return [rect,r,dmgLow,dmgHigh,dmgSelf](GameObject* self){
+	return [rect,r,dmgLow,dmgHigh,dmgSelf](GameObject* self) {
 		Vec2 source = self->pos + Vec2::makeVec2(self->size.x,self->rotation);
 		Rect area = {0,0,rect.w,rect.h};
 		area.setCenter(source);
 		area += rect.corner();
-		if(self->flipped)area.x += self->Box().w * rect.x;
+		if (self->flipped)area.x += self->Box().w * rect.x;
 		else area.x -= (self->Box().w * rect.x) + (area.w - self->Box().w);
 		area.y += self->Box().h * rect.y;
 
@@ -189,17 +189,17 @@ template<class T> txtFuncType1 DamageAreaFixed(T& in){
 		// FILL_RECT(&r);
 
 		set<uint> gos = GAMESTATE.GetEntitiesInRange(rect.x,rect.x2());
-		for(uint go:gos){
-			if(dmgSelf || GO(go)->team != self->team){
+		for (uint go:gos) {
+			if (dmgSelf || GO(go)->team != self->team) {
 				//TODO: change collision to work with rotation
-				if(GO(go)->HasComponent(Component::type::t_hp) && area.collides(GO(go)->Box())){
+				if (GO(go)->HasComponent(Component::type::t_hp) && area.collides(GO(go)->Box())) {
 					COMPHPp(GO(go))->Damage(dmgLow+(rand()%(dmgHigh-dmgLow)));
 				}
 			}
 		}
 	};
 }
-template<class T> txtFuncType1 FireProjectile(T& in){
+template<class T> txtFuncType1 FireProjectile(T& in) {
 	COUTL(FireProjectile read begin);
 	int count;
 	float x,y,f,r,g;
@@ -220,23 +220,23 @@ template<class T> txtFuncType1 FireProjectile(T& in){
 
 	ifstream file(PROJECTILE_PATH + projFile + ".txt");
 	COUTL(aaaa4);
-	if(!file.is_open()){
+	if (!file.is_open()) {
 		cerr << "Erro ao abrir arquivo " << projFile << endl;
 		exit(EXIT_FAILURE);
 	}
 	COUTL(aaaa5);
 	file >> animFile >> projFileStatic >> g;
 	COUTL(aaaa6);
-	while(file >> cur >> count){
+	while (file >> cur >> count) {
 		DEBUG(cur);
 		DEBUG(count);
-		if(cur=="start" || cur=="hit_enemy" || cur=="hit_ally" || cur=="hit_block"){
-			FOR(i,count){
+		if (cur=="start" || cur=="hit_enemy" || cur=="hit_ally" || cur=="hit_block") {
+			FOR(i,count) {
 				file >> target >> funcN;
-				if(cur == "start")start.push_back(make_pair(target,txtFuncsF[funcN](file)));
-				else if(cur == "hit_enemy")hitEnemy.push_back(make_pair(target,txtFuncsF[funcN](file)));
-				else if(cur == "hit_ally")hitAlly.push_back(make_pair(target,txtFuncsF[funcN](file)));
-				else if(cur == "hit_block")hitBlock.push_back(make_pair(target,txtFuncsF[funcN](file)));
+				if (cur == "start")start.push_back(make_pair(target,txtFuncsF[funcN](file)));
+				else if (cur == "hit_enemy")hitEnemy.push_back(make_pair(target,txtFuncsF[funcN](file)));
+				else if (cur == "hit_ally")hitAlly.push_back(make_pair(target,txtFuncsF[funcN](file)));
+				else if (cur == "hit_block")hitBlock.push_back(make_pair(target,txtFuncsF[funcN](file)));
 			}
 		}
 		else vars[cur] = count;
@@ -245,43 +245,43 @@ template<class T> txtFuncType1 FireProjectile(T& in){
 	file.close();
 	COUTL(aaaa8);
 
-	auto foo = [x,y,f,r,g,animFile,vars,start,hitAlly,hitEnemy,hitBlock,projFileStatic](GameObject* owner){
+	auto foo = [x,y,f,r,g,animFile,vars,start,hitAlly,hitEnemy,hitBlock,projFileStatic](GameObject* owner) {
 		Vec2 pos = owner->Box().relativePos({x,y},owner->flipped);
 		float ang=-r;
-		if(!owner->flipped)ang = 180-ang;
+		if (!owner->flipped)ang = 180-ang;
 
 		GameObject* bullet = new GameObject{pos,ang,Hotspot::LEFT};
 
 		CompCollider collider{CompCollider::collType::t_bullet};
 		collider.colls[0].useDefault[CompCollider::collType::t_bullet] = []
-			(const CompCollider::Coll &a,const CompCollider::Coll &b){UNUSED(a);UNUSED(b);};
+			(const CompCollider::Coll &a,const CompCollider::Coll &b) {UNUSED(a);UNUSED(b);};
 
-		auto foo1 = [owner,vars,hitAlly,hitEnemy,projFileStatic](const CompCollider::Coll &a,const CompCollider::Coll &b){
+		auto foo1 = [owner,vars,hitAlly,hitEnemy,projFileStatic](const CompCollider::Coll &a,const CompCollider::Coll &b) {
 			bool isAlly = GO(a.entity)->team == GO(b.entity)->team;
 
 
 			Vec2 &totMove=COMPMOVEp(GO(a.entity))->move;
-			if(totMove==Vec2{})return;
+			if (totMove==Vec2{})return;
 
 			Vec2 move=a.Collides(b,totMove);
 
-			if(move!=totMove){
-				if(isAlly){
-					for(auto &pfunc:hitAlly){
-						if(pfunc.first=="owner")pfunc.second(owner);
-						if(pfunc.first=="self")pfunc.second(GO(a.entity));
-						if(pfunc.first=="target")pfunc.second(GO(b.entity));
+			if (move!=totMove) {
+				if (isAlly) {
+					for (auto &pfunc:hitAlly) {
+						if (pfunc.first=="owner")pfunc.second(owner);
+						if (pfunc.first=="self")pfunc.second(GO(a.entity));
+						if (pfunc.first=="target")pfunc.second(GO(b.entity));
 					}
 				}
 				else{
-					for(auto &pfunc:hitEnemy){
-						if(pfunc.first=="owner")pfunc.second(owner);
-						if(pfunc.first=="self")pfunc.second(GO(a.entity));
-						if(pfunc.first=="target")pfunc.second(GO(b.entity));
+					for (auto &pfunc:hitEnemy) {
+						if (pfunc.first=="owner")pfunc.second(owner);
+						if (pfunc.first=="self")pfunc.second(GO(a.entity));
+						if (pfunc.first=="target")pfunc.second(GO(b.entity));
 					}
 				}
-				if(!GO(b.entity)->HasComponent(Component::type::t_movement)){
-					if((isAlly && vars.count("stick_ally")==0) || (!isAlly && vars.count("stick_enemy")==0))return;
+				if (!GO(b.entity)->HasComponent(Component::type::t_movement)) {
+					if ((isAlly && vars.count("stick_ally")==0) || (!isAlly && vars.count("stick_enemy")==0))return;
 					Vec2 pos = GO(a.entity)->Box().corner() + move + totMove/4.0f;
 					auto &func = txtFuncsS["AddSprite2"];
 					istringstream iss(projFileStatic + " " + to_string(pos.x) + to_string(pos.y) + " 5");
@@ -292,19 +292,19 @@ template<class T> txtFuncType1 FireProjectile(T& in){
 		};
 		collider.colls[0].useDefault[CompCollider::collType::t_any] = foo1;
 
-		auto foo2 = [owner,vars,hitBlock,projFileStatic](const CompCollider::Coll &a,const CompCollider::Coll &b){
+		auto foo2 = [owner,vars,hitBlock,projFileStatic](const CompCollider::Coll &a,const CompCollider::Coll &b) {
 			Vec2 &totMove=COMPMOVEp(GO(a.entity))->move;
-			if(totMove==Vec2{})return;
+			if (totMove==Vec2{})return;
 
 			Vec2 move=a.Collides(b,totMove);
 
-			if(move!=totMove){
-				for(auto &pfunc:hitBlock){
-					if(pfunc.first=="owner")pfunc.second(owner);
-					if(pfunc.first=="self")pfunc.second(GO(a.entity));
-					if(pfunc.first=="target")pfunc.second(GO(b.entity));
+			if (move!=totMove) {
+				for (auto &pfunc:hitBlock) {
+					if (pfunc.first=="owner")pfunc.second(owner);
+					if (pfunc.first=="self")pfunc.second(GO(a.entity));
+					if (pfunc.first=="target")pfunc.second(GO(b.entity));
 				}
-				if(vars.count("stick_block")==1){
+				if (vars.count("stick_block")==1) {
 					Vec2 pos = GO(a.entity)->pos + move + totMove/4.0f;
 					auto &func = txtFuncsS["AddSprite2"];
 					istringstream iss(projFileStatic + " " + to_string(pos.x) + " " + to_string(pos.y) + " 5");
@@ -321,7 +321,7 @@ template<class T> txtFuncType1 FireProjectile(T& in){
 		bullet->AddComponent(anim);
 
 		Vec2 mv;
-		if(owner->HasComponent(Component::type::t_movement))mv=COMPMOVEp(owner)->move;
+		if (owner->HasComponent(Component::type::t_movement))mv=COMPMOVEp(owner)->move;
 		bullet->AddComponent(new CompMovement{Vec2::makeVec2(f,ang)+mv,CompMovement::moveType::t_bullet});
 
 		bullet->AddComponent(new CompGravity{g});
@@ -331,22 +331,22 @@ template<class T> txtFuncType1 FireProjectile(T& in){
 		bullet->rotation = ang;
 		bullet->size = size;
 
-		if(owner->flipped)bullet->pos.x -= size.x;
+		if (owner->flipped)bullet->pos.x -= size.x;
 
 		GAMESTATE.AddObject(bullet->uid);
 
-		for(auto &pfunc:start){
-			if(pfunc.first=="owner")pfunc.second(owner);
-			if(pfunc.first=="self")pfunc.second(bullet);
+		for (auto &pfunc:start) {
+			if (pfunc.first=="owner")pfunc.second(owner);
+			if (pfunc.first=="self")pfunc.second(bullet);
 		}
 	};
 	COUTL(aaaa9);
 	COUTL(FireProjectile read end);
 	return foo;
 }
-template<class T> txtFuncType1 Remove(T& in){
+template<class T> txtFuncType1 Remove(T& in) {
 	UNUSED(in);
-	return [](GameObject* self){
+	return [](GameObject* self) {
 		self->remove = true;
 	};
 }

@@ -12,12 +12,12 @@ class CompGravity : public Component{
 	float gravity;
 public:
 	//public members
-	CompGravity(float g=GRAVITY);
+	CompGravity(float gravity=GRAVITY);
 	~CompGravity();
 
-	void Update(float time);
-	void Render();
-	Component::type GetType() const;
+	void update(float time);
+	void render();
+	Component::type get_type() const;
 };
 
 #endif//COMPGRAVITYHPP
